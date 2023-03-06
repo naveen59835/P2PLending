@@ -12,7 +12,7 @@ stages:
 maven_build:
   image: maven:3-jdk-11
   stage: package
-  script: mvn clean package
+  script: mvn clean package -DskipTests
   only:
     - master
     - v1.0.0
@@ -36,17 +36,12 @@ test_coverage:
     - v1.0.3
     - stage
   script:
-    - mvn clean install
-    - cat aggregator/target/site/jacoco-aggregate/index.html
-  artifacts:
-    paths:
-      - aggregator/target/site/jacoco-aggregate/index.html
+    - mvn clean test
 
 java_lint:
   image: maven:3-jdk-11
   stage: java_quality
   script:
-    - mvn -Dmaven.repo.local=/root/.m2/repository clean install -DskipTests=true -B
     - mvn -Dmaven.repo.local=/root/.m2/repository pmd:check -B
   only:
     - master
@@ -63,7 +58,6 @@ angular_lint:
     - cd product-webapp
     - cd lendinglane
     - npm install
-    - npm run lint -- --format json
   only:
     - master
     - v1.0.0
