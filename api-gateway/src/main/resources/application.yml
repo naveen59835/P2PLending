@@ -1,12 +1,12 @@
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8076/eureka
+      defaultZone: http://${EUREKA_SERVER_IP:localhost}:${EUREKA_SERVER_PORT:8761}/eureka
     register-with-eureka: true
     fetch-registry: true
 
 server:
-  port: 8086
+  port: 9002
 
 spring:
   application:

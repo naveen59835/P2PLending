@@ -27,6 +27,7 @@
         <module>api-gateway</module>
         <module>product-webapp</module>
         <module>aggregator</module>
+        <module>Borrower_Registration</module>
     </modules>
 
     <dependencies>
