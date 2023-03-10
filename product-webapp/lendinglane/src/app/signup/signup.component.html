@@ -21,7 +21,7 @@
     </div>
     <mat-form-field appearance="outline">
       <mat-label>Phone Number</mat-label>
-      <input formControlName="phoneNo" matInput placeholder="phoneNo">
+      <input formControlName="phone" matInput placeholder="phoneNo">
       <mat-error *ngIf="phoneNo?.errors?.['required']">Phone number is required</mat-error>
       <mat-error *ngIf="phoneNo?.errors?.['pattern']">Phone Number should start with 7,8,9</mat-error>
       <mat-error *ngIf="phoneNo?.errors?.['minlength']">PhoneNo must be at least 10 characters long</mat-error>

@@ -19,30 +19,32 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SignupComponent } from './signup/signup.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { LoginComponent } from './login/login.component';
+import {MatCheckboxModule} from "@angular/material/checkbox";
 
 
 
 @NgModule({
   declarations: [AppComponent, SignupComponent, NavbarComponent, LoginComponent],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatFormFieldModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MatSnackBarModule,
-    HttpClientModule,
-    MatRadioModule,
-    MatButtonModule,
-    MatSelectModule,
-    MatInputModule,
-    MatSidenavModule,
-    RouterModule,
-    BrowserAnimationsModule
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        MatToolbarModule,
+        MatIconModule,
+        MatFormFieldModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatSnackBarModule,
+        HttpClientModule,
+        MatRadioModule,
+        MatButtonModule,
+        MatSelectModule,
+        MatInputModule,
+        MatSidenavModule,
+        RouterModule,
+        BrowserAnimationsModule,
+        MatCheckboxModule
 
-  ],
+    ],
   providers: [],
   bootstrap: [AppComponent],
 })

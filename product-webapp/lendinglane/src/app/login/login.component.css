@@ -19,6 +19,7 @@
 button{
   width: 100%;
   height: 43px;
+  margin-bottom: 15px;
 }
 .login-logo{
   padding: 15px 17px;
@@ -28,4 +29,16 @@ button{
   width: max-content;
   border-radius: 50%;
   margin: 0 auto 10px;
+}
+.extra-fields{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+.extra-fields>p{
+  cursor: pointer;
+}
+.move-to-signup{
+  cursor: pointer;
+  color: #3f51b5;
 }
