@@ -1,0 +1,12 @@
+.spacer{
+  flex:auto ;
+}
+.title{
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.logo{
+  width: 50px;
+}

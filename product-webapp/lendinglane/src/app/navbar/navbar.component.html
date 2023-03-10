@@ -1,0 +1,22 @@
+<mat-toolbar color="primary">
+  <div class="title" routerLink="">
+    <img class="logo" src="https://img.icons8.com/ios/150/ffffff/litecoin.png">
+    LendingLane
+  </div>
+  <span class="spacer"></span>
+  <button mat-icon-button routerLink="">
+    <mat-icon>home</mat-icon>
+  </button>
+  <button mat-icon-button>
+    <mat-icon>apps</mat-icon>
+  </button>
+  <button mat-icon-button>
+    <mat-icon>settings</mat-icon>
+  </button>
+<!--  <button mat-icon-button (click)="logout()">-->  <!-- used to toggle login/logout icon -->
+  <button mat-icon-button>  <!-- This is line is a copy of the line above, delete this line after removing the comment on the line above -->
+    <mat-icon>logout</mat-icon> <!-- Remove this line after uncommenting the line below -->
+<!--    <mat-icon *ngIf="userService.isLoggedIn">logout</mat-icon>-->
+<!--    <mat-icon *ngIf="!userService.isLoggedIn">login</mat-icon>-->
+  </button>
+</mat-toolbar>

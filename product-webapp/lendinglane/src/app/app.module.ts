@@ -1,9 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { ComponentNameComponent } from './component-name/component-name.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -18,12 +16,14 @@ import { MatInputModule } from '@angular/material/input';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { RouterModule, Routes } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { SignupComponent } from './signup/signup.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { LoginComponent } from './login/login.component';
 
 
 
 @NgModule({
-  declarations: [AppComponent, ComponentNameComponent],
+  declarations: [AppComponent, SignupComponent, NavbarComponent, LoginComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
