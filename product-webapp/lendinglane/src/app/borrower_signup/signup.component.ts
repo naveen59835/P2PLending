@@ -10,15 +10,12 @@ import { BorrowerRegistrationService } from '../service/borrower-registration.se
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
+  
   hide = true;
-  showPassword = false;
   emailFormControl = new FormControl('', [Validators.required, Validators.email]);
   profileForm: FormGroup;
   empl: Borrower | undefined;
   employee = {} as Borrower;
-  @Output()
-  addEmployee: EventEmitter<Borrower> = new EventEmitter<Borrower>();
-  user = {}
   formGroup: any;
 
   constructor(private fb: FormBuilder, private _snackBar: MatSnackBar,private borrower:BorrowerRegistrationService) {
@@ -61,7 +58,7 @@ export class SignupComponent implements OnInit {
   ngOnInit(): void {
   }
 
- 
+
 
   openSnack(message : string, action : string) {
 

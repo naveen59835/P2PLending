@@ -6,6 +6,7 @@
 
 package com.niit.controller;
 
+import com.niit.exception.BorrowerAlreadyFoundException;
 import com.niit.model.Borrower;
 import com.niit.service.BorrowerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,21 +30,19 @@ public class BorrowerController {
     }
 
     @PostMapping("/borrower")
-    public ResponseEntity<?> saveTracks(@RequestBody Borrower borrower) {
+    public ResponseEntity<?> saveBorrower(@RequestBody Borrower borrower) throws BorrowerAlreadyFoundException   {
         try {
             Borrower borrower1 = borrowerService.saveBorrower(borrower);
             return new ResponseEntity<Borrower>(borrower1, HttpStatus.OK);
 
         } catch (Exception e) {
             System.out.println("exception arised");
-            return new ResponseEntity<String>("Error Occured", HttpStatus.INTERNAL_SERVER_ERROR);
+            throw new BorrowerAlreadyFoundException();
         }
     }
 
     @GetMapping("/borrowers")
-
-
-    public ResponseEntity<?> getAllTracks() {
+    public ResponseEntity<?> getAllBorrowers() {
         try {
             responseEntity = new ResponseEntity(borrowerService.getBorrowerList(), HttpStatus.OK);
         } catch (Exception e) {
@@ -59,6 +58,26 @@ public class BorrowerController {
             return ResponseEntity.notFound().build();
         } else {
             return ResponseEntity.ok().body(borrower);
+        }
+    }
+
+    @DeleteMapping("/borrower/{emailId}")
+    public ResponseEntity<?> deleteBorrower(@PathVariable ("emailId") String emailId) {
+              try {
+            borrowerService.deleteBorrower(emailId);
+            return responseEntity=new ResponseEntity<String>("Successfully deleted",HttpStatus.OK);
+        } catch (Exception e) {
+            return responseEntity=new ResponseEntity<String>(e.getMessage(),HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+    @PutMapping("/borrowers/{emailId}")
+    public ResponseEntity<?> updateBorrower(@RequestBody Borrower borrower, @PathVariable String emailId) {
+        Borrower update=borrowerService.updateBorrower(borrower,emailId);
+        if(update!=null){
+            return new ResponseEntity<Borrower>(update,HttpStatus.OK);
+
+        }else {
+            return new ResponseEntity<String>("Failed to Update",HttpStatus.FAILED_DEPENDENCY);
         }
     }
 
