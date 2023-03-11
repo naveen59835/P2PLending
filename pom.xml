@@ -29,6 +29,7 @@
         <module>aggregator</module>
         <module>authentication</module>
         <module>borrower</module>
+        <module>lender</module>
     </modules>
 
     <dependencies>

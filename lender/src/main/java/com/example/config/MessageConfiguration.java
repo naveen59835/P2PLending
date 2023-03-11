@@ -13,8 +13,8 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class MessageConfiguration {
 
-    private String exchangeName="lender-exchange";
-    private String queueName="lender-queue";
+    private String exchangeName="auth-exchange";
+    private String queueName="auth";
 
     @Bean
     public DirectExchange directExchange()
@@ -45,7 +45,7 @@ public class MessageConfiguration {
     @Bean
     public Binding bindingExchangeAndQueue(DirectExchange directExchange,Queue queue)
     {
-        return BindingBuilder.bind(registerQueue()).to(directExchange).with("routing");
+        return BindingBuilder.bind(registerQueue()).to(directExchange).with("route-key");
     }
 
 

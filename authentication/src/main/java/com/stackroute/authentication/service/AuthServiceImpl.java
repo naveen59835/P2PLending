@@ -1,11 +1,15 @@
 package com.stackroute.authentication.service;
 
+import com.stackroute.authentication.configuration.AuthDTO;
 import com.stackroute.authentication.exception.UserNotFoundException;
 import com.stackroute.authentication.exception.UsernamePasswordMismatchException;
 import com.stackroute.authentication.model.Login;
 import com.stackroute.authentication.repository.LoginRepository;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,5 +34,10 @@ public class AuthServiceImpl implements AuthService {
             else throw new UsernamePasswordMismatchException("Incorrect password");
         }
         throw new UserNotFoundException("User not found");
+    }
+    @RabbitListener(queues = "auth")
+    public void saveUser(JSONObject data){
+        AuthDTO dto = new AuthDTO(data);
+        repository.save(dto.getLogin());
     }
 }

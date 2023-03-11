@@ -12,21 +12,15 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class LenderServiceImpl implements LenderService {
-
-
     LenderRepository lenderRepository;
     RabbitTemplate rabbitTemplate;
     DirectExchange exchange;
-@Autowired
+    @Autowired
     public LenderServiceImpl(LenderRepository lenderRepository, RabbitTemplate rabbitTemplate, DirectExchange exchange) {
         this.lenderRepository = lenderRepository;
         this.rabbitTemplate = rabbitTemplate;
         this.exchange = exchange;
     }
-
-
-
-
     @Override
     public Lender registerLender(Lender lender) throws LenderAlreadyExistException {
         LenderDTO lenderDTO=new LenderDTO();
@@ -34,13 +28,12 @@ public class LenderServiceImpl implements LenderService {
             throw new LenderAlreadyExistException();
         }
         JSONObject jsonObject=new JSONObject();
-        jsonObject.put("lenderMail",lender.getEmailId());
-        jsonObject.put("lenderPassword",lender.getPassword());
+        jsonObject.put("email",lender.getEmailId());
+        jsonObject.put("password",lender.getPassword());
+        jsonObject.put("name",lender.getFirstName()+" "+lender.getLastName());
+        jsonObject.put("phone",lender.getPhoneNumber());
         lenderDTO.setJsonObject(jsonObject);
-        rabbitTemplate.convertAndSend(exchange.getName(),"routing",lenderDTO);
-
+        rabbitTemplate.convertAndSend(exchange.getName(),"route-key",lenderDTO.getJsonObject());
         return lenderRepository.save(lender);
-
-
     }
 }
