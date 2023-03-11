@@ -4,12 +4,16 @@
   </div>
   <h1>Login</h1>
   <form [formGroup]="loginForm" class="login-form">
+    <div class="login-toggle">
+      <mat-button-toggle-group formControlName="role">
+        <mat-button-toggle value="borrower">Borrower</mat-button-toggle>
+        <mat-button-toggle value="lender">Lender</mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
     <mat-form-field appearance="outline">
-      <mat-label>Phone Number</mat-label>
-      <input formControlName="phone" matInput placeholder="phoneNo">
-      <mat-error *ngIf="phoneNo?.errors?.['required']">Phone number is required</mat-error>
-      <mat-error *ngIf="phoneNo?.errors?.['pattern']">Phone Number should start with 7,8,9</mat-error>
-      <mat-error *ngIf="phoneNo?.errors?.['minlength']">PhoneNo must be at least 10 characters long</mat-error>
+      <mat-label>Email</mat-label>
+      <input formControlName="email" matInput placeholder="Email">
+      <mat-error *ngIf="email?.errors?.['required']">Email is required</mat-error>
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>Password</mat-label>

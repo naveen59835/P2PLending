@@ -21,12 +21,13 @@ public class AuthServiceImpl implements AuthService {
     @Autowired
     LoginRepository repository;
     public Map <String,Object> loginUser(Map <String,String> loginDetails) throws UsernamePasswordMismatchException, UserNotFoundException {
-        Login userDetails = repository.findByPhone(loginDetails.get("phone"));
+        Login userDetails = repository.findByEmailAndRole(loginDetails.get("email"),loginDetails.get("role"));
         if(userDetails!=null){
             if(userDetails.getPassword().equals(loginDetails.get("password"))){
                 Map<String,Object> responseData = new HashMap<>();
-                responseData.put("phone",userDetails.getPhone());
+                responseData.put("email",userDetails.getEmail());
                 responseData.put("name",userDetails.getName());
+                responseData.put("role",userDetails.getRole());
                 String token = Jwts.builder().setClaims(responseData).signWith(SignatureAlgorithm.HS256,"My-Secret-Key").compact();
                 responseData.put("token",token);
                 return responseData;

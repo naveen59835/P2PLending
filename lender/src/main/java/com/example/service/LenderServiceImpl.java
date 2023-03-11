@@ -31,7 +31,7 @@ public class LenderServiceImpl implements LenderService {
         jsonObject.put("email",lender.getEmailId());
         jsonObject.put("password",lender.getPassword());
         jsonObject.put("name",lender.getFirstName()+" "+lender.getLastName());
-        jsonObject.put("phone",lender.getPhoneNumber());
+        jsonObject.put("role","lender");
         lenderDTO.setJsonObject(jsonObject);
         rabbitTemplate.convertAndSend(exchange.getName(),"route-key",lenderDTO.getJsonObject());
         return lenderRepository.save(lender);

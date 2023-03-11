@@ -13,6 +13,5 @@ public class Login {
     private String email;
     private String password;
     private String name;
-    private String phone;
-
+    private String role; // ENUM Can be used
 }

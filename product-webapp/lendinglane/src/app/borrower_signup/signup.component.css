@@ -29,3 +29,13 @@ button{
   border-radius: 50%;
   margin: 0 auto 10px;
 }
+.radio-container{
+  text-align: left;
+  display: flex;
+  gap: 15px;
+}
+mat-radio-group{
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+}

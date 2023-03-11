@@ -4,5 +4,5 @@ import com.stackroute.authentication.model.Login;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface LoginRepository extends JpaRepository<Login,Long> {
-    public Login findByPhone(String phone);
+    public Login findByEmailAndRole(String phone,String role);
 }

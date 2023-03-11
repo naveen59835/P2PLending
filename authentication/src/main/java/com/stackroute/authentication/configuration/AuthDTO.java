@@ -11,7 +11,7 @@ public class AuthDTO {
         login = new Login();
         login.setName(object.get("name").toString());
         login.setEmail(object.get("email").toString());
-        login.setPhone(object.get("phone").toString());
         login.setPassword(object.get("password").toString());
+        login.setRole(object.get("role").toString());
     }
 }

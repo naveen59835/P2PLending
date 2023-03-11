@@ -29,6 +29,4 @@ public class Lender {
     private int creditScore;
     private double investedAmount;
     private double availableBalance;
-
-
 }
