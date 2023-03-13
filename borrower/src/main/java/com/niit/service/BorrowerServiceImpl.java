@@ -36,8 +36,8 @@ public class BorrowerServiceImpl implements BorrowerService {
             borrowerDTO.setJsonObject(jsonObject);
             template.convertAndSend("auth-exchange","route-key", borrowerDTO.getJsonObject());
             return borrowerRepo.save(borrower);
-        } catch (Exception e) {
-            throw new BorrowerAlreadyFoundException();
+        } catch (Exception exception) {
+            throw new RuntimeException(exception.getMessage());
         }
     }
 
@@ -53,20 +53,23 @@ public class BorrowerServiceImpl implements BorrowerService {
     @Override
     public Borrower updateBorrower(Borrower borrower, String emailId) {
         if (borrowerRepo.findById(emailId).isPresent()) {
-            Borrower borrower1 = borrowerRepo.findById(emailId).get();
-            if (borrower1.getFirstName() != null) {
-                borrower1.setFirstName(borrower.getFirstName());
+            Borrower borrowerData = borrowerRepo.findById(emailId).get();
+            if (borrowerData.getFirstName() != null) {
+                borrowerData.setFirstName(borrower.getFirstName());
             }
-            if (borrower1.getLastName() != null) {
-                borrower1.setLastName(borrower.getLastName());
+            if (borrowerData.getLastName() != null) {
+                borrowerData.setLastName(borrower.getLastName());
             }
-            if (borrower1.getEmailId() != null) {
-                borrower1.setEmailId(borrower.getEmailId());
+            if (borrowerData.getPhoneNo() != null) {
+                borrowerData.setPhoneNo(borrower.getPhoneNo());
             }
-            if (borrower1.getPhoneNo() != null) {
-                borrower1.setPhoneNo(borrower.getPhoneNo());
+            if (borrowerData.getPassword() != null) {
+                borrowerData.setPassword(borrower.getPassword());
             }
-            return borrowerRepo.save(borrower1);
+            if (borrowerData.getConfirmPassword() != null) {
+                borrowerData.setConfirmPassword(borrower.getConfirmPassword());
+            }
+            return borrowerRepo.save(borrowerData);
         }
         return null;
     }
@@ -74,8 +77,8 @@ public class BorrowerServiceImpl implements BorrowerService {
     @Override
     public boolean deleteBorrower(String emailId) {
         if (borrowerRepo.findById(emailId).isPresent()) {
-            Borrower borrower2 = borrowerRepo.findById(emailId).get();
-            borrowerRepo.delete(borrower2);
+            Borrower borrowerDelete = borrowerRepo.findById(emailId).get();
+            borrowerRepo.delete(borrowerDelete);
             return true;
         }
         return false;

@@ -21,11 +21,13 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { LoginComponent } from './login/login.component';
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
+import { BorrowerComponent } from './borrower/borrower.component';
+import { BorrowerDetailsComponent } from './borrower/borrower-details/borrower-details.component';
 
 
 
 @NgModule({
-  declarations: [AppComponent, SignupComponent, NavbarComponent, LoginComponent],
+  declarations: [AppComponent, SignupComponent, NavbarComponent, LoginComponent, BorrowerComponent, BorrowerDetailsComponent],
     imports: [
         BrowserModule,
         AppRoutingModule,

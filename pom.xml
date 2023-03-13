@@ -30,6 +30,7 @@
         <module>authentication</module>
         <module>borrower</module>
         <module>lender</module>
+        <module>loan</module>
     </modules>
 
     <dependencies>

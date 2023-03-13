@@ -3,6 +3,7 @@ import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Borrower} from "../model/Borrower";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {LoginService} from "../service/login.service";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,7 @@ import {LoginService} from "../service/login.service";
 })
 export class LoginComponent {
   loginForm: FormGroup;
-  constructor(private fb: FormBuilder, private _snackBar: MatSnackBar, private loginService : LoginService) {
+  constructor(private fb: FormBuilder, private _snackBar: MatSnackBar, private loginService : LoginService,private router: Router) {
     this.loginForm = this.fb.group({
       email: new FormControl('', [Validators.required]),
       password: new FormControl('', [Validators.required, Validators.minLength(8), Validators.pattern(/^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/)]),
@@ -49,6 +50,7 @@ export class LoginComponent {
             window.localStorage.setItem("role",data.role)
           }
           this.loginForm.reset();
+          this.router.navigate(['/borrowerdetails'])
         },
         error : (err)=> this.openSnack(err.data,"Failure")
       })

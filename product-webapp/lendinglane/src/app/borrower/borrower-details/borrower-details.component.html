@@ -1,0 +1,63 @@
+<div class="container">
+  <h2>Borrower Details</h2>
+  <div class="details">
+    <div class="detail">
+      <div class="key">Name:</div>
+      <div *ngIf="!editMode" class="value">{{ borrowerDetails.firstName }}</div>
+      <div *ngIf="editMode" class="value">
+        <input [(ngModel)]="borrowerDetails.firstName" type="text" class="form-control">
+      </div>
+    </div>
+    <div class="detail">
+      <div class="key">Address:</div>
+      <div *ngIf="!editMode" class="value">{{ borrowerDetails.lastName }}</div>
+      <div *ngIf="editMode" class="value">
+        <input [(ngModel)]="borrowerDetails.lastName" type="text" class="form-control">
+      </div>
+    </div>
+    <div class="detail">
+      <div class="key">Email:</div>
+      <div class="value">{{ borrowerDetails.emailId }}</div>
+    </div>
+    <div class="detail">
+      <div class="key">Password:</div>
+      <div *ngIf="!editMode" class="value">{{ showPassword ? borrowerDetails.password : '******' }}
+        <button (click)="showPassword = !showPassword" type="button" class="btn btn-outline-secondary btn-sm">
+          <i class="fa fa-eye" *ngIf="!showPassword"></i>
+          <i class="fa fa-eye-slash" *ngIf="showPassword"></i>
+        </button>
+      </div>
+      <div *ngIf="editMode" class="value">
+        <input [(ngModel)]="borrowerDetails.password" [type]="showPassword ? 'text' : 'password'" class="form-control">
+        <button (click)="showPassword = !showPassword" type="button" class="btn btn-outline-secondary btn-sm">
+          <i class="fa fa-eye" *ngIf="!showPassword"></i>
+          <i class="fa fa-eye-slash" *ngIf="showPassword"></i>
+        </button>
+      </div>
+    </div>
+    <div class="detail">
+      <div class="key">Confirm Password:</div>
+      <div *ngIf="!editMode" class="value">{{ showConfirmPassword ? borrowerDetails.confirmPassword : '******' }}
+        <button (click)="showConfirmPassword = !showConfirmPassword" type="button" class="btn btn-outline-secondary btn-sm">
+          <i class="fa fa-eye" *ngIf="!showConfirmPassword"></i>
+          <i class="fa fa-eye-slash" *ngIf="showConfirmPassword"></i>
+        </button>
+      </div>
+      <div *ngIf="editMode" class="value">
+        <input [(ngModel)]="borrowerDetails.confirmPassword" [type]="showConfirmPassword ? 'text' : 'password'" class="form-control">
+        <button (click)="showConfirmPassword = !showConfirmPassword" type="button" class="btn btn-outline-secondary btn-sm">
+          <i class="fa fa-eye" *ngIf="!showConfirmPassword"></i>
+          <i class="fa fa-eye-slash" *ngIf="showConfirmPassword"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="!editMode">
+    <button class="btn btn-primary" (click)="onEdit()">Edit</button>
+  </div>
+  <div *ngIf="editMode">
+    <button class="btn btn-primary" (click)="onSave(borrowerDetails)">Save</button>
+    <button class="btn btn-secondary" (click)="editMode=false">Cancel</button>
+  </div>
+</div>
+
