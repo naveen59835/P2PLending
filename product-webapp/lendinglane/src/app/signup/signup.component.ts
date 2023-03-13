@@ -84,8 +84,6 @@ export class SignupComponent implements OnInit {
 
 
   onSubmit() {
-
-
     this.borrowerService.registerUser(this.profileForm.value).subscribe({
       next :(data) => {
         if (this.profileForm.valid) {

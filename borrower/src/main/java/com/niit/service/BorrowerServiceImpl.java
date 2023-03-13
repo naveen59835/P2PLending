@@ -6,9 +6,12 @@
 
 package com.niit.service;
 
+import com.niit.configuration.BorrowerDTO;
 import com.niit.exception.BorrowerAlreadyFoundException;
 import com.niit.model.Borrower;
 import com.niit.repo.BorrowerRepo;
+import org.json.simple.JSONObject;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,10 +21,20 @@ import java.util.List;
 public class BorrowerServiceImpl implements BorrowerService {
     @Autowired
     BorrowerRepo borrowerRepo;
+    @Autowired
+    RabbitTemplate template;
 
     @Override
     public Borrower saveBorrower(Borrower borrower) throws BorrowerAlreadyFoundException {
         try {
+            BorrowerDTO borrowerDTO = new BorrowerDTO();
+            JSONObject jsonObject=new JSONObject();
+            jsonObject.put("email",borrower.getEmailId());
+            jsonObject.put("password",borrower.getPassword());
+            jsonObject.put("name",borrower.getFirstName()+" "+borrower.getLastName());
+            jsonObject.put("role","borrower");
+            borrowerDTO.setJsonObject(jsonObject);
+            template.convertAndSend("auth-exchange","route-key", borrowerDTO.getJsonObject());
             return borrowerRepo.save(borrower);
         } catch (Exception e) {
             throw new BorrowerAlreadyFoundException();

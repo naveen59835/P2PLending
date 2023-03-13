@@ -5,11 +5,12 @@ import {HttpClient} from "@angular/common/http";
   providedIn: 'root'
 })
 export class RegistrationService {
-  private URL = "http://localhost:8082/api/v1"; //change this with api gateway asap,
+  private URL !: string
 
   constructor(private httpClient:HttpClient) { }
 
   registerUser(data:any){
+    this.URL = `http://localhost:${data.role==="borrower"?8083:8082}/api/v1`; //change this with api gateway asap,
     return this.httpClient.post(this.URL+`/${data.role}/register`,data);
   }
 }
