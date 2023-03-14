@@ -40,7 +40,6 @@ export class BorrowerDetailsComponent implements OnInit {
   }
 
   onSave(borrower: any) {
-    // Update the borrower details in the database using a PUT request
     const emailId = localStorage.getItem('email') ?? '';
     this.http.put(`http://localhost:8083/api/v1/borrower/borrowers/${emailId}`, borrower)
       .subscribe(
@@ -53,4 +52,5 @@ export class BorrowerDetailsComponent implements OnInit {
         }
       );
   }
+ 
 }
