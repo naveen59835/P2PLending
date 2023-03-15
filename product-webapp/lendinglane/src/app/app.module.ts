@@ -23,11 +23,19 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import { BorrowerComponent } from './borrower/borrower.component';
 import { BorrowerDetailsComponent } from './borrower/borrower-details/borrower-details.component';
+import { BorrowerDashboardComponent } from './borrower/borrower-dashboard/borrower-dashboard.component';
+import { DashboardHomeComponent } from './dashboard/dashboard-home/dashboard-home.component';
+import { DashboardChatComponent } from './dashboard/dashboard-chat/dashboard-chat.component';
+import { DashboardProfileComponent } from './dashboard/dashboard-profile/dashboard-profile.component';
+import { DashboardTransactionComponent } from './dashboard/dashboard-transaction/dashboard-transaction.component';
+import {DashboardComponent} from "./dashboard/dashboard.component";
+import {SidenavComponent} from "./sidenav/sidenav.component";
+import {MatTableModule} from "@angular/material/table";
 
 
 
 @NgModule({
-  declarations: [AppComponent, SignupComponent, NavbarComponent, LoginComponent, BorrowerComponent, BorrowerDetailsComponent],
+  declarations: [AppComponent, SignupComponent, NavbarComponent, LoginComponent,SidenavComponent, BorrowerComponent, BorrowerDetailsComponent,DashboardComponent, BorrowerDashboardComponent, DashboardHomeComponent, DashboardChatComponent, DashboardProfileComponent, DashboardTransactionComponent],
     imports: [
         BrowserModule,
         AppRoutingModule,
@@ -46,7 +54,8 @@ import { BorrowerDetailsComponent } from './borrower/borrower-details/borrower-d
         RouterModule,
         BrowserAnimationsModule,
         MatCheckboxModule,
-        MatButtonToggleModule
+        MatButtonToggleModule,
+        MatTableModule
 
     ],
   providers: [],

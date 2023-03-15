@@ -1,0 +1,13 @@
+.sidenav-container>div{
+  display: flex;
+  padding: 15px 20px;
+  justify-content: flex-start;
+  gap: 20px;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 25px;
+  margin-bottom: 5px;
+}
+mat-icon{
+  font-size: 25px;
+}
