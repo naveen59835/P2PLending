@@ -1,0 +1,23 @@
+<div class="loan-container">
+  <h1>Ongoing loans</h1>
+  <div class="loans">
+    <div class="loan" *ngFor="let loan of loans let number=index">
+      <h2>#Loan {{number+1}}</h2>
+      <h3>Amount : 500000</h3>
+      <h3>Paid : 120000</h3>
+    </div>
+  </div>
+</div>
+<div class="loan-container">
+  <h1>Finished loans</h1>
+<!--  <table mat-table [dataSource]="loans" >-->
+<!--    <ng-container matColumnDef="position">-->
+<!--      <th mat-header-cell *matHeaderCellDef> # </th>-->
+<!--      <td mat-cell *matCellDef="let element"> {{element.position}} </td>-->
+<!--    </ng-container>-->
+<!--    <ng-container matColumnDef="name">-->
+<!--      <th mat-header-cell *matHeaderCellDef> Name </th>-->
+<!--      <td mat-cell *matCellDef="let element"> {{element.name}} </td>-->
+<!--    </ng-container>-->
+<!--  </table>-->
+</div>

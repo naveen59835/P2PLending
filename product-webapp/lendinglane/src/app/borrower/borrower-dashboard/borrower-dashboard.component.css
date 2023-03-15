@@ -1,0 +1,23 @@
+.loan-container{
+  height: max-content;
+  background-color: white;
+  padding: 30px;
+  border-radius: 22px;
+  margin-bottom: 30px;
+}
+.loan-container>h1{
+  font-weight: 500;
+}
+.loans{
+  display: flex;
+  gap: 20px;
+}
+.loan{
+  border: 1px solid;
+  border-radius: 6px;
+  padding: 10px 30px;
+}
+.loan>h3{
+  font-weight: 500;
+  letter-spacing: 0.75px;
+}

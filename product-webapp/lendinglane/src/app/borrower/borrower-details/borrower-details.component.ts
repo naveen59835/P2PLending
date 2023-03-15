@@ -11,7 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class BorrowerDetailsComponent implements OnInit {
 
-  borrowerDetails: any;
+  borrowerDetails: any={};
   editMode=false;
 
   showPassword: boolean = false;
@@ -52,5 +52,5 @@ export class BorrowerDetailsComponent implements OnInit {
         }
       );
   }
- 
+
 }
