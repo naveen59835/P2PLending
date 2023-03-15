@@ -20,7 +20,7 @@ public class Lender {
     private String phoneNumber;
     private String password;
     private String confirmPassword;
-    private Address address;
+    private Address address=new Address();
     private String pan;
     private String aadhaar;
     private double amountToInvest;

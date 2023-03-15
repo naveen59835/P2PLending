@@ -19,7 +19,9 @@ public class AppConfig {
                 .route(p -> p
                         .path("/api/v2/**")
                         .uri("lb://borrower-service"))
-
+                .route(p -> p
+                        .path("/api/v1/lender/**")
+                        .uri("lb://lender-service"))
                 .build();
     }
 

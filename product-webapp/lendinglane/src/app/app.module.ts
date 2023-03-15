@@ -29,13 +29,14 @@ import { DashboardChatComponent } from './dashboard/dashboard-chat/dashboard-cha
 import { DashboardProfileComponent } from './dashboard/dashboard-profile/dashboard-profile.component';
 import { DashboardTransactionComponent } from './dashboard/dashboard-transaction/dashboard-transaction.component';
 import {DashboardComponent} from "./dashboard/dashboard.component";
+import {MatCardModule} from '@angular/material/card';
 import {SidenavComponent} from "./sidenav/sidenav.component";
 import {MatTableModule} from "@angular/material/table";
-
-
+import { LenderDetailsComponent } from './lender/lender-details/lender-details.component';
+import { LenderAddressDetailComponent } from './lender/lender-address-detail/lender-address-detail.component';
 
 @NgModule({
-  declarations: [AppComponent, SignupComponent, NavbarComponent, LoginComponent,SidenavComponent, BorrowerComponent, BorrowerDetailsComponent,DashboardComponent, BorrowerDashboardComponent, DashboardHomeComponent, DashboardChatComponent, DashboardProfileComponent, DashboardTransactionComponent],
+  declarations: [AppComponent, SignupComponent, NavbarComponent, LoginComponent,SidenavComponent, BorrowerComponent, BorrowerDetailsComponent,DashboardComponent, BorrowerDashboardComponent, DashboardHomeComponent, DashboardChatComponent, DashboardProfileComponent, DashboardTransactionComponent,LenderDetailsComponent,LenderAddressDetailComponent],
     imports: [
         BrowserModule,
         AppRoutingModule,
@@ -48,6 +49,7 @@ import {MatTableModule} from "@angular/material/table";
         HttpClientModule,
         MatRadioModule,
         MatButtonModule,
+        MatCardModule,
         MatSelectModule,
         MatInputModule,
         MatSidenavModule,

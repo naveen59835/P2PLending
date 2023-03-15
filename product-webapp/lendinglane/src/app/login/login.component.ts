@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Borrower} from "../model/Borrower";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {LoginService} from "../service/login.service";
@@ -50,7 +50,10 @@ export class LoginComponent {
             window.localStorage.setItem("role",data.role)
           }
           this.loginForm.reset();
-          this.router.navigate(['/borrowerdetails'])
+
+
+            this.router.navigate(['/dashboard'])
+
         },
         error : (err)=> this.openSnack(err.data,"Failure")
       })
