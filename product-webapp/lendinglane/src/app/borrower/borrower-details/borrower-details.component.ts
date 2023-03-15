@@ -13,7 +13,7 @@ import { Borrower } from 'src/app/model/Borrower';
 })
 export class BorrowerDetailsComponent implements OnInit {
 
-  borrowerDetails: Borrower = {};
+  borrowerDetails: any = {};
 
   editMode=false;
 

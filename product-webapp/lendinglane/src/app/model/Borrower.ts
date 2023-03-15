@@ -15,5 +15,6 @@ export type Borrower = {
   city?: string;
   pin?: string;
   state?: string;
+};
 }
-}
+
