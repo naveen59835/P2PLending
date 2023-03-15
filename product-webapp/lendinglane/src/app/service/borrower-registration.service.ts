@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class BorrowerRegistrationService {
-  private URL = "http://localhost:9002/api/v2/borrower";
+    private URL = "http://localhost:8083//api/v1/borrower/register";
 
   constructor(private httpClient:HttpClient) { }
 
