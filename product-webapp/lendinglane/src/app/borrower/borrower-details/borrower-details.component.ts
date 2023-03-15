@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormGroup } from '@angular/forms';
-import { Borrower } from 'src/app/model/Borrower';
+import {Borrower} from "../../model/Borrower";
 
 
 @Component({
@@ -13,7 +13,14 @@ import { Borrower } from 'src/app/model/Borrower';
 })
 export class BorrowerDetailsComponent implements OnInit {
 
-  borrowerDetails: any = {};
+  borrowerDetails: Borrower = {
+    address:{
+      address: "",
+      city: "",
+      pin: "",
+      state: "",
+    }
+  };
 
   editMode=false;
 
@@ -21,11 +28,13 @@ export class BorrowerDetailsComponent implements OnInit {
   showConfirmPassword: boolean = false;
   formGroup: any;
 
-  constructor(private borrowerService: BorrowerDetailsService, private route: ActivatedRoute,private http:HttpClient) { }
+  constructor(private borrowerService: BorrowerDetailsService, private route: ActivatedRoute,private http:HttpClient) {
+  }
 
   ngOnInit(): void {
     const emailId = localStorage.getItem('email') ?? '';
     this.getBorrowerDetails(emailId);
+
   }
 
   getBorrowerDetails(emailId: string) {
@@ -76,6 +85,7 @@ export class BorrowerDetailsComponent implements OnInit {
   isFieldInvalid(field: string) {
     return !this.formGroup.get(field)?.valid && this.formGroup.get(field)?.touched;
   }
+
 }
 
 

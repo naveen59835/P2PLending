@@ -10,7 +10,7 @@ export type Borrower = {
   amount?: number;
   cibilScore?: number;
 
-  address?:{
+  address:{
   address?: string;
   city?: string;
   pin?: string;
