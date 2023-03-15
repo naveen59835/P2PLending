@@ -9,12 +9,11 @@ export type Borrower = {
   phoneNo?: string;
   amount?: number;
   cibilScore?: number;
-  address?: Address;
-}
 
-export type Address= {
+  address?:{
   address?: string;
   city?: string;
   pin?: string;
   state?: string;
+}
 }

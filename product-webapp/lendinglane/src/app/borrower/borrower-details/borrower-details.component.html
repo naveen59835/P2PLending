@@ -1,63 +1,84 @@
-<div class="container">
-  <h2>Borrower Details</h2>
-  <div class="details">
-    <div class="detail">
-      <div class="key">Name:</div>
-      <div *ngIf="!editMode" class="value">{{ borrowerDetails.firstName }}</div>
-      <div *ngIf="editMode" class="value">
-        <input [(ngModel)]="borrowerDetails.firstName" type="text" class="form-control">
-      </div>
+<div class="fixed-container" style="height: 500px; overflow: auto;">
+  <div class="register-logo">
+    <mat-icon>lock</mat-icon>
+  </div>
+  <h1>Borrower Details</h1>
+  <h2>Edit Profile</h2>
+  <div id="button-container">
+    <div *ngIf="!editMode">
+      <button class="edit-button" mat-icon-button color="primary" (click)="onEdit()">
+        <mat-icon>edit</mat-icon> Edit
+      </button>
     </div>
-    <div class="detail">
-      <div class="key">Address:</div>
-      <div *ngIf="!editMode" class="value">{{ borrowerDetails.lastName }}</div>
-      <div *ngIf="editMode" class="value">
-        <input [(ngModel)]="borrowerDetails.lastName" type="text" class="form-control">
-      </div>
-    </div>
-    <div class="detail">
-      <div class="key">Email:</div>
-      <div class="value">{{ borrowerDetails.emailId }}</div>
-    </div>
-    <div class="detail">
-      <div class="key">Password:</div>
-      <div *ngIf="!editMode" class="value">{{ showPassword ? borrowerDetails.password : '******' }}
-        <button (click)="showPassword = !showPassword" type="button" class="btn btn-outline-secondary btn-sm">
-          <i class="fa fa-eye" *ngIf="!showPassword"></i>
-          <i class="fa fa-eye-slash" *ngIf="showPassword"></i>
-        </button>
-      </div>
-      <div *ngIf="editMode" class="value">
-        <input [(ngModel)]="borrowerDetails.password" [type]="showPassword ? 'text' : 'password'" class="form-control">
-        <button (click)="showPassword = !showPassword" type="button" class="btn btn-outline-secondary btn-sm">
-          <i class="fa fa-eye" *ngIf="!showPassword"></i>
-          <i class="fa fa-eye-slash" *ngIf="showPassword"></i>
-        </button>
-      </div>
-    </div>
-    <div class="detail">
-      <div class="key">Confirm Password:</div>
-      <div *ngIf="!editMode" class="value">{{ showConfirmPassword ? borrowerDetails.confirmPassword : '******' }}
-        <button (click)="showConfirmPassword = !showConfirmPassword" type="button" class="btn btn-outline-secondary btn-sm">
-          <i class="fa fa-eye" *ngIf="!showConfirmPassword"></i>
-          <i class="fa fa-eye-slash" *ngIf="showConfirmPassword"></i>
-        </button>
-      </div>
-      <div *ngIf="editMode" class="value">
-        <input [(ngModel)]="borrowerDetails.confirmPassword" [type]="showConfirmPassword ? 'text' : 'password'" class="form-control">
-        <button (click)="showConfirmPassword = !showConfirmPassword" type="button" class="btn btn-outline-secondary btn-sm">
-          <i class="fa fa-eye" *ngIf="!showConfirmPassword"></i>
-          <i class="fa fa-eye-slash" *ngIf="showConfirmPassword"></i>
-        </button>
-      </div>
+    <div *ngIf="editMode">
+      <button class="save-button" mat-icon-button color="primary" (click)="onSave(borrowerDetails)" (click)="onCreate(borrowerDetails)">
+        <mat-icon>save</mat-icon> Save
+      </button>
+      <button class="cancel-button" mat-icon-button color="warn" (click)="editMode=false">
+        <mat-icon>cancel</mat-icon> Cancel
+      </button>
     </div>
   </div>
-  <div *ngIf="!editMode">
-    <button class="btn btn-primary" (click)="onEdit()">Edit</button>
-  </div>
-  <div *ngIf="editMode">
-    <button class="btn btn-primary" (click)="onSave(borrowerDetails)">Save</button>
-    <button class="btn btn-secondary" (click)="editMode=false">Cancel</button>
-  </div>
+
+
+  <form>
+    <div class="name">
+      <mat-form-field appearance="outline">
+        <mat-label>First Name</mat-label>
+        <input [(ngModel)]="borrowerDetails.firstName" name="firstName" matInput [disabled]="!editMode">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Last Name</mat-label>
+        <input [(ngModel)]="borrowerDetails.lastName" name="lastName" matInput [disabled]="!editMode">
+      </mat-form-field>
+    </div>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input [(ngModel)]="borrowerDetails.emailId" name="emailId" matInput [disabled]="true">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Aadhaar No:</mat-label>
+      <input [(ngModel)]="borrowerDetails.aadhaarNo" name="aadhaarNo" matInput [disabled]="!editMode">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Registered Mobile Number</mat-label>
+      <input [(ngModel)]="borrowerDetails.phoneNo" name="phoneNo" matInput [disabled]="!editMode">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>PAN Card</mat-label>
+      <input [(ngModel)]="borrowerDetails.panNo" name="panNo" matInput [disabled]="!editMode">
+    </mat-form-field>
+    <h3 style="text-align: left;">Address</h3>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Home Address</mat-label>
+      <input [(ngModel)]="borrowerDetails.address!.address" name="address" matInput [disabled]="!editMode">
+
+    </mat-form-field>
+
+    <div class="name">
+    <mat-form-field appearance="outline">
+      <mat-label>City</mat-label>
+      <input [(ngModel)]="borrowerDetails.address!.city" name="city" matInput [disabled]="!editMode">
+
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>PIN Code</mat-label>
+      <input [(ngModel)]="borrowerDetails.address!.pin" name="pin" matInput [disabled]="!editMode">
+
+    </mat-form-field>
+    </div>
+    <mat-form-field appearance="fill">
+      <mat-label>State</mat-label>
+      <input [(ngModel)]="borrowerDetails.address!.state" name="state" matInput [disabled]="!editMode">
+
+    </mat-form-field>
+</form>
 </div>
+
+
+
 
