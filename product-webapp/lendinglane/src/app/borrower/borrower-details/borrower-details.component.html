@@ -55,27 +55,28 @@
 
     <mat-form-field appearance="fill">
       <mat-label>Home Address</mat-label>
-      <input [(ngModel)]="borrowerDetails.address!.address" name="address" matInput [disabled]="!editMode">
+      <input [(ngModel)]="borrowerDetails.address && borrowerDetails.address.address" name="address" matInput [disabled]="!editMode">
 
     </mat-form-field>
 
-    <div class="name">
-    <mat-form-field appearance="outline">
+    <mat-form-field appearance="fill">
       <mat-label>City</mat-label>
-      <input [(ngModel)]="borrowerDetails.address!.city" name="city" matInput [disabled]="!editMode">
+      <input [(ngModel)]="borrowerDetails.address && borrowerDetails.address.city" name="city" matInput [disabled]="!editMode">
 
     </mat-form-field>
-    <mat-form-field appearance="outline">
+
+    <mat-form-field appearance="fill">
       <mat-label>PIN Code</mat-label>
-      <input [(ngModel)]="borrowerDetails.address!.pin" name="pin" matInput [disabled]="!editMode">
+      <input [(ngModel)]="borrowerDetails.address && borrowerDetails.address.pin" name="pin" matInput [disabled]="!editMode">
 
     </mat-form-field>
-    </div>
+
     <mat-form-field appearance="fill">
       <mat-label>State</mat-label>
-      <input [(ngModel)]="borrowerDetails.address!.state" name="state" matInput [disabled]="!editMode">
+      <input [(ngModel)]="borrowerDetails.address && borrowerDetails.address.state" name="state" matInput [disabled]="!editMode">
 
     </mat-form-field>
+
 </form>
 </div>
 
