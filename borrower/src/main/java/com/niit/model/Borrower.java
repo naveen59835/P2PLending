@@ -18,18 +18,18 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @ToString
 
 public class Borrower {
-    private String firstName;
-    private String lastName;
+    String firstName;
+    String lastName;
     @Id
-    private String emailId;
-    private String password;
-    private String confirmPassword;
-    private String aadhaarNo="";
-    private String panNo="";
-    private String phoneNo="";
-    private double amount;
-    private double cibilScore;
-    private Address address=new Address();
+    String emailId;
+    String password;
+    String confirmPassword;
+    String aadhaarNo;
+    String panNo;
+    String phoneNo;
+    double amount;
+    double cibilScore;
+    Address address;
 
 
 }

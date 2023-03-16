@@ -2,8 +2,9 @@ import { BorrowerDetailsService } from './../../service/borrower-details.service
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Borrower } from 'src/app/model/Borrower';
+import { FormGroup } from '@angular/forms';
+import {Borrower} from "../../model/Borrower";
+
 
 @Component({
   selector: 'app-borrower-details',
@@ -13,64 +14,50 @@ import { Borrower } from 'src/app/model/Borrower';
 export class BorrowerDetailsComponent implements OnInit {
 
   borrowerDetails: Borrower = {
-    address: {
+    address:{
       address: "",
       city: "",
       pin: "",
       state: "",
     }
   };
-  editMode = false;
-  showPassword = false;
-  showConfirmPassword = false;
-  formGroup: any;
-  selectedAadhaarPhoto: File | undefined;
 
-  constructor(
-    private borrowerService: BorrowerDetailsService,
-    private route: ActivatedRoute,
-    private http: HttpClient,
-    private fb: FormBuilder
-  ) {
-    this.formGroup = this.fb.group({
-      firstName: ['', [Validators.minLength(3)]],
-      lastName: ['', [Validators.minLength(3)]],
-      aadhaarNo: ['', [Validators.minLength(12)]],
-      panNo: ['', [Validators.minLength(10)]],
-      phoneNo: ['', [Validators.minLength(10)]],
-      address: this.fb.group({
-        address: ['', [Validators.minLength(3)]],
-        city: ['', [Validators.minLength(3)]],
-        state: ['', [Validators.minLength(3)]],
-        pin: ['', [Validators.minLength(3)]]
-      })
-    });
+  editMode=false;
+
+  showPassword: boolean = false;
+  showConfirmPassword: boolean = false;
+  formGroup: any;
+
+  constructor(private borrowerService: BorrowerDetailsService, private route: ActivatedRoute,private http:HttpClient) {
   }
 
   ngOnInit(): void {
     const emailId = localStorage.getItem('email') ?? '';
     this.getBorrowerDetails(emailId);
+
   }
 
   getBorrowerDetails(emailId: string) {
-    this.borrowerService.getBorrowerDetails(emailId).subscribe(
-      response => {
-        this.borrowerDetails = response;
-      },
-      error => {
-        console.log(error);
-      }
-    );
+    this.borrowerService.getBorrowerDetails(emailId)
+      .subscribe(
+        response => {
+          this.borrowerDetails = response;
+        },
+        error => {
+          console.log(error);
+        }
+      );
   }
-
   onEdit() {
     this.editMode = true;
+
   }
 
   onSave(borrower: any) {
-    console.log(this.borrowerDetails);
+      console.log(this.borrowerDetails);
     const emailId = localStorage.getItem('email') ?? '';
-    this.http.put<Borrower>(`http://localhost:8083/api/v1/borrower/borrowers/${emailId}`, this.borrowerDetails).subscribe(
+    this.http.put<Borrower>(`http://localhost:8083/api/v1/borrower/borrowers/${emailId}`, this.borrowerDetails)
+    .subscribe(
       response => {
         this.editMode = false;
       },
@@ -83,7 +70,8 @@ export class BorrowerDetailsComponent implements OnInit {
   onCreate(borrower: any) {
     console.log(borrower);
     const emailId = localStorage.getItem('email') ?? '';
-    this.http.post<Borrower>(`http://localhost:8083/api/v1/borrower/register`, this.borrowerDetails).subscribe(
+    this.http.post<Borrower>(`http://localhost:8083/api/v1/borrower/register`, this.borrowerDetails)
+    .subscribe(
       response => {
         this.editMode = false;
         console.log('Borrower created successfully!');
@@ -98,5 +86,6 @@ export class BorrowerDetailsComponent implements OnInit {
     return !this.formGroup.get(field)?.valid && this.formGroup.get(field)?.touched;
   }
 
-
 }
+
+

@@ -10,9 +10,15 @@ import com.niit.exception.BorrowerAlreadyFoundException;
 import com.niit.model.Borrower;
 import com.niit.service.BorrowerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
+import java.util.Map;
 
 @RestController
 @CrossOrigin
@@ -76,8 +82,9 @@ public class BorrowerController {
             return responseEntity=new ResponseEntity<String>(e.getMessage(),HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-    @PutMapping("/borrowers/{emailId}")
-    public ResponseEntity<?> updateBorrower(@RequestBody Borrower borrower, @PathVariable String emailId) {
+    @PutMapping(value = "/borrowers/{emailId}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity<?> updateBorrower(@RequestPart("details") Borrower borrower,@RequestPart("aadhar") MultipartFile image, @PathVariable String emailId) throws IOException {
+        borrower.setAadharImage(image.getBytes());
         Borrower update=borrowerService.updateBorrower(borrower,emailId);
         if(update!=null){
             return new ResponseEntity<Borrower>(update,HttpStatus.OK);
@@ -85,6 +92,13 @@ public class BorrowerController {
         }else {
             return new ResponseEntity<String>("Failed to Update",HttpStatus.FAILED_DEPENDENCY);
         }
+    }
+
+    @PutMapping("/borrowers/image/{emailId}")
+    public ResponseEntity<?> updateBorrowerImage(@RequestPart() MultipartFile image,@PathVariable String emailId){
+        System.out.println(image.getName());
+        System.out.println(image.getOriginalFilename());
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
 
