@@ -1,5 +1,5 @@
 import { BorrowerDetailsService } from './../../service/borrower-details.service';
-import { HttpClient } from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormGroup } from '@angular/forms';
@@ -13,7 +13,7 @@ import {Borrower} from "../../model/Borrower";
 })
 export class BorrowerDetailsComponent implements OnInit {
 
-  borrowerDetails: Borrower = {
+  borrowerDetails: any = {
     address:{
       address: "",
       city: "",
@@ -27,6 +27,7 @@ export class BorrowerDetailsComponent implements OnInit {
   showPassword: boolean = false;
   showConfirmPassword: boolean = false;
   formGroup: any;
+  aadharImage:any;
 
   constructor(private borrowerService: BorrowerDetailsService, private route: ActivatedRoute,private http:HttpClient) {
   }
@@ -54,9 +55,13 @@ export class BorrowerDetailsComponent implements OnInit {
   }
 
   onSave(borrower: any) {
-      console.log(this.borrowerDetails);
     const emailId = localStorage.getItem('email') ?? '';
-    this.http.put<Borrower>(`http://localhost:8083/api/v1/borrower/borrowers/${emailId}`, this.borrowerDetails)
+    let formData = new FormData();
+    formData.append("details",new Blob([JSON.stringify(this.borrowerDetails)],{
+      type:"application/json"
+    }));
+    formData.append("aadhar",this.aadharImage)
+    this.http.put<Borrower>(`http://localhost:8083/api/v1/borrower/borrowers/${emailId}`,this.borrowerDetails)
     .subscribe(
       response => {
         this.editMode = false;
@@ -68,9 +73,8 @@ export class BorrowerDetailsComponent implements OnInit {
   }
 
   onCreate(borrower: any) {
-    console.log(borrower);
     const emailId = localStorage.getItem('email') ?? '';
-    this.http.post<Borrower>(`http://localhost:8083/api/v1/borrower/register`, this.borrowerDetails)
+    this.http.post<Borrower>(`http://localhost:8083/api/v1/borrower/register/${emailId}`, this.borrowerDetails)
     .subscribe(
       response => {
         this.editMode = false;
@@ -84,6 +88,16 @@ export class BorrowerDetailsComponent implements OnInit {
 
   isFieldInvalid(field: string) {
     return !this.formGroup.get(field)?.valid && this.formGroup.get(field)?.touched;
+  }
+  aadharImageChange($event:any){
+    // let data = new FormData();
+    this.aadharImage=$event.target.files[0];
+    // data.append("aadhar",$event.target.files[0])
+    // this.http.put("http://localhost:8083/api/v1/borrower/borrowers/image/"+localStorage.getItem("email"),data).subscribe(
+    //   {
+    //     next : (data)=> console.log(data)
+    //   }
+    // )
   }
 
 }

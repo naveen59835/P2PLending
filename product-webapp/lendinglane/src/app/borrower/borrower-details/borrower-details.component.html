@@ -11,7 +11,8 @@
       </button>
     </div>
     <div *ngIf="editMode">
-      <button class="save-button" mat-icon-button color="primary" (click)="onSave(borrowerDetails)" (click)="onCreate(borrowerDetails)">
+      <button class="save-button" mat-icon-button color="primary" (click)="onSave(borrowerDetails)">
+<!--        (click)="onCreate(borrowerDetails)"-->
         <mat-icon>save</mat-icon> Save
       </button>
       <button class="cancel-button" mat-icon-button color="warn" (click)="editMode=false">
@@ -51,6 +52,9 @@
       <mat-label>PAN Card</mat-label>
       <input [(ngModel)]="borrowerDetails.panNo" name="panNo" matInput [disabled]="!editMode">
     </mat-form-field>
+    <mat-label>Aadhar Card</mat-label>
+    <input name="aadharImage" type="file"  [disabled]="!editMode" (change)="aadharImageChange($event)">
+
     <h3 style="text-align: left;">Address</h3>
 
     <mat-form-field appearance="fill">
@@ -62,9 +66,6 @@
     <mat-form-field appearance="fill">
       <mat-label>City</mat-label>
       <input [(ngModel)]="borrowerDetails.address.city" name="city" matInput [disabled]="!editMode">
-
-
-
     </mat-form-field>
 
     <mat-form-field appearance="fill">

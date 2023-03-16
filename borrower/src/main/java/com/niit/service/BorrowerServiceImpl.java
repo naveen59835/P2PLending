@@ -69,6 +69,9 @@ public class BorrowerServiceImpl implements BorrowerService {
             if (borrowerData.getConfirmPassword() != null) {
                 borrowerData.setConfirmPassword(borrower.getConfirmPassword());
             }
+            if(borrowerData.getAadharImage() != null){
+                borrowerData.setAadharImage(borrower.getAadharImage());
+            }
             return borrowerRepo.save(borrowerData);
         }
         return null;
