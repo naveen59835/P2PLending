@@ -1,7 +1,9 @@
 package com.example.controller;
 
+import com.example.domain.Address;
 import com.example.domain.Lender;
 import com.example.exception.LenderAlreadyExistException;
+import com.example.exception.LenderNotFoundException;
 import com.example.service.LenderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -42,6 +44,61 @@ public class LenderController {
         }
    }
 
+    @GetMapping("/lenderMail/{lenderId}")
+    public ResponseEntity<?> getLenderDetailById(@PathVariable String lenderId) throws LenderNotFoundException {
+
+
+        try {
+            Lender lender = lenderService.getLenderById(lenderId);
+            return new ResponseEntity<>(lender, HttpStatus.OK);
+        } catch (LenderNotFoundException e) {
+            throw new LenderNotFoundException();
+        } catch (Exception e) {
+            System.out.println();
+
+            return new ResponseEntity<String>("Error occur", HttpStatus.NOT_FOUND);
+        }
+
+    }
+
+    @PutMapping("/updateLender/{lenderId}")
+    public ResponseEntity<?>updateLender(@RequestBody Lender lender , @PathVariable String lenderId) throws LenderNotFoundException {
+        try {
+
+            Lender lender1=lenderService.updateLender(lender,lenderId);
+
+            return new ResponseEntity<Lender>(lender1,HttpStatus.OK);
+
+        } catch (LenderNotFoundException e) {
+            throw new LenderNotFoundException();
+        }
+        catch (Exception e) {
+            System.out.println();
+
+            return new ResponseEntity<String>("Error occur", HttpStatus.NOT_FOUND);
+        }
+
+    }
+
+
+    @PutMapping("/updateLenderAddress/{lenderId}")
+    public ResponseEntity<?>updateLenderAddress(@RequestBody Address address, @PathVariable String lenderId) throws LenderNotFoundException {
+        try {
+
+            Lender lender1=lenderService.updateLenderAddress(address,lenderId);
+
+            return new ResponseEntity<>(lender1,HttpStatus.OK);
+
+        } catch (LenderNotFoundException e) {
+            throw new LenderNotFoundException();
+        }
+        catch (Exception e) {
+            System.out.println();
+
+            return new ResponseEntity<String>("Error occur", HttpStatus.NOT_FOUND);
+        }
+
+    }
 
 
 }

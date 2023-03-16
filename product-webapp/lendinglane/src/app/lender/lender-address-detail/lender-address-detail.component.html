@@ -1,0 +1,48 @@
+
+
+ 
+<mat-card class="container1">
+    <h1>address details</h1>
+    <mat-card-content>
+<form #lenderaddressForm="ngForm" (submit)="lenderupdateaddress(lenderaddressForm)" class="example-form" >
+  <table class="example-full-width1"><tr>
+    <td>
+        <tr><strong>Address</strong></tr>
+  
+  <mat-form-field appearance="outline" class="example-full-width" >
+     
+      <input  matInput type="text" [(ngModel)]="address.address" name="adress" >
+     
+    
+    </mat-form-field>
+    </td></tr></table>
+    <table class="example-full-width1" ><tr>
+      <td>
+          <tr><strong>city</strong></tr>
+    <mat-form-field appearance="outline" class="example-full-width">
+     
+      <input  matInput type="text" [(ngModel)]="address.city" name="city"  >
+    </mat-form-field></td></tr></table>
+    <table class="example-full-width1" ><tr>
+      <td>
+          <tr><strong>pin</strong></tr>
+    <mat-form-field appearance="outline" class="example-full-width">
+
+      <input  matInput type="text" [(ngModel)]="address.pin" name="pin" >
+     
+    
+    </mat-form-field>
+    </td></tr></table>
+    <table class="example-full-width1" ><tr>
+      <td>
+          <tr><strong>state</strong></tr>
+    <mat-form-field  appearance="outline" class="example-full-width">
+      
+      <input  matInput type="text" [(ngModel)]="address.state" name="state"  >
+    </mat-form-field>
+    </td></tr></table>
+  
+    <div> <button type="submit" class="example-full-width" style="margin-top: 37px;"  mat-raised-button color="primary"    >save</button></div>
+  </form>
+</mat-card-content>
+</mat-card>

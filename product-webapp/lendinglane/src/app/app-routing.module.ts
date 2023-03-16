@@ -5,6 +5,7 @@ import {LoginComponent} from "./login/login.component";
 import {DashboardComponent} from "./dashboard/dashboard.component";
 import {DashboardProfileComponent} from "./dashboard/dashboard-profile/dashboard-profile.component";
 import {DashboardHomeComponent} from "./dashboard/dashboard-home/dashboard-home.component";
+import { LenderAddressDetailComponent } from './lender/lender-address-detail/lender-address-detail.component';
 
 const routes: Routes = [
   {path:'', pathMatch:"full",redirectTo:'signup'},
@@ -16,7 +17,8 @@ const routes: Routes = [
     //Add can activate to check if the user is authenticated
     children:[
       {path:'',component:DashboardHomeComponent},
-      {path:'profile',component:DashboardProfileComponent}
+      {path:'profile',component:DashboardProfileComponent},
+      {path:'lenderaddress',component:LenderAddressDetailComponent}
     ]
   }
 
