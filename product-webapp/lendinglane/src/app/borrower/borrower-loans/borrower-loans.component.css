@@ -1,0 +1,18 @@
+.active-loan-container, .finished-loan-container{
+  background-color: white;
+  border-radius: 20px;
+  padding: 20px;
+  margin-bottom: 50px;
+}
+.mat-accordion .mat-expansion-panel{
+  margin-bottom: 10px;
+  box-shadow: none !important;
+}
+.mat-expansion-panel{
+  background-color: #D9D9D9;
+}
+.add-loan-button{
+  position: fixed;
+  bottom: 100px;
+  right: 30px;
+}

@@ -1,0 +1,27 @@
+<div class="active-loan-container">
+  <h1>Ongoing Loans</h1>
+  <mat-accordion>
+    <mat-expansion-panel *ngFor="let item of data">
+      <mat-expansion-panel-header>
+        <div>#Loan 1</div>
+      </mat-expansion-panel-header>
+      <p>Hi Hi Hi</p>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>
+<div class="finished-loan-container">
+  <h1>Previous Loans</h1>
+  <mat-accordion>
+    <mat-expansion-panel *ngFor="let item of data">
+      <mat-expansion-panel-header>
+        <div>#Loan 1</div>
+      </mat-expansion-panel-header>
+      <p>Hi Hi Hi</p>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>
+<div class="add-loan-button">
+  <button mat-fab color="primary" (click)="openLoanDialog()">
+    <mat-icon>add</mat-icon>
+  </button>
+</div>
