@@ -11,7 +11,7 @@ import { Borrower } from 'src/app/model/Borrower';
   styleUrls: ['./borrower-details.component.css'],
 })
 export class BorrowerDetailsComponent implements OnInit {
-  borrowerDetails: Borrower = {
+  borrowerDetails: any = {
     address: {
       address: '',
       city: '',

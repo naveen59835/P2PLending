@@ -89,7 +89,6 @@ public class BorrowerController {
 
     @PutMapping(value = "/borrowers/{emailId}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<?> updateBorrower(@RequestPart("details") Borrower borrower, @PathVariable String emailId) {
-        // borrower.setAadharImage(image.getBytes());
         Borrower update = borrowerService.updateBorrower(borrower, emailId);
         if (update != null) {
             return new ResponseEntity<Borrower>(update, HttpStatus.OK);
@@ -111,7 +110,6 @@ public class BorrowerController {
         try {
             imageData = image.getBytes();
             borrower.setAadharImage(imageData);
-            System.out.println("Byte array of image: " + Arrays.toString(imageData));
             borrowerRepo.save(borrower);
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (IOException e) {

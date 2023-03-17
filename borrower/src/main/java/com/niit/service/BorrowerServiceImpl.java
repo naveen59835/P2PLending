@@ -8,6 +8,7 @@ package com.niit.service;
 
 import com.niit.configuration.BorrowerDTO;
 import com.niit.exception.BorrowerAlreadyFoundException;
+import com.niit.model.Address;
 import com.niit.model.Borrower;
 import com.niit.repo.BorrowerRepo;
 import org.json.simple.JSONObject;
@@ -71,6 +72,23 @@ public class BorrowerServiceImpl implements BorrowerService {
             }
             if (borrower.getAadharImage() != null && borrower.getAadharImage().length > 0) {
                 borrowerData.setAadharImage(borrower.getAadharImage());
+            }
+            if (borrower.getAadhaarNo() != null) {
+                borrowerData.setAadhaarNo(borrower.getAadhaarNo());
+            }
+            if (borrower.getAddress() != null) {
+                Address userAddress = borrowerData.getAddress();
+                Address updatedAddress = borrower.getAddress();
+                if(updatedAddress.getAddress() !=null){
+                    userAddress.setAddress(updatedAddress.getAddress());
+                }if(updatedAddress.getCity() !=null){
+                    userAddress.setCity(updatedAddress.getCity());
+                }if(updatedAddress.getState() !=null){
+                    userAddress.setState(updatedAddress.getState());
+                }if(updatedAddress.getPin() !=null){
+                    userAddress.setPin(updatedAddress.getPin());
+                }
+                borrowerData.setAddress(userAddress);
             }
             return borrowerRepo.save(borrowerData);
         }

@@ -94,7 +94,7 @@
 <h3 style="text-align: left;">Address</h3>
     <mat-form-field appearance="fill">
       <mat-label>Home Address</mat-label>
-      <input [(ngModel)]="borrowerDetails.address && borrowerDetails.address.address" name="address" matInput [disabled]="!editMode" minlength="5" maxlength="100" #address="ngModel">
+      <input [(ngModel)]="borrowerDetails.address.address" name="address" matInput [disabled]="!editMode" minlength="5" maxlength="100" #address="ngModel">
       <mat-error *ngIf="address.invalid && (address.dirty || address.touched)">
         Address must be between 5 and 100 characters long.
       </mat-error>
@@ -102,7 +102,7 @@
 
     <mat-form-field appearance="fill">
       <mat-label>City</mat-label>
-      <input [(ngModel)]="borrowerDetails && borrowerDetails.address && borrowerDetails.address.city" name="city" matInput [disabled]="!editMode" minlength="3" maxlength="50" #city="ngModel">
+      <input [(ngModel)]="borrowerDetails.address.city" name="city" matInput [disabled]="!editMode" minlength="3" maxlength="50" #city="ngModel">
       <mat-error *ngIf="city.invalid && (city.dirty || city.touched)">
         City must be between 3 and 50 characters long.
       </mat-error>
@@ -111,14 +111,14 @@
 
     <mat-form-field appearance="fill">
       <mat-label>PIN Code</mat-label>
-      <input [(ngModel)]="borrowerDetails.address && borrowerDetails.address.pin" name="pin" matInput [disabled]="!editMode" pattern="[0-9]{6}" minlength="6" maxlength="6" #pin="ngModel">
+      <input [(ngModel)]="borrowerDetails.address.pin" name="pin" matInput [disabled]="!editMode" pattern="[0-9]{6}" minlength="6" maxlength="6" #pin="ngModel">
       <mat-error *ngIf="pin.invalid && (pin.dirty || pin.touched)">
         PIN must be a 6-digit number.
       </mat-error>
     </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label>State</mat-label>
-      <input [(ngModel)]="borrowerDetails.address && borrowerDetails.address.state" name="state" matInput [disabled]="!editMode" minlength="3" maxlength="50" #state="ngModel">
+      <input [(ngModel)]="borrowerDetails.address.state" name="state" matInput [disabled]="!editMode" minlength="3" maxlength="50" #state="ngModel">
       <mat-error *ngIf="state.invalid && (state.dirty || state.touched)">
         State must be between 3 and 50 characters long.
       </mat-error>
