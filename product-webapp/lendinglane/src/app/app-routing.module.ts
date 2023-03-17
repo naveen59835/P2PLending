@@ -6,6 +6,8 @@ import {DashboardComponent} from "./dashboard/dashboard.component";
 import {DashboardProfileComponent} from "./dashboard/dashboard-profile/dashboard-profile.component";
 import {DashboardHomeComponent} from "./dashboard/dashboard-home/dashboard-home.component";
 import { LenderAddressDetailComponent } from './lender/lender-address-detail/lender-address-detail.component';
+import {DashboardTransactionComponent} from "./dashboard/dashboard-transaction/dashboard-transaction.component";
+import {DashboardLoansComponent} from "./dashboard/dashboard-loans/dashboard-loans.component";
 
 const routes: Routes = [
   {path:'', pathMatch:"full",redirectTo:'signup'},
@@ -18,7 +20,9 @@ const routes: Routes = [
     children:[
       {path:'',component:DashboardHomeComponent},
       {path:'profile',component:DashboardProfileComponent},
-      {path:'lenderaddress',component:LenderAddressDetailComponent}
+      {path:'lenderaddress',component:LenderAddressDetailComponent},
+      {path:'transactions',component:DashboardTransactionComponent},
+      {path:'loan',component:DashboardLoansComponent}
     ]
   }
 

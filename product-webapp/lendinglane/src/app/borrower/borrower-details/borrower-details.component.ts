@@ -61,7 +61,7 @@ export class BorrowerDetailsComponent implements OnInit {
       type:"application/json"
     }));
     formData.append("aadhar",this.aadharImage)
-    this.http.put<Borrower>(`http://localhost:8083/api/v1/borrower/borrowers/${emailId}`,this.borrowerDetails)
+    this.http.put<Borrower>(`http://localhost:8083/api/v1/borrower/borrowers/${emailId}`,formData)
     .subscribe(
       response => {
         this.editMode = false;

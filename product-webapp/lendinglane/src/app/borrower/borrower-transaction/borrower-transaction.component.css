@@ -1,0 +1,25 @@
+.transaction-container{
+  width: 95%;
+  margin: 0 auto;
+  background-color: white;
+  border-radius: 20px;
+  padding: 20px;
+}
+table{
+  width: 100%;
+}
+td{
+  font-weight: 500;
+}
+.credit{
+  color: #46a35e;
+}
+.debit{
+  color: red;
+}
+th.mat-header-cell, td.mat-cell, td.mat-footer-cell{
+  border: none !important;
+}
+.mat-row:nth-child(odd){
+  background-color: #D9D9D9 !important;
+}

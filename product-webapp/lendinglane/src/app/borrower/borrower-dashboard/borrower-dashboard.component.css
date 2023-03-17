@@ -21,3 +21,13 @@
   font-weight: 500;
   letter-spacing: 0.75px;
 }
+table {
+  width: 100%;
+  border: 1px solid #686868;
+  border-radius: 10px;
+  background: none;
+  overflow: hidden;
+}
+tr{
+  height: 40px !important;
+}

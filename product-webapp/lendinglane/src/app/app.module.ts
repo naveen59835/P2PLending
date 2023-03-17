@@ -34,9 +34,15 @@ import {SidenavComponent} from "./sidenav/sidenav.component";
 import {MatTableModule} from "@angular/material/table";
 import { LenderDetailsComponent } from './lender/lender-details/lender-details.component';
 import { LenderAddressDetailComponent } from './lender/lender-address-detail/lender-address-detail.component';
+import { BorrowerTransactionComponent } from './borrower/borrower-transaction/borrower-transaction.component';
+import { DashboardLoansComponent } from './dashboard/dashboard-loans/dashboard-loans.component';
+import { BorrowerLoansComponent } from './borrower/borrower-loans/borrower-loans.component';
+import {MatExpansionModule} from "@angular/material/expansion";
+import { LoanDialogComponent } from './borrower/borrower-loans/loan-dialog/loan-dialog.component';
+import {MatDialogModule} from "@angular/material/dialog";
 
 @NgModule({
-  declarations: [AppComponent, SignupComponent, NavbarComponent, LoginComponent,SidenavComponent, BorrowerComponent, BorrowerDetailsComponent,DashboardComponent, BorrowerDashboardComponent, DashboardHomeComponent, DashboardChatComponent, DashboardProfileComponent, DashboardTransactionComponent,LenderDetailsComponent,LenderAddressDetailComponent],
+  declarations: [AppComponent, SignupComponent, NavbarComponent, LoginComponent,SidenavComponent, BorrowerComponent, BorrowerDetailsComponent,DashboardComponent, BorrowerDashboardComponent, DashboardHomeComponent, DashboardChatComponent, DashboardProfileComponent, DashboardTransactionComponent,LenderDetailsComponent,LenderAddressDetailComponent, BorrowerTransactionComponent, DashboardLoansComponent, BorrowerLoansComponent, LoanDialogComponent],
     imports: [
         BrowserModule,
         AppRoutingModule,
@@ -57,7 +63,9 @@ import { LenderAddressDetailComponent } from './lender/lender-address-detail/len
         BrowserAnimationsModule,
         MatCheckboxModule,
         MatButtonToggleModule,
-        MatTableModule
+        MatTableModule,
+        MatExpansionModule,
+        MatDialogModule
 
     ],
   providers: [],
