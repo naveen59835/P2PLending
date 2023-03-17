@@ -9,7 +9,7 @@ export type Borrower = {
   phoneNo?: string;
   amount?: number;
   cibilScore?: number;
-  aadhar ?: File;
+  aadharImage ?: File;
   address:{
   address?: string;
   city?: string;

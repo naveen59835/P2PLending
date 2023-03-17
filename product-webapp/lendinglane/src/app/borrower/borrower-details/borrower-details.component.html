@@ -5,84 +5,126 @@
   <h1>Borrower Details</h1>
   <h2>Edit Profile</h2>
   <div id="button-container">
-    <div *ngIf="!editMode">
+    <div *ngIf="!editMode && borrowerDetails">
       <button class="edit-button" mat-icon-button color="primary" (click)="onEdit()">
         <mat-icon>edit</mat-icon> Edit
       </button>
     </div>
-    <div *ngIf="editMode">
-      <button class="save-button" mat-icon-button color="primary" (click)="onSave(borrowerDetails)">
-<!--        (click)="onCreate(borrowerDetails)"-->
+
+    <div *ngIf="editMode && borrowerDetails">
+      <button class="save-button" mat-icon-button color="primary" [disabled]="myForm.invalid" (click)="onSave(borrowerDetails)" >
         <mat-icon>save</mat-icon> Save
       </button>
+
       <button class="cancel-button" mat-icon-button color="warn" (click)="editMode=false">
         <mat-icon>cancel</mat-icon> Cancel
       </button>
     </div>
   </div>
 
+  <form #myForm="ngForm" (ngSubmit)="onSave(myForm)">
 
-  <form>
-    <div class="name">
-      <mat-form-field appearance="outline">
-        <mat-label>First Name</mat-label>
-        <input [(ngModel)]="borrowerDetails.firstName" name="firstName" matInput [disabled]="!editMode">
-      </mat-form-field>
-
-      <mat-form-field appearance="outline">
-        <mat-label>Last Name</mat-label>
-        <input [(ngModel)]="borrowerDetails.lastName" name="lastName" matInput [disabled]="!editMode">
-      </mat-form-field>
-    </div>
-
-    <mat-form-field appearance="fill">
-      <mat-label>Email</mat-label>
-      <input [(ngModel)]="borrowerDetails.emailId" name="emailId" matInput [disabled]="true">
+  <div class="name">
+    <mat-form-field appearance="outline">
+      <mat-label>First Name</mat-label>
+      <input [(ngModel)]="borrowerDetails.firstName" name="firstName" matInput [disabled]="!editMode"
+        minlength="3" #firstName="ngModel">
+      <mat-error *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)">
+        First Name must be at least 3 characters long.
+      </mat-error>
     </mat-form-field>
 
-    <mat-form-field appearance="fill">
-      <mat-label>Aadhaar No:</mat-label>
-      <input [(ngModel)]="borrowerDetails.aadhaarNo" name="aadhaarNo" matInput [disabled]="!editMode">
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label>Registered Mobile Number</mat-label>
-      <input [(ngModel)]="borrowerDetails.phoneNo" name="phoneNo" matInput [disabled]="!editMode">
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label>PAN Card</mat-label>
-      <input [(ngModel)]="borrowerDetails.panNo" name="panNo" matInput [disabled]="!editMode">
-    </mat-form-field>
-    <mat-label>Aadhar Card</mat-label>
-    <input name="aadharImage" type="file"  [disabled]="!editMode" (change)="aadharImageChange($event)">
 
-    <h3 style="text-align: left;">Address</h3>
+    <mat-form-field appearance="outline">
+      <mat-label>Last Name</mat-label>
+      <input [(ngModel)]="borrowerDetails.lastName" name="lastName" matInput [disabled]="!editMode"
+        minlength="3" #lastName="ngModel">
+      <mat-error *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)">
+        Last Name must be at least 3 characters long.
+      </mat-error>
+    </mat-form-field>
 
+  </div>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Email</mat-label>
+    <input [(ngModel)]="borrowerDetails.emailId" name="emailId" matInput [disabled]="true" required minlength="3">
+    <mat-error *ngIf="isFieldInvalid('emailId')">Please enter a valid email address with at least 3 characters.</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Aadhaar No:</mat-label>
+    <input [(ngModel)]="borrowerDetails.aadhaarNo" name="aadhaarNo" matInput [disabled]="!editMode"
+      [ngModelOptions]="{updateOn: 'blur'}" minlength="12" #aadhaarNo="ngModel">
+    <mat-error *ngIf="aadhaarNo.invalid && (aadhaarNo.dirty || aadhaarNo.touched)">
+      Aadhaar number must be at least 12 characters long.
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Registered Mobile Number</mat-label>
+    <input [(ngModel)]="borrowerDetails.phoneNo" name="phoneNo" matInput [disabled]="!editMode"
+      [ngModelOptions]="{updateOn: 'blur'}" minlength="10" maxlength="10" pattern="^[6-9]\d{9}$"
+      #phoneNo="ngModel">
+    <mat-error *ngIf="phoneNo.invalid && (phoneNo.dirty || phoneNo.touched)">
+      Phone number must be a 10-digit number starting with 6, 7, 8 or 9.
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>PAN No:</mat-label>
+    <input [(ngModel)]="borrowerDetails.panNo" name="panNo" matInput [disabled]="!editMode"
+      [ngModelOptions]="{updateOn: 'blur'}" minlength="10" #panNo="ngModel">
+    <mat-error *ngIf="panNo.invalid && (panNo.dirty || panNo.touched)">
+      PAN number must be at least 10 characters long.
+    </mat-error>
+  </mat-form-field>
+
+  <label for="aadharImageInput" class="upload-btn">
+    <span>Upload Aadhar Card</span>
+    <input id="aadharImageInput" name="aadharImage" type="file" accept=".jpg,.jpeg,.png" (change)="aadharImageChange($event)">
+    <span id="tickMark" style="display: none;">&#10004;</span>
+
+  </label>
+
+
+
+
+
+<h3 style="text-align: left;">Address</h3>
     <mat-form-field appearance="fill">
       <mat-label>Home Address</mat-label>
-      <input [(ngModel)]="borrowerDetails.address.address" name="address" matInput [disabled]="!editMode">
-
+      <input [(ngModel)]="borrowerDetails.address && borrowerDetails.address.address" name="address" matInput [disabled]="!editMode" minlength="5" maxlength="100" #address="ngModel">
+      <mat-error *ngIf="address.invalid && (address.dirty || address.touched)">
+        Address must be between 5 and 100 characters long.
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
       <mat-label>City</mat-label>
-      <input [(ngModel)]="borrowerDetails.address.city" name="city" matInput [disabled]="!editMode">
+      <input [(ngModel)]="borrowerDetails && borrowerDetails.address && borrowerDetails.address.city" name="city" matInput [disabled]="!editMode" minlength="3" maxlength="50" #city="ngModel">
+      <mat-error *ngIf="city.invalid && (city.dirty || city.touched)">
+        City must be between 3 and 50 characters long.
+      </mat-error>
     </mat-form-field>
+
 
     <mat-form-field appearance="fill">
       <mat-label>PIN Code</mat-label>
-      <input [(ngModel)]="borrowerDetails.address.pin" name="pin" matInput [disabled]="!editMode">
-
+      <input [(ngModel)]="borrowerDetails.address && borrowerDetails.address.pin" name="pin" matInput [disabled]="!editMode" pattern="[0-9]{6}" minlength="6" maxlength="6" #pin="ngModel">
+      <mat-error *ngIf="pin.invalid && (pin.dirty || pin.touched)">
+        PIN must be a 6-digit number.
+      </mat-error>
     </mat-form-field>
-
     <mat-form-field appearance="fill">
       <mat-label>State</mat-label>
-      <input [(ngModel)]="borrowerDetails.address.state" name="state" matInput [disabled]="!editMode">
-
+      <input [(ngModel)]="borrowerDetails.address && borrowerDetails.address.state" name="state" matInput [disabled]="!editMode" minlength="3" maxlength="50" #state="ngModel">
+      <mat-error *ngIf="state.invalid && (state.dirty || state.touched)">
+        State must be between 3 and 50 characters long.
+      </mat-error>
     </mat-form-field>
+
+
 
 </form>
 </div>
-
-
-
-

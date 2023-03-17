@@ -8,6 +8,7 @@ package com.niit.controller;
 
 import com.niit.exception.BorrowerAlreadyFoundException;
 import com.niit.model.Borrower;
+import com.niit.repo.BorrowerRepo;
 import com.niit.service.BorrowerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Map;
 
 @RestController
@@ -26,6 +28,8 @@ import java.util.Map;
 public class BorrowerController {
     ResponseEntity responseEntity;
     BorrowerService borrowerService;
+    @Autowired
+    BorrowerRepo borrowerRepo;
     @Autowired
     public BorrowerController(BorrowerService borrowerService) {
         this.borrowerService = borrowerService;
@@ -65,7 +69,7 @@ public class BorrowerController {
             if(borrower!=null){
                 return new ResponseEntity<>(borrower,HttpStatus.OK);
             }else{
-                throw new RuntimeException("Borrower not found") ; // add custom exception
+                throw new RuntimeException("Borrower not found") ;
             }
         }
         catch (Exception exception){
@@ -75,32 +79,44 @@ public class BorrowerController {
 
     @DeleteMapping("/borrower/{emailId}")
     public ResponseEntity<?> deleteBorrower(@PathVariable ("emailId") String emailId) {
-              try {
+        try {
             borrowerService.deleteBorrower(emailId);
             return responseEntity=new ResponseEntity<String>("Successfully deleted",HttpStatus.OK);
         } catch (Exception e) {
             return responseEntity=new ResponseEntity<String>(e.getMessage(),HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-    @PutMapping(value = "/borrowers/{emailId}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public ResponseEntity<?> updateBorrower(@RequestPart("details") Borrower borrower,@RequestPart("aadhar") MultipartFile image, @PathVariable String emailId) throws IOException {
-        borrower.setAadharImage(image.getBytes());
-        Borrower update=borrowerService.updateBorrower(borrower,emailId);
-        if(update!=null){
-            return new ResponseEntity<Borrower>(update,HttpStatus.OK);
 
-        }else {
-            return new ResponseEntity<String>("Failed to Update",HttpStatus.FAILED_DEPENDENCY);
+    @PutMapping(value = "/borrowers/{emailId}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity<?> updateBorrower(@RequestPart("details") Borrower borrower, @PathVariable String emailId) {
+        // borrower.setAadharImage(image.getBytes());
+        Borrower update = borrowerService.updateBorrower(borrower, emailId);
+        if (update != null) {
+            return new ResponseEntity<Borrower>(update, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<String>("Failed to Update", HttpStatus.FAILED_DEPENDENCY);
         }
     }
 
-    @PutMapping("/borrowers/image/{emailId}")
-    public ResponseEntity<?> updateBorrowerImage(@RequestPart() MultipartFile image,@PathVariable String emailId){
-        System.out.println(image.getName());
-        System.out.println(image.getOriginalFilename());
-        return new ResponseEntity<>(HttpStatus.OK);
+
+
+    @PutMapping(value = "/borrowers/image/{emailId}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity<?> updateBorrowerImage(@RequestPart("image") MultipartFile image, @PathVariable String emailId) {
+        Borrower borrower = borrowerService.getBorrowerByEmailId(emailId);
+        if (borrower == null) {
+            return new ResponseEntity<>("Borrower not found", HttpStatus.NOT_FOUND);
+        }
+
+        byte[] imageData;
+        try {
+            imageData = image.getBytes();
+            borrower.setAadharImage(imageData);
+            System.out.println("Byte array of image: " + Arrays.toString(imageData));
+            borrowerRepo.save(borrower);
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return new ResponseEntity<>("Failed to read image data", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
-
-
-
 }

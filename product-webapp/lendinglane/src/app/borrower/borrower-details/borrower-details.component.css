@@ -107,6 +107,39 @@ mat-radio-group{
 }
 
 
+.upload-btn {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  color: #fff;
+  background-color: #2196f3;
+  border-radius: 4px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.upload-btn:hover {
+  background-color: #0c7cd5;
+}
+
+.upload-btn input[type=file] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  cursor: pointer;
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+
+.upload-btn span {
+  display: inline-block;
+  margin-right: 10px;
+  vertical-align: middle;
+}
 
 
 
