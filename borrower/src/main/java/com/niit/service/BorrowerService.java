@@ -13,3 +13,4 @@ public interface BorrowerService {
     public boolean deleteBorrower(String emailId);
 
 }
+

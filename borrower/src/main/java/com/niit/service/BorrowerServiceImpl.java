@@ -54,28 +54,29 @@ public class BorrowerServiceImpl implements BorrowerService {
     public Borrower updateBorrower(Borrower borrower, String emailId) {
         if (borrowerRepo.findById(emailId).isPresent()) {
             Borrower borrowerData = borrowerRepo.findById(emailId).get();
-            if (borrowerData.getFirstName() != null) {
+            if (borrower.getFirstName() != null) {
                 borrowerData.setFirstName(borrower.getFirstName());
             }
-            if (borrowerData.getLastName() != null) {
+            if (borrower.getLastName() != null) {
                 borrowerData.setLastName(borrower.getLastName());
             }
-            if (borrowerData.getPhoneNo() != null) {
+            if (borrower.getPhoneNo() != null) {
                 borrowerData.setPhoneNo(borrower.getPhoneNo());
             }
-            if (borrowerData.getPassword() != null) {
+            if (borrower.getPassword() != null) {
                 borrowerData.setPassword(borrower.getPassword());
             }
-            if (borrowerData.getConfirmPassword() != null) {
+            if (borrower.getConfirmPassword() != null) {
                 borrowerData.setConfirmPassword(borrower.getConfirmPassword());
             }
-            if(borrowerData.getAadharImage() != null){
+            if (borrower.getAadharImage() != null && borrower.getAadharImage().length > 0) {
                 borrowerData.setAadharImage(borrower.getAadharImage());
             }
             return borrowerRepo.save(borrowerData);
         }
         return null;
     }
+
 
     @Override
     public boolean deleteBorrower(String emailId) {
@@ -86,4 +87,6 @@ public class BorrowerServiceImpl implements BorrowerService {
         }
         return false;
     }
+
 }
+
