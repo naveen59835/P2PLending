@@ -100,21 +100,17 @@ public class BorrowerController {
 
 
     @PutMapping(value = "/borrowers/image/{emailId}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public ResponseEntity<?> updateBorrowerImage(@RequestPart("image") MultipartFile image, @PathVariable String emailId) {
-        Borrower borrower = borrowerService.getBorrowerByEmailId(emailId);
-        if (borrower == null) {
-            return new ResponseEntity<>("Borrower not found", HttpStatus.NOT_FOUND);
+    public ResponseEntity<?> updateBorrowerImage(@RequestPart(name = "aadhar",required = false) MultipartFile aadharImage,@RequestPart(name = "pan",required = false) MultipartFile panImage,@RequestPart(name = "cibil",required = false) MultipartFile cibilImage, @PathVariable String emailId) throws IOException {
+        if(aadharImage!=null){
+            borrowerService.saveBorrowerImage(aadharImage.getBytes(),emailId,aadharImage.getName());
+        }
+        if(panImage!=null){
+            borrowerService.saveBorrowerImage(panImage.getBytes(),emailId,panImage.getName());
+        }
+        if(cibilImage!=null){
+            borrowerService.saveBorrowerImage(cibilImage.getBytes(),emailId,cibilImage.getName());
         }
 
-        byte[] imageData;
-        try {
-            imageData = image.getBytes();
-            borrower.setAadharImage(imageData);
-            borrowerRepo.save(borrower);
-            return new ResponseEntity<>(HttpStatus.OK);
-        } catch (IOException e) {
-            e.printStackTrace();
-            return new ResponseEntity<>("Failed to read image data", HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+        return null;
     }
 }

@@ -80,16 +80,29 @@
     </mat-error>
   </mat-form-field>
 
-  <label for="aadharImageInput" class="upload-btn">
-    <span>Upload Aadhar Card</span>
-    <input id="aadharImageInput" name="aadharImage" type="file" accept=".jpg,.jpeg,.png" (change)="aadharImageChange($event)">
-    <span id="tickMark" style="display: none;">&#10004;</span>
 
-  </label>
+  <div class="file-upload-container" [ngClass]="{'disabled': !editMode}">
+    <div class="file-upload">
+      <input type="file" id="aadharImageInput" name="aadharImage" accept=".jpg,.jpeg,.png" [disabled]="!editMode"/>
+      <label for="aadharImageInput" class="file-upload-label"><i class="fa fa-cloud-upload"></i>Upload Aadhar Card</label>
+      <button (click)="onUploadButtonClick($event, 'aadhar')" class="file-upload-btn" [disabled]="!editMode">Upload</button>
+      <p id="aadharUploadMessage"></p>
+    </div>
 
+    <div class="file-upload">
+      <input type="file" id="panImageInput" name="panImage" accept=".jpg,.jpeg,.png" [disabled]="!editMode"/>
+      <label for="panImageInput" class="file-upload-label"><i class="fa fa-cloud-upload"></i>Upload PAN Card</label>
+      <button (click)="onUploadButtonClick($event, 'pan')" class="file-upload-btn" [disabled]="!editMode">Upload</button>
+      <p id="panUploadMessage"></p>
+    </div>
 
-
-
+    <div class="file-upload">
+      <input type="file" id="cibilImageInput" name="cibilImage" accept=".jpg,.jpeg,.png" [disabled]="!editMode"/>
+      <label for="cibilImageInput" class="file-upload-label"><i class="fa fa-cloud-upload"></i>Upload Cibil Image</label>
+      <button (click)="onUploadButtonClick($event, 'cibil')" class="file-upload-btn" [disabled]="!editMode">Upload</button>
+      <p id="cibilUploadMessage"></p>
+    </div>
+  </div>
 
 <h3 style="text-align: left;">Address</h3>
     <mat-form-field appearance="fill">

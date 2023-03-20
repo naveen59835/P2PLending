@@ -10,6 +10,8 @@ export type Borrower = {
   amount?: number;
   cibilScore?: number;
   aadharImage ?: File;
+  panImage ?: File;
+  cibilImage ?: File;
   address:{
   address?: string;
   city?: string;

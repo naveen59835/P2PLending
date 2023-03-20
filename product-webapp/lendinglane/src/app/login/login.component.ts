@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
   loginForm: FormGroup;
+  hide = true;
   constructor(private fb: FormBuilder, private _snackBar: MatSnackBar, private loginService : LoginService,private router: Router) {
     this.loginForm = this.fb.group({
       email: new FormControl('', [Validators.required]),

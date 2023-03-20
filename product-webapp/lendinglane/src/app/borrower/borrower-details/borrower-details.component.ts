@@ -114,17 +114,48 @@ export class BorrowerDetailsComponent implements OnInit {
       !this.formGroup.get(field)?.valid && this.formGroup.get(field)?.touched
     );
   }
-  aadharImageChange($event: any) {
-    let data = new FormData();
-    this.aadharImage = $event.target.files[0];
-    data.append("image",$event.target.files[0])
 
-    this.http.put("http://localhost:8083/api/v1/borrower/borrowers/image/"+localStorage.getItem("email"),data).subscribe(
-      {
-        next : (data)=> console.log(data)
-
-      }
-    )
+extractFileAndUpload(file: File, name: string) {
+  const maxSize = 10 * 1024 * 1024; // 10 MB in bytes
+  if (file.size > maxSize) {
+    const messageElement = document.getElementById(`${name}UploadMessage`);
+    if (messageElement) {
+      messageElement.innerHTML = 'File size exceeds the maximum limit of 10 MB.';
+    }
+    return;
   }
+
+  const formData = new FormData();
+  formData.append(name, file);
+
+  this.http.put("http://localhost:8083/api/v1/borrower/borrowers/image/" + localStorage.getItem("email"), formData)
+    .subscribe({
+      next: (data) => {
+        console.log(data);
+        const messageElement = document.getElementById(`${name}UploadMessage`);
+        if (messageElement) {
+          messageElement.innerHTML = 'Image uploaded successfully.';
+        }
+      },
+      error: (error) => {
+        console.log(error);
+        const messageElement = document.getElementById(`${name}UploadMessage`);
+        if (messageElement) {
+          messageElement.innerHTML = 'File size exceeds the maximum limit of 10 MB.';
+        }
+      }
+    });
+}
+
+onUploadButtonClick(event: any, name: string) {
+  const fileInput = document.getElementById(`${name}ImageInput`) as HTMLInputElement;
+  if (fileInput.files && fileInput.files.length > 0) {
+    const file = fileInput.files[0];
+    this.extractFileAndUpload(file, name);
+      this.editMode = false;
+
+  }
+
+}
 
 }

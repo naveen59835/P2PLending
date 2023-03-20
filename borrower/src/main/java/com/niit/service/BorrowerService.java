@@ -11,6 +11,7 @@ public interface BorrowerService {
     public Borrower getBorrowerByEmailId(String emailId);
     public Borrower updateBorrower(Borrower borrower,String emailId);
     public boolean deleteBorrower(String emailId);
+    public Borrower saveBorrowerImage(byte[] borrowerImage, String emailId, String imageName);
 
 }
 

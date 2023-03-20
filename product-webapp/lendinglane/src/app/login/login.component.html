@@ -17,7 +17,10 @@
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>Password</mat-label>
-      <input formControlName="password" matInput placeholder="Password" type="password">
+      <input formControlName="password" matInput placeholder="Password" type="{{hide ? 'password' : 'text'}}">
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
       <mat-error *ngIf="password?.errors?.['required']">Password is required</mat-error>
       <mat-error *ngIf="password?.errors?.['minlength']">Password must be at least 8 characters long</mat-error>
       <mat-error *ngIf="password?.errors?.['pattern']">Password must contain at least 1 uppercase letter, 1 lowercase letter, and 1 number and special characters</mat-error>

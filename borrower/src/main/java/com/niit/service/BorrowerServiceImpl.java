@@ -76,6 +76,9 @@ public class BorrowerServiceImpl implements BorrowerService {
             if (borrower.getAadhaarNo() != null) {
                 borrowerData.setAadhaarNo(borrower.getAadhaarNo());
             }
+            if (borrower.getPanNo() != null) {
+                borrowerData.setPanNo(borrower.getPanNo());
+            }
             if (borrower.getAddress() != null) {
                 Address userAddress = borrowerData.getAddress();
                 Address updatedAddress = borrower.getAddress();
@@ -105,6 +108,28 @@ public class BorrowerServiceImpl implements BorrowerService {
         }
         return false;
     }
+    @Override
+    public Borrower saveBorrowerImage(byte[] borrowerImage, String emailId, String imageName) {
+        if (borrowerRepo.findById(emailId).isPresent()) {
+            Borrower borrower = borrowerRepo.findById(emailId).get();
+            if (imageName.equals("aadhar")) {
+                borrower.setAadharImage(borrowerImage);
+            }
+            if (imageName.equals("pan")) {
+                borrower.setPanImage(borrowerImage);
+            }
+            if (imageName.equals("cibil")) {
+                borrower.setCibilImage(borrowerImage);
+            }
+
+            return borrowerRepo.save(borrower);
+        }
+
+        throw new IllegalStateException("Image not found");
+
+
+    }
+
 
 }
 

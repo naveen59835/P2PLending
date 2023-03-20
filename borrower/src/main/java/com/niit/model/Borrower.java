@@ -31,6 +31,8 @@ public class Borrower {
     private double cibilScore;
     private Address address=new Address();
     private byte[] aadharImage=new byte[0];
+    private byte[] panImage=new byte[0];
+    private byte[] cibilImage=new byte[0];
 
 
 
