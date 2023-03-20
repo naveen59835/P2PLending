@@ -110,7 +110,7 @@ public class BorrowerController {
         if(cibilImage!=null){
             borrowerService.saveBorrowerImage(cibilImage.getBytes(),emailId,cibilImage.getName());
         }
-
         return null;
+
     }
 }
