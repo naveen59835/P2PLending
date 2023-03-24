@@ -81,28 +81,35 @@
   </mat-form-field>
 
 
+
   <div class="file-upload-container" [ngClass]="{'disabled': !editMode}">
     <div class="file-upload">
-      <input type="file" id="aadharImageInput" name="aadharImage" accept=".jpg,.jpeg,.png" [disabled]="!editMode"/>
-      <label for="aadharImageInput" class="file-upload-label"><i class="fa fa-cloud-upload"></i>Upload Aadhar Card</label>
+      <label for="aadharImageInput" class="file-upload-label"><i class="fa fa-cloud-upload"></i>Upload Aadhar Photo</label>
       <button (click)="onUploadButtonClick($event, 'aadhar')" class="file-upload-btn" [disabled]="!editMode">Upload</button>
+      <input type="file" id="aadharImageInput" name="aadharImage" accept=".jpg,.jpeg,.png" [disabled]="!editMode" class="file-upload-input" style="display:none;">
+      <p id="aadharFileName" class="file-upload-file-name"></p>
       <p id="aadharUploadMessage"></p>
     </div>
 
     <div class="file-upload">
-      <input type="file" id="panImageInput" name="panImage" accept=".jpg,.jpeg,.png" [disabled]="!editMode"/>
-      <label for="panImageInput" class="file-upload-label"><i class="fa fa-cloud-upload"></i>Upload PAN Card</label>
+      <label for="panImageInput" class="file-upload-label"><i class="fa fa-cloud-upload"></i>Upload PAN Photo</label>
       <button (click)="onUploadButtonClick($event, 'pan')" class="file-upload-btn" [disabled]="!editMode">Upload</button>
+      <input type="file" id="panImageInput" name="panImage" accept=".jpg,.jpeg,.png" [disabled]="!editMode" class="file-upload-input" style="display:none;">
+      <p id="panFileName" class="file-upload-file-name"></p>
       <p id="panUploadMessage"></p>
     </div>
 
     <div class="file-upload">
-      <input type="file" id="cibilImageInput" name="cibilImage" accept=".jpg,.jpeg,.png" [disabled]="!editMode"/>
-      <label for="cibilImageInput" class="file-upload-label"><i class="fa fa-cloud-upload"></i>Upload Cibil Image</label>
+      <label for="cibilImageInput" class="file-upload-label"><i class="fa fa-cloud-upload"></i>Upload Cibil Photo</label>
       <button (click)="onUploadButtonClick($event, 'cibil')" class="file-upload-btn" [disabled]="!editMode">Upload</button>
+      <input type="file" id="cibilImageInput" name="cibilImage" accept=".jpg,.jpeg,.png" [disabled]="!editMode" class="file-upload-input" style="display:none;">
+      <p id="cibilFileName" class="file-upload-file-name"></p>
       <p id="cibilUploadMessage"></p>
     </div>
   </div>
+
+
+
 
 <h3 style="text-align: left;">Address</h3>
     <mat-form-field appearance="fill">

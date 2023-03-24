@@ -1,9 +1,10 @@
 import { BorrowerDetailsService } from './../../service/borrower-details.service';
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Borrower } from 'src/app/model/Borrower';
+import { ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-borrower-details',
@@ -24,6 +25,9 @@ export class BorrowerDetailsComponent implements OnInit {
   showConfirmPassword = false;
   formGroup: any;
   aadharImage: any;
+  cibilImage: any;
+  panImage: any;
+
 
   constructor(
     private borrowerService: BorrowerDetailsService,
@@ -116,6 +120,8 @@ export class BorrowerDetailsComponent implements OnInit {
   }
 
 extractFileAndUpload(file: File, name: string) {
+
+
   const maxSize = 10 * 1024 * 1024; // 10 MB in bytes
   if (file.size > maxSize) {
     const messageElement = document.getElementById(`${name}UploadMessage`);
@@ -147,15 +153,22 @@ extractFileAndUpload(file: File, name: string) {
     });
 }
 
+
+
 onUploadButtonClick(event: any, name: string) {
   const fileInput = document.getElementById(`${name}ImageInput`) as HTMLInputElement;
   if (fileInput.files && fileInput.files.length > 0) {
     const file = fileInput.files[0];
+    const fileNameElement = document.getElementById(`${name}FileName`);
+    if (fileNameElement) {
+      fileNameElement.innerText = file.name;
+    }
     this.extractFileAndUpload(file, name);
-      this.editMode = false;
-
+    this.editMode = false;
   }
-
 }
+
+
+
 
 }

@@ -40,9 +40,10 @@ import { BorrowerLoansComponent } from './borrower/borrower-loans/borrower-loans
 import {MatExpansionModule} from "@angular/material/expansion";
 import { LoanDialogComponent } from './borrower/borrower-loans/loan-dialog/loan-dialog.component';
 import {MatDialogModule} from "@angular/material/dialog";
+import { NotificationComponent } from './notification/notification.component';
 
 @NgModule({
-  declarations: [AppComponent, SignupComponent, NavbarComponent, LoginComponent,SidenavComponent, BorrowerComponent, BorrowerDetailsComponent,DashboardComponent, BorrowerDashboardComponent, DashboardHomeComponent, DashboardChatComponent, DashboardProfileComponent, DashboardTransactionComponent,LenderDetailsComponent,LenderAddressDetailComponent, BorrowerTransactionComponent, DashboardLoansComponent, BorrowerLoansComponent, LoanDialogComponent],
+  declarations: [AppComponent, SignupComponent, NavbarComponent, LoginComponent,SidenavComponent, BorrowerComponent, BorrowerDetailsComponent,DashboardComponent, BorrowerDashboardComponent, DashboardHomeComponent, DashboardChatComponent, DashboardProfileComponent, DashboardTransactionComponent,LenderDetailsComponent,LenderAddressDetailComponent, BorrowerTransactionComponent, DashboardLoansComponent, BorrowerLoansComponent, LoanDialogComponent, NotificationComponent],
     imports: [
         BrowserModule,
         AppRoutingModule,

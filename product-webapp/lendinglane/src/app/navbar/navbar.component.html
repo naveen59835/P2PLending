@@ -10,13 +10,13 @@
   <button mat-icon-button>
     <mat-icon>apps</mat-icon>
   </button>
-  <button mat-icon-button>
-    <mat-icon>settings</mat-icon>
+  <button mat-icon-button (click)="openNotification()">
+    <mat-icon>notifications</mat-icon>
   </button>
+
 <!--  <button mat-icon-button (click)="logout()">-->  <!-- used to toggle login/logout icon -->
-  <button mat-icon-button>  <!-- This is line is a copy of the line above, delete this line after removing the comment on the line above -->
-    <mat-icon>logout</mat-icon> <!-- Remove this line after uncommenting the line below -->
-<!--    <mat-icon *ngIf="userService.isLoggedIn">logout</mat-icon>-->
-<!--    <mat-icon *ngIf="!userService.isLoggedIn">login</mat-icon>-->
+  <button mat-icon-button (click)="logout()">
+    <mat-icon *ngIf="authservice.isAuthenticated()">logout</mat-icon>
+    <mat-icon *ngIf="!authservice.isAuthenticated()" routerLink="/login">login</mat-icon>
   </button>
 </mat-toolbar>
