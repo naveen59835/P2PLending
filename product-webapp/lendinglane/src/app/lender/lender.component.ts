@@ -7,8 +7,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./lender.component.css']
 })
 export class LenderComponent implements OnInit {
-  showFiller = false;
-  constructor(private route:Router) { }
+  
+  constructor() { }
 
 
 

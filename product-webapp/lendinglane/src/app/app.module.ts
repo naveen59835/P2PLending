@@ -33,7 +33,6 @@ import {MatCardModule} from '@angular/material/card';
 import {SidenavComponent} from "./sidenav/sidenav.component";
 import {MatTableModule} from "@angular/material/table";
 import { LenderDetailsComponent } from './lender/lender-details/lender-details.component';
-import { LenderAddressDetailComponent } from './lender/lender-address-detail/lender-address-detail.component';
 import { BorrowerTransactionComponent } from './borrower/borrower-transaction/borrower-transaction.component';
 import { DashboardLoansComponent } from './dashboard/dashboard-loans/dashboard-loans.component';
 import { BorrowerLoansComponent } from './borrower/borrower-loans/borrower-loans.component';
@@ -45,7 +44,7 @@ import { LoanDetailsComponent } from './borrower/borrower-loans/loan-details/loa
 import {MatDividerModule} from "@angular/material/divider";
 
 @NgModule({
-  declarations: [AppComponent, SignupComponent, NavbarComponent, LoginComponent,SidenavComponent, BorrowerComponent, BorrowerDetailsComponent,DashboardComponent, BorrowerDashboardComponent, DashboardHomeComponent, DashboardChatComponent, DashboardProfileComponent, DashboardTransactionComponent,LenderDetailsComponent,LenderAddressDetailComponent, BorrowerTransactionComponent, DashboardLoansComponent, BorrowerLoansComponent, LoanDialogComponent, LoanDetailsComponent],
+  declarations: [AppComponent, SignupComponent, NavbarComponent, LoginComponent,SidenavComponent, BorrowerComponent, BorrowerDetailsComponent,DashboardComponent, BorrowerDashboardComponent, DashboardHomeComponent, DashboardChatComponent, DashboardProfileComponent, DashboardTransactionComponent,LenderDetailsComponent, BorrowerTransactionComponent, DashboardLoansComponent, BorrowerLoansComponent, LoanDialogComponent, LoanDetailsComponent],
     imports: [
         BrowserModule,
         AppRoutingModule,

@@ -9,10 +9,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
 
 @RestController
 @RequestMapping("/api/v1/lender")
-@CrossOrigin(origins ="http://localhost:4200")
+@CrossOrigin
 public class LenderController {
 
 
@@ -80,14 +83,14 @@ public class LenderController {
 
     }
 
+    @PutMapping("/lenderImage/{lenderId}")
+    public ResponseEntity<?> updateLenderAadhaarImage(@RequestPart("aadhaar") MultipartFile image, @PathVariable String lenderId) throws LenderNotFoundException {
 
-    @PutMapping("/updateLenderAddress/{lenderId}")
-    public ResponseEntity<?>updateLenderAddress(@RequestBody Address address, @PathVariable String lenderId) throws LenderNotFoundException {
         try {
 
-            Lender lender1=lenderService.updateLenderAddress(address,lenderId);
+            Lender lender1=lenderService.updateLenderAadhaarImage(image.getBytes(),lenderId);
 
-            return new ResponseEntity<>(lender1,HttpStatus.OK);
+            return new ResponseEntity<Lender>(lender1,HttpStatus.OK);
 
         } catch (LenderNotFoundException e) {
             throw new LenderNotFoundException();
@@ -98,7 +101,28 @@ public class LenderController {
             return new ResponseEntity<String>("Error occur", HttpStatus.NOT_FOUND);
         }
 
+
+
     }
+
+    @PutMapping("/lenderPanImage/{lenderId}")
+    public ResponseEntity<?> updateLenderPanImage(@RequestPart("pan") MultipartFile image1, @PathVariable String lenderId) throws LenderNotFoundException {
+
+        try {
+
+            Lender lender1=lenderService.updatePanImage(image1.getBytes(),lenderId);
+
+            return new ResponseEntity<Lender>(lender1,HttpStatus.OK);
+
+        } catch (LenderNotFoundException e) {
+            throw new LenderNotFoundException();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+
+    }
+
 
 
 }

@@ -1,7 +1,6 @@
 package com.example.service;
 
 import com.example.config.LenderDTO;
-import com.example.domain.Address;
 import com.example.domain.Lender;
 import com.example.exception.LenderAlreadyExistException;
 import com.example.exception.LenderNotFoundException;
@@ -67,7 +66,7 @@ public class LenderServiceImpl implements LenderService {
             if (lender.getFirstName()!=null)
             {
                 existingLender.setFirstName(lender.getFirstName());
-                System.out.println(existingLender.getFirstName());
+
             }
             if (lender.getLastName()!=null)
             {
@@ -82,63 +81,82 @@ public class LenderServiceImpl implements LenderService {
             {
 
                 existingLender.setAadhaar(lender.getAadhaar());
-                System.out.println(existingLender.getAadhaar());
+
             }
             if(lender.getPan()!=null)
             {
                 existingLender.setPan(lender.getPan());
             }
+            if(lender.getAddress().getAddress()!=null)
+            {
+                existingLender.getAddress().setAddress(lender.getAddress().getAddress());
+            }
+
+            if(lender.getAddress().getCity()!=null)
+            {
+                existingLender.getAddress().setCity(lender.getAddress().getCity());
+            }
+            if(lender.getAddress().getPin()!=null)
+            {
+                existingLender.getAddress().setPin(lender.getAddress().getPin());
+            }
+            if(lender.getAddress().getState()!=null)
+            {
+                existingLender.getAddress().setState(lender.getAddress().getState());
+            }
+            if(lender.getAmountToInvest()!=0)
+            {
+                existingLender.setAmountToInvest(lender.getAmountToInvest());
+            }
+            if(lender.getCreditScore()!=0)
+            {
+                existingLender.setCreditScore(lender.getCreditScore());
+            }
             return lenderRepository.save(existingLender);
         }
         return null;
     }
-
 
 
     @Override
-    public Lender updateLenderAddress(Address address, String emailId) throws LenderNotFoundException {
-
-        if (!lenderRepository.findById(emailId).isPresent()) {
+    public Lender updateLenderAadhaarImage(byte[] imageArray, String emailId) throws LenderNotFoundException {
+        if(!lenderRepository.findById(emailId).isPresent())
+        {
             throw new LenderNotFoundException();
         }
 
-        if (lenderRepository.findById(emailId).isPresent()) {
 
+        if(lenderRepository.findById(emailId).isPresent()) {
             Lender existingLender = lenderRepository.findById(emailId).get();
-            Address address1=new Address();
-            if (address.getAddress()!=null)
-            {
-                address1.setAddress(address.getAddress());
-
-
-                existingLender.getAddress().setAddress(address1.getAddress());
+            if(existingLender.getAadhaarImage()!= null){
+                existingLender.setAadhaarImage(imageArray);
             }
-            if (address.getCity()!=null)
-            {
-                address1.setCity(address.getCity());
 
-
-                existingLender.getAddress().setCity(address1.getCity());
-
-            }
-            if (address.getState()!=null)
-            {
-                address1.setState(address.getState());
-
-
-                existingLender.getAddress().setState(address1.getState());
-
-            }
-            if (address.getPin()!=null)
-            {
-                address1.setPin(address.getPin());
-
-                existingLender.getAddress().setPin(address1.getPin());
-
-            }
             return lenderRepository.save(existingLender);
         }
         return null;
     }
+
+    @Override
+    public Lender updatePanImage(byte[] Array, String emailId) throws LenderNotFoundException {
+        if(!lenderRepository.findById(emailId).isPresent())
+        {
+            throw new LenderNotFoundException();
+        }
+
+
+        if(lenderRepository.findById(emailId).isPresent()) {
+            Lender existingLender = lenderRepository.findById(emailId).get();
+            if(existingLender.getPanImage()!= null){
+                existingLender.setPanImage(Array);
+            }
+
+            return lenderRepository.save(existingLender);
+        }
+        return null;
+    }
+
+
+
 
 }

@@ -5,7 +5,6 @@ import {LoginComponent} from "./login/login.component";
 import {DashboardComponent} from "./dashboard/dashboard.component";
 import {DashboardProfileComponent} from "./dashboard/dashboard-profile/dashboard-profile.component";
 import {DashboardHomeComponent} from "./dashboard/dashboard-home/dashboard-home.component";
-import { LenderAddressDetailComponent } from './lender/lender-address-detail/lender-address-detail.component';
 import {DashboardTransactionComponent} from "./dashboard/dashboard-transaction/dashboard-transaction.component";
 import {DashboardLoansComponent} from "./dashboard/dashboard-loans/dashboard-loans.component";
 import {LoanDetailsComponent} from "./borrower/borrower-loans/loan-details/loan-details.component";
@@ -21,7 +20,6 @@ const routes: Routes = [
     children:[
       {path:'',component:DashboardHomeComponent},
       {path:'profile',component:DashboardProfileComponent},
-      {path:'lenderaddress',component:LenderAddressDetailComponent},
       {path:'transactions',component:DashboardTransactionComponent},
       {path:'loan',component:DashboardLoansComponent},
       {path:'loan/:id',component:LoanDetailsComponent},

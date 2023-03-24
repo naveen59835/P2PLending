@@ -9,6 +9,8 @@ export type Lender = {
     confirmPassword?: any;
     pan?: any;
     aadhaar?: any;
+    aadhaarImage?:any;
+    panImage?:any;
     address:{
         address?: string;
         city?: string;
@@ -27,11 +29,6 @@ export type Lender = {
     
 }
 
-export type Address= {
-    address?: string;
-    city?: string;
-    pin?: string;
-    state?: string;
-  }
+
 
 

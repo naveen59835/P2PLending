@@ -1,85 +1,116 @@
 .example-form {
-    min-width: 150px;
-    max-width: 500px;
-    width: 100%;
-  }
-  
-  .example-full-width {
-    width: 100%;
-    margin-top:7px;
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
 
-  
-  }
+.example-full-width {
+  width: 100%;
+  margin-top:7px;
 
 
-  .example-full-width1 {
-    width: 100%;
+}
 
 
-  
-  }
+.example-full-width1 {
+  width: 100%;
 
 
 
-  td {
-    padding-right: 8px;
-  }
+}
+
+
+
+td {
+  padding-right: 8px;
+}
 .btn{
-    margin-left:-777px;
-    
-    padding: 15px 17px;
-    background-color: #D9D9D9;
-    text-align: center;
-    height: max-content;
-    width: max-content;
-    border-radius: 50%;
-    
+  margin-left:-777px;
+  
+  padding: 15px 17px;
+  background-color: #D9D9D9;
+  text-align: center;
+  height: max-content;
+  width: max-content;
+  border-radius: 50%;
+  
 }
 
 ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
-  color: black !important;
+color: black !important;
 
 }
 ::ng-deep .mat-form-field-appearance-outline.mat-form-field-invalid.mat-form-field-invalid .mat-form-field-outline-thick{
-  color: red!important;
-  opacity: 0.8!important;
+color: red!important;
+opacity: 0.8!important;
 }
 ::ng-deep .mat-form-field-invalid .mat-input-element, .mat-warn .mat-input-element {
-  caret-color: red!important;
+caret-color: red!important;
 }
 
 
 
 
-  .container{
-    height: 797px;
-    margin-top: 473px;
-    border-radius: 32px;
-    width: 100%;
-    max-width: 500px;
-    padding-left: 77px;
-    border: 2px solid rgb(218, 217, 230);
-    padding-right: 77px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    text-align: center;
- 
-  }
+.container{
+  height: 977px;
+  margin-top: 573px;
+  border-radius: 32px;
+  width: 100%;
+  max-width: 500px;
+  padding-left: 77px;
+  border: 2px solid rgb(218, 217, 230);
+  padding-right: 77px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  text-align: center;
 
-  .container1{
-    height: 677px;
-    /* margin-top: -32px; */
-    border-radius: 32px;
-    width: 100%;
-    max-width: 500px;
-    padding-left: 77px;
-    border: 2px solid rgb(218, 217, 230);
-    padding-right: 77px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    text-align: center;
- 
-  }
+}
+
+
+.container1{
+  height: 677px;
+
+  border-radius: 32px;
+  margin-bottom: 177px;
+  width: 100%;
+  max-width: 500px;
+  padding-left: 77px;
+  border: 2px solid rgb(218, 217, 230);
+  padding-right: 77px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  text-align: center;
+
+}
+
+.container2{
+  height: 577px;
+  margin-top: 77px;
+  border-radius: 32px;
+  width: 100%;
+  max-width: 500px;
+  padding-left: 77px;
+  border: 2px solid rgb(218, 217, 230);
+  padding-right: 77px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  text-align: center;
+
+}
+
+
+
+input::file-selector-button {
+  font-weight: bold;
+  color: rgb(103, 69, 176);
+
+  padding: 0.5em;
+  border: thin solid grey;
+  border-radius: 3px;
+}
+
+
 
