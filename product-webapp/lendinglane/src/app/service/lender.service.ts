@@ -1,22 +1,22 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Address } from '../model/lender';
 import { Lender } from '../model/lender';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LenderService {
-  lender:any=""
+
   
   constructor(private httpClient:HttpClient) { 
   
   }
 
 
-  url:string="  http://localhost:8082/api/v1/lender/lenderMail"
+  url:string="http://localhost:8082/api/v1/lender/lenderMail"
   urlupdate:string="http://localhost:8082/api/v1/lender/updateLender"
-  urlupdateAddress:string="http://localhost:8082/api/v1/lender/updateLenderAddress"
+  urlaadharImage:string="http://localhost:8082/api/v1/lender/lenderImage"
+  urlpanImage:string="http://localhost:8082/api/v1/lender/lenderPanImage"
 
 
   getLenderById(id:any)
@@ -26,18 +26,24 @@ export class LenderService {
 
   updateLender(lender:Lender,id:any)
   {
+    console.log(lender)
     return this.httpClient.put<any>(`${this.urlupdate}/${id}`,lender)
   }
 
 
 
 
-  updateLenderAddress(address:Address,id:any)
-  {
-    return this.httpClient.put<any>(`${this.urlupdateAddress}/${id}`,address)
-  }
 
 
+updateAadharImage(id:any,data:any)
+{
+  return this.httpClient.put<any>(`${this.urlaadharImage}/${id}`,data)
+}
+
+updatePanImage(id:any,data:any)
+{
+  return this.httpClient.put<any>(`${this.urlpanImage}/${id}`,data)
+}
 
   
 

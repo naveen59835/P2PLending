@@ -23,6 +23,8 @@ public class Lender {
     private Address address=new Address();
     private String pan;
     private String aadhaar;
+    private byte[] aadhaarImage=new byte[0];
+    private  byte[] panImage=new byte[0];
     private double amountToInvest;
     private double interestRate;
     private int loanDuration;

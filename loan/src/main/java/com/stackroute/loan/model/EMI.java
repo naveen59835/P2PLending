@@ -1,12 +1,24 @@
 package com.stackroute.loan.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
+import java.time.LocalDate;
 import java.util.Date;
 
+@Data
 public class EMI {
-    private String id;
+    private int id;
     private double price;
-    private Date date;
+    private LocalDate startDate;
+    private LocalDate paymentDate;
     private boolean paymentStatus;
     private String paymentId;
 
+    public EMI(int id, double price, boolean paymentStatus) {
+        this.id = id;
+        this.price = price;
+        this.paymentStatus = paymentStatus;
+        this.startDate = LocalDate.now();
+    }
 }
