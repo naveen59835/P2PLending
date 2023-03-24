@@ -8,6 +8,7 @@ import {DashboardHomeComponent} from "./dashboard/dashboard-home/dashboard-home.
 import { LenderAddressDetailComponent } from './lender/lender-address-detail/lender-address-detail.component';
 import {DashboardTransactionComponent} from "./dashboard/dashboard-transaction/dashboard-transaction.component";
 import {DashboardLoansComponent} from "./dashboard/dashboard-loans/dashboard-loans.component";
+import {LoanDetailsComponent} from "./borrower/borrower-loans/loan-details/loan-details.component";
 
 const routes: Routes = [
   {path:'', pathMatch:"full",redirectTo:'signup'},
@@ -22,7 +23,8 @@ const routes: Routes = [
       {path:'profile',component:DashboardProfileComponent},
       {path:'lenderaddress',component:LenderAddressDetailComponent},
       {path:'transactions',component:DashboardTransactionComponent},
-      {path:'loan',component:DashboardLoansComponent}
+      {path:'loan',component:DashboardLoansComponent},
+      {path:'loan/:id',component:LoanDetailsComponent},
     ]
   }
 

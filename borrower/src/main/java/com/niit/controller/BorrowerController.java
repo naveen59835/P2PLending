@@ -100,7 +100,7 @@ public class BorrowerController {
 
 
     @PutMapping(value = "/borrowers/image/{emailId}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public ResponseEntity<?> updateBorrowerImage(@RequestPart("image") MultipartFile image, @PathVariable String emailId) {
+    public ResponseEntity<?> updateBorrowerImage(@RequestPart(name = "aadhar",required = false) MultipartFile image, @PathVariable String emailId) {
         Borrower borrower = borrowerService.getBorrowerByEmailId(emailId);
         if (borrower == null) {
             return new ResponseEntity<>("Borrower not found", HttpStatus.NOT_FOUND);

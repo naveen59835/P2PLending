@@ -1,27 +1,60 @@
-<div class="active-loan-container">
-  <h1>Ongoing Loans</h1>
-  <mat-accordion>
-    <mat-expansion-panel *ngFor="let item of data">
-      <mat-expansion-panel-header>
-        <div>#Loan 1</div>
-      </mat-expansion-panel-header>
-      <p>Hi Hi Hi</p>
-    </mat-expansion-panel>
-  </mat-accordion>
+<div class="loan-selector-container">
+  <p class="ongoing-selector" (click)="changeLoanStatus('ongoing')">On going</p>
+  <p class="finished-selector" (click)="changeLoanStatus('finished')">Finished</p>
+  <p class="applied-selector" (click)="changeLoanStatus('applied')">Applied</p>
+  <div class="slider" [ngClass]="loanStatus"></div>
 </div>
-<div class="finished-loan-container">
-  <h1>Previous Loans</h1>
-  <mat-accordion>
-    <mat-expansion-panel *ngFor="let item of data">
-      <mat-expansion-panel-header>
-        <div>#Loan 1</div>
-      </mat-expansion-panel-header>
-      <p>Hi Hi Hi</p>
-    </mat-expansion-panel>
-  </mat-accordion>
-</div>
-<div class="add-loan-button">
-  <button mat-fab color="primary" (click)="openLoanDialog()">
-    <mat-icon>add</mat-icon>
-  </button>
+<div class="loan-container">
+  <h1>{{loanStatus | titlecase}} Loans</h1>
+  <div class="loan-wrapper" [hidden]="!(loanData.data.length > 0)" >
+    <table mat-table [dataSource]="loanData">
+      <ng-container matColumnDef="#">
+        <th mat-header-cell *matHeaderCellDef> # </th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      </ng-container>
+
+      <!-- Amount Column -->
+      <ng-container matColumnDef="amount">
+        <th mat-header-cell *matHeaderCellDef> Amount </th>
+        <td mat-cell *matCellDef="let element"> {{element.amount | currency}} </td>
+      </ng-container>
+
+      <!-- Type Column -->
+      <ng-container matColumnDef="type">
+        <th mat-header-cell *matHeaderCellDef> Type </th>
+        <td  mat-cell *matCellDef="let element" [ngClass]="{'debit':element.type==='debit','credit':element.type==='credit'}"> {{element.type}} </td>
+      </ng-container>
+
+      <!-- Remarks Column -->
+      <ng-container matColumnDef="terms">
+        <th mat-header-cell *matHeaderCellDef> Terms </th>
+        <td mat-cell *matCellDef="let element"> {{element.terms}} </td>
+      </ng-container>
+
+      <!-- Date Column -->
+      <ng-container matColumnDef="expired">
+        <th mat-header-cell *matHeaderCellDef> Expired </th>
+        <td mat-cell *matCellDef="let element"> {{element.expired}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="expand">
+        <th mat-header-cell *matHeaderCellDef> Expand </th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-flat-button color="primary" [routerLink]="element.id">Click</button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <mat-paginator [hidden]="!(loanData.data.length>0)" #paginator pageSize="4" ></mat-paginator>
+  </div>
+  <div class="no-loan-found" *ngIf="loanData.data.length==0">
+    No {{loanStatus}} loans
+  </div>
+  <div class="add-loan-button">
+    <button mat-fab color="primary" (click)="openLoanDialog()">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
 </div>
