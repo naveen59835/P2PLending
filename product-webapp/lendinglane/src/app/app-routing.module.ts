@@ -9,6 +9,7 @@ import {DashboardTransactionComponent} from "./dashboard/dashboard-transaction/d
 import {DashboardLoansComponent} from "./dashboard/dashboard-loans/dashboard-loans.component";
 import { AuthGuardGuard } from './guards/auth-guard.guard';
 import {LoanDetailsComponent} from "./borrower/borrower-loans/loan-details/loan-details.component";
+import { DashboardAuthGuardGuard } from './guards/dashboard-auth-guard.guard';
 
 const routes: Routes = [
   {path:'', pathMatch:"full",redirectTo:'signup'},
@@ -18,7 +19,7 @@ const routes: Routes = [
     path:'dashboard',
     component : DashboardComponent,
     canActivate: [DashboardAuthGuardGuard],
-    //Add can activate to check if the user is authenticated
+   
     children:[
       {path:'',component:DashboardHomeComponent},
       {path:'profile',component:DashboardProfileComponent},
