@@ -33,7 +33,6 @@ import {MatCardModule} from '@angular/material/card';
 import {SidenavComponent} from "./sidenav/sidenav.component";
 import {MatTableModule} from "@angular/material/table";
 import { LenderDetailsComponent } from './lender/lender-details/lender-details.component';
-import { LenderAddressDetailComponent } from './lender/lender-address-detail/lender-address-detail.component';
 import { BorrowerTransactionComponent } from './borrower/borrower-transaction/borrower-transaction.component';
 import { DashboardLoansComponent } from './dashboard/dashboard-loans/dashboard-loans.component';
 import { BorrowerLoansComponent } from './borrower/borrower-loans/borrower-loans.component';
@@ -43,10 +42,13 @@ import {MatDialogModule} from "@angular/material/dialog";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import { LoanDetailsComponent } from './borrower/borrower-loans/loan-details/loan-details.component';
 import {MatDividerModule} from "@angular/material/divider";
-import { NotificationComponent } from './notification/notification.component';
+import { DashboardMessagesComponent } from './dashboard/dashboard-messages/dashboard-messages.component';
+import {BorrowerMessagesComponent} from "./borrower/borrower-messages/borrower-messages.component";
+import { DashboardMessageWindowComponent } from './dashboard/dashboard-message-window/dashboard-message-window.component';
+import { BorrowerMessageWindowComponent } from './borrower/borrower-message-window/borrower-message-window.component';
 
 @NgModule({
-  declarations: [AppComponent, SignupComponent, NavbarComponent, LoginComponent,SidenavComponent, BorrowerComponent, BorrowerDetailsComponent,DashboardComponent, BorrowerDashboardComponent, DashboardHomeComponent, DashboardChatComponent, DashboardProfileComponent, DashboardTransactionComponent,LenderDetailsComponent,LenderAddressDetailComponent, BorrowerTransactionComponent, DashboardLoansComponent, BorrowerLoansComponent, LoanDialogComponent, NotificationComponent,LoanDetailsComponent],
+  declarations: [AppComponent, SignupComponent, NavbarComponent, LoginComponent,SidenavComponent, BorrowerComponent, BorrowerDetailsComponent,DashboardComponent, BorrowerDashboardComponent, DashboardHomeComponent, DashboardChatComponent, DashboardProfileComponent, DashboardTransactionComponent,LenderDetailsComponent, BorrowerTransactionComponent, DashboardLoansComponent, BorrowerLoansComponent, LoanDialogComponent,LoanDetailsComponent, DashboardMessagesComponent, BorrowerMessagesComponent, DashboardMessageWindowComponent, BorrowerMessageWindowComponent],
     imports: [
         BrowserModule,
         AppRoutingModule,
