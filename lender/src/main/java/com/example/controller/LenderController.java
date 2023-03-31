@@ -41,7 +41,6 @@ public class LenderController {
         }
         catch (Exception e)
         {
-            System.out.println();
 
             return new ResponseEntity<String>("Error occur",HttpStatus.NOT_FOUND);
         }

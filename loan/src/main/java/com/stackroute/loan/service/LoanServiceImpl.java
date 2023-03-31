@@ -4,6 +4,7 @@ import com.stackroute.loan.model.EMI;
 import com.stackroute.loan.model.Loan;
 import com.stackroute.loan.repository.LoanRepository;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
@@ -18,6 +19,8 @@ import java.util.Map;
 public class LoanServiceImpl {
     @Autowired
     LoanRepository loanRepository;
+    @Autowired
+    RabbitTemplate template;
     public final Map<Integer,Double> loanRate=new HashMap<>();
     public LoanServiceImpl(){
         loanRate.put(3,16d);
@@ -31,6 +34,7 @@ public class LoanServiceImpl {
         loanRepository.save(loan);
         //send the data to the recommendation service
         //Send the data to the notification service
+        template.convertAndSend("loan-notification-exchange","route-key",loan.getBorrowerId());
     }
 
     //This method is used with rabbit listener

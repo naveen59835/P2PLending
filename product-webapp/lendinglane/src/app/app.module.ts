@@ -46,10 +46,11 @@ import { DashboardMessagesComponent } from './dashboard/dashboard-messages/dashb
 import {BorrowerMessagesComponent} from "./borrower/borrower-messages/borrower-messages.component";
 import { DashboardMessageWindowComponent } from './dashboard/dashboard-message-window/dashboard-message-window.component';
 import { BorrowerMessageWindowComponent } from './borrower/borrower-message-window/borrower-message-window.component';
-
+import {NotificationComponent} from "./notification/notification.component";
+import { LenderMessagesComponent } from './lender/lender-messages/lender-messages.component';
+import { LenderMessageWindowComponent } from './lender/lender-message-window/lender-message-window.component';
 @NgModule({
-  declarations: [AppComponent, SignupComponent, NavbarComponent, LoginComponent,SidenavComponent, BorrowerComponent, BorrowerDetailsComponent,DashboardComponent, BorrowerDashboardComponent, DashboardHomeComponent, DashboardChatComponent, DashboardProfileComponent, DashboardTransactionComponent,LenderDetailsComponent, BorrowerTransactionComponent, DashboardLoansComponent, BorrowerLoansComponent, LoanDialogComponent,LoanDetailsComponent, DashboardMessagesComponent, BorrowerMessagesComponent, DashboardMessageWindowComponent, BorrowerMessageWindowComponent],
-  declarations: [AppComponent, SignupComponent, NavbarComponent, LoginComponent,SidenavComponent, BorrowerComponent, BorrowerDetailsComponent,DashboardComponent, BorrowerDashboardComponent, DashboardHomeComponent, DashboardChatComponent, DashboardProfileComponent, DashboardTransactionComponent,LenderDetailsComponent,LenderDetailsComponent, BorrowerTransactionComponent, DashboardLoansComponent, BorrowerLoansComponent, LoanDialogComponent, LoanDetailsComponent, NotificationComponent],
+  declarations: [AppComponent, SignupComponent, NavbarComponent, LoginComponent,SidenavComponent, BorrowerComponent, BorrowerDetailsComponent,DashboardComponent, BorrowerDashboardComponent, DashboardHomeComponent, DashboardChatComponent, DashboardProfileComponent, DashboardTransactionComponent,LenderDetailsComponent, BorrowerTransactionComponent, DashboardLoansComponent, BorrowerLoansComponent, LoanDialogComponent,LoanDetailsComponent, DashboardMessagesComponent, BorrowerMessagesComponent, DashboardMessageWindowComponent, BorrowerMessageWindowComponent,NotificationComponent, LenderMessagesComponent, LenderMessageWindowComponent],
     imports: [
         BrowserModule,
         AppRoutingModule,

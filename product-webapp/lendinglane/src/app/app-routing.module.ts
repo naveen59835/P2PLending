@@ -28,8 +28,8 @@ const routes: Routes = [
       {path:'transactions',component:DashboardTransactionComponent},
       {path:'loan',component:DashboardLoansComponent},
       {path:'loan/:id',component:LoanDetailsComponent},
-      {path:"messages",component:DashboardMessagesComponent},
-      {path:"messages/:id",component:DashboardMessageWindowComponent}
+      {path:"chat",component:DashboardMessagesComponent},
+      {path:"chat/:id",component:DashboardMessageWindowComponent}
     ]
   }
 

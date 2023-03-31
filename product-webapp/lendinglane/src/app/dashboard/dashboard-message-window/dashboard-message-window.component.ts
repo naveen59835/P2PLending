@@ -7,7 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardMessageWindowComponent implements OnInit {
 
-  constructor() { }
+    role = localStorage.getItem("role");
+    constructor() { }
 
   ngOnInit(): void {
   }

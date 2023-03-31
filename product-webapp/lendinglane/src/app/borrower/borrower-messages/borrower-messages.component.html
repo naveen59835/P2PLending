@@ -1,1 +1,12 @@
-<p>borrower-messages works!</p>
+<div class="active-message">
+  <h1>Active Message</h1>
+  <div class="active-message-container">
+    <div *ngFor="let message of messages">
+      <p class="receiver-email">{{message.lenderId}}</p>
+      <p class ="chat-subject">Subject : Loan Approval Request</p>
+      <p class="chat-resume" [routerLink]="message.id"><mat-icon>play_arrow</mat-icon> Resume chat</p>    <!--      replace jon with recipient email-->
+    </div>
+  </div>
+</div>
+
+<!--repeat same for finished chats-->
