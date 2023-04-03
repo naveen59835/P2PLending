@@ -1,16 +1,18 @@
 <div class="loan-container">
   <h1>Ongoing loans</h1>
-  <div class="loans">
-    <div class="loan" *ngFor="let loan of loans let number=index">
+  <div class="loans" *ngIf="ongoingLoans.length>0">
+    <div class="loan" *ngFor="let loan of ongoingLoans let number=index">
       <h2>#Loan {{number+1}}</h2>
-      <h3>Amount : 500000</h3>
-      <h3>Paid : 120000</h3>
+      <h3>Amount : {{loan.amount}}</h3>
+      <h3>Paid : {{totalPaid(loan.emi)}}</h3>
     </div>
   </div>
+  <p *ngIf="ongoingLoans.length==0">No ongoing loans found</p>
+
 </div>
 <div class="loan-container">
   <h1>Finished loans</h1>
-  <table mat-table [dataSource]="loans">
+  <table mat-table [dataSource]="finishedLoans" [hidden]="finishedLoans.length==0">
     <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef> # </th>
       <td mat-cell *matCellDef="let element"> {{element.id}} </td>
@@ -28,7 +30,7 @@
 
     <ng-container matColumnDef="disbursedOn">
       <th mat-header-cell *matHeaderCellDef> Disbursed On </th>
-      <td mat-cell *matCellDef="let element"> {{element.disbursedOn | date: 'dd/MM/yyyy'}} </td>
+      <td mat-cell *matCellDef="let element"> {{element.dateOfLoan | date: 'dd/MM/yyyy'}} </td>
     </ng-container>
 
     <ng-container matColumnDef="repaidOn">
@@ -39,5 +41,5 @@
     <tr mat-header-row *matHeaderRowDef="['id', 'lender', 'amount', 'disbursedOn', 'repaidOn']"></tr>
     <tr mat-row *matRowDef="let row; columns: ['id', 'lender', 'amount', 'disbursedOn', 'repaidOn']"></tr>
   </table>
-
+  <p *ngIf="finishedLoans.length==0">No finished loans found</p>
 </div>

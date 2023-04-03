@@ -33,7 +33,10 @@ public class LoanController {
     }
     @PostMapping("/create")
     public ResponseEntity<?> createLoan(@RequestBody Loan loan){
-        loanService.applyLoan(loan);
-        return new ResponseEntity<>(HttpStatus.OK);
+        try{
+            return new ResponseEntity<>(loanService.applyLoan(loan),HttpStatus.CREATED);
+        }catch (Exception exception){
+            return new ResponseEntity<>(exception.getMessage(),HttpStatus.BAD_REQUEST);
+        }
     }
 }

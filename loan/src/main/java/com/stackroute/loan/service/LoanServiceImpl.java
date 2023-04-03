@@ -2,6 +2,7 @@ package com.stackroute.loan.service;
 
 import com.stackroute.loan.model.EMI;
 import com.stackroute.loan.model.Loan;
+import com.stackroute.loan.proxy.BorrowerProxy;
 import com.stackroute.loan.repository.LoanRepository;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -21,6 +22,8 @@ public class LoanServiceImpl {
     LoanRepository loanRepository;
     @Autowired
     RabbitTemplate template;
+    @Autowired
+    BorrowerProxy borrowerProxy;
     public final Map<Integer,Double> loanRate=new HashMap<>();
     public LoanServiceImpl(){
         loanRate.put(3,16d);
@@ -28,13 +31,14 @@ public class LoanServiceImpl {
         loanRate.put(12,19d);
         loanRate.put(24,20d);
     }
-    public void applyLoan(Loan loan){
+    public Loan applyLoan(Loan loan){
         loan.setInterestRate(loanRate.get(loan.getTerms()));
         loan.setDateOfLoan(LocalDate.now());
-        loanRepository.save(loan);
-        //send the data to the recommendation service
-        //Send the data to the notification service
-        template.convertAndSend("loan-notification-exchange","route-key",loan.getBorrowerId());
+        if(hasDocuments(loan.getBorrowerId())) {
+            template.convertAndSend("loan-notification-exchange","route-key",loan.getBorrowerId());
+            return loanRepository.save(loan);
+        }
+        else throw new RuntimeException("Please complete the borrower profile");
     }
 
     //This method is used with rabbit listener
@@ -90,6 +94,16 @@ public class LoanServiceImpl {
             }
             loanRepository.save(loan);
         }
+    }
+
+    public boolean hasDocuments(String id){
+        Map<Object,Object> borrowerData = borrowerProxy.getBorrowerData(id);
+        for (Object dataKey : borrowerData.keySet()) {
+            if(borrowerData.get(dataKey)==null || borrowerData.get(dataKey).equals("")){
+                return false;
+            }
+        }
+        return true;
     }
 
 }

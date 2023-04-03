@@ -4,6 +4,7 @@ import * as http from "http";
 import {LoanService} from "../../../service/loan.service";
 import {FormBuilder, Validators} from "@angular/forms";
 import {MatDialogRef} from "@angular/material/dialog";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-loan-dialog',
@@ -12,7 +13,7 @@ import {MatDialogRef} from "@angular/material/dialog";
 })
 export class LoanDialogComponent {
   @Output()dialogClose!:EventEmitter<any>;
-  constructor(private  loanService : LoanService, private fb : FormBuilder, private dialog : MatDialogRef<LoanDialogComponent>) { }
+  constructor(private  loanService : LoanService, private fb : FormBuilder, private dialog : MatDialogRef<LoanDialogComponent>, private snackBar : MatSnackBar) { }
   loanForm = this.fb.group({
     amount : this.fb.control("",[Validators.required,Validators.minLength(4),Validators.pattern(/^[0-9]+$/)]),
     terms : this.fb.control("",[Validators.required]),
@@ -24,8 +25,14 @@ export class LoanDialogComponent {
       let amount = this.loanForm.get("amount")?.value;
       let terms = this.loanForm.get("terms")?.value;
       this.loanService.applyLoan({"amount":amount,"terms":terms}).subscribe({
-        next : (data) => this.dialog.close(),
-        error :(err) => console.log(err)
+        next : (data) => {
+          this.dialog.close()
+          this.snackBar.open("Loan Added Successfully","Success",{duration:3000})
+        },
+        error :(err) => {
+          this.dialog.close();
+          this.snackBar.open(err.error,"Failure",{duration:3000})
+        }
       })
 
     }

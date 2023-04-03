@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {MatTableDataSource} from "@angular/material/table";
+import {LoanService} from "../../service/loan.service";
 
 @Component({
   selector: 'app-borrower-dashboard',
@@ -7,14 +8,28 @@ import {MatTableDataSource} from "@angular/material/table";
   styleUrls: ['./borrower-dashboard.component.css']
 })
 export class BorrowerDashboardComponent implements OnInit {
-  loans:any=[
-    { id: 1, lender: 'ABC Bank', amount: 10000, disbursedOn: new Date(2022, 0, 1), repaidOn: new Date(2022, 6, 1) },
-    { id: 2, lender: 'XYZ Bank', amount: 15000, disbursedOn: new Date(2022, 1, 1), repaidOn: new Date(2022, 8, 1) },
-  ];
-  constructor() { }
+  loans:Array<any>=[];
+  constructor(private loanService : LoanService) { }
 
   ngOnInit(): void {
-    //call the loan microservice and assign the data to loans variable
+    let id = localStorage.getItem("email") || "";
+    let role = localStorage.getItem("role") || "";
+    this.loanService.getAllLoans(id,role).subscribe({
+      next : (data:any)=> this.loans = data
+    })
+  }
+  totalPaid(emi : Array<any>){
+    if(emi.length>0)
+    return emi.reduce((acc,current)=>acc+current.price,0)
+    else return  0
+  }
+
+  get ongoingLoans(){
+    return this.loans.filter(loan=>loan.approved && !loan.finished)
+  }
+
+  get finishedLoans(){
+    return this.loans.filter(loan=>loan.approved && loan.finished);
   }
 
 }
