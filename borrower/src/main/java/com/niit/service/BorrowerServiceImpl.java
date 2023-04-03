@@ -38,6 +38,7 @@ public class BorrowerServiceImpl implements BorrowerService {
             jsonObject.put("role","borrower");
             borrowerDTO.setJsonObject(jsonObject);
             template.convertAndSend("auth-exchange","route-key", borrowerDTO.getJsonObject());
+            template.convertAndSend("register-notification-exchange","notification-route-key",borrower.getEmailId());
             return borrowerRepo.save(borrower);
         } catch (Exception exception) {
             throw new RuntimeException(exception.getMessage());

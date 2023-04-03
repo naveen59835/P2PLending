@@ -13,9 +13,16 @@ public class RabbitMQConfiguration {
     public Queue queue(){
         return new Queue("auth");
     }
+
+    @Bean
+    public Queue notificationQueue(){return new Queue("register-notification");}
     @Bean
     public Exchange exchange(){
         return new DirectExchange("auth-exchange");
+    }
+    @Bean
+    public Exchange notificationExchange(){
+        return new DirectExchange("register-notification-exchange");
     }
     @Bean
     public Jackson2JsonMessageConverter converter(){
@@ -31,5 +38,10 @@ public class RabbitMQConfiguration {
     public Binding bindingExchangeAndQueue(Queue queue, Exchange exchange)
     {
         return BindingBuilder.bind(queue).to(exchange).with("route-key").noargs();
+    }
+    @Bean
+    public Binding notificationBindingExchangeAndQueue(Queue notificationQueue, Exchange notificationExchange)
+    {
+        return BindingBuilder.bind(notificationQueue).to(notificationExchange).with("notification-route-key").noargs();
     }
 }
