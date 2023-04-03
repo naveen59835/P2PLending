@@ -11,7 +11,6 @@ import com.niit.model.Borrower;
 import com.niit.repo.BorrowerRepo;
 import com.niit.service.BorrowerService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -19,8 +18,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.Map;
 
 @RestController
 @CrossOrigin
@@ -113,4 +110,11 @@ public class BorrowerController {
         return null;
 
     }
+
+
+
+
+
+
+
 }

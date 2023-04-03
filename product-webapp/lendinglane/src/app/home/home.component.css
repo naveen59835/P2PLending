@@ -1,0 +1,525 @@
+.contain{
+  width: 1540px;
+  border: 1px solid CDC4E8;
+  height: 400px;
+  background-color: CDC4E8;
+  position: relative;
+
+}
+
+.take{
+  font-weight: light;
+  font-size: 24px;
+  font-display: inherit;
+
+}
+.earn{
+  padding-top: 25px;
+  text-decoration: underline;
+  font-weight: bold;
+
+}
+.contents{
+  position: relative;
+  left: 180px;
+  top: 50px;
+}
+.my-button {
+  background-color: 6D5BDD;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  padding-left: 40px;
+  padding-right: 40px;
+  border-radius: 5px;
+  position: relative;
+  top: 10px;
+  left: -5px;
+  width: 215px;
+
+
+}
+.image{
+  position: relative;
+  bottom: 225px;
+  left: 800px;
+  width: 200px;
+  height: 100px;
+}
+.weoffer{
+  width: 706px;
+  height: 36px;
+  font-size: 23px;
+  position: relative;
+  top: 20px;
+  left: 460px;
+}
+.textbox1{
+  border: 1px solid F1F1F1;
+  background-color: F1F1F1;
+  margin-left: 200px;
+  margin-right: 1100px;
+  padding: 20px;
+  border-radius: 5px;
+
+
+}
+.apply-loan-container-scrollable {
+  height: 700px;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+}
+.phead{
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.textbox2{
+  border: 1px solid F1F1F1;
+  background-color: F1F1F1;
+  margin-left:180px;
+  margin-right: 1100px;
+  padding:20px;
+  border-radius: 5px;
+  position: relative;
+  left: 400px;
+  bottom: 185px;
+}
+.textbox3{
+  border: 1px solid F1F1F1;
+  background-color: F1F1F1;
+  margin-left: 181px;
+  margin-right: 1100px;
+  padding: 25px;
+  border-radius: 5px;
+  position: relative;
+  left: 800px;
+  bottom: 365px;
+}
+.textbox{
+  position: relative;
+  left: 30px;
+  top: 70px;
+}
+
+.one,.two{
+  position: relative;
+  bottom: -60px;
+  left: 250px;
+}
+.three,.four{
+  position: relative;
+  bottom: -0px;
+  left: 640px;
+}
+.five,.six{
+  position: relative;
+  bottom:70px;
+  left: 1020px;
+}
+.one{
+  position: relative;
+  left: 300px;
+  letter-spacing: 1px;
+  font-size: 40px;
+  font-weight: bolder;
+}
+.two{
+  position: relative;
+  top: 60px;
+  font-weight: lighter;
+  color: grey;
+  font-weight: bolder;
+}
+.three{
+  position: relative;
+  left: 660px;
+  letter-spacing: 1px;
+  font-size: 35px;
+  font-weight: bolder;
+
+}
+.four{
+  position: relative;
+  top: -0px;
+  font-weight: lighter;
+  color: grey;
+  font-weight: bolder;
+}
+.five{
+  position: relative;
+  left: 1060px;
+  top:-70px;
+  letter-spacing: 1px;
+  font-size: 35px;
+  font-weight: bolder;
+
+}
+.six{
+  position: relative;
+  bottom: 70px;
+  font-weight: lighter;
+  color: grey;
+  font-weight: bolder;
+
+}
+.active{
+  background-color: DBDBDB;
+  position: relative;
+  bottom: 168px;
+}
+.core{
+  position: relative;
+  bottom: 130px;
+  letter-spacing: 1px;
+  left: 500px;
+  font-size: 40px;
+  font-weight: lighter;
+
+}
+.samplebox1{
+  border: 1px solid A377EB;
+  background-color: A377EB ;
+  margin-left: 190px;
+  margin-right: 1100px;
+  padding: 20px;
+  border-radius: 5px;
+  position: relative;
+  left: 50px;
+  bottom: 100px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+
+}
+.samplebox2{
+  border: 1px solid 8CBDEB;
+  background-color: 8CBDEB;
+  margin-left: 200px;
+  margin-right: 1100px;
+  padding: 24px;
+  border-radius: 5px;
+  position: relative;
+  left:330px;
+  bottom: 290px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+
+}
+.samplebox3{
+  border: 1px solid F8B0B0;
+  background-color: F8B0B0;
+  margin-left: 170px;
+  margin-right: 1100px;
+  padding: 20px;
+  border-radius: 5px;
+  position: relative;
+  left:650px;
+  bottom: 480px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+
+}
+.samplebox4{
+  border: 1px solid 9EE1A4;
+  background-color: 9EE1A4;
+  margin-left: 190px;
+  margin-right: 1100px;
+  padding: 20px;
+  border-radius: 5px;
+  position: relative;
+  left:950px;
+  bottom: 665px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+
+}
+.pehead{
+  letter-spacing: 1px;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.applytoloan{
+  background-color: 2B2929;
+  padding:-100px;
+  position: relative;
+  bottom: 520px;
+
+}
+.steps{
+  font-size: 30px;
+  color: D9D9D9;
+  position: relative;
+  bottom: -50px;
+  left: 150px;
+  font-weight: lighter;
+}
+.numberone,.numbertwo,.numberthree,.numberfour{
+  color: FFFFFF;
+
+}
+.numberone{
+  position: relative;
+  top: 130px;
+  left: 140px;
+
+
+}
+.numbertwo{
+  position: relative;
+  left: 450px;
+  top: 25px;
+}
+.numberthree{
+  position: relative;
+  bottom: 80px;
+  left: 770px;
+}
+.numberfour{
+  position: relative;
+  bottom: 180px;
+  left: 1080px;
+}
+.numbers{
+  font-size: 75px;
+}
+.datas{
+
+  font-size: 15px;
+  color: D9D9D9;
+  position: relative;
+  left: 20px;
+  top: 20px;
+}
+
+
+
+
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 60px 0;
+  font-size: 1.4rem;
+}
+
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.footer-section {
+  flex-basis: 25%;
+  padding: 20px;
+}
+
+.links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.links li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.about h1.logo {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.socials a {
+
+  position: relative;
+  top: 50px;
+  padding: 10px;
+  margin-right: 10px;
+  border-radius: 50%;
+}
+
+.contact-form .text-input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: none;
+}
+
+.contact-form textarea {
+  height: 100px;
+  resize: none;
+}
+
+.contact-form .btn {
+  display: inline-block;
+  background-color: #fff;
+  color: #333;
+  padding: 10px 30px;
+  margin-top: 10px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+.btn-big {
+  padding: 16px 40px;
+}
+
+.btn:hover {
+  background-color: #555;
+
+}
+
+.footer-bottom {
+  background-color: #111;
+  color: #fff;
+  padding: 10px 0;
+  font-size: 1rem;
+  text-align: center;
+}
+
+/* Icons */
+.fas,
+.fab {
+  display: inline-block;
+  font-size: 1.5rem;
+  margin-right: 5px;
+}
+
+.fab.fa-facebook {
+  color: #3b5998;
+}
+
+.fab.fa-twitter {
+  color: #1da1f2;
+}
+
+.fab.fa-instagram {
+  color: #e1306c;
+}
+
+.fab.fa-linkedin {
+  color: #0077b5;
+}
+footer{
+  position: relative;
+  bottom: 400px;
+    width: 100%;
+}
+li{
+  padding:10px;
+}
+.topic
+{
+  font-size: 40px;
+  text-decoration: underline;
+}
+.quick{
+  text-decoration: underline;
+}
+.logo {
+  width: 50px;
+  height: 50px;
+  position: relative;
+  left: 100px;
+
+}
+.weare{
+  font-size:14px ;
+  text-align: center;
+  padding: 5px;
+
+}
+
+
+
+
+
+
+
+
+.contact-form {
+  position: relative;
+  bottom: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  margin: 50px auto;
+  max-width: 500px;
+  padding: 20px;
+  text-align: center;
+}
+
+.contact-form h2 {
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  text-align: left;
+}
+
+.form-control {
+  border-radius: 5px;
+  border: 1px solid #ced4da;
+  box-shadow: none;
+  font-size: 14px;
+  padding: 10px;
+  width: 100%;
+}
+
+.form-control:focus {
+  border-color: #007bff;
+  box-shadow: none;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 10px 20px;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #0069d9;
+  border-color: #0062cc;
+  cursor: pointer;
+}
+
+.btn-primary:focus, .btn-primary.focus {
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+}
+
+.btn-primary:active, .btn-primary.active,
+.show > .btn-primary.dropdown-toggle {
+  background-color: #0062cc;
+  border-color: #005cbf;
+}
+
+.btn-primary:disabled, .btn-primary.disabled {
+  background-color: #007bff;
+  border-color: #007bff;
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+.contact{
+  color: black;
+}

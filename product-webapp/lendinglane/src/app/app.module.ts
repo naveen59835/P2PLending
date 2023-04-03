@@ -49,8 +49,9 @@ import { BorrowerMessageWindowComponent } from './borrower/borrower-message-wind
 import {NotificationComponent} from "./notification/notification.component";
 import { LenderMessagesComponent } from './lender/lender-messages/lender-messages.component';
 import { LenderMessageWindowComponent } from './lender/lender-message-window/lender-message-window.component';
+import {HomeComponent} from "./home/home.component";
 @NgModule({
-  declarations: [AppComponent, SignupComponent, NavbarComponent, LoginComponent,SidenavComponent, BorrowerComponent, BorrowerDetailsComponent,DashboardComponent, BorrowerDashboardComponent, DashboardHomeComponent, DashboardChatComponent, DashboardProfileComponent, DashboardTransactionComponent,LenderDetailsComponent, BorrowerTransactionComponent, DashboardLoansComponent, BorrowerLoansComponent, LoanDialogComponent,LoanDetailsComponent, DashboardMessagesComponent, BorrowerMessagesComponent, DashboardMessageWindowComponent, BorrowerMessageWindowComponent,NotificationComponent, LenderMessagesComponent, LenderMessageWindowComponent],
+  declarations: [AppComponent, SignupComponent, NavbarComponent, LoginComponent,SidenavComponent, BorrowerComponent, BorrowerDetailsComponent,DashboardComponent, BorrowerDashboardComponent, DashboardHomeComponent, DashboardChatComponent, DashboardProfileComponent, DashboardTransactionComponent,LenderDetailsComponent, BorrowerTransactionComponent, DashboardLoansComponent, BorrowerLoansComponent, LoanDialogComponent,LoanDetailsComponent, DashboardMessagesComponent, BorrowerMessagesComponent, DashboardMessageWindowComponent, BorrowerMessageWindowComponent,NotificationComponent, LenderMessagesComponent, LenderMessageWindowComponent,HomeComponent],
     imports: [
         BrowserModule,
         AppRoutingModule,

@@ -31,8 +31,16 @@
         <module>borrower</module>
         <module>lender</module>
         <module>loan</module>
-        <module>chat</module>
+        <module>contactus</module>
+        <module>review</module>
+        <module>payment</module>
+        <module>recommendation</module>
         <module>notifications</module>
+        <module>payment</module>
+        <module>contactus</module>
+        <module>chat</module>
+        <module>recommendation</module>
+
     </modules>
 
     <dependencies>

@@ -13,5 +13,7 @@ public interface BorrowerService {
     public boolean deleteBorrower(String emailId);
     public Borrower saveBorrowerImage(byte[] borrowerImage, String emailId, String imageName);
 
+
+
 }
 

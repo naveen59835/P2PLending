@@ -12,11 +12,13 @@ import {LoanDetailsComponent} from "./borrower/borrower-loans/loan-details/loan-
 import { DashboardAuthGuardGuard } from './guards/dashboard-auth-guard.guard';
 import {DashboardMessagesComponent} from "./dashboard/dashboard-messages/dashboard-messages.component";
 import {DashboardMessageWindowComponent} from "./dashboard/dashboard-message-window/dashboard-message-window.component";
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
   {path:'', pathMatch:"full",redirectTo:'signup'},
   {path:'signup',component:SignupComponent,canActivate: [AuthGuardGuard]},
   {path:'login',component:LoginComponent,canActivate: [AuthGuardGuard]},
+  {path:'home',component:HomeComponent},
   {
     path:'dashboard',
     component : DashboardComponent,
