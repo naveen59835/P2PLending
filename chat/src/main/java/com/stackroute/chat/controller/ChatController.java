@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Map;
 
 @RestController
-@CrossOrigin
 @RequestMapping("/api/v1/chat")
 public class ChatController {
     @Autowired

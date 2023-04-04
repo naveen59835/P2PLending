@@ -17,25 +17,15 @@ public class PaymentServiceImpl implements PaymentService{
 
     @Override
     public String createOrderForPayment(Map<String, Object> data)throws Exception {
-
-
-
         int amount = Integer.parseInt(data.get("amount").toString());
         String fromAccount=  data.get("from").toString();
-        System.out.println(fromAccount);
-        System.out.println(amount);
-
         return "done";
-
     }
-
 
     public Payment updateOrder(double amount,String from,String to,String Id,String status)
     {
         Payment payment=new Payment();
-
-
-        if(status=="success") {
+        if(status.equals("success")) {
             payment.setAmount(amount);
             payment.setId(Id);
             payment.setToAccount(to);
@@ -44,7 +34,7 @@ public class PaymentServiceImpl implements PaymentService{
             payment.setPaymentDate(new Date());
 
         }
-        else if (status=="fail"){
+        else if (status.equals("fail")){
             payment.setAmount(amount);
             payment.setId(Id);
             payment.setToAccount(to);

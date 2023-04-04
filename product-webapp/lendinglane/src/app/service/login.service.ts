@@ -9,7 +9,7 @@ export class LoginService {
 
   constructor(private http : HttpClient,private router:Router) { }
   public login(loginData:any){
-    return this.http.post("http://localhost:8080/api/v1/authentication/login",loginData)
+    return this.http.post("http://localhost:9002/api/v1/authentication/login",loginData)
   }
 
   public isAuthenticated(): boolean {

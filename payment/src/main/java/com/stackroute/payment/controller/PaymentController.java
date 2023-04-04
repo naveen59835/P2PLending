@@ -17,7 +17,6 @@ import java.util.Map;
 import com.razorpay.*;
 
 @RestController
-@CrossOrigin(origins ="http://localhost:4200")
 @RequestMapping("/api/v1/payment")
 
 public class PaymentController {
@@ -33,15 +32,9 @@ public class PaymentController {
 
     @PostMapping("/createOrder")
     public String createOrder(@RequestBody Map<String, Object> data) throws Exception{
-
-
-
-
-
-
-    double amount=Double.parseDouble(data.get("amount").toString());
-      String toAccount=  data.get("to").toString();
-      String fromAccount=data.get("from").toString();
+        double amount=Double.parseDouble(data.get("amount").toString());
+        String toAccount=  data.get("to").toString();
+        String fromAccount=data.get("from").toString();
 
         var client = new RazorpayClient("rzp_test_J2dEVfdieEnRme", "nRmnRmsVfdieEnRmEn");
 
@@ -49,7 +42,6 @@ public class PaymentController {
         jsonObject.put("amount", amount * 100);
         jsonObject.put("currency", "INR");
         Order order = client.orders.create(jsonObject);
-
         return order.toString();
     }
 
@@ -67,31 +59,4 @@ public class PaymentController {
         return new ResponseEntity<>(paymentService.updateOrder(amount,fromAccount,toAccount,orderId,paymentStatus),HttpStatus.CREATED);
 
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

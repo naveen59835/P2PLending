@@ -11,10 +11,10 @@ export class ChatService {
   public getChats(){
     let email = localStorage.getItem("email");
     let role = localStorage.getItem("role")
-    return this.http.get(`http://localhost:8085/api/v1/chat/chats?email=${email}&role=${role}`)
+    return this.http.get(`http://localhost:9002/api/v1/chat/chats?email=${email}&role=${role}`)
   }
   public getMessages(id : any){
-    return this.http.get(`http://localhost:8085/api/v1/chat/chats/${id}`)
+    return this.http.get(`http://localhost:9002/api/v1/chat/chats/${id}`)
   }
 
   public getSortedChat(messages:Array<Message>){

@@ -134,7 +134,7 @@ extractFileAndUpload(file: File, name: string) {
   const formData = new FormData();
   formData.append(name, file);
 
-  this.http.put("http://localhost:8083/api/v1/borrower/borrowers/image/" + localStorage.getItem("email"), formData)
+  this.http.put("http://localhost:9002/api/v1/borrower/borrowers/image/" + localStorage.getItem("email"), formData)
     .subscribe({
       next: (data) => {
         console.log(data);

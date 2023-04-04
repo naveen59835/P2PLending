@@ -7,16 +7,16 @@ import { Lender } from '../model/lender';
 })
 export class LenderService {
 
-  
-  constructor(private httpClient:HttpClient) { 
-  
+
+  constructor(private httpClient:HttpClient) {
+
   }
 
 
-  url:string="http://localhost:8082/api/v1/lender/lenderMail"
-  urlupdate:string="http://localhost:8082/api/v1/lender/updateLender"
-  urlaadharImage:string="http://localhost:8082/api/v1/lender/lenderImage"
-  urlpanImage:string="http://localhost:8082/api/v1/lender/lenderPanImage"
+  url:string="http://localhost:9002/api/v1/lender/lenderMail"
+  urlupdate:string="http://localhost:9002/api/v1/lender/updateLender"
+  urlaadharImage:string="http://localhost:9002/api/v1/lender/lenderImage"
+  urlpanImage:string="http://localhost:9002/api/v1/lender/lenderPanImage"
 
 
   getLenderById(id:any)
@@ -45,7 +45,7 @@ updatePanImage(id:any,data:any)
   return this.httpClient.put<any>(`${this.urlpanImage}/${id}`,data)
 }
 
-  
 
- 
+
+
 }

@@ -11,7 +11,6 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/v1/loan")
-@CrossOrigin
 public class LoanController {
     @Autowired
     LoanServiceImpl loanService;

@@ -11,6 +11,8 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -71,15 +73,24 @@ public class LoanServiceImpl {
         List<Loan> loanList = loanRepository.findAll();
         LocalDate currentDate = LocalDate.now();
         for (Loan loan : loanList) {
-            LocalDate loanDate = loan.getDateOfLoan();
-            if(!loan.isExpired() && loanDate.isBefore(currentDate) && loanDate.getDayOfMonth() == currentDate.getDayOfMonth()){
+            LocalDate loanStartDate = loan.getDateOfLoan();
+            if(!loan.isExpired()){
+                int daysSinceLoan = (int)ChronoUnit.DAYS.between(loanStartDate,currentDate);
+                int termsToAdd = (daysSinceLoan/28) - loan.getEmi().size();
                 double basePrice = loan.getAmount()/loan.getTerms();
-                EMI emi = new EMI(loan.getEmi().size()+1,basePrice+(basePrice*loan.getInterestRate()*0.001),false);
-                loan.addToEMI(emi);
-                loanRepository.save(loan);
+                for (int term = 0; term < termsToAdd; term++) {
+                    EMI emi = new EMI(loan.getEmi().size()+1,basePrice+(basePrice*loan.getInterestRate()*0.001),false);
+                    loan.addToEMI(emi);
+                }
+                if(termsToAdd>0){
+                    loanRepository.save(loan);
+                }
             }
+            //Add late fee to EMIS
+
         }
     }
+
     //This method uses rabbitmq data from payment microservice
     public void payEMI(String loanId, int emiID, String paymentId){
         if(loanRepository.findById(loanId).isPresent()){
@@ -104,6 +115,9 @@ public class LoanServiceImpl {
             }
         }
         return true;
+    }
+    private void addLateFee(List<EMI> emiList, LocalDateTime loanStartDate){
+
     }
 
 }
