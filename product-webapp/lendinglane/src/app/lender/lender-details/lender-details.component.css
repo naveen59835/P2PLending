@@ -64,7 +64,6 @@ caret-color: red!important;
   left: 50%;
   transform: translate(-50%,-50%);
   text-align: center;
-
 }
 
 
@@ -101,7 +100,19 @@ caret-color: red!important;
 
 }
 
+.detail{
+text-decoration: none;
+border: 2px solid;
+padding: 7px;
+color: rgb(220, 228, 228);
+background-color: rgb(98, 14, 176);
+border-radius: 7px;
+}
 
+a:hover{
+border-color:  rgb(39, 221, 22);
+
+}
 
 input::file-selector-button {
   font-weight: bold;
@@ -111,6 +122,3 @@ input::file-selector-button {
   border: thin solid grey;
   border-radius: 3px;
 }
-
-
-

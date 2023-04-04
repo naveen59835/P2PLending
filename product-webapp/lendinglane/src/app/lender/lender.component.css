@@ -17,16 +17,14 @@
   
   
   .div{
-    /* position: relative; */
+
     
     width: 30%;border: 1px solid rgb(113, 113, 113);
     padding: 7px;
   }
   
   .div span{
-    /* position: absolute;
-    left: 47px;
-    top: 5px; */
+   
     float: left;
 
    
@@ -36,13 +34,11 @@
   
   
   .containdiv{
-    /* position: relative; */
+ 
     width: 10%;border: 1px solid rgb(113, 113, 113);padding: 7px;
   }
   .containdiv span{
-    /* position: absolute;
-    left: 13px;
-    top: 5px; */
+   
     float: left;
   
   }
@@ -89,145 +85,17 @@
   
   
 
-  .grid-container {
-    display: grid;
  
-    grid-template-columns: 30% 30% 10% 10% 10% 10%;
-    background-color: #ffffff;
-
-    
-  }
-  .grid-item {
-
-    background-color: rgba(255, 255, 255, 0.8);
-    border: 1px solid rgba(0, 0, 0, 0.8);
-   text-align: center;
-   padding: 7px;
- 
-  }
 
   .inp{
     width: 50%;
     border: none;
-    /* background-color: rgb(255, 255, 255); */
     background-color: rgb(255, 255, 255);
   }
 
 
 
-  /* table{  
-    border: 1px solid #ddd;
- text-align: left;
-  } */
-  
-  table {
-    display: grid;
-    grid-template-columns: 30% 30% 10% 10% 10% 10%;
-    border-collapse: collapse;
-    width: 100%;
-    border: 1px solid #ddd;
-    text-align: left;
-  }
-  
- td {
-    padding: 13px;
-
-  }
+ 
  
 
  
-  @media only screen and (max-width: 600px) {
-
-    .card{
-    
-      display: flex;text-align: center;
-    
-        
-      }
-      
-      input {
-      width: 99px;
-        border: none;
-        background-color: rgb(255, 255, 255);
-       
-      
-      
-        }
-      
-      
-      
-      
-      .div{
-        /* position: relative; */
-        
-        width: 30%;border: 1px solid rgb(113, 113, 113);
-   
-        font-size: 9px;
-      }
-      
-      .div span{
-        /* position: absolute;
-        left: 47px;
-        top: 5px; */
-        float: left;
-    
-       
-      }
-      
-      
-      
-      
-      .containdiv{
-        /* position: relative; */
-        width: 10%;border: 1px solid rgb(113, 113, 113);padding: 7px;
-      }
-      .containdiv span{
-        /* position: absolute;
-        left: 13px;
-        top: 5px; */
-        float: left;
-      
-      }
-      
-      .container{
-        width: 10%;border: 1px solid rgb(113, 113, 113);padding: 7px;
-      }
-      
-      
-      .contain
-      {
-        width: 10%;border: 1px solid rgb(113, 113, 113);padding: 7px;
-      }
-      
-      
-      .logochat{
-        padding: 1px 1px;
-        background-color: #dce9c4;
-      
-        color: rgb(114, 112, 119);
-        
-        border-radius: 50%;
-      
-      }
-      
-        
-       .btn{
-       width: 10%;
-       
-      
-       }
-      
-      
-       .logo{
-        padding: 2px 2px;
-        background-color: #f0edff;
-       
-        color: rgb(55, 53, 57);
-        
-        border-radius: 50%;
-       
-      }
-      
-
-  }
-

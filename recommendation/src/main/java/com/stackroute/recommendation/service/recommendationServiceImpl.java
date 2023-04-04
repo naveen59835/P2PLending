@@ -17,8 +17,8 @@ public class recommendationServiceImpl implements recommendationService{
 
     @Override
     public String SavePerson(RequestModel requestModel) {
-        int lower = (requestModel.getCibilScore()/ 100) * 100 + 1;  // Calculate lower bound
-        int upper = lower + 99;
+        int lower = (requestModel.getCibilScore()/ 100) * 100 ;
+        int upper = lower + 100;
         String cibilscore=lower+"-"+upper;
         CibilScore cibilScore1=new CibilScore();
         cibilScore1.setScore(cibilscore);
@@ -50,4 +50,3 @@ public class recommendationServiceImpl implements recommendationService{
 
 
 
-  //  MATCH(c:cibil {score:'601-700'})<-[:APPLIED]-(b:Borrower) return b

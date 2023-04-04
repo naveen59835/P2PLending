@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
+
 @RestController
 @CrossOrigin
 @RequestMapping("/api/v1/review")
@@ -20,7 +22,7 @@ public class ReviewController {
 
     @PostMapping("/add/{borrowerId}")
     public ResponseEntity<?>addReview(@RequestBody ReviewRating reviewRating, @PathVariable String borrowerId) throws  ReviewAlreadyExistsException {
-        return new ResponseEntity<>(reviewService.addReview(borrowerId,reviewRating), HttpStatus.CREATED);
+        return new ResponseEntity<>(Map.of("review",reviewService.addReview(borrowerId,reviewRating)), HttpStatus.CREATED);
     }
 
 

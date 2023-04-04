@@ -1,8 +1,4 @@
-/*
- * Author : Naveen Kumar
- * Date : 31-03-2023
- * Created With : IntelliJ IDEA Community Edition
- */
+
 
 package com.example.review.model;
 

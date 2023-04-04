@@ -1,21 +1,12 @@
 
 
 
-
-  * {
-      padding: 0;
-      margin: 0;
-      box-sizing: border-box;
-  }
-  
   
   
   .card {
     margin: auto;
       padding: 15px;
-      /* max-height: max-content; */
-     
-      width: 100%;
+     width: 100%;
       background: #f1f0f6;
       border-radius: 5px;
       text-align: center;
@@ -47,6 +38,17 @@
    
       padding: 5px;
   }
+
+
+
+
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
 
 .profile mat-icon{
 position: absolute;
@@ -112,11 +114,7 @@ font-size: 20px;
   }
 
 
-  /* .btn:last-of-type {
-      background: transparent;
-      border-color: #7ce3ff;
-      color: #7ce3ff;
-  } */
+
   
   .btn:hover {
       background: #7ce3ff;
