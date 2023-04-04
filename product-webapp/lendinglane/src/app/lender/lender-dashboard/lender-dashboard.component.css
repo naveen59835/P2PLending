@@ -1,0 +1,78 @@
+.card{
+   
+
+
+    height: max-content;
+  background-color: white;
+  padding: 30px;
+  border-radius: 22px;
+  margin-bottom: 70px;
+
+  
+  
+}
+
+
+
+  
+ .btn{
+ width: 10%;
+ 
+
+ }
+
+
+
+ .topnav  {
+width: 100%;
+display: flex;
+text-align: center;
+
+background-color: rgb(68, 82, 174);
+
+} 
+
+.topnav p{
+  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(215, 240, 240);
+  padding: 7px;
+}
+
+table, th, td {
+  border: 1px solid rgb(179, 117, 117);
+  border-collapse: collapse;
+}
+
+
+
+
+.loan-container{
+  height: max-content;
+  background-color: white;
+  padding: 30px;
+  border-radius: 22px;
+  margin-bottom: 30px;
+  margin-top: 30px;
+}
+.loan-container>h1{
+  font-weight: 500;
+}
+.loans{
+  display: flex;
+  gap: 20px;
+}
+.loan{
+  border: 1px solid;
+  border-radius: 6px;
+  padding: 10px 30px;
+}
+.loan>h3{
+  font-weight: 500;
+  letter-spacing: 0.75px;
+}
+
+
+
+
+
+

@@ -1,62 +1,42 @@
-/*
- * Author : Naveen Kumar
- * Date : 31-03-2023
- * Created With : IntelliJ IDEA Community Edition
- */
-
 package com.example.review.controller;
 
+
 import com.example.review.exception.ReviewAlreadyExistsException;
-import com.example.review.model.Review;
-import com.example.review.model.ReviewAndRating;
+import com.example.review.model.ReviewRating;
 import com.example.review.service.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
-@RequestMapping("/api/reviews")
+@CrossOrigin
+@RequestMapping("/api/v1/review")
 public class ReviewController {
+
     @Autowired
     ReviewService reviewService;
 
-    public ReviewController(ReviewService reviewService) {
-        this.reviewService = reviewService;
-    }
 
-    @GetMapping("/{borrowerEmailId}")
-    public List<Review> getReviewsForBorrower(@PathVariable String borrowerEmailId) {
-        return reviewService.getReviewsForBorrower(borrowerEmailId);
-    }
-
-    @PostMapping("/add")
-    public ResponseEntity<Object> addReview(@RequestBody Review review) {
-        try {
-            String lenderEmailId = review.getReviewsAndRatings().get(0).getLenderEmailId();
-            String borrowerEmailId = review.getBorrowerEmailId();
-            List<Review> reviews = reviewService.getReviewsForBorrower(borrowerEmailId);
-            for (Review r : reviews) {
-                for (ReviewAndRating rr : r.getReviewsAndRatings()) {
-                    if (rr.getLenderEmailId().equals(lenderEmailId)) {
-                        throw new ReviewAlreadyExistsException("Lender has already given a review for this borrower.");
-                    }
-                }
-            }
-            Review addedReview = reviewService.addReview(review);
-            return ResponseEntity.status(HttpStatus.CREATED).body(addedReview);
-        } catch (ReviewAlreadyExistsException e) {
-            return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
-        }
+    @PostMapping("/add/{borrowerId}")
+    public ResponseEntity<?>addReview(@RequestBody ReviewRating reviewRating, @PathVariable String borrowerId) throws  ReviewAlreadyExistsException {
+        return new ResponseEntity<>(reviewService.addReview(borrowerId,reviewRating), HttpStatus.CREATED);
     }
 
 
+    @GetMapping("/get/{borrowerId}")
+    public ResponseEntity<?>getReviewAndRating(@PathVariable String borrowerId)
+    {
+        return new ResponseEntity<>(reviewService.getAllRatingAndReview(borrowerId),HttpStatus.OK);
+    }
 
+    @GetMapping("/getAverage/{id}")
+    public ResponseEntity<?>getAverageRating(@PathVariable String id)
+    {
+        return new ResponseEntity<>(reviewService.averageRating(id),HttpStatus.OK);
 
-
-
+    }
 }
+
+
+

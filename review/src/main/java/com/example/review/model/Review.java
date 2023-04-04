@@ -10,6 +10,7 @@ import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Document
@@ -21,7 +22,6 @@ import java.util.List;
 public class Review {
 
     @Id
-    private String id;
-    private String borrowerEmailId;
-    private List<ReviewAndRating> reviewsAndRatings;
+    private String borrowerId;
+    private List<ReviewRating> reviewRatingList=new ArrayList<>();
 }
