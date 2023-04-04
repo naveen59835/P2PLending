@@ -19,6 +19,7 @@ export class LenderDetailsComponent implements OnInit {
  value:any;
 
 
+
   lender:any={
     address: {
       address: undefined,
@@ -136,7 +137,7 @@ valuee:any
     
     data.append("aadhaar",$event.target.files[0])
     this.lenderService.updateAadharImage(this.id,data).subscribe(data=>{
-      console.log(data.length)
+   
      
       this._snackBar.open("successfully updated the detail", "success", 
       {
@@ -153,17 +154,21 @@ valuee:any
   panImageChange($event:any)
   {
    
+
    
     let data = new FormData();
-    ;
+
+    
    
    
    
     data.append("pan",$event.target.files[0])
     this.lenderService.updatePanImage(this.id,data).subscribe({
       next:data=>{
-      console.log(data)
+
       
+
+
       this._snackBar.open("successfully updated the detail", "success", 
       {
         
@@ -193,7 +198,7 @@ valuee:any
         duration: 5000,
         panelClass: ['mat-toolbar', 'mat-primary']
       })
-
+      this.route.navigate(['/dashboard'])
 
      
 

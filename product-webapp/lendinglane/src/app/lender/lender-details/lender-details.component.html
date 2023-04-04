@@ -1,13 +1,14 @@
-<div>
+<div id="divv">
   <div>
-    <button (click)="btn()"   mat-raised-button color="primary">more Details</button>
+    <a class="detail" href="dashboard/profile#detail">more Details</a>
+   
     </div>
    
   <mat-card class="container">
     <mat-icon class="btn" (click)="toggleDisabled()" color="primary">
       edit
         </mat-icon> 
-        <h1 style="margin-left: -13px;">Lender Details</h1>
+        <h1 style="margin-left: -13px;">Lender Details </h1>
         <mat-card-content>
   <form #lenderForm="ngForm" (submit)="lenderupdate(lenderForm)" class="example-form" >
      
@@ -191,8 +192,8 @@
   
   
   
-  
-  <mat-card *ngIf="istrue" class="container2">
+  <div  >
+  <mat-card  class="container2"  id="detail">
     <mat-icon class="btn" (click)="toggleDisabledd()" color="primary">
       edit
         </mat-icon> 
@@ -216,8 +217,10 @@
       
       <mat-form-field appearance="outline" class="example-full-width" >
          
-          <input  matInput type="text" [(ngModel)]="lender.creditScore" name="lender"[disabled]="disablede1" placeholder="enter credit score" #amount="ngModel"  >
-          
+          <mat-select  type="text" [(ngModel)]="lender.creditScore" name="lender"[disabled]="disablede1" placeholder="enter credit score" #amount="ngModel"  >
+            <mat-option value="600-700">600-700</mat-option>
+            <mat-option value="601-700">601-700</mat-option>
+          </mat-select>
         
         </mat-form-field>
         </td></tr></table>
@@ -225,5 +228,9 @@
       </form>
       </mat-card-content>
       </mat-card>
+  </div>
+  
+  
+  
+  
     </div>
-   

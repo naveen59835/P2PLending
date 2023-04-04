@@ -10,7 +10,7 @@ export class RegistrationService {
   constructor(private httpClient:HttpClient) { }
 
   registerUser(data:any){
-    this.URL = `http://localhost:${data.role==="borrower"?8083:8086}/api/v1`; //change this with api gateway asap,
+    this.URL = `http://localhost:${data.role==="borrower"?8083:8082}/api/v1`; //change this with api gateway asap,
     return this.httpClient.post(this.URL+`/${data.role}/register`,data);
   }
 
