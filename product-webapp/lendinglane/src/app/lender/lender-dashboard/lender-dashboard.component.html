@@ -1,0 +1,60 @@
+<div style="display: flex;">
+    <h1>Hi,</h1>
+    &nbsp;&nbsp;
+<h1>{{lender.firstName}} </h1>
+&nbsp;&nbsp;
+<h1>{{lender.lastName}}</h1>
+
+</div>
+
+<div *ngIf="borrower.length==0">
+<div (click)="add()">
+    <mat-icon>add</mat-icon>
+</div>
+</div>
+
+
+
+
+
+
+
+   
+<div *ngIf="borrower.length==0">
+  
+    <button mat-raised-button (click)="creditScore()" [disabled]="istrue">Enter creditScore</button>
+
+
+</div>
+
+
+<div class="loan-container">
+    <h1>Your Investments</h1>
+    <div class="loans">
+      <div class="loan" *ngFor="let loan of loans let number=index">
+        <h2>#Investment {{number+1}}</h2>
+        <h3>Amount : 500000 </h3>
+        <h3>Recovered : 120000</h3>
+      </div>
+    </div>
+  </div>
+
+
+<mat-card class="card">
+    <mat-card-title >
+       <div style="margin-bottom: 37px;"> Recommended borrowers</div>
+    </mat-card-title>
+    
+        <div class="topnav">
+            <p style="width:30% ;">Borrowers</p>
+            <p style="width:30% ;">Amount</p>
+            <p style="width:10% ;">Rating</p>
+            <p style="width:10% ;" >Payment</p>
+            <p style="width:10% ;" >Chat</p>
+            <p style="width:10% ;" >Profile</p>
+          </div>
+<div>
+<app-lender *ngFor="let borrowerRecommend of  borrower" [borrowerRecommended]="borrowerRecommend" ></app-lender>
+</div>
+
+</mat-card>
