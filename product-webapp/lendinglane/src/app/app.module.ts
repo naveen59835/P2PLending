@@ -42,6 +42,10 @@ import {MatDialogModule} from "@angular/material/dialog";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import { LoanDetailsComponent } from './borrower/borrower-loans/loan-details/loan-details.component';
 import {MatDividerModule} from "@angular/material/divider";
+import { NgxStarRatingModule } from 'ngx-star-rating';
+import { LenderComponent } from './lender/lender.component';
+import { LenderDashboardComponent } from './lender/lender-dashboard/lender-dashboard.component';
+import { RecommendedborrowerComponent } from './lender/recommendedborrower/recommendedborrower.component';
 import { DashboardMessagesComponent } from './dashboard/dashboard-messages/dashboard-messages.component';
 import {BorrowerMessagesComponent} from "./borrower/borrower-messages/borrower-messages.component";
 import { DashboardMessageWindowComponent } from './dashboard/dashboard-message-window/dashboard-message-window.component';
@@ -51,7 +55,7 @@ import { LenderMessagesComponent } from './lender/lender-messages/lender-message
 import { LenderMessageWindowComponent } from './lender/lender-message-window/lender-message-window.component';
 import {HomeComponent} from "./home/home.component";
 @NgModule({
-  declarations: [AppComponent, SignupComponent, NavbarComponent, LoginComponent,SidenavComponent, BorrowerComponent, BorrowerDetailsComponent,DashboardComponent, BorrowerDashboardComponent, DashboardHomeComponent, DashboardChatComponent, DashboardProfileComponent, DashboardTransactionComponent,LenderDetailsComponent, BorrowerTransactionComponent, DashboardLoansComponent, BorrowerLoansComponent, LoanDialogComponent,LoanDetailsComponent, DashboardMessagesComponent, BorrowerMessagesComponent, DashboardMessageWindowComponent, BorrowerMessageWindowComponent,NotificationComponent, LenderMessagesComponent, LenderMessageWindowComponent,HomeComponent],
+  declarations: [AppComponent, SignupComponent, NavbarComponent, LoginComponent,SidenavComponent, BorrowerComponent, BorrowerDetailsComponent,DashboardComponent, BorrowerDashboardComponent, DashboardHomeComponent, DashboardChatComponent, DashboardProfileComponent, DashboardTransactionComponent,LenderDetailsComponent, BorrowerTransactionComponent, DashboardLoansComponent, BorrowerLoansComponent, LoanDialogComponent,LoanDetailsComponent, DashboardMessagesComponent,LenderDashboardComponent,LenderComponent,RecommendedborrowerComponent, BorrowerMessagesComponent, DashboardMessageWindowComponent, BorrowerMessageWindowComponent,NotificationComponent, LenderMessagesComponent, LenderMessageWindowComponent,HomeComponent],
     imports: [
         BrowserModule,
         AppRoutingModule,
@@ -68,6 +72,7 @@ import {HomeComponent} from "./home/home.component";
         MatSelectModule,
         MatInputModule,
         MatSidenavModule,
+        NgxStarRatingModule,
         RouterModule,
         BrowserAnimationsModule,
         MatCheckboxModule,

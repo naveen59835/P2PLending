@@ -1,0 +1,102 @@
+
+
+
+
+<div  class="card"  >
+  
+    <div class="div" >
+
+            {{borrowerRecommended.name}}
+    </div>
+         <div class="div">
+          <span> 
+            <mat-icon>currency_rupee</mat-icon>  
+              
+          </span>
+          <input type="text" id="fname" name="amount" [(ngModel)]="amount" disabled >
+         </div>
+       
+        
+          <div class="containdiv" >
+      <span> <mat-icon>star</mat-icon>
+         
+        </span>
+        &nbsp;
+        {{borrowerRecommended.creditScore}}
+          </div>
+    
+        <div class="container" (click)="pay()">
+    
+            <mat-icon class="logo" >add</mat-icon>
+        </div>
+    
+        <div class="contain">
+    
+          <mat-icon class="logochat">chat</mat-icon>
+      </div>
+      <div class="contain" [routerLink]="'/dashboard/recommendedborrowerdetail/'+borrowerRecommended.borrowerId">
+    
+        <mat-icon class="logochat">person</mat-icon>
+    </div>
+      </div>
+
+
+  
+
+
+
+
+
+<!-- 
+      <div class="grid-container">
+        <div class="grid-item">{{borrowerRecommended.name}}</div>
+        <div class="grid-item"><input class="inp" type="text" id="fname" name="amount" [(ngModel)]="amount" disabled > </div>
+        <div class="grid-item">{{borrowerRecommended.creditScore}}</div>  
+        <div class="grid-item">
+          <div  (click)="pay()">
+    
+            <mat-icon class="logo" >add</mat-icon>
+        </div>
+        </div>
+        <div class="grid-item"> <mat-icon class="logochat">chat</mat-icon></div>
+        <div class="grid-item">    
+          <div  [routerLink]="'/dashboard/recommendedborrowerdetail/'+borrowerRecommended.borrowerId">
+    
+            <mat-icon class="logochat">person</mat-icon>
+        </div>
+      
+      </div>
+ -->
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+ <!-- <table>
+  
+  <tr>
+    <td>{{borrowerRecommended.name}}</td>
+    <td>{{borrowerRecommended.creditScore}}</td>
+    <td></td>
+    <td></td>
+ 
+</table>
+
+ -->
+
+
+
+
+
+
+
