@@ -26,14 +26,14 @@ td {
 }
 .btn{
   margin-left:-777px;
-  
+
   padding: 15px 17px;
   background-color: #D9D9D9;
   text-align: center;
   height: max-content;
   width: max-content;
   border-radius: 50%;
-  
+
 }
 
 ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
@@ -122,3 +122,61 @@ input::file-selector-button {
   border: thin solid grey;
   border-radius: 3px;
 }
+
+
+
+.verify-button {
+  margin-left: 10px;
+}
+
+.verification-message {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.verified {
+  color: green;
+}
+
+.not-verified {
+  color: red;
+}
+.error-message.valid {
+  color: green;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.error-message.invalid {
+  color: red;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.mat-error {
+  color: red;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.valid {
+  color: green;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.invalid {
+  color: red;
+  font-weight: bold;
+  font-size: 16px;
+}
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  cursor: pointer;
+}
+

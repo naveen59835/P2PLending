@@ -202,3 +202,48 @@ mat-radio-group{
   color: #4CAF50;
 }
 
+
+.apply{
+  font-size: -20px;
+}
+
+
+button.apply-loan-button {
+  font-size: 14px;
+  padding: 6px 16px;
+  width: -100px;
+  height: 100px;
+}
+a{
+  color: whitesmoke;
+}
+.apply-loan-btn{
+  width: 230px;
+  position: relative;
+  left: -10px;
+  top: 20px;
+}
+
+
+
+mat-form-field {
+  width: 100%;
+  margin-bottom: 16px;
+}
+.error-message {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+
+.error-message.invalid {
+  color: red;
+}
+
+.error-message.valid {
+  color: green;
+}
+
+button {
+  margin-left: 8px;
+}

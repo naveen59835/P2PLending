@@ -27,6 +27,11 @@ export class BorrowerDetailsComponent implements OnInit {
   aadharImage: any;
   cibilImage: any;
   panImage: any;
+  aadhaarNumbers: string[] = [];
+  aadhaarVerificationMessage = '';
+  panNumbers: string[] = [];
+  panVerificationMessage = '';
+
 
 
   constructor(
@@ -53,7 +58,61 @@ export class BorrowerDetailsComponent implements OnInit {
   ngOnInit(): void {
     const emailId = localStorage.getItem('email') ?? '';
     this.getBorrowerDetails(emailId);
+    this.http.get<any>('http://localhost:3000/AadhaarNumbers').subscribe(data => {
+      this.aadhaarNumbers = data;
+    });
+    this.http.get<any>('http://localhost:3001/panNumbers').subscribe(data => {
+      this.panNumbers = data;
+    });
+
   }
+
+
+  verifyAadhaar() {
+    if (this.borrowerDetails.aadhaarNo && this.borrowerDetails.aadhaarNo.length >= 12) {
+      if (this.aadhaarNumbers.includes(this.borrowerDetails.aadhaarNo)) {
+        // Aadhaar verified
+        this.aadhaarVerificationMessage = 'Aadhaar verified.';
+        return 'green';
+      } else {
+        // Aadhaar not verified
+        this.aadhaarVerificationMessage = 'Enter a Valid Aadhaar.';
+        return 'red';
+      }
+    } else if (this.borrowerDetails.aadhaarNo && this.borrowerDetails.aadhaarNo.length < 12) {
+      this.aadhaarVerificationMessage = 'Aadhaar number must be at least 12 characters long.';
+    } else {
+      this.aadhaarVerificationMessage = '';
+    }
+    return '';
+  }
+
+  isAadhaarVerified() {
+    return this.aadhaarVerificationMessage === 'Aadhaar verified.';
+  }
+
+
+  verifyPan() {
+    if (this.borrowerDetails.panNo && this.borrowerDetails.panNo.length >= 10) {
+      if (this.panNumbers.includes(this.borrowerDetails.panNo)) {
+        this.panVerificationMessage = 'PAN verified.';
+        return 'green';
+      } else {
+        this.panVerificationMessage = 'Enter a Valid PAN.';
+        return 'red';
+      }
+    } else if (this.borrowerDetails.panNo && this.borrowerDetails.panNo.length < 10) {
+      this.panVerificationMessage = 'PAN Number must be at least 12 characters long.';
+    } else {
+      this.panVerificationMessage = '';
+    }
+    return '';
+  }
+
+  isPanVerified() {
+    return this.panVerificationMessage === 'PAN verified.';
+  }
+
 
   getBorrowerDetails(emailId: string) {
     this.borrowerService.getBorrowerDetails(emailId).subscribe(

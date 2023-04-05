@@ -6,10 +6,10 @@ import { RecommendedBorrower } from '../model/RecommendedBorroer';
   providedIn: 'root'
 })
 export class RecommendationService {
-  url:string="http://localhost:9002/api/v1/recommendation/get"
+  url:string="http://localhost:8087/api/v1/recommendation/get"
   constructor(private httpClient:HttpClient) { }
 
-LenderCreditScore:any="675-775";
+LenderCreditScore:any="601-700";
 
   getbBorrower(creditScore:any)
   {
