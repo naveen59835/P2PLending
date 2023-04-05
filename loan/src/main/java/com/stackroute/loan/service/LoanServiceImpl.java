@@ -91,8 +91,8 @@ public class LoanServiceImpl {
             return loanRepository.findLoansByBorrowerId(id);
         }
     }
-//    @Scheduled(cron = "0 0 0 * * *",zone = "Asia/Kolkata")
-    @Scheduled(cron = "0 * * * * *",zone = "Asia/Kolkata")
+    @Scheduled(cron = "0 0 0 * * *",zone = "Asia/Kolkata")
+//    @Scheduled(cron = "0 * * * * *",zone = "Asia/Kolkata")
     public void addEMI(){
         List<Loan> loanList = loanRepository.findAll();
         LocalDate currentDate = LocalDate.now();

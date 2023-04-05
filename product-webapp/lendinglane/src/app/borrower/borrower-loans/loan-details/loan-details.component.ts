@@ -29,7 +29,8 @@ export class LoanDetailsComponent implements OnInit {
   }
   payEMI(emiId:any){
      if(this.loanData!=undefined){
-       let amountToPay = Math.ceil(this.loanData.emi[emiId].price);
+
+       let amountToPay = Math.ceil(this.loanData.emi[emiId-1].price);
        this.paymentService.payment(amountToPay,this.loanData.lenderId,this.loanData.borrowerId).subscribe({
          next : (data:any) =>{
            let options = {
