@@ -15,7 +15,7 @@ import {DashboardMessageWindowComponent} from "./dashboard/dashboard-message-win
 import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
-  {path:'', pathMatch:"full",redirectTo:'signup'},
+  {path:'', pathMatch:"full",redirectTo:'home'},
   {path:'signup',component:SignupComponent,canActivate: [AuthGuardGuard]},
   {path:'login',component:LoginComponent,canActivate: [AuthGuardGuard]},
   {path:'home',component:HomeComponent},
