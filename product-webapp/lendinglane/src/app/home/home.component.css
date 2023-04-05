@@ -1,28 +1,28 @@
-.contain{
-  width: 1540px;
+.contain {
   border: 1px solid #CDC4E8;
   height: 400px;
   background-color: #CDC4E8;
-  position: relative;
-
 }
 
-.take{
+.take {
   font-weight: 300;
   font-size: 24px;
 
 }
-.earn{
+
+.earn {
   padding-top: 25px;
   text-decoration: underline;
   font-weight: bold;
 
 }
-.contents{
+
+.contents {
   position: relative;
   left: 180px;
   top: 50px;
 }
+
 .my-button {
   background-color: #6D5BDD;
   color: white;
@@ -39,262 +39,165 @@
 
 
 }
-.image{
+
+.image {
   position: relative;
   bottom: 225px;
   left: 800px;
   width: 200px;
   height: 100px;
 }
-.weoffer{
-  width: 706px;
+
+.weoffer {
+  margin: 0 auto;
   height: 36px;
   font-size: 23px;
-  position: relative;
-  top: 20px;
-  left: 460px;
+  padding: 30px 0;
+  width: max-content;
 }
-.textbox1{
-  border: 1px solid #F1F1F1;
-  background-color: #F1F1F1;
-  margin-left: 200px;
-  margin-right: 1100px;
-  padding: 20px;
-  border-radius: 5px;
 
-
-}
 .apply-loan-container-scrollable {
-  height: 700px;
+  height: 100vh;
   overflow-y: auto;
   overflow-x: hidden;
 
 }
-.phead{
+
+.phead {
   font-weight: bold;
   font-size: 20px;
 }
 
-.textbox2{
-  border: 1px solid #F1F1F1;
-  background-color: #F1F1F1;
-  margin-left:180px;
-  margin-right: 1100px;
-  padding:20px;
-  border-radius: 5px;
-  position: relative;
-  left: 400px;
-  bottom: 185px;
+.textbox {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  margin-bottom: 30px;
 }
-.textbox3{
+
+.textbox > div {
   border: 1px solid #F1F1F1;
   background-color: #F1F1F1;
-  margin-left: 181px;
-  margin-right: 1100px;
   padding: 25px;
   border-radius: 5px;
-  position: relative;
   left: 800px;
   bottom: 365px;
 }
-.textbox{
-  position: relative;
-  left: 30px;
-  top: 70px;
+.active{
+  display: flex;
+  text-align: center;
+  gap: 50px;
+  justify-content: center;
+  margin: 50px 0;
+  padding:50px 0;
+  background-color: #F1F1F1;
 }
-
-.one,.two{
-  position: relative;
-  bottom: -60px;
-  left: 250px;
+.active>div{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 20px;
 }
-.three,.four{
-  position: relative;
-  bottom: -0px;
-  left: 640px;
-}
-.five,.six{
-  position: relative;
-  bottom:70px;
-  left: 1020px;
-}
-.one{
-  position: relative;
-  left: 300px;
-  letter-spacing: 1px;
+.active>div>p:first-child{
   font-size: 40px;
   font-weight: bolder;
+  margin: 0;
 }
-.two{
-  position: relative;
-  top: 60px;
-  font-weight: lighter;
-  color: grey;
+.active>div>p:last-child{
   font-weight: bolder;
-}
-.three{
-  position: relative;
-  left: 660px;
-  letter-spacing: 1px;
-  font-size: 35px;
-  font-weight: bolder;
+  margin: 0;
 
 }
-.four{
-  position: relative;
-  top: -0px;
-  font-weight: lighter;
-  color: grey;
-  font-weight: bolder;
-}
-.five{
-  position: relative;
-  left: 1060px;
-  top:-70px;
-  letter-spacing: 1px;
-  font-size: 35px;
-  font-weight: bolder;
-
-}
-.six{
-  position: relative;
-  bottom: 70px;
-  font-weight: lighter;
-  color: grey;
-  font-weight: bolder;
-
-}
-.active{
-  background-color: #DBDBDB;
-  position: relative;
-  bottom: 168px;
-}
-.core{
-  position: relative;
-  bottom: 130px;
+.core {
   letter-spacing: 1px;
   left: 500px;
   font-size: 40px;
   font-weight: lighter;
-
+  width: max-content;
+  margin: 0 auto;
+  padding-bottom: 50px;
 }
-.samplebox1{
+
+.samplebox1 {
   border: 1px solid #A377EB;
-  background-color: #A377EB ;
-  margin-left: 190px;
-  margin-right: 1100px;
-  padding: 20px;
-  border-radius: 5px;
-  position: relative;
-  left: 50px;
-  bottom: 100px;
-  padding-top: 40px;
-  padding-bottom: 40px;
+  background-color: #A377EB;
+  padding: 40px 20px;
 
 }
-.samplebox2{
+
+.samplebox2 {
   border: 1px solid #8CBDEB;
   background-color: #8CBDEB;
-  margin-left: 200px;
-  margin-right: 1100px;
-  padding: 24px;
-  border-radius: 5px;
-  position: relative;
-  left:330px;
-  bottom: 290px;
-  padding-top: 40px;
-  padding-bottom: 40px;
+  padding: 40px 20px;
 
 }
-.samplebox3{
+
+.samplebox3 {
   border: 1px solid #F8B0B0;
   background-color: #F8B0B0;
-  margin-left: 170px;
-  margin-right: 1100px;
-  padding: 20px;
-  border-radius: 5px;
-  position: relative;
-  left:650px;
-  bottom: 480px;
-  padding-top: 40px;
-  padding-bottom: 40px;
+  padding: 40px 20px;
 
 }
-.samplebox4{
+
+.samplebox4 {
   border: 1px solid #9EE1A4;
   background-color: #9EE1A4;
-  margin-left: 190px;
-  margin-right: 1100px;
-  padding: 20px;
-  border-radius: 5px;
-  position: relative;
-  left:950px;
-  bottom: 665px;
-  padding-top: 40px;
-  padding-bottom: 40px;
+  padding: 40px 20px;
 
 }
-.pehead{
+
+.samplebox {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  margin-bottom: 50px;
+}
+
+.pehead {
   letter-spacing: 1px;
   font-size: 20px;
   font-weight: bold;
   text-align: center;
 }
 
-.applytoloan{
+.applytoloan {
   background-color: #2B2929;
-  padding:-100px;
-  position: relative;
-  bottom: 520px;
-
+  padding: -100px;
 }
-.steps{
+
+.steps {
   font-size: 30px;
   color: #D9D9D9;
-  position: relative;
-  bottom: -50px;
-  left: 150px;
   font-weight: lighter;
+  margin-bottom: 50px;
+  position: relative;
+  left: 130px;
+  padding-top: 50PX;
 }
-.numberone,.numbertwo,.numberthree,.numberfour{
+.apply-loan{
+  display: flex;
+  justify-content: space-around;
+}
+.apply-loan >div{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 50px;
+}
+
+.numberone, .numbertwo, .numberthree, .numberfour {
   color: #FFFFFF;
 
 }
-.numberone{
-  position: relative;
-  top: 130px;
-  left: 140px;
-
-
-}
-.numbertwo{
-  position: relative;
-  left: 450px;
-  top: 25px;
-}
-.numberthree{
-  position: relative;
-  bottom: 80px;
-  left: 770px;
-}
-.numberfour{
-  position: relative;
-  bottom: 180px;
-  left: 1080px;
-}
-.numbers{
+.numbers {
   font-size: 75px;
 }
-.datas{
+
+.datas {
 
   font-size: 15px;
   color: #D9D9D9;
-  position: relative;
-  left: 20px;
-  top: 20px;
 }
-
-
 
 
 footer {
@@ -407,22 +310,24 @@ footer {
 .fab.fa-linkedin {
   color: #0077b5;
 }
-footer{
-  position: relative;
-  bottom: 400px;
+
+footer {
   width: 100%;
 }
-li{
-  padding:10px;
+
+li {
+  padding: 10px;
 }
-.topic
-{
+
+.topic {
   font-size: 40px;
   text-decoration: underline;
 }
-.quick{
+
+.quick {
   text-decoration: underline;
 }
+
 .logo {
   width: 50px;
   height: 50px;
@@ -430,18 +335,13 @@ li{
   left: 100px;
 
 }
-.weare{
-  font-size:14px ;
+
+.weare {
+  font-size: 14px;
   text-align: center;
   padding: 5px;
 
 }
-
-
-
-
-
-
 
 
 .contact-form {
@@ -519,6 +419,7 @@ li{
   opacity: 0.65;
   cursor: not-allowed;
 }
-.contact{
+
+.contact {
   color: black;
 }
