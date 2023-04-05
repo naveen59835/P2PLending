@@ -1,16 +1,15 @@
 .contain{
   width: 1540px;
-  border: 1px solid CDC4E8;
+  border: 1px solid #CDC4E8;
   height: 400px;
-  background-color: CDC4E8;
+  background-color: #CDC4E8;
   position: relative;
 
 }
 
 .take{
-  font-weight: light;
+  font-weight: 300;
   font-size: 24px;
-  font-display: inherit;
 
 }
 .earn{
@@ -25,7 +24,7 @@
   top: 50px;
 }
 .my-button {
-  background-color: 6D5BDD;
+  background-color: #6D5BDD;
   color: white;
   border: none;
   padding: 10px 20px;
@@ -56,8 +55,8 @@
   left: 460px;
 }
 .textbox1{
-  border: 1px solid F1F1F1;
-  background-color: F1F1F1;
+  border: 1px solid #F1F1F1;
+  background-color: #F1F1F1;
   margin-left: 200px;
   margin-right: 1100px;
   padding: 20px;
@@ -77,8 +76,8 @@
 }
 
 .textbox2{
-  border: 1px solid F1F1F1;
-  background-color: F1F1F1;
+  border: 1px solid #F1F1F1;
+  background-color: #F1F1F1;
   margin-left:180px;
   margin-right: 1100px;
   padding:20px;
@@ -88,8 +87,8 @@
   bottom: 185px;
 }
 .textbox3{
-  border: 1px solid F1F1F1;
-  background-color: F1F1F1;
+  border: 1px solid #F1F1F1;
+  background-color: #F1F1F1;
   margin-left: 181px;
   margin-right: 1100px;
   padding: 25px;
@@ -166,7 +165,7 @@
 
 }
 .active{
-  background-color: DBDBDB;
+  background-color: #DBDBDB;
   position: relative;
   bottom: 168px;
 }
@@ -180,8 +179,8 @@
 
 }
 .samplebox1{
-  border: 1px solid A377EB;
-  background-color: A377EB ;
+  border: 1px solid #A377EB;
+  background-color: #A377EB ;
   margin-left: 190px;
   margin-right: 1100px;
   padding: 20px;
@@ -194,8 +193,8 @@
 
 }
 .samplebox2{
-  border: 1px solid 8CBDEB;
-  background-color: 8CBDEB;
+  border: 1px solid #8CBDEB;
+  background-color: #8CBDEB;
   margin-left: 200px;
   margin-right: 1100px;
   padding: 24px;
@@ -208,8 +207,8 @@
 
 }
 .samplebox3{
-  border: 1px solid F8B0B0;
-  background-color: F8B0B0;
+  border: 1px solid #F8B0B0;
+  background-color: #F8B0B0;
   margin-left: 170px;
   margin-right: 1100px;
   padding: 20px;
@@ -222,8 +221,8 @@
 
 }
 .samplebox4{
-  border: 1px solid 9EE1A4;
-  background-color: 9EE1A4;
+  border: 1px solid #9EE1A4;
+  background-color: #9EE1A4;
   margin-left: 190px;
   margin-right: 1100px;
   padding: 20px;
@@ -243,7 +242,7 @@
 }
 
 .applytoloan{
-  background-color: 2B2929;
+  background-color: #2B2929;
   padding:-100px;
   position: relative;
   bottom: 520px;
@@ -251,14 +250,14 @@
 }
 .steps{
   font-size: 30px;
-  color: D9D9D9;
+  color: #D9D9D9;
   position: relative;
   bottom: -50px;
   left: 150px;
   font-weight: lighter;
 }
 .numberone,.numbertwo,.numberthree,.numberfour{
-  color: FFFFFF;
+  color: #FFFFFF;
 
 }
 .numberone{
@@ -289,7 +288,7 @@
 .datas{
 
   font-size: 15px;
-  color: D9D9D9;
+  color: #D9D9D9;
   position: relative;
   left: 20px;
   top: 20px;
@@ -411,7 +410,7 @@ footer {
 footer{
   position: relative;
   bottom: 400px;
-    width: 100%;
+  width: 100%;
 }
 li{
   padding:10px;
