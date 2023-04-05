@@ -1,8 +1,4 @@
-/*
- * Author : Naveen Kumar
- * Date : 31-03-2023
- * Created With : IntelliJ IDEA Community Edition
- */
+
 
 package com.example.review.model;
 
@@ -10,6 +6,7 @@ import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Document
@@ -21,7 +18,6 @@ import java.util.List;
 public class Review {
 
     @Id
-    private String id;
-    private String borrowerEmailId;
-    private List<ReviewAndRating> reviewsAndRatings;
+    private String borrowerId;
+    private List<ReviewRating> reviewRatingList=new ArrayList<>();
 }

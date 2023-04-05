@@ -20,7 +20,7 @@ export class BorrowerDashboardComponent implements OnInit {
   }
   totalPaid(emi : Array<any>){
     if(emi.length>0)
-    return emi.reduce((acc,current)=>acc+current.price,0)
+    return Math.round(emi.reduce((acc,current)=>acc+current.price,0) * 10) / 10
     else return  0
   }
 

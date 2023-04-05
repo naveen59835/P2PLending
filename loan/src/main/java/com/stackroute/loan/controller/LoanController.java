@@ -11,7 +11,6 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/v1/loan")
-@CrossOrigin
 public class LoanController {
     @Autowired
     LoanServiceImpl loanService;
@@ -36,7 +35,13 @@ public class LoanController {
         try{
             return new ResponseEntity<>(loanService.applyLoan(loan),HttpStatus.CREATED);
         }catch (Exception exception){
+            System.out.println(exception);
             return new ResponseEntity<>(exception.getMessage(),HttpStatus.BAD_REQUEST);
         }
+    }
+
+    @GetMapping("/getLenderLoan/{id}")
+    public ResponseEntity<?> getLenderLoan(@PathVariable String id){
+        return new ResponseEntity<>(loanService.findLoansFromLender(id),HttpStatus.OK);
     }
 }

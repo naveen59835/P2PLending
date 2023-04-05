@@ -10,7 +10,6 @@ import javax.mail.MessagingException;
 
 @RestController
 @RequestMapping("/api/v1/notification")
-@CrossOrigin
 public class NotificationController {
     @Autowired
     NotificationServiceImpl notificationService;

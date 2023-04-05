@@ -10,6 +10,7 @@ import {DashboardLoansComponent} from "./dashboard/dashboard-loans/dashboard-loa
 import { AuthGuardGuard } from './guards/auth-guard.guard';
 import {LoanDetailsComponent} from "./borrower/borrower-loans/loan-details/loan-details.component";
 import { DashboardAuthGuardGuard } from './guards/dashboard-auth-guard.guard';
+import { RecommendedborrowerComponent } from './lender/recommendedborrower/recommendedborrower.component';
 import {DashboardMessagesComponent} from "./dashboard/dashboard-messages/dashboard-messages.component";
 import {DashboardMessageWindowComponent} from "./dashboard/dashboard-message-window/dashboard-message-window.component";
 import { HomeComponent } from './home/home.component';
@@ -30,6 +31,7 @@ const routes: Routes = [
       {path:'transactions',component:DashboardTransactionComponent},
       {path:'loan',component:DashboardLoansComponent},
       {path:'loan/:id',component:LoanDetailsComponent},
+      {path:'recommendedborrowerdetail/:id',component:RecommendedborrowerComponent},
       {path:"chat",component:DashboardMessagesComponent},
       {path:"chat/:id",component:DashboardMessageWindowComponent}
     ]

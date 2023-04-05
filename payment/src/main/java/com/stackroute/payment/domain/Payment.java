@@ -20,5 +20,6 @@ public class Payment {
     private String toAccount;
     private String paymentStatus;
     private Date paymentDate;
+    private String loanId;
 
 }
