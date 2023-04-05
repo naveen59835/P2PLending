@@ -34,7 +34,7 @@ public class recommendationServiceImpl implements recommendationService{
         RecommendedBorrower borrower=new RecommendedBorrower();
         borrower.setCibilScore(cibilScore1);
         borrower.setCreditScore((int)lower);
-        borrower.setId(loan.getLoanId());
+        borrower.setId(Long.parseLong(loan.getLoanId()));
         borrower.setBorrowerId(loan.getBorrowerId());
         borrower.setAmount(loan.getAmount());
        recommendationRepository.save(borrower);

@@ -52,14 +52,17 @@
     <mat-error *ngIf="isFieldInvalid('emailId')">Please enter a valid email address with at least 3 characters.</mat-error>
   </mat-form-field>
 
-  <mat-form-field appearance="fill">
+  <mat-form-field appearance="fill" class="my-form-field">
     <mat-label>Aadhaar No:</mat-label>
     <input [(ngModel)]="borrowerDetails.aadhaarNo" name="aadhaarNo" matInput [disabled]="!editMode"
-      [ngModelOptions]="{updateOn: 'blur'}" minlength="12" #aadhaarNo="ngModel">
-    <mat-error *ngIf="aadhaarNo.invalid && (aadhaarNo.dirty || aadhaarNo.touched)">
+      [ngModelOptions]="{updateOn: 'blur'}" minlength="12" #aadhaarNoInput="ngModel">
+    <mat-error *ngIf="aadhaarNoInput.invalid && (aadhaarNoInput.dirty || aadhaarNoInput.touched)">
       Aadhaar number must be at least 12 characters long.
     </mat-error>
+    <div class="error-message" [ngClass]="{'valid': isAadhaarVerified(), 'invalid': !isAadhaarVerified()}">{{aadhaarVerificationMessage}}</div>
+    <button mat-raised-button color="primary" *ngIf="editMode" (click)="verifyAadhaar()">Verify</button>
   </mat-form-field>
+
 
   <mat-form-field appearance="fill">
     <mat-label>Registered Mobile Number</mat-label>
@@ -71,14 +74,17 @@
     </mat-error>
   </mat-form-field>
 
-  <mat-form-field appearance="fill">
+  <mat-form-field appearance="fill" class="my-form-field">
     <mat-label>PAN No:</mat-label>
     <input [(ngModel)]="borrowerDetails.panNo" name="panNo" matInput [disabled]="!editMode"
       [ngModelOptions]="{updateOn: 'blur'}" minlength="10" #panNo="ngModel">
     <mat-error *ngIf="panNo.invalid && (panNo.dirty || panNo.touched)">
       PAN number must be at least 10 characters long.
     </mat-error>
+    <div class="error-message" [ngClass]="{'valid': isPanVerified(), 'invalid': !isPanVerified()}">{{panVerificationMessage}}</div>
+    <button mat-raised-button color="primary" *ngIf="editMode" (click)="verifyPan()">Verify</button>
   </mat-form-field>
+
 
 
 

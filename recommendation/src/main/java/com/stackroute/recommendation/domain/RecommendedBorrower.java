@@ -16,13 +16,12 @@ import org.springframework.data.neo4j.core.schema.IdGenerator;
 @Setter
 @Node("Borrower")
 public class RecommendedBorrower {
-   @Id
-    private String id;
+ @Id @GeneratedValue private long id;
 
 
     @Relationship(type="Has", direction = Relationship.Direction.OUTGOING)
     private CibilScore cibilScore;
-    private int creditScore;
+ private Integer creditScore;
     private String borrowerId;
     private double amount;
 
