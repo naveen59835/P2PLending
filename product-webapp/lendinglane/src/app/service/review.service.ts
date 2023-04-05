@@ -5,8 +5,8 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ReviewService {
-url="http://localhost:8086/api/v1/review/add"
-urlrating="http://localhost:8086/api/v1/review/getAverage"
+url="http://localhost:9002/api/v1/review/add"
+urlrating="http://localhost:9002/api/v1/review/getAverage"
   constructor(private httpclient:HttpClient) { }
 
 

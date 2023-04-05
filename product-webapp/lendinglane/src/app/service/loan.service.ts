@@ -20,5 +20,9 @@ export class LoanService {
   getLoan(loanId:string){
     return this.http.get("http://localhost:9002/api/v1/loan/getLoan/"+loanId)
   }
+  getLenderLoans(){
+    return this.http.get("http://localhost:9002/api/v1/loan/getLenderLoan/"+localStorage.getItem("email"))
+
+  }
 
 }

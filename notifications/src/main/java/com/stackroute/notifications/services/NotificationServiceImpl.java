@@ -3,6 +3,7 @@ import com.stackroute.notifications.model.Email;
 import com.stackroute.notifications.model.Notification;
 import com.stackroute.notifications.model.NotificationMessage;
 import com.stackroute.notifications.repository.NotificationRepository;
+import org.json.simple.JSONObject;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -52,14 +53,27 @@ public class NotificationServiceImpl {
         Notification notification = createNotification(id,subject);
         notificationRepository.save(notification);
     }
-//    @RabbitListener(queues = "approval")
-//    public void sendApprovalNotification(String borrowerId,String lenderId){
-//        String subject = "Loan approved";
-//        String emailMessage = "Greeting,\n you loan has been approved by "+ lenderId;
-//        this.createEmail(borrowerId,subject,emailMessage);
-//        Notification notification = createNotification(borrowerId,subject);
-//        notificationRepository.save(notification);
-//    }
+    @RabbitListener(queues = "loan-approval-notification")
+    public void sendApprovalNotification(JSONObject object) throws MessagingException {
+        String lenderId = object.get("sender").toString();
+        String borrowerId = object.get("receiver").toString();
+        String subject = "Loan approved";
+        String emailMessage = "Greeting,\n you loan has been approved by "+ lenderId;
+        sendMail(this.createEmail(borrowerId,subject,emailMessage));
+        Notification notification = createNotification(borrowerId,subject);
+        notificationRepository.save(notification);
+    }
+    @RabbitListener(queues = "pay-emi-notification")
+    public void sendEmiPaymentNotification(JSONObject object) throws MessagingException {
+        String borrowerId = object.get("sender").toString();
+        String lenderId = object.get("receiver").toString();
+        String subject = "EMI has been paid";
+        String emailMessage = "Greeting,\n the EMI has been successfully paid approved by "+ borrowerId;
+        sendMail(this.createEmail(borrowerId,subject,emailMessage));
+        sendMail(this.createEmail(lenderId,subject,emailMessage));
+        Notification notification = createNotification(lenderId,subject);
+        notificationRepository.save(notification);
+    }
     private Email createEmail(String id,String subject, String message){
         Email email = new Email();
         email.setReceiver(id);

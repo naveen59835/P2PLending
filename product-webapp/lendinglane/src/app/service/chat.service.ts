@@ -20,5 +20,9 @@ export class ChatService {
   public getSortedChat(messages:Array<Message>){
    return messages.sort((message1:Message,message2:Message)=>new Date(message1.timeStamp).valueOf() - new Date(message1.timeStamp).valueOf())
   }
+  public createChat(receiverId:any){
+    let data = {"borrowerId":receiverId,"lenderId":localStorage.getItem("email")}
+    return this.http.post("http://localhost:9002/api/v1/chat/newChat",data)
+  }
 
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {MatTableDataSource} from "@angular/material/table";
+import {PaymentService} from "../../service/payment.service";
 
 @Component({
   selector: 'app-borrower-transaction',
@@ -8,7 +9,7 @@ import {MatTableDataSource} from "@angular/material/table";
 })
 export class BorrowerTransactionComponent implements OnInit {
 
-  constructor() { }
+  constructor(private paymentService : PaymentService) { }
   displayedColumns: string[] = ['#', 'amount', 'type', 'remarks', 'date'];
 
   dataSource = new MatTableDataSource([
@@ -20,6 +21,20 @@ export class BorrowerTransactionComponent implements OnInit {
 
   ngOnInit(): void {
     //Gather data from payment microservice and populate dataSource
+    this.paymentService.getALlPayment().subscribe({
+      next:(data:any)=> {
+        console.log(data)
+        this.dataSource = new MatTableDataSource(this.addType(this.paymentService.sortPayment(data)));
+      }
+    })
+  }
+  addType(paymentData :Array<any>){
+    for (let data of paymentData) {
+      if(data.fromAccount === localStorage.getItem("email")){
+        data.type = "Debit"
+      }else  data.type = "Credit"
+    }
+    return paymentData;
   }
 
 }

@@ -3,4 +3,6 @@ export type RecommendedBorrower={
     creditScore?:any;
     cibilScore?:any
     borrowerId?:any
+    id?:any
+    amount?:any
 }

@@ -1,4 +1,4 @@
-package com.stackroute.loan.configuartion;
+package com.stackroute.payment.controller.config;
 
 import org.springframework.amqp.core.*;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
@@ -11,19 +11,11 @@ import org.springframework.context.annotation.Configuration;
 public class RabbitMQConfiguration {
     @Bean
     public Queue queue(){
-        return new Queue("loan-notification");
-    }
-    @Bean
-    public Queue recommendationQueue(){
-        return new Queue("recommendation-queue");
+        return new Queue("loan-approval");
     }
     @Bean
     public Exchange exchange(){
-        return new DirectExchange("loan-notification-exchange");
-    }
-    @Bean
-    public Exchange recommendationExchange(){
-        return new DirectExchange("recommendation-exchange");
+        return new DirectExchange("loan-approval-exchange");
     }
     @Bean
     public Jackson2JsonMessageConverter converter(){
@@ -41,25 +33,18 @@ public class RabbitMQConfiguration {
         return BindingBuilder.bind(queue).to(exchange).with("route-key").noargs();
     }
     @Bean
-    public Binding bindingExchangeAndQueue2(Queue recommendationQueue, Exchange recommendationExchange)
+    public Queue approvalNotificationQueue(){
+        return new Queue("loan-approval-notification");
+    }
+    @Bean
+    public Exchange approvalNotificationExchange(){
+        return new DirectExchange("loan-approval-notification-exchange");
+    }
+    @Bean
+    public Binding bindingExchangeAndQueue2(Queue approvalNotificationQueue, Exchange approvalNotificationExchange)
     {
-        return BindingBuilder.bind(recommendationQueue).to(recommendationExchange).with("route-key").noargs();
+        return BindingBuilder.bind(approvalNotificationQueue).to(approvalNotificationExchange).with("route-key").noargs();
     }
-
-    @Bean
-    public Queue loanApprovalQueue(){
-        return new Queue("loan-approval");
-    }
-    @Bean
-    public Exchange loanApprovalExchange(){
-        return new DirectExchange("loan-approval-exchange");
-    }
-    @Bean
-    public Binding bindingExchangeAndQueue3(Queue loanApprovalQueue, Exchange loanApprovalExchange)
-    {
-        return BindingBuilder.bind(loanApprovalQueue).to(loanApprovalExchange).with("route-key").noargs();
-    }
-
     @Bean
     public Queue emiPaymentQueue(){
         return new Queue("pay-emi");
@@ -69,9 +54,21 @@ public class RabbitMQConfiguration {
         return new DirectExchange("pay-emi-exchange");
     }
     @Bean
-    public Binding bindingExchangeAndQueue4(Queue emiPaymentQueue, Exchange emiPaymentExchange)
+    public Binding bindingExchangeAndQueue3(Queue emiPaymentQueue, Exchange emiPaymentExchange)
     {
         return BindingBuilder.bind(emiPaymentQueue).to(emiPaymentExchange).with("route-key").noargs();
     }
-
+    @Bean
+    public Queue emiPaymentNotificationQueue(){
+        return new Queue("pay-emi-notification");
+    }
+    @Bean
+    public Exchange  emiPaymentNotificationExchange(){
+        return new DirectExchange("pay-emi-notification-exchange");
+    }
+    @Bean
+    public Binding bindingExchangeAndQueue4(Queue emiPaymentNotificationQueue, Exchange emiPaymentNotificationExchange)
+    {
+        return BindingBuilder.bind(emiPaymentNotificationQueue).to(emiPaymentNotificationExchange).with("route-key").noargs();
+    }
 }

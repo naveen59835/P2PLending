@@ -19,9 +19,9 @@
 
 
 
-   
+
 <div *ngIf="borrower.length==0">
-  
+
     <button mat-raised-button (click)="creditScore()" [disabled]="istrue">Enter creditScore</button>
 
 
@@ -33,8 +33,8 @@
     <div class="loans">
       <div class="loan" *ngFor="let loan of loans let number=index">
         <h2>#Investment {{number+1}}</h2>
-        <h3>Amount : 500000 </h3>
-        <h3>Recovered : 120000</h3>
+        <h3>Amount : {{loan.amount}} </h3>
+        <h3>Recovered : {{recovered(loan.emi)}}</h3>
       </div>
     </div>
   </div>
@@ -44,7 +44,7 @@
     <mat-card-title >
        <div style="margin-bottom: 37px;"> Recommended borrowers</div>
     </mat-card-title>
-    
+
         <div class="topnav">
             <p style="width:30% ;">Borrowers</p>
             <p style="width:30% ;">Amount</p>

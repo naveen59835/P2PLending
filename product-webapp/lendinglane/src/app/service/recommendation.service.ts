@@ -9,11 +9,11 @@ export class RecommendationService {
   url:string="http://localhost:9002/api/v1/recommendation/get"
   constructor(private httpClient:HttpClient) { }
 
-LenderCreditScore:any="601-700";
+LenderCreditScore:any="675-775";
 
   getbBorrower(creditScore:any)
   {
-    return this.httpClient.get<Array<RecommendedBorrower>>(`${this.url}/${creditScore}`)
+    return this.httpClient.get<Array<RecommendedBorrower>>(`${this.url}/${this.LenderCreditScore}`)
   }
 
 
