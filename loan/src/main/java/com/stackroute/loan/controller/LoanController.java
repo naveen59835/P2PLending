@@ -12,9 +12,15 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/v1/loan")
 public class LoanController {
-    @Autowired
+
     LoanServiceImpl loanService;
-    @PostMapping("/getAll")
+
+    @Autowired
+    public LoanController(LoanServiceImpl loanService) {
+        this.loanService = loanService;
+    }
+
+    @PostMapping("/Loan")
     public ResponseEntity<?> getAllLoans(@RequestBody Map<String,String> userData){
         try{
             return new ResponseEntity<>(loanService.getLoans(userData.get("id"),userData.get("role")),HttpStatus.OK);
