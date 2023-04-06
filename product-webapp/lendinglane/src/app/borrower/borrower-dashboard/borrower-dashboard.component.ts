@@ -25,11 +25,21 @@ export class BorrowerDashboardComponent implements OnInit {
   }
 
   get ongoingLoans(){
-    return this.loans.filter(loan=>loan.approved && !loan.finished)
+    return this.loans.filter(loan=>loan.approved && !loan.expired)
   }
 
   get finishedLoans(){
-    return this.loans.filter(loan=>loan.approved && loan.finished);
+    return this.loans.filter(loan=>loan.approved && loan.expired);
+  }
+
+  get borrowerName(){
+    return localStorage.getItem("userName")
+  }
+  progress(loan : any){
+    let totalPaid = this.totalPaid(loan.emi);
+    let percentage = (totalPaid/loan.amount)*100;
+    console.log(percentage)
+    return Math.round(percentage)
   }
 
 }

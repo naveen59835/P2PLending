@@ -1,22 +1,13 @@
 <mat-toolbar color="primary">
   <div class="title" routerLink="">
-    <img class="logo" src="https://img.icons8.com/ios/150/ffffff/litecoin.png">
+    <img class="logo" src="https://img.icons8.com/fluency/96/null/gg.png">
     LendingLane
   </div>
   <span class="spacer"></span>
-  <button mat-icon-button routerLink="">
-    <mat-icon>home</mat-icon>
-  </button>
-  <button mat-icon-button>
-    <mat-icon>apps</mat-icon>
-  </button>
-  <button mat-icon-button (click)="openNotification()">
-    <mat-icon>notifications</mat-icon>
-  </button>
-
-<!--  <button mat-icon-button (click)="logout()">-->  <!-- used to toggle login/logout icon -->
-  <button mat-icon-button (click)="logout()">
-    <mat-icon *ngIf="authservice.isAuthenticated()">logout</mat-icon>
-    <mat-icon *ngIf="!authservice.isAuthenticated()" routerLink="/login">login</mat-icon>
-  </button>
+  <div class="links">
+    <span class="home">HOME</span>
+    <span class="notification" (click)="openNotification()">NOTIFICATIONS</span>
+  </div>
+  <div class="signup-button" *ngIf="authservice.isAuthenticated()">LOG OUT</div>
+  <div class="signup-button" *ngIf="!authservice.isAuthenticated()">SIGN UP</div>
 </mat-toolbar>

@@ -14,7 +14,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface RecommendationRepository extends Neo4jRepository<RecommendedBorrower,String> {
+public interface RecommendationRepository extends Neo4jRepository<RecommendedBorrower,Long> {
 
 
 
