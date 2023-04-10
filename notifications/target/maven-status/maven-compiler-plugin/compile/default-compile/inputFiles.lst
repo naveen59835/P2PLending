@@ -1,8 +1,0 @@
-/Users/sa/Desktop/Lendingprjct/LENDINGFRNTNDBCKND/lending/notifications/src/main/java/com/stackroute/notifications/model/Notification.java
-/Users/sa/Desktop/Lendingprjct/LENDINGFRNTNDBCKND/lending/notifications/src/main/java/com/stackroute/notifications/controller/NotificationController.java
-/Users/sa/Desktop/Lendingprjct/LENDINGFRNTNDBCKND/lending/notifications/src/main/java/com/stackroute/notifications/model/Email.java
-/Users/sa/Desktop/Lendingprjct/LENDINGFRNTNDBCKND/lending/notifications/src/main/java/com/stackroute/notifications/configuration/RabbitMQConfiguration.java
-/Users/sa/Desktop/Lendingprjct/LENDINGFRNTNDBCKND/lending/notifications/src/main/java/com/stackroute/notifications/services/NotificationServiceImpl.java
-/Users/sa/Desktop/Lendingprjct/LENDINGFRNTNDBCKND/lending/notifications/src/main/java/com/stackroute/notifications/repository/NotificationRepository.java
-/Users/sa/Desktop/Lendingprjct/LENDINGFRNTNDBCKND/lending/notifications/src/main/java/com/stackroute/notifications/model/NotificationMessage.java
-/Users/sa/Desktop/Lendingprjct/LENDINGFRNTNDBCKND/lending/notifications/src/main/java/com/stackroute/notifications/NotificationsApplication.java
