@@ -25,7 +25,7 @@
         <module>config-server</module>
         <module>eureka-server</module>
         <module>api-gateway</module>
-<!--        <module>product-webapp</module>-->
+        <module>product-webapp</module>
         <module>aggregator</module>
         <module>authentication</module>
         <module>borrower</module>
