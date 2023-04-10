@@ -6,9 +6,7 @@
 		<groupId>com.stackroute</groupId>
 		<artifactId>LendingLane</artifactId>
 		<version>1.0.0</version>
-		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.stackroute</groupId>
 	<artifactId>recommendation</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>recommendation</name>
@@ -81,8 +79,18 @@
 	<build>
 		<plugins>
 			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.1</version> <!-- Replace with the appropriate version for your project -->
+				<configuration>
+					<annotationProcessorPaths>
+						<path>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+							<version>1.18.20</version> <!-- Replace with the appropriate version for your project -->
+						</path>
+					</annotationProcessorPaths>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

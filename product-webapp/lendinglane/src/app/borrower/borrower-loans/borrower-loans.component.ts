@@ -8,7 +8,7 @@ import {MatTableDataSource} from "@angular/material/table";
 @Component({
   selector: 'app-borrower-loans',
   templateUrl: './borrower-loans.component.html',
-  styleUrls: ['./borrower-loans.component.css']
+  styleUrls: ['./borrower-loans.component.css'],
 })
 export class BorrowerLoansComponent implements OnInit{
 

@@ -15,6 +15,7 @@
 }
 mat-toolbar{
   background-color: white !important;
+  border-bottom: 2px solid #e3e3e3;
 }
 .signup-button{
   background-color: #f58024;

@@ -8,6 +8,6 @@
     <span class="home">HOME</span>
     <span class="notification" (click)="openNotification()">NOTIFICATIONS</span>
   </div>
-  <div class="signup-button" *ngIf="authservice.isAuthenticated()">LOG OUT</div>
-  <div class="signup-button" *ngIf="!authservice.isAuthenticated()">SIGN UP</div>
+  <div class="signup-button" *ngIf="authservice.isAuthenticated()" (click)="logout()">LOG OUT</div>
+  <div class="signup-button" *ngIf="!authservice.isAuthenticated()" routerLink="/signup">SIGN UP</div>
 </mat-toolbar>

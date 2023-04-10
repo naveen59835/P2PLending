@@ -36,6 +36,9 @@ public class Borrower {
     private byte[] aadharImage=new byte[0];
     private byte[] panImage=new byte[0];
     private byte[] cibilImage=new byte[0];
+    private String aadharImageName;
+    private String panImageName;
+    private String cibilImageName;
 
 
 
