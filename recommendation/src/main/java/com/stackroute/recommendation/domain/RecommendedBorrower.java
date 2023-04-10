@@ -21,7 +21,7 @@ public class RecommendedBorrower {
 
     @Relationship(type="Has", direction = Relationship.Direction.OUTGOING)
     private CibilScore cibilScore;
- private Integer creditScore;
+    private int creditScore;
     private String borrowerId;
     private double amount;
 

@@ -13,8 +13,9 @@ import org.springframework.web.bind.annotation.*;
 public class RecommendationController {
     @Autowired
   recommendationService recommendationService;
-    @Autowired
-    RecommendationRepository recommendationRepository;
+
+
+
     @PostMapping("/add")
     public ResponseEntity<?> savePerson(@RequestBody RequestModel requestModel){
         return new ResponseEntity<>(recommendationService.SavePerson(requestModel), HttpStatus.OK);

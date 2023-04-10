@@ -28,7 +28,7 @@ public class Lender {
     private double amountToInvest;
     private double interestRate;
     private int loanDuration;
-    private int creditScore;
+    private String creditScore;
     private double investedAmount;
     private double availableBalance;
 }

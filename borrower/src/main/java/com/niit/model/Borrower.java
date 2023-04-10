@@ -31,7 +31,7 @@ public class Borrower {
     private String panNo="";
     private String phoneNo="";
     private double amount;
-    private double cibilScore;
+    private int cibilScore;
     private Address address=new Address();
     private byte[] aadharImage=new byte[0];
     private byte[] panImage=new byte[0];

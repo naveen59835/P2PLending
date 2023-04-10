@@ -15,9 +15,13 @@ import java.util.Map;
 @RequestMapping("/api/v1/review")
 public class ReviewController {
 
-    @Autowired
+
     ReviewService reviewService;
 
+    @Autowired
+    public ReviewController(ReviewService reviewService) {
+        this.reviewService = reviewService;
+    }
 
     @PostMapping("/add/{borrowerId}")
     public ResponseEntity<?>addReview(@RequestBody ReviewRating reviewRating, @PathVariable String borrowerId) throws  ReviewAlreadyExistsException {
