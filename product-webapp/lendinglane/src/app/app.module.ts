@@ -59,6 +59,7 @@ import {MatChipsModule} from "@angular/material/chips";
 import {MatProgressBarModule} from "@angular/material/progress-bar";
 import { ProfileWidgetComponent } from './profile-details/profile-widget/profile-widget.component';
 import {MatMenuModule} from "@angular/material/menu";
+import {IvyCarouselModule} from "angular-responsive-carousel";
 @NgModule({
   declarations: [AppComponent, SignupComponent, NavbarComponent, LoginComponent,SidenavComponent, BorrowerComponent, BorrowerDetailsComponent,DashboardComponent, BorrowerDashboardComponent, DashboardHomeComponent, DashboardChatComponent, DashboardProfileComponent, DashboardTransactionComponent,LenderDetailsComponent, BorrowerTransactionComponent, DashboardLoansComponent, BorrowerLoansComponent, LoanDialogComponent,LoanDetailsComponent, DashboardMessagesComponent,LenderDashboardComponent,LenderComponent,RecommendedborrowerComponent, BorrowerMessagesComponent, DashboardMessageWindowComponent, BorrowerMessageWindowComponent,NotificationComponent, LenderMessagesComponent, LenderMessageWindowComponent,HomeComponent, LenderTransactionComponent, ProfileWidgetComponent],
     imports: [
@@ -89,7 +90,8 @@ import {MatMenuModule} from "@angular/material/menu";
         MatDividerModule,
         MatChipsModule,
         MatProgressBarModule,
-        MatMenuModule
+        MatMenuModule,
+      IvyCarouselModule
     ],
   providers: [],
   bootstrap: [AppComponent],
