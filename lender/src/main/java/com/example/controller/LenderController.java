@@ -65,7 +65,7 @@ public class LenderController {
     @PutMapping("/updateLender/{lenderId}")
     public ResponseEntity<?>updateLender(@RequestBody Lender lender , @PathVariable String lenderId) throws LenderNotFoundException {
         try {
-
+            System.out.println(lender);
             Lender lender1=lenderService.updateLender(lender,lenderId);
 
             return new ResponseEntity<Lender>(lender1,HttpStatus.OK);

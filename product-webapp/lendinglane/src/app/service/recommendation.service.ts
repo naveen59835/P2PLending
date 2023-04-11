@@ -6,14 +6,14 @@ import { RecommendedBorrower } from '../model/RecommendedBorroer';
   providedIn: 'root'
 })
 export class RecommendationService {
-  url:string="http://localhost:8087/api/v1/recommendation/get"
+  url:string="http://localhost:9002/api/v1/recommendation/get"
   constructor(private httpClient:HttpClient) { }
 
 
-
+score = "600-700"
   getbBorrower(creditScore:any)
   {
-    return this.httpClient.get<Array<RecommendedBorrower>>(`${this.url}/${creditScore}`)
+    return this.httpClient.get<Array<RecommendedBorrower>>(`${this.url}/${this.score}`)
   }
 
 

@@ -20,10 +20,10 @@ public class LoanController {
         this.loanService = loanService;
     }
 
-    @PostMapping("/Loan")
-    public ResponseEntity<?> getAllLoans(@RequestBody Map<String,String> userData){
+    @GetMapping("/Loan")
+    public ResponseEntity<?> getAllLoans(@RequestParam("id") String id, @RequestParam("role") String role){
         try{
-            return new ResponseEntity<>(loanService.getLoans(userData.get("id"),userData.get("role")),HttpStatus.OK);
+            return new ResponseEntity<>(loanService.getLoans(id,role),HttpStatus.OK);
         }catch (Exception exception){
             throw new RuntimeException(exception.getMessage());
         }

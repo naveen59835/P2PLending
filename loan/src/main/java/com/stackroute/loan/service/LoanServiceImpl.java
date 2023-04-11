@@ -29,6 +29,7 @@ public class LoanServiceImpl implements LoanService {
 
     @Autowired
     public LoanServiceImpl(LoanRepository loanRepository, RabbitTemplate template, BorrowerProxy borrowerProxy) {
+        this();
         this.loanRepository = loanRepository;
         this.template = template;
         this.borrowerProxy = borrowerProxy;
@@ -49,7 +50,6 @@ public class LoanServiceImpl implements LoanService {
             LoanDTO loanData = new LoanDTO();
             loan = loanRepository.save(loan);
             loanData.setSelectiveJsonObject(loan);
-            System.out.println(loanData.getJsonObject());
             template.convertAndSend("loan-notification-exchange","route-key",loan.getBorrowerId());
             template.convertAndSend("recommendation-exchange","route-key",loanData.getJsonObject());
             return loan;
