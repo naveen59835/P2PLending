@@ -32,4 +32,18 @@ public class RabbitMQConfiguration {
     {
         return BindingBuilder.bind(recommendationQueue).to(recommendationExchange).with("route-key").noargs();
     }
+
+    @Bean
+    public Queue loanApprovalRecommendationQueue(){
+        return new Queue("loan-approval-recommendation");
+    }
+    @Bean
+    public Exchange  loanApprovalRecommendationExchange(){
+        return new DirectExchange("loan-approval-recommendation-exchange");
+    }
+    @Bean
+    public Binding bindingExchangeAndQueue5(Queue loanApprovalRecommendationQueue, Exchange loanApprovalRecommendationExchange)
+    {
+        return BindingBuilder.bind(loanApprovalRecommendationQueue).to(loanApprovalRecommendationExchange).with("route-key").noargs();
+    }
 }

@@ -9,8 +9,6 @@ import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -62,13 +60,14 @@ public class ChatServiceImpl implements ChatService {
         throw new RuntimeException("Chat not found");
     }
     @Override
-    public void addChat(String borrowerId, String lenderId){
-        if(chatRepository.findChatByBorrowerIdAndLenderId(borrowerId,lenderId)==null){
-            Chat chat = new Chat();
+    public String addChat(String borrowerId, String lenderId){
+        Chat chat = chatRepository.findChatByBorrowerIdAndLenderId(borrowerId,lenderId);
+        if(chat==null){
+            chat = new Chat();
             chat.setBorrowerId(borrowerId);
             chat.setLenderId(lenderId);
-            chatRepository.save(chat);
+            return chatRepository.save(chat).getId();
         }
-        else throw new RuntimeException("Chat already Exists");
+        else return  chat.getId();
     }
 }

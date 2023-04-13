@@ -76,7 +76,7 @@
     <td mat-cell *matCellDef="let element"> {{element.amount}} </td>
   </ng-container>
   <ng-container matColumnDef="Rating">
-    <th mat-header-cell *matHeaderCellDef> Rating </th>
+    <th mat-header-cell *matHeaderCellDef> CIBIL </th>
     <td mat-cell *matCellDef="let element">{{element.creditScore}}</td>
   </ng-container>
   <ng-container matColumnDef="Payment">
@@ -89,14 +89,14 @@
   </ng-container><ng-container matColumnDef="Chat">
     <th mat-header-cell *matHeaderCellDef> Chat </th>
     <td mat-cell *matCellDef="let element">
-      <div class="chat-button">
+      <div class="chat-button" (click)="startChat(element.borrowerId)">
         <img width="20px" src="https://img.icons8.com/ios/50/000000/speech-bubble--v1.png"/>
       </div>
     </td>
   </ng-container><ng-container matColumnDef="Profile">
     <th mat-header-cell *matHeaderCellDef> Profile </th>
     <td mat-cell *matCellDef="let element">
-      <div class="payment-button" style="background-color: #b8ebdc;" >
+      <div class="payment-button" style="background-color: #b8ebdc;" [routerLink]="'/dashboard/recommendedborrowerdetail/'+element.borrowerId">
         <img width="25px" src="https://img.icons8.com/material/24/null/gender-neutral-user--v1.png"/>
       </div>
     </td>
@@ -105,24 +105,3 @@
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
-
-
-
-<!--<mat-card class="card">-->
-<!--    <mat-card-title >-->
-<!--       <div style="margin-bottom: 37px;"> Recommended borrowers</div>-->
-<!--    </mat-card-title>-->
-
-<!--        <div class="topnav">-->
-<!--            <p style="width:30% ;">Borrowers</p>-->
-<!--            <p style="width:30% ;">Amount</p>-->
-<!--            <p style="width:10% ;">Rating</p>-->
-<!--            <p style="width:10% ;" >Payment</p>-->
-<!--            <p style="width:10% ;" >Chat</p>-->
-<!--            <p style="width:10% ;" >Profile</p>-->
-<!--          </div>-->
-<!--<div>-->
-<!--<app-lender *ngFor="let borrowerRecommend of  borrower" [borrowerRecommended]="borrowerRecommend" ></app-lender>-->
-<!--</div>-->
-
-<!--</mat-card>-->

@@ -12,5 +12,5 @@ public interface ChatService {
 
     Chat getMessagesFromChat(String chatId);
 
-    void addChat(String borrowerId, String lenderId);
+    String addChat(String borrowerId, String lenderId);
 }

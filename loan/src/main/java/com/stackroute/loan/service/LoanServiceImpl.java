@@ -123,6 +123,10 @@ public class LoanServiceImpl implements LoanService {
                 if(termsToAdd>0){
                     loanRepository.save(loan);
                 }
+//                double basePrice = loan.getAmount()/loan.getTerms();
+//                EMI emi = new EMI(loan.getEmi().size()+1,basePrice+(basePrice*loan.getInterestRate()*0.001),false);
+//                loan.addToEMI(emi);
+//                loanRepository.save(loan);
             }
             //Add late fee to EMIS
 
@@ -151,6 +155,7 @@ public class LoanServiceImpl implements LoanService {
         Map<Object,Object> borrowerData = borrowerProxy.getBorrowerData(id);
         for (Object dataKey : borrowerData.keySet()) {
             if(borrowerData.get(dataKey)==null || borrowerData.get(dataKey).equals("")){
+                System.out.println(dataKey.toString());
                 return false;
             }
         }

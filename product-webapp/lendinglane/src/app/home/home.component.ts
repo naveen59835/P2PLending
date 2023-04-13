@@ -12,7 +12,8 @@ import { Router } from '@angular/router';
 export class HomeComponent  {
   contactForm: FormGroup;
   images =[{path : "https://images.unsplash.com/photo-1621317849220-af499f2180d4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1091&q=80"},
-    {path : "https://images.unsplash.com/photo-1681069693462-0e5f5db2393e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"}
+    {path : "https://images.unsplash.com/photo-1681069693462-0e5f5db2393e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"},
+    {path : "https://images.unsplash.com/photo-1681069693462-0e5f5db2393e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"},
   ]
   constructor(private formBuilder: FormBuilder, private router: Router, private http: HttpClient,private _snackBar: MatSnackBar) {
     this.contactForm = this.formBuilder.group({
@@ -51,6 +52,8 @@ export class HomeComponent  {
   goto() {
     this.router.navigate(['/signup']);
   }
-
+  print(event:any){
+    console.log(event)
+  }
 
 }

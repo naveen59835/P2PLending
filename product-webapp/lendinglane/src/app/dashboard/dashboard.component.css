@@ -12,3 +12,6 @@ mat-sidenav-content{
   min-height: calc(100vh - 60px);
   padding: 20px;
 }
+.small-screen{
+  width: 50% !important;
+}

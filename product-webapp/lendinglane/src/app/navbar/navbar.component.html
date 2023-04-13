@@ -1,4 +1,7 @@
 <mat-toolbar color="primary">
+  <button mat-icon-button *ngIf="isSmall" (click)="toggleSidenav()">
+    <mat-icon>menu</mat-icon>
+  </button>
   <div class="title" routerLink="">
     <img class="logo" src="https://img.icons8.com/fluency/96/null/gg.png">
     LendingLane

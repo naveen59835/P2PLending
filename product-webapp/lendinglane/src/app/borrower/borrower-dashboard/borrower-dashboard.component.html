@@ -8,7 +8,7 @@
 <div class="loan-container">
   <h1>ONGOING LOANS</h1>
   <div class="loans" *ngIf="ongoingLoans.length>0">
-    <div class="loan" *ngFor="let loan of ongoingLoans let number=index">
+    <div class="loan" *ngFor="let loan of ongoingLoans let number=index" [routerLink]="'/dashboard/loan/'+loan.id">
       <p class="loan-id">#LOAN {{number+1}}</p>
       <div class="loan-data-container">
         <div class="paid-amount-container">

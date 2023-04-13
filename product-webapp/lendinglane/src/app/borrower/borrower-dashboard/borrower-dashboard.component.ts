@@ -20,7 +20,7 @@ export class BorrowerDashboardComponent implements OnInit {
   }
   totalPaid(emi : Array<any>){
     if(emi.length>0)
-    return Math.round(emi.reduce((acc,current)=>acc+current.price,0) * 10) / 10
+    return Math.round(emi.reduce((acc,current)=>current.paymentStatus?acc+current.price:acc+0,0) * 10) / 10
     else return  0
   }
 
@@ -38,7 +38,6 @@ export class BorrowerDashboardComponent implements OnInit {
   progress(loan : any){
     let totalPaid = this.totalPaid(loan.emi);
     let percentage = (totalPaid/loan.amount)*100;
-    console.log(percentage)
     return Math.round(percentage)
   }
 

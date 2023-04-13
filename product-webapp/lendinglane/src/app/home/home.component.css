@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400&display=swap');
 .contain {
   border: 1px solid #CDC4E8;
   height: 600px;
@@ -21,7 +20,6 @@
   padding-top: 25px;
   text-decoration: underline;
   font-weight: bold;
-
 }
 
 .contents {
@@ -160,7 +158,7 @@
 
 .applytoloan {
   background-color: #2B2929;
-  padding: -100px;
+  padding-bottom: 100px;
 }
 
 .steps {
@@ -421,3 +419,54 @@ li {
 .contact {
   color: black;
 }
+
+carousel{
+  background-color: #F7F7F3;
+}
+.carousel-cell{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10%;
+}
+.carousel-cell>img{
+  max-width: 350px !important;
+  width: 100% !important;
+  height: 400px !important;
+  object-fit: cover !important;
+}
+.testimony{
+  font-family: 'Lato',sans-serif;
+  font-style: italic;
+  font-size: 22px;
+  color: #333;
+  position: relative;
+}
+.testimony>img{
+  width: 150px !important;
+  height: 100px !important;
+  position: absolute !important;
+  top: -100px;
+  left: -100px;
+}
+.home-faq{
+  padding: 80px 0;
+  margin: 0 auto;
+  max-width: 1230px;
+  width: 100%;
+}
+.faq-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  margin-bottom: 50px;
+}
+.faq-container>div{
+  max-width: 600px;
+  width: 100%;
+}
+mat-expansion-panel{
+  margin-bottom: 10px;
+}
+

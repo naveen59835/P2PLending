@@ -5,12 +5,14 @@ import com.stackroute.payment.controller.config.EmiDTO;
 import com.stackroute.payment.controller.config.PaymentDTO;
 import com.stackroute.payment.domain.Payment;
 import lombok.Setter;
+import org.json.simple.JSONObject;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 @Service
@@ -43,6 +45,7 @@ public class PaymentServiceImpl implements PaymentService{
             paymentDTO.setJsonObject(payment);
             template.convertAndSend("loan-approval-exchange","route-key",paymentDTO.getJsonObject());
             template.convertAndSend("loan-approval-notification-exchange","route-key",paymentDTO.getJsonObject());
+            template.convertAndSend("loan-approval-recommendation-exchange","route-key", Map.of("id",loanId));
         }
         else if (status.equals("fail")){
             payment.setAmount(amount);
@@ -79,8 +82,10 @@ public class PaymentServiceImpl implements PaymentService{
         payment.setId(orderId);
         EmiDTO emiDTO = new EmiDTO();
         emiDTO.setJsonObject(orderId,loanId,emiId);
+        PaymentDTO paymentDTO = new PaymentDTO();
+        paymentDTO.setJsonObject(payment);
         template.convertAndSend("pay-emi-exchange","route-key",emiDTO.getJsonObject());
-        template.convertAndSend("pay-emi-notification-exchange","route-key",emiDTO.getJsonObject());
+        template.convertAndSend("pay-emi-notification-exchange","route-key",paymentDTO.getJsonObject() );
         return paymentRepository.save(payment);
     }
 

@@ -1,7 +1,11 @@
 <div class="apply-loan-container-scrollable">
   <div class="contain">
     <div class="contents">
-      <h1 style="font-size: 60px; display: flex;flex-direction: column;gap: 25px; margin-bottom: 20px; font-family: 'Lato', sans-serif"><p >Good wealth</p><p>management</p><p style="color:orange;">Simplified</p></h1>
+      <h1
+        style="font-size: 60px; display: flex;flex-direction: column;gap: 25px; margin-bottom: 20px; font-family: 'Lato', sans-serif">
+        <p>Good wealth</p>
+        <p>management</p>
+        <p style="color:orange;">Simplified</p></h1>
       <h3 class="take">
         Take control of your finances with our <br>
         innovative P2P lending platform, offering<br>
@@ -16,7 +20,7 @@
         <br>
         Start Investing at 10% min
       </h3>
-      <button routerLink="/dashboard" class="my-button">Join Now</button>
+      <button class="my-button" routerLink="/dashboard">Join Now</button>
 
     </div>
     <div class="image">
@@ -143,7 +147,22 @@
 
     </div>
   </div>
-
+  <carousel  [cellsToShow]="1" [height]="600" [autoplay]="true" >
+    <div class="carousel-cell">
+      <div class="testimony testimony-1">
+        <img src="https://img.icons8.com/ios-filled/100/d1d1d1/quote-left.png"/>
+        Lendinglane has been the other self I wanted in me, that takes<br> care of my finances
+      </div>
+      <img [src]="images[0].path">
+    </div>
+    <div class="carousel-cell">
+      <div class="testimony testimony-1">
+        <img src="https://img.icons8.com/ios-filled/100/d1d1d1/quote-left.png"/>
+        Lendinglane has been the other self I wanted in me, that takes<br> care of my finances
+      </div>
+      <img [src]="images[1].path">
+    </div>
+  </carousel>
 
   <div class="applytoloan">
     <h2 class="steps">
@@ -187,11 +206,44 @@
         </p>
       </div>
     </div>
-
   </div>
-  <carousel [images]="images" [cellsToShow]="1" [height]="600">
-
-  </carousel>
+  <div class="home-faq">
+    <div class="faq-header"><h1 class="faq-header-title">Frequently asked questions</h1></div>
+    <div class="faq-container">
+      <div class="faq-left">
+        <mat-accordion>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>How soon can I start investing?</mat-expansion-panel-header>
+            <p>We'll have you up and running immediately. As soon as you complete your registration, and we verify the details. You can start investing via Internet Banking/UPI ID/Auto Debit payment methods.</p>
+          </mat-expansion-panel>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>Why should I invest through LendingLane?</mat-expansion-panel-header>
+            <p>Unbiased recommendations, a single view of your investments, investment tracking, timely alerts, easy investment process. There’s more, we have a great retention rate and we really are good people!</p>
+          </mat-expansion-panel>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>How does LendingLane earn money?</mat-expansion-panel-header>
+            <p>Glad you asked. We earn a small fee by taking a small commission from each loan</p>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+      <div class="faq-right">
+        <mat-accordion>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>Can I invest in funds other than the ones LendingLane recommends?</mat-expansion-panel-header>
+            <p>Unfortunately, no but you can always reset your recommendation criteria and that will allow you to find other loans</p>
+          </mat-expansion-panel>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>What are the risks associated with investing in LendingLane?</mat-expansion-panel-header>
+            <p>Investing in P2P loans carries risks, including the risk of borrower defaults. But we recommend trusted and verified borrowers</p>
+          </mat-expansion-panel>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>What happens in case of a dispute between borrowers and lenders?</mat-expansion-panel-header>
+            <p>In case of a dispute between borrowers and lenders on our P2P lending platform, we may act as an intermediary and work towards resolving the dispute. This may involve facilitating communication between the parties and finding a mutually agreeable solution.</p>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+    </div>
+  </div>
   <footer>
     <div class="footer-content">
       <div class="footer-section about">
