@@ -10,8 +10,7 @@ export class LoanService {
   constructor(private http : HttpClient) { }
 
   getAllLoans(id:string,role:string){
-    let userData ={"id":id,"role":role}
-    return this.http.post("http://localhost:9002/api/v1/loan/getAll",userData);
+    return this.http.get(`http://localhost:9002/api/v1/loan/Loan?id=${id}&role=${role}`);
   }
   applyLoan(data :any){
     data.borrowerId = localStorage.getItem("email");

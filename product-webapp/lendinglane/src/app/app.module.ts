@@ -55,8 +55,13 @@ import { LenderMessagesComponent } from './lender/lender-messages/lender-message
 import { LenderMessageWindowComponent } from './lender/lender-message-window/lender-message-window.component';
 import {HomeComponent} from "./home/home.component";
 import { LenderTransactionComponent } from './lender/lender-transaction/lender-transaction.component';
+import {MatChipsModule} from "@angular/material/chips";
+import {MatProgressBarModule} from "@angular/material/progress-bar";
+import { ProfileWidgetComponent } from './profile-details/profile-widget/profile-widget.component';
+import {MatMenuModule} from "@angular/material/menu";
+import {IvyCarouselModule} from "angular-responsive-carousel";
 @NgModule({
-  declarations: [AppComponent, SignupComponent, NavbarComponent, LoginComponent,SidenavComponent, BorrowerComponent, BorrowerDetailsComponent,DashboardComponent, BorrowerDashboardComponent, DashboardHomeComponent, DashboardChatComponent, DashboardProfileComponent, DashboardTransactionComponent,LenderDetailsComponent, BorrowerTransactionComponent, DashboardLoansComponent, BorrowerLoansComponent, LoanDialogComponent,LoanDetailsComponent, DashboardMessagesComponent,LenderDashboardComponent,LenderComponent,RecommendedborrowerComponent, BorrowerMessagesComponent, DashboardMessageWindowComponent, BorrowerMessageWindowComponent,NotificationComponent, LenderMessagesComponent, LenderMessageWindowComponent,HomeComponent, LenderTransactionComponent],
+  declarations: [AppComponent, SignupComponent, NavbarComponent, LoginComponent,SidenavComponent, BorrowerComponent, BorrowerDetailsComponent,DashboardComponent, BorrowerDashboardComponent, DashboardHomeComponent, DashboardChatComponent, DashboardProfileComponent, DashboardTransactionComponent,LenderDetailsComponent, BorrowerTransactionComponent, DashboardLoansComponent, BorrowerLoansComponent, LoanDialogComponent,LoanDetailsComponent, DashboardMessagesComponent,LenderDashboardComponent,LenderComponent,RecommendedborrowerComponent, BorrowerMessagesComponent, DashboardMessageWindowComponent, BorrowerMessageWindowComponent,NotificationComponent, LenderMessagesComponent, LenderMessageWindowComponent,HomeComponent, LenderTransactionComponent, ProfileWidgetComponent],
     imports: [
         BrowserModule,
         AppRoutingModule,
@@ -82,8 +87,11 @@ import { LenderTransactionComponent } from './lender/lender-transaction/lender-t
         MatExpansionModule,
         MatDialogModule,
         MatPaginatorModule,
-        MatDividerModule
-
+        MatDividerModule,
+        MatChipsModule,
+        MatProgressBarModule,
+        MatMenuModule,
+      IvyCarouselModule
     ],
   providers: [],
   bootstrap: [AppComponent],

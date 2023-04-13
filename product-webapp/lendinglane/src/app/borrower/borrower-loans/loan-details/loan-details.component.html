@@ -1,5 +1,5 @@
 <div *ngIf="loanData!=undefined" class="loan-container">
-  <h1 class="loan-id">#{{loanData.id}}</h1>
+  <h1 class="loan-id">Loan ID : <span style="color: orange">{{loanData.id}}</span></h1>
   <div class="loan-details">
     <div class="amount">
       <p>Amount </p>
@@ -16,10 +16,6 @@
     <div class="date">
       <p>Disbursed On </p>
       <h3 class="loan-amount">{{loanData.dateOfLoan}}</h3>
-    </div>
-    <div class="terms">
-      <p>Terms </p>
-      <h3 class="loan-amount">{{loanData.terms}}</h3>
     </div>
   </div>
   <div *ngIf="loanData.emi.length > 0" class="emi-details">

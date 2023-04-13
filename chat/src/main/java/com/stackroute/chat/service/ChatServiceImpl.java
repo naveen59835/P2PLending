@@ -15,12 +15,13 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class ChatServiceImpl {
+public class ChatServiceImpl implements ChatService {
     @Autowired
     ChatRepository chatRepository;
     @Autowired
     SimpMessagingTemplate template;
 
+    @Override
     public void sendMessage(Text text){
         Chat chat = null;
         if(text.getRole().equals("borrower")){
@@ -42,6 +43,7 @@ public class ChatServiceImpl {
             template.convertAndSend("/topic/messages/"+text.getRecipientId(),newMassage);
         }
     }
+    @Override
     public List<Chat> getAllChats(String userId, String role){
         if(role.equals("borrower")){
             return chatRepository.findChatsByBorrowerId(userId);
@@ -51,6 +53,7 @@ public class ChatServiceImpl {
         }
         throw new RuntimeException("Doesn't match");
     }
+    @Override
     public Chat getMessagesFromChat(String chatId){
         Optional<Chat> chat = chatRepository.findById(chatId);
         if (chat.isPresent()){
@@ -58,6 +61,7 @@ public class ChatServiceImpl {
         }
         throw new RuntimeException("Chat not found");
     }
+    @Override
     public void addChat(String borrowerId, String lenderId){
         if(chatRepository.findChatByBorrowerIdAndLenderId(borrowerId,lenderId)==null){
             Chat chat = new Chat();

@@ -108,7 +108,7 @@ public class LenderServiceImpl implements LenderService {
             {
                 existingLender.setAmountToInvest(lender.getAmountToInvest());
             }
-            if(lender.getCreditScore()!=0)
+            if(lender.getCreditScore()!=null)
             {
                 existingLender.setCreditScore(lender.getCreditScore());
             }

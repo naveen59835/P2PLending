@@ -5,6 +5,8 @@ import {LenderService} from 'src/app/service/lender.service';
 import {RecommendationService} from 'src/app/service/recommendation.service';
 import {LoanService} from "../../service/loan.service";
 import {PaymentService} from "../../service/payment.service";
+import Swal from "sweetalert2";
+declare let Razorpay: any;
 
 @Component({
   selector: 'app-lender-dashboard',
@@ -15,6 +17,7 @@ export class LenderDashboardComponent implements OnInit {
 
   borrower: RecommendedBorrower[] = [];
   loans: any = [{}];
+  displayedColumns = ["Borrowers","Amount","Rating", "Payment", "Chat", "Profile"]
 
   istrue = true
 
@@ -25,7 +28,7 @@ export class LenderDashboardComponent implements OnInit {
     }
   }
 
-  constructor(private recommendationService: RecommendationService,private paymentService : PaymentService, private lenderservice: LenderService, private route: Router,private  loanService : LoanService) {
+  constructor(private service : PaymentService, private recommendationService: RecommendationService,private paymentService : PaymentService, private lenderservice: LenderService, private route: Router,private  loanService : LoanService) {
 
 
   }
@@ -78,6 +81,103 @@ export class LenderDashboardComponent implements OnInit {
     if(emi)
     return Math.round(emi.reduce((acc:any,emiVal:any)=>acc+emiVal.price,0)*10)/10;
     else return 0
+  }
+  progress(loan : any){
+    let totalPaid = this.recovered(loan.emi);
+    let percentage = (totalPaid/loan.amount)*100;
+    return Math.round(percentage)
+  }
+  pay(recommendedLoan:any){
+    this.service.payment(recommendedLoan.amount, recommendedLoan.borrowerId, localStorage.getItem("email")).subscribe(data => {
+      console.log(data);
+      let amount = recommendedLoan.amount;
+      let that = this;
+      let paystatus: any = ""
+      if (data.status == "created") {
+       let id = data.id;
+        let options = {
+          key: data.key,
+          amount: data.amount,
+          currency: data.currency,
+          name: recommendedLoan.name,
+          description: "transfer",
+          order_id: data.id,
+
+          handler: (data: any) => {
+            console.log(data.razorpay_payment_id)
+            console.log(data.razorpay_order_id)
+            console.log(data.razorpay_signature)
+            paystatus = "success"
+
+
+            that.updatedetail(recommendedLoan,paystatus);
+
+            Swal.fire("payment succesfful", "Well done, you  entered amount", "success")
+
+          },
+
+
+          "prefill": {
+            "name": " ",
+            "email": " ",
+            "contact": " "
+
+
+          },
+
+
+          notes: {
+            address: "lender address"
+          },
+          theme: {
+            color: "#3399cc"
+          },
+
+
+        };
+
+
+        let rzp = new Razorpay(options);
+
+        rzp.on('payment.failed', function (response: any) {
+          //this.message = "Payment Failed";
+          // Todo - store this information in the server
+          console.log(response.error.code);
+          console.log(response.error.description);
+          console.log(response.error.source);
+          console.log(response.error.step);
+          console.log(response.error.reason);
+          console.log(response.error.metadata.order_id);
+          console.log(response.error.metadata.payment_id);
+          paystatus = "fail"
+          that.updatedetail(recommendedLoan,paystatus);
+
+          //this.error = response.error.reason;
+        });
+
+        rzp.open();
+
+
+      }
+
+
+      //  updatedetail(paystatus="pending")
+
+
+    });
+
+
+  }
+
+
+  updatedetail (recommendedLoan: any, paystatus : any)  {
+//   console.log(this.recommendedLoan)
+//
+  this.service.updatedetail(recommendedLoan.amount, recommendedLoan.borrowerId, localStorage.getItem("email"), recommendedLoan.borrowerId, paystatus, recommendedLoan.id).subscribe(data => {
+
+  });
+//
+// }
   }
 
 }

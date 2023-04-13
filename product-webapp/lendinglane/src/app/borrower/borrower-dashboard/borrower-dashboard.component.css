@@ -1,8 +1,54 @@
+*{
+  font-family: 'Mulish', sans-serif !important;
+}
+.greeting{
+  margin-bottom: 50px;
+  padding-left: 30px;
+}
+.borrower-name-container{
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  margin-bottom: 10px;
+}
+.borrower-name{
+  font-size: 20px;
+  font-weight: 500;
+}
+.borrower-name>span{
+  color:#f58024 ;
+}
+.borrower-name-container>img{
+  width: 30px;
+  object-fit: contain;
+}
+.loan-data-container{
+  display: flex;
+  gap: 30px;
+  margin-bottom: 20px;
+}
+.loan-data-container>div{
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.total-Logo{
+  padding: 10px;
+  background-color: #6c7bec30;
+  border-radius: 50%;
+}
+.total-Logo>img{
+  width: 25px;
+  object-fit: contain;
+}
+.total-amount>p{
+  margin: 0;
+}
 .loan-container{
   height: max-content;
   background-color: white;
   padding: 30px;
-  border-radius: 22px;
+  border-radius: 5px;
   margin-bottom: 30px;
 }
 .loan-container>h1{
@@ -15,16 +61,26 @@
 .loan{
   border: 1px solid;
   border-radius: 6px;
-  padding: 10px 30px;
+  padding:30px;
+}
+.loan-id{
+  font-size: 15px;
+  font-weight: 500;
+}
+.total-amount-label{
+  color: #818181;
+}
+.total-amount-value{
+  font-size: 16px;
+  margin-top: 10px;
 }
 .loan>h3{
-  font-weight: 500;
   letter-spacing: 0.75px;
 }
 table {
   width: 100%;
   border: 1px solid #686868;
-  border-radius: 10px;
+  border-radius: 5px;
   background: none;
   overflow: hidden;
 }

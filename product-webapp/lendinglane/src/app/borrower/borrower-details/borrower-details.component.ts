@@ -31,8 +31,9 @@ export class BorrowerDetailsComponent implements OnInit {
   aadhaarVerificationMessage = '';
   panNumbers: string[] = [];
   panVerificationMessage = '';
-
-
+  toggleForm = "personal"
+  editImage!:string
+  uploadButton!:any;
 
   constructor(
     private borrowerService: BorrowerDetailsService,
@@ -117,6 +118,10 @@ export class BorrowerDetailsComponent implements OnInit {
   getBorrowerDetails(emailId: string) {
     this.borrowerService.getBorrowerDetails(emailId).subscribe(
       (response) => {
+        console.log(response)
+        this.aadharImage=response.aadharImage;
+        this.panImage=response.panImage;
+        this.cibilImage=response.cibilImage;
         this.borrowerDetails = response;
       },
       (error) => {
@@ -138,7 +143,6 @@ export class BorrowerDetailsComponent implements OnInit {
         type: 'application/json',
       })
     );
-   // formData.append('aadhar', this.aadharImage);
     this.http
       .put<Borrower>(
         `http://localhost:9002/api/v1/borrower/borrowers/${emailId}`,
@@ -183,7 +187,7 @@ extractFileAndUpload(file: File, name: string) {
 
   const maxSize = 10 * 1024 * 1024; // 10 MB in bytes
   if (file.size > maxSize) {
-    const messageElement = document.getElementById(`${name}UploadMessage`);
+    const messageElement = document.getElementById(`${name}`);
     if (messageElement) {
       messageElement.innerHTML = 'File size exceeds the maximum limit of 10 MB.';
     }
@@ -215,19 +219,19 @@ extractFileAndUpload(file: File, name: string) {
 
 
 onUploadButtonClick(event: any, name: string) {
-  const fileInput = document.getElementById(`${name}ImageInput`) as HTMLInputElement;
+  const fileInput = document.getElementById(`${name}`) as HTMLInputElement;
   if (fileInput.files && fileInput.files.length > 0) {
     const file = fileInput.files[0];
-    const fileNameElement = document.getElementById(`${name}FileName`);
+    const fileNameElement = document.getElementById(`${name}ImageLabel`);
+    console.log(fileNameElement)
     if (fileNameElement) {
       fileNameElement.innerText = file.name;
     }
     this.extractFileAndUpload(file, name);
+    this.uploadButton=undefined;
+    this.editImage='';
     this.editMode = false;
   }
 }
-
-
-
 
 }

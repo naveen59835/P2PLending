@@ -15,8 +15,9 @@ import org.json.simple.JSONObject;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
-import java.util.ArrayList;
+import java.io.IOException;
 import java.util.List;
 
 @Service
@@ -112,17 +113,20 @@ public class BorrowerServiceImpl implements BorrowerService {
         return false;
     }
     @Override
-    public Borrower saveBorrowerImage(byte[] borrowerImage, String emailId, String imageName) {
+    public Borrower saveBorrowerImage(MultipartFile borrowerImage, String emailId, String imageName) throws IOException {
         if (borrowerRepo.findById(emailId).isPresent()) {
             Borrower borrower = borrowerRepo.findById(emailId).get();
             if (imageName.equals("aadhar")) {
-                borrower.setAadharImage(borrowerImage);
+                borrower.setAadharImage(borrowerImage.getBytes());
+                borrower.setAadharImageName(borrowerImage.getOriginalFilename());
             }
             if (imageName.equals("pan")) {
-                borrower.setPanImage(borrowerImage);
+                borrower.setPanImage(borrowerImage.getBytes());
+                borrower.setPanImageName(borrowerImage.getOriginalFilename());
             }
             if (imageName.equals("cibil")) {
-                borrower.setCibilImage(borrowerImage);
+                borrower.setCibilImage(borrowerImage.getBytes());
+                borrower.setCibilImageName(borrowerImage.getOriginalFilename());
             }
 
             return borrowerRepo.save(borrower);

@@ -19,13 +19,22 @@ import java.time.temporal.ChronoUnit;
 import java.util.*;
 
 @Service
-public class LoanServiceImpl {
-    @Autowired
+public class LoanServiceImpl implements LoanService {
+
     LoanRepository loanRepository;
-    @Autowired
+
     RabbitTemplate template;
-    @Autowired
+
     BorrowerProxy borrowerProxy;
+
+    @Autowired
+    public LoanServiceImpl(LoanRepository loanRepository, RabbitTemplate template, BorrowerProxy borrowerProxy) {
+        this();
+        this.loanRepository = loanRepository;
+        this.template = template;
+        this.borrowerProxy = borrowerProxy;
+    }
+
     public final Map<Integer,Double> loanRate=new HashMap<>();
     public LoanServiceImpl(){
         loanRate.put(3,16d);
@@ -33,6 +42,7 @@ public class LoanServiceImpl {
         loanRate.put(12,19d);
         loanRate.put(24,20d);
     }
+    @Override
     public Loan applyLoan(Loan loan){
         loan.setInterestRate(loanRate.get(loan.getTerms()));
         loan.setDateOfLoan(LocalDate.now());
@@ -40,7 +50,6 @@ public class LoanServiceImpl {
             LoanDTO loanData = new LoanDTO();
             loan = loanRepository.save(loan);
             loanData.setSelectiveJsonObject(loan);
-            System.out.println(loanData.getJsonObject());
             template.convertAndSend("loan-notification-exchange","route-key",loan.getBorrowerId());
             template.convertAndSend("recommendation-exchange","route-key",loanData.getJsonObject());
             return loan;
@@ -48,6 +57,8 @@ public class LoanServiceImpl {
         else throw new RuntimeException("Please complete the borrower profile");
     }
 
+//    This method is used with rabbit listener
+    @Override
     @RabbitListener(queues = "loan-approval")
     public void approveLoan(JSONObject jsonObject){
         String loanId = jsonObject.get("loanId").toString();
@@ -57,10 +68,12 @@ public class LoanServiceImpl {
             loan.setApproved(true);
             loan.setLenderId(lenderId);
             loanRepository.save(loan);
-
+            //send data to notification service
+            //send signal to remove loan from recommendation service
 
         }
     }
+    @Override
     @RabbitListener(queues = "pay-emi")
     public void emiPaid(JSONObject object){
         EmiDTO emiDTO = new EmiDTO(object);
@@ -75,12 +88,14 @@ public class LoanServiceImpl {
             loanRepository.save(loan.get());
         }
     }
+    @Override
     public Loan getLoan(String loanId){
         if(loanRepository.findById(loanId).isPresent()){
             return loanRepository.findById(loanId).get();
         }
         throw new RuntimeException("Can't find the loan");
     }
+    @Override
     public List<Loan> getLoans(String id, String role){
         if(role.equals("lender")){
             return loanRepository.findLoansByLenderId(id);
@@ -89,8 +104,9 @@ public class LoanServiceImpl {
             return loanRepository.findLoansByBorrowerId(id);
         }
     }
-//    @Scheduled(cron = "0 0 0 * * *",zone = "Asia/Kolkata")
-    @Scheduled(cron = "0 * * * * *",zone = "Asia/Kolkata")
+    @Override
+    @Scheduled(cron = "0 0 0 * * *",zone = "Asia/Kolkata")
+//    @Scheduled(cron = "0 * * * * *",zone = "Asia/Kolkata")
     public void addEMI(){
         List<Loan> loanList = loanRepository.findAll();
         LocalDate currentDate = LocalDate.now();
@@ -114,6 +130,7 @@ public class LoanServiceImpl {
     }
 
     //This method uses rabbitmq data from payment microservice
+    @Override
     public void payEMI(String loanId, int emiID, String paymentId){
         if(loanRepository.findById(loanId).isPresent()){
             Loan loan = loanRepository.findById(loanId).get();
@@ -129,6 +146,7 @@ public class LoanServiceImpl {
         }
     }
 
+    @Override
     public boolean hasDocuments(String id){
         Map<Object,Object> borrowerData = borrowerProxy.getBorrowerData(id);
         for (Object dataKey : borrowerData.keySet()) {
@@ -138,10 +156,8 @@ public class LoanServiceImpl {
         }
         return true;
     }
-    private void addLateFee(List<EMI> emiList, LocalDateTime loanStartDate){
 
-    }
-
+    @Override
     public List<Loan> findLoansFromLender(String id) {
         return  loanRepository.findLoansByLenderId(id);
     }

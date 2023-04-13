@@ -26,15 +26,18 @@ public class recommendationServiceImpl implements recommendationService{
     public void SavePerson(JSONObject jsonObject) {
         LoanDTO loan = new LoanDTO(jsonObject);
         Map<Object,Object> borrowerData = borrowerDetailsProxy.getBorrowerData(loan.getBorrowerId());
-        double lower = (double)borrowerData.get("cibilScore");
-        int upper = (int)lower + 100;
-        String cibilscore=(int)lower+"-"+upper;
+        double CIBIL = (double)borrowerData.get("cibilScore");
+        System.out.println("Json Object "+loan);
+        System.out.println("Cibil Score "+CIBIL);
+        int lower=((int)CIBIL/100)*100;
+        int upper = lower + 100;
+        String cibilscore=lower+"-"+upper;
         CibilScore cibilScore1=new CibilScore();
         cibilScore1.setScore(cibilscore);
         RecommendedBorrower borrower=new RecommendedBorrower();
         borrower.setCibilScore(cibilScore1);
-        borrower.setCreditScore((int)lower);
-        borrower.setId(Long.parseLong(loan.getLoanId()));
+        borrower.setCreditScore((int)CIBIL);
+        borrower.setId(loan.getLoanId());
         borrower.setBorrowerId(loan.getBorrowerId());
         borrower.setAmount(loan.getAmount());
        recommendationRepository.save(borrower);

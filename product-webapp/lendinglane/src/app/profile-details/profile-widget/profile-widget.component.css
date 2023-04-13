@@ -1,0 +1,36 @@
+.widget-header{
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+.avatar-placeholder{
+  background-color: #1458ea;
+  padding:35px 25px;
+  border-radius: 50%;
+}
+.avatar-placeholder>span{
+  color: white;
+  font-size: 25px;
+  font-weight: 600;
+}
+.name{
+  font-weight: 600;
+  font-size: 20px;
+}
+main{
+  margin-top: 50px;
+}
+.label{
+  font-size: 18px;
+  font-weight: 500;
+  font-family: 'Mulish';
+}
+.value{
+  font-size: 16px;
+  color: #8a8a8f;
+  font-family: 'Mulish';
+}
+mat-divider{
+  margin: 20px 0;
+}
+
