@@ -48,7 +48,6 @@ public class LoanServiceImpl {
         else throw new RuntimeException("Please complete the borrower profile");
     }
 
-//    This method is used with rabbit listener
     @RabbitListener(queues = "loan-approval")
     public void approveLoan(JSONObject jsonObject){
         String loanId = jsonObject.get("loanId").toString();
@@ -58,8 +57,7 @@ public class LoanServiceImpl {
             loan.setApproved(true);
             loan.setLenderId(lenderId);
             loanRepository.save(loan);
-            //send data to notification service
-            //send signal to remove loan from recommendation service
+
 
         }
     }

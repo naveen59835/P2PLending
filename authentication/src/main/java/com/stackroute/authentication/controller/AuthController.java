@@ -11,8 +11,13 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/v1/authentication")
 public class AuthController {
+
     @Autowired
     AuthServiceImpl authService;
+
+    public AuthController(AuthServiceImpl authService) {
+        this.authService = authService;
+    }
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody Map<String,String> loginData){
