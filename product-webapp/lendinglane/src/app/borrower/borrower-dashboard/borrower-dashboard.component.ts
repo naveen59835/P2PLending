@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {MatTableDataSource} from "@angular/material/table";
 import {LoanService} from "../../service/loan.service";
+import {SidenavService} from "../../service/sidenav.service";
 
 @Component({
   selector: 'app-borrower-dashboard',
@@ -9,7 +10,7 @@ import {LoanService} from "../../service/loan.service";
 })
 export class BorrowerDashboardComponent implements OnInit {
   loans:Array<any>=[];
-  constructor(private loanService : LoanService) { }
+  constructor(private loanService : LoanService, private sideNav : SidenavService) { }
 
   ngOnInit(): void {
     let id = localStorage.getItem("email") || "";
@@ -39,6 +40,13 @@ export class BorrowerDashboardComponent implements OnInit {
     let totalPaid = this.totalPaid(loan.emi);
     let percentage = (totalPaid/loan.amount)*100;
     return Math.round(percentage)
+  }
+  get isMobile(){
+    return this.sideNav.isMobile;
+  }
+
+  get isIpad(){
+    return this.sideNav.isIpad
   }
 
 }

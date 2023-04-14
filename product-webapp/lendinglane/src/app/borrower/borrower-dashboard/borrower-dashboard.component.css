@@ -51,27 +51,23 @@
   padding: 30px;
   border-radius: 5px;
   margin-bottom: 30px;
-  overflow: hidden;
 }
 .loan-container>h1{
   font-weight: 500;
 }
-.loans-container-wrapper{
-  width: 100%;
-  overflow: hidden;
-}
-.loans{
-  display: flex;
-  gap: 20px;
-}
 .carousel-cell{
   margin-right: 20px;
+}
+::ng-deep .carousel-arrow{
+  background-color: transparent !important;
+  box-shadow: none !important;
 }
 .loan{
   border: 1px solid;
   border-radius: 6px;
   padding:30px;
-  flex: 0 0 200px;
+  max-width: 280px;
+  height: max-content !important;
 }
 .loan-id{
   font-size: 15px;
@@ -96,4 +92,16 @@ table {
 }
 tr{
   height: 40px !important;
+}
+@media (max-width: 800px) {
+  .loan-data-container{
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .carousel-cell{
+    max-width: 180px;
+  }
+  carousel{
+    height: 250px !important;
+  }
 }

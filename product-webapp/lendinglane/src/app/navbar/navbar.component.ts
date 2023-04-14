@@ -18,13 +18,13 @@ export class NavbarComponent implements OnInit {
   constructor(public authservice:LoginService,private router:Router,private dialog:MatDialog,private sidenavService : SidenavService, private breakpointObserver : BreakpointObserver) { }
 
   ngOnInit(): void {
-    this.breakpointObserver.observe([Breakpoints.Small,Breakpoints.XSmall]).pipe(
-      map(result=>result.matches)
-    ).subscribe({
+    this.breakpointObserver.observe([Breakpoints.Small,Breakpoints.XSmall]).subscribe({
         next : (data)=>{
-          this.isSmall = data;
-          this.sidenavService.isSidenavOpened=data
-          this.sidenavService.isSmallScreen=data
+          this.isSmall = data.matches;
+          this.sidenavService.isSidenavOpened=this.isSmall
+          this.sidenavService.isSmallScreen=this.isSmall
+          this.sidenavService.isMobile = data.breakpoints[Breakpoints.XSmall]
+          this.sidenavService.isIpad = data.breakpoints[Breakpoints.Small]
         }
       }
     )

@@ -9,7 +9,8 @@
   <h1>ONGOING LOANS</h1>
   <div class="loans-container-wrapper">
     <div class="loans" *ngIf="ongoingLoans.length>0">
-      <div class="loan" *ngFor="let loan of ongoingLoans let number=index" [routerLink]="'/dashboard/loan/'+loan.id">
+      <carousel [cellsToShow]="isMobile?1:isIpad?2:4">
+      <div class="loan carousel-cell" *ngFor="let loan of ongoingLoans let number=index" [routerLink]="'/dashboard/loan/'+loan.id">
         <p class="loan-id">#LOAN {{number+1}}</p>
         <div class="loan-data-container">
           <div class="paid-amount-container">
@@ -29,6 +30,7 @@
         </div>
         <mat-progress-bar mode="determinate" [value]="progress(loan)"></mat-progress-bar>
       </div>
+      </carousel>
     </div>
   </div>
   <p *ngIf="ongoingLoans.length==0">No ongoing loans found</p>

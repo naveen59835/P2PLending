@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {SidenavService} from "../../service/sidenav.service";
 
 @Component({
   selector: 'app-dashboard-home',
