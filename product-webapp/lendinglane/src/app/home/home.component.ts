@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import {SidenavService} from "../service/sidenav.service";
 
 @Component({
   selector: 'app-home',
@@ -15,7 +16,7 @@ export class HomeComponent  {
     {path : "https://images.unsplash.com/photo-1681069693462-0e5f5db2393e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"},
     {path : "https://images.unsplash.com/photo-1681069693462-0e5f5db2393e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"},
   ]
-  constructor(private formBuilder: FormBuilder, private router: Router, private http: HttpClient,private _snackBar: MatSnackBar) {
+  constructor(private formBuilder: FormBuilder, private router: Router, private http: HttpClient,private _snackBar: MatSnackBar,private sidenav : SidenavService) {
     this.contactForm = this.formBuilder.group({
       email: ['', [Validators.required]],
       message: ['', [Validators.required]]
@@ -54,6 +55,9 @@ export class HomeComponent  {
   }
   print(event:any){
     console.log(event)
+  }
+  get isSmallScreen(){
+   return this.sidenav.isSmallScreen;
   }
 
 }

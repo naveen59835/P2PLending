@@ -38,8 +38,9 @@
   border-radius: 50%;
 }
 .total-Logo>img{
-  width: 25px;
-  object-fit: contain;
+  width: 25px !important;
+  object-fit: contain !important;
+  height: 25px !important;
 }
 .total-amount>p{
   margin: 0;
@@ -50,18 +51,27 @@
   padding: 30px;
   border-radius: 5px;
   margin-bottom: 30px;
+  overflow: hidden;
 }
 .loan-container>h1{
   font-weight: 500;
+}
+.loans-container-wrapper{
+  width: 100%;
+  overflow: hidden;
 }
 .loans{
   display: flex;
   gap: 20px;
 }
+.carousel-cell{
+  margin-right: 20px;
+}
 .loan{
   border: 1px solid;
   border-radius: 6px;
   padding:30px;
+  flex: 0 0 200px;
 }
 .loan-id{
   font-size: 15px;

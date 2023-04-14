@@ -3,8 +3,8 @@
   <div class="active-message-container">
     <div *ngFor="let message of messages">
       <p class="receiver-email">{{message.lenderId}}</p>
-      <p class ="chat-subject">Subject : Loan Approval Request</p>
-      <p class="chat-resume" [routerLink]="message.id"><mat-icon>play_arrow</mat-icon> Resume chat</p>    <!--      replace jon with recipient email-->
+      <p class ="chat-subject" *ngIf="!isSmallScreen">Subject : Loan Approval Request</p>
+      <p class="chat-resume" [routerLink]="message.id"><mat-icon>play_arrow</mat-icon> <span *ngIf="!isSmallScreen">Resume chat</span></p>    <!--      replace jon with recipient email-->
     </div>
   </div>
 </div>

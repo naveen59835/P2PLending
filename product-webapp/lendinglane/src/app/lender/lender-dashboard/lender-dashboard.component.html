@@ -39,7 +39,11 @@
 <!--  </div>-->
 
 <div class="loan-container">
-  <h1>Investments</h1>
+  <div class="loan-container-header">
+    <h1>Investments</h1>
+    <mat-icon>navigate_before</mat-icon>
+    <mat-icon>navigate_next</mat-icon>
+  </div>
   <div class="loans" *ngIf="loans.length>0">
     <div class="loan" *ngFor="let loan of loans let number=index">
       <p class="loan-id">#INVESTMENT {{number+1}}</p>

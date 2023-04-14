@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Borrower } from 'src/app/model/Borrower';
 import { ViewChild } from '@angular/core';
+import {SidenavService} from "../../service/sidenav.service";
 
 @Component({
   selector: 'app-borrower-details',
@@ -39,7 +40,8 @@ export class BorrowerDetailsComponent implements OnInit {
     private borrowerService: BorrowerDetailsService,
     private route: ActivatedRoute,
     private http: HttpClient,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private sidenav : SidenavService
   ) {
     this.formGroup = this.fb.group({
       firstName: ['', [Validators.minLength(3)]],
@@ -68,7 +70,9 @@ export class BorrowerDetailsComponent implements OnInit {
 
   }
 
-
+  get isSmallScreen(){
+    return this.sidenav.isSmallScreen;
+  }
   verifyAadhaar() {
     if (this.borrowerDetails.aadhaarNo && this.borrowerDetails.aadhaarNo.length >= 12) {
       if (this.aadhaarNumbers.includes(this.borrowerDetails.aadhaarNo)) {

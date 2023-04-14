@@ -1,6 +1,12 @@
-:host{
+.profile-container{
   display: flex;
   gap: 30px;
+}
+.small-screen{
+  flex-direction: column;
+}
+.small-screen>app-profile-widget{
+  max-width: calc(100% - 60px) !important;
 }
 h1,h2{
   margin: 0;
@@ -19,7 +25,7 @@ app-profile-widget{
   background-color:white;
   display: block;
   padding: 30px;
-  width: 100%;
+  width: calc(100% - 60px);
 }
 .personal-details__form-header{
   display: flex;
@@ -31,6 +37,7 @@ app-profile-widget{
 form>div{
   display: flex;
   gap: 10%;
+  flex-wrap: wrap;
 }
 .address-details__header{
   margin-bottom: 20px;

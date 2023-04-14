@@ -7,26 +7,28 @@
 </div>
 <div class="loan-container">
   <h1>ONGOING LOANS</h1>
-  <div class="loans" *ngIf="ongoingLoans.length>0">
-    <div class="loan" *ngFor="let loan of ongoingLoans let number=index" [routerLink]="'/dashboard/loan/'+loan.id">
-      <p class="loan-id">#LOAN {{number+1}}</p>
-      <div class="loan-data-container">
-        <div class="paid-amount-container">
-          <div class="total-Logo"><img src="https://img.icons8.com/external-kiranshastry-solid-kiranshastry/64/6C7BEC/external-money-bag-banking-and-finance-kiranshastry-solid-kiranshastry.png"/></div>
-          <div class="total-amount">
-            <p class="total-amount-label">AMOUNT</p>
-            <p class="total-amount-value">{{loan.amount}}</p>
+  <div class="loans-container-wrapper">
+    <div class="loans" *ngIf="ongoingLoans.length>0">
+      <div class="loan" *ngFor="let loan of ongoingLoans let number=index" [routerLink]="'/dashboard/loan/'+loan.id">
+        <p class="loan-id">#LOAN {{number+1}}</p>
+        <div class="loan-data-container">
+          <div class="paid-amount-container">
+            <div class="total-Logo"><img src="https://img.icons8.com/external-kiranshastry-solid-kiranshastry/64/6C7BEC/external-money-bag-banking-and-finance-kiranshastry-solid-kiranshastry.png"/></div>
+            <div class="total-amount">
+              <p class="total-amount-label">AMOUNT</p>
+              <p class="total-amount-value">{{loan.amount}}</p>
+            </div>
+          </div>
+          <div class="total-amount-container">
+            <div class="total-Logo"><img src="https://img.icons8.com/sf-regular/48/6C7BEC/paid.png"/></div>
+            <div class="total-amount">
+              <p class="total-amount-label">PAID</p>
+              <p class="total-amount-value">{{totalPaid(loan.emi)}}</p>
+            </div>
           </div>
         </div>
-        <div class="total-amount-container">
-          <div class="total-Logo"><img src="https://img.icons8.com/sf-regular/48/6C7BEC/paid.png"/></div>
-          <div class="total-amount">
-            <p class="total-amount-label">PAID</p>
-            <p class="total-amount-value">{{totalPaid(loan.emi)}}</p>
-          </div>
-        </div>
+        <mat-progress-bar mode="determinate" [value]="progress(loan)"></mat-progress-bar>
       </div>
-      <mat-progress-bar mode="determinate" [value]="progress(loan)"></mat-progress-bar>
     </div>
   </div>
   <p *ngIf="ongoingLoans.length==0">No ongoing loans found</p>
