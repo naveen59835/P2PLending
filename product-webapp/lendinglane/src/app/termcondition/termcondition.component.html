@@ -1,0 +1,93 @@
+<div>
+
+  <mat-sidenav-container class="container">
+    <mat-sidenav-content class="content">
+
+      <mat-card class="card" >
+        <mat-card-header id="header">
+          <div mat-card-avatar class="header-image"><img class="logo"
+              src="https://img.icons8.com/fluency/96/null/gg.png"></div>
+          <mat-card-title>Terms & Conditions </mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content [style.overflow]="'auto'">
+
+
+          <dl>
+            <dt>BASIS OF AGREEMENT:</dt>
+            <dd>
+              <ul>
+                <li>
+                  We provide a Platform via our Website. The purpose of the Platform is to facilitate the arrangement of
+                  secured credit agreements to finance commercial Loans between Lender Members and Borrowers.
+                </li>
+                <li>
+                  This agreement outlines the terms and conditions (“Terms”) between you and MoneyThing (“we”, “us”) and
+                  forms the basis of your relationship with us and the terms on which you will participate in Loans.
+                </li>
+                <li>
+                  Your agreement to these Terms shall be indicated by way of acceptance via our Platform. We will send a
+                  confirmation email to the email address you provide us during registration that marks the start of the
+                  agreement between you and us. You must read these conditions carefully before agreeing and retain a
+                  copy for future reference.
+                </li>
+                <li>
+                  Where we have published a document which is referred to within these Terms (such as a policy
+                  statement), the content of the document shall also form part of this agreement and shall be deemed as
+                  being accepted by you. In the instance of any inconsistencies or contradictions between these Terms
+                  and a document referenced within them, the meaning taken from the Terms shall prevail.
+                </li>
+              </ul>
+            </dd>
+
+
+            <dt>INTEREST PAYMENT AND REPAYMENT POLICY:</dt>
+            <dd>
+              <ul>
+                <li>
+                  You shall start to accrue interest once a Loan you have made has been drawn down by a Borrower, on the
+                  day that you make a Loan Commitment (if so specified in the Lending Opportunity) or on the day you
+                  have been transferred a Loan by another Lender Member. The rate at which interest accrues will be the
+                  rate contained in the relevant Loan Contract.
+                </li>
+                <li> interest received from a Borrower is paid to MoneyThing. This interest becomes due and payable to
+                  you as a Lender Member on the date falling one month after the relevant Loans are first drawn down,
+                  and then on the same day of the month in each following month. If such day is not a Business Day, the
+                  interest will become due and payable to you on the next Business Day. Once interest becomes due and
+                  payable to you as a Lender Member, we will credit it to your MoneyThing account.
+                </li>
+                <li>If a loan is non-performing interest will continue to accrue on such Loan, but we will not pay you
+                  interest until we receive the relevant interest payment from the Borrower
+                </li>
+                <li>
+                  Repayments of principal under a Loan you have made are due and payable to you as a Lender Member upon
+                  receipt by us from the Borrower.
+                </li>
+                <li>
+                  If we receive monies from a Borrower in excess of the amount that was due and payable at that
+                  particular time, we will treat such excess monies as interest, and not principal, unless a prepayment
+                  or repayment has been explicitly agreed in advance by us. 
+                </li>
+                <li>
+                  Cash back offers to Lender Member become due and payable upon drawdown of the relevant Loan. This cash
+                  back will be credited to your MoneyThing account.
+                </li>
+                <li>
+                  You can view how much of your money is currently allocated from within the Platform either as a
+                  numeric value or as a percentage of your total Loan Commitment.
+                </li>
+               
+              </ul>
+            </dd>
+          </dl>
+
+        </mat-card-content>
+        <mat-card-actions>
+          <button (click)="accept()" mat-button class="accept-button">ACCEPT</button>
+          <button (click)="decline()"  mat-button class="decline-button">DECLINE</button>
+        </mat-card-actions>
+      </mat-card>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+
+</div>
