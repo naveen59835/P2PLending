@@ -6,3 +6,9 @@ form{
 button{
   margin-top: 20px;
 }
+
+.btn span{
+  font-weight: 900;
+  color: black;
+
+}

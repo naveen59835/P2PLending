@@ -1,14 +1,22 @@
+<mat-error *ngIf="disable==true">
+  please first read and agree the T&C
+</mat-error>
+
 <form [formGroup]="loanForm">
+
+
+
   <mat-form-field appearance="outline">
     <mat-label>Enter the amount</mat-label>
-    <input matInput type="text" placeholder="Amount" formControlName="amount">
+    <input matInput type="text" [disabled]="disable" placeholder="Amount" formControlName="amount">
     <mat-error *ngIf="loanForm.get('amount')?.hasError('required')">Amount can't be empty</mat-error>
     <mat-error *ngIf="loanForm.get('amount')?.hasError('minlength')">Amount should be over ₹1000</mat-error>
     <mat-error *ngIf="loanForm.get('amount')?.hasError('pattern')">Amount must be a number</mat-error>
+
   </mat-form-field>
   <mat-form-field appearance="outline">
     <mat-label>Choose a loan duration</mat-label>
-    <mat-select formControlName="terms">
+    <mat-select formControlName="terms" [disabled]="disable">
       <mat-option value="3">3 months (16%/month)</mat-option>
       <mat-option value="6">6 months (17%/month)</mat-option>
       <mat-option value="12">12 months (19%/month)</mat-option>
@@ -16,7 +24,16 @@
     </mat-select>
     <mat-error *ngIf="loanForm.get('terms')?.hasError('required')">Loan duration can't be empty</mat-error>
   </mat-form-field>
-  <mat-checkbox formControlName="termsAndConditions">Agree to the T&C</mat-checkbox>
-  <mat-error *ngIf="!loanForm.get('termsAndConditions')?.valid && loanForm.get('termsAndConditions')?.touched ">You can't apply the loan without agreeing to the T&C</mat-error>
-  <button type="submit" mat-raised-button color="primary" [disabled]="!loanForm.valid" (click)="applyLoan()">Enter</button>
+
+  <mat-checkbox formControlName="termsAndConditions" [disabled]="disable">
+    <div class="btn" (click)="click()">
+      <span>Read and Agree the T&C</span>
+
+
+    </div>
+  </mat-checkbox>
+  <mat-error *ngIf="!loanForm.get('termsAndConditions')?.valid && loanForm.get('termsAndConditions')?.touched ">You
+    can't apply the loan without agreeing to the T&C</mat-error>
+  <button type="submit" mat-raised-button color="primary" [disabled]="!loanForm.valid"
+    (click)="applyLoan()">Enter</button>
 </form>

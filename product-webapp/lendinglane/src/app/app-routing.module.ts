@@ -32,6 +32,7 @@ const routes: Routes = [
       {path:'transactions',component:DashboardTransactionComponent},
       {path:'loan',component:DashboardLoansComponent},
       {path:'loan/:id',component:LoanDetailsComponent},
+      {path:'term',component:TermconditionComponent},
       {path:'recommendedborrowerdetail/:id',component:RecommendedborrowerComponent},
       {path:"chat",component:DashboardMessagesComponent},
       {path:"chat/:id",component:DashboardMessageWindowComponent}
