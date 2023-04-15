@@ -12,6 +12,7 @@ services:
       MYSQL_USERNAME: root
       MYSQL_PASSWORD: root
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      MYSQL_DATABASE : userdb
     networks:
       - springcloud-lendingLane-net
 
@@ -244,22 +245,22 @@ services:
     ports:
       - "8081:8081"
 
-  contact-us:
-    build: contactus/
-    container_name: contactus-service
-    environment:
-      - eureka.client.serviceUrl.defaultZone=http://eureka-server:8761/eureka/
-
-    depends_on:
-      - mongodb
-      - eureka-server
-      - api-gateway
-    restart: always
-    networks:
-      - springcloud-lendingLane-net
-
-    ports:
-      - "8089:8089"
+#  contact-us:
+#    build: contactus/
+#    container_name: contactus-service
+#    environment:
+#      - eureka.client.serviceUrl.defaultZone=http://eureka-server:8761/eureka/
+#
+#    depends_on:
+#      - mongodb
+#      - eureka-server
+#      - api-gateway
+#    restart: always
+#    networks:
+#      - springcloud-lendingLane-net
+#
+#    ports:
+#      - "8089:8089"
 
 
 
@@ -285,19 +286,19 @@ services:
 
 
 
-  product-webapp:
-    build: product-webapp/
-    image: product-webapp
-    depends_on:
-      - eureka-server
-      - api-gateway
-    restart: always
-    container_name: product-webapp
-    environment:
-      - eureka.client.serviceUrl.defaultZone=http://eureka-server:8761/eureka/
-
-    ports:
-      - "8099:8099"
+#  product-webapp:
+#    build: product-webapp/
+#    image: product-webapp
+#    depends_on:
+#      - eureka-server
+#      - api-gateway
+#    restart: always
+#    container_name: product-webapp
+#    environment:
+#      - eureka.client.serviceUrl.defaultZone=http://eureka-server:8761/eureka/
+#
+#    ports:
+#      - "8099:8099"
 
 
 

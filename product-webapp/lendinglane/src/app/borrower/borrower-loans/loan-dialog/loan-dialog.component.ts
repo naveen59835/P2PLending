@@ -1,10 +1,10 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import * as http from "http";
 import {LoanService} from "../../../service/loan.service";
 import {FormBuilder, Validators} from "@angular/forms";
 import {MatDialogRef} from "@angular/material/dialog";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-loan-dialog',
@@ -15,7 +15,7 @@ export class LoanDialogComponent {
   disable:boolean=true;
 
   @Output()dialogClose!:EventEmitter<any>;
-  constructor(private  loanService : LoanService, private fb : FormBuilder, private dialog : MatDialogRef<LoanDialogComponent>, private snackBar : MatSnackBar,private route:Router) { 
+  constructor(private  loanService : LoanService, private fb : FormBuilder, private dialog : MatDialogRef<LoanDialogComponent>, private snackBar : MatSnackBar,private route:Router) {
 
 
     if(loanService.valid==true){
@@ -23,7 +23,7 @@ export class LoanDialogComponent {
       this.disable=false
     }
     else{
- 
+
       this.disable=true
     }
   }
@@ -59,6 +59,6 @@ export class LoanDialogComponent {
   {
     this.route.navigate(['/dashboard/term'])
     this.dialog.close();
-   
+
   }
 }
