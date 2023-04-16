@@ -1,27 +1,21 @@
 <div class="greeting">
   <div class="lender-name-container">
-    <span class="lender-name">Welcome back, <span>{{lender.firstName+" "+lender.lastName | uppercase}}</span></span>
+    <span class="lender-name">Welcome back, <span>{{lender.firstName + " " + lender.lastName | uppercase}}</span></span>
     <img src="https://img.icons8.com/emoji/48/null/hand-with-fingers-splayed-emoji.png"/>
   </div>
   <span class="greeting-message">We hope you have a great day.</span>
 </div>
 
 <div *ngIf="borrower.length==0">
-<div (click)="add()">
+  <div (click)="add()">
     <mat-icon>add</mat-icon>
+  </div>
 </div>
-</div>
-
-
-
-
-
-
 
 
 <div *ngIf="borrower.length==0">
 
-    <button mat-raised-button (click)="creditScore()" [disabled]="istrue">Enter creditScore</button>
+  <button (click)="creditScore()" [disabled]="istrue" mat-raised-button>Enter creditScore</button>
 
 
 </div>
@@ -41,71 +35,82 @@
 <div class="loan-container">
   <div class="loan-container-header">
     <h1>Investments</h1>
-    <mat-icon>navigate_before</mat-icon>
-    <mat-icon>navigate_next</mat-icon>
+    <mat-icon (click)="navigatePrevious()">navigate_before</mat-icon>
+    <mat-icon (click)="navigateNext()">navigate_next</mat-icon>
   </div>
-  <div class="loans" *ngIf="loans.length>0">
-    <div class="loan" *ngFor="let loan of loans let number=index">
-      <p class="loan-id">#INVESTMENT {{number+1}}</p>
-      <div class="loan-data-container">
-        <div class="paid-amount-container">
-          <div class="total-Logo"><img src="https://img.icons8.com/external-kiranshastry-solid-kiranshastry/64/6C7BEC/external-money-bag-banking-and-finance-kiranshastry-solid-kiranshastry.png"/></div>
-          <div class="total-amount">
-            <p class="total-amount-label">AMOUNT</p>
-            <p class="total-amount-value">{{loan.amount}}</p>
+  <div *ngIf="loans.length>0" class="loans">
+    <carousel [cellsToShow]="isMobile?1:isIpad?2:4" [arrows]="false" #carouselComponent>
+      <div *ngFor="let loan of loans let number=index" class="loan carousel-cell">
+        <p class="loan-id">#INVESTMENT {{number + 1}}</p>
+        <div class="loan-data-container">
+          <div class="paid-amount-container">
+            <div class="total-Logo"><img
+              src="https://img.icons8.com/external-kiranshastry-solid-kiranshastry/64/6C7BEC/external-money-bag-banking-and-finance-kiranshastry-solid-kiranshastry.png"/>
+            </div>
+            <div class="total-amount">
+              <p class="total-amount-label">AMOUNT</p>
+              <p class="total-amount-value">{{loan.amount}}</p>
+            </div>
+          </div>
+          <div class="total-amount-container">
+            <div class="total-Logo"><img src="https://img.icons8.com/sf-regular/48/6C7BEC/paid.png"/></div>
+            <div class="total-amount">
+              <p class="total-amount-label">COLLECTED</p>
+              <p class="total-amount-value">{{recovered(loan.emi)}}</p>
+            </div>
           </div>
         </div>
-        <div class="total-amount-container">
-          <div class="total-Logo"><img src="https://img.icons8.com/sf-regular/48/6C7BEC/paid.png"/></div>
-          <div class="total-amount">
-            <p class="total-amount-label">PAID</p>
-            <p class="total-amount-value">{{recovered(loan.emi)}}</p>
-          </div>
-        </div>
+        <mat-progress-bar [value]="progress(loan)" mode="determinate"></mat-progress-bar>
       </div>
-      <mat-progress-bar mode="determinate" [value]="progress(loan)"></mat-progress-bar>
-    </div>
+    </carousel>
   </div>
   <p *ngIf="loans.length==0">No investments found</p>
 
 </div>
+<div class="recommended-borrower-container">
+  <div class="recommended-borrower-header">
+    <h1>Recommended Borrowers</h1>
+  </div>
+  <table [dataSource]="borrower" mat-table>
+    <ng-container matColumnDef="Borrowers">
+      <th *matHeaderCellDef mat-header-cell> #</th>
+      <td *matCellDef="let element" mat-cell> {{element.borrowerId}} </td>
+    </ng-container>
+    <ng-container matColumnDef="Amount">
+      <th *matHeaderCellDef mat-header-cell> Amount</th>
+      <td *matCellDef="let element" mat-cell> {{element.amount}} </td>
+    </ng-container>
+    <ng-container matColumnDef="Rating">
+      <th *matHeaderCellDef mat-header-cell> CIBIL</th>
+      <td *matCellDef="let element" mat-cell>{{element.creditScore}}</td>
+    </ng-container>
+    <ng-container matColumnDef="Payment">
+      <th *matHeaderCellDef mat-header-cell> Payment</th>
+      <td *matCellDef="let element" mat-cell>
+        <div (click)="pay(element)" class="payment-button">
+          <img src="https://img.icons8.com/ios-filled/50/000000/plus-math.png" width="25px"/>
+        </div>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="Chat">
+      <th *matHeaderCellDef mat-header-cell> Chat</th>
+      <td *matCellDef="let element" mat-cell>
+        <div (click)="startChat(element.borrowerId)" class="chat-button">
+          <img src="https://img.icons8.com/ios/50/000000/speech-bubble--v1.png" width="20px"/>
+        </div>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="Profile">
+      <th *matHeaderCellDef mat-header-cell> Profile</th>
+      <td *matCellDef="let element" mat-cell>
+        <div [routerLink]="'/dashboard/recommendedborrowerdetail/'+element.borrowerId" class="payment-button"
+             style="background-color: #b8ebdc;">
+          <img src="https://img.icons8.com/material/24/null/gender-neutral-user--v1.png" width="25px"/>
+        </div>
+      </td>
+    </ng-container>
 
-<table mat-table [dataSource]="borrower">
-  <ng-container matColumnDef="Borrowers">
-    <th mat-header-cell *matHeaderCellDef> # </th>
-    <td mat-cell *matCellDef="let element"> {{element.borrowerId}} </td>
-  </ng-container>
-  <ng-container matColumnDef="Amount">
-    <th mat-header-cell *matHeaderCellDef> Amount </th>
-    <td mat-cell *matCellDef="let element"> {{element.amount}} </td>
-  </ng-container>
-  <ng-container matColumnDef="Rating">
-    <th mat-header-cell *matHeaderCellDef> CIBIL </th>
-    <td mat-cell *matCellDef="let element">{{element.creditScore}}</td>
-  </ng-container>
-  <ng-container matColumnDef="Payment">
-    <th mat-header-cell *matHeaderCellDef> Payment </th>
-    <td mat-cell *matCellDef="let element">
-      <div class="payment-button" (click)="pay(element)">
-        <img width="25px" src="https://img.icons8.com/ios-filled/50/000000/plus-math.png"/>
-      </div>
-    </td>
-  </ng-container><ng-container matColumnDef="Chat">
-    <th mat-header-cell *matHeaderCellDef> Chat </th>
-    <td mat-cell *matCellDef="let element">
-      <div class="chat-button" (click)="startChat(element.borrowerId)">
-        <img width="20px" src="https://img.icons8.com/ios/50/000000/speech-bubble--v1.png"/>
-      </div>
-    </td>
-  </ng-container><ng-container matColumnDef="Profile">
-    <th mat-header-cell *matHeaderCellDef> Profile </th>
-    <td mat-cell *matCellDef="let element">
-      <div class="payment-button" style="background-color: #b8ebdc;" [routerLink]="'/dashboard/recommendedborrowerdetail/'+element.borrowerId">
-        <img width="25px" src="https://img.icons8.com/material/24/null/gender-neutral-user--v1.png"/>
-      </div>
-    </td>
-  </ng-container>
-
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
+    <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+    <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
+  </table>
+</div>

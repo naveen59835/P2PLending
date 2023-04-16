@@ -6,10 +6,14 @@
   <span class="greeting-message">We hope you have a great day.</span>
 </div>
 <div class="loan-container">
-  <h1>ONGOING LOANS</h1>
+  <div class="loan-container-header">
+    <h1>ONGOING LOANS</h1>
+    <mat-icon (click)="navigatePrevious()">navigate_before</mat-icon>
+    <mat-icon (click)="navigateNext()">navigate_next</mat-icon>
+  </div>
   <div class="loans-container-wrapper">
     <div class="loans" *ngIf="ongoingLoans.length>0">
-      <carousel [cellsToShow]="isMobile?1:isIpad?2:4">
+      <carousel [cellsToShow]="isMobile?1:isIpad?2:4" [arrows]="false" #carouselComponent>
       <div class="loan carousel-cell" *ngFor="let loan of ongoingLoans let number=index" [routerLink]="'/dashboard/loan/'+loan.id">
         <p class="loan-id">#LOAN {{number+1}}</p>
         <div class="loan-data-container">

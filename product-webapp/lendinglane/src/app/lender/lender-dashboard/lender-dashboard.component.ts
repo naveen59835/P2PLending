@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {Router} from '@angular/router';
 import {RecommendedBorrower} from 'src/app/model/RecommendedBorroer';
 import {LenderService} from 'src/app/service/lender.service';
@@ -7,6 +7,8 @@ import {LoanService} from "../../service/loan.service";
 import {PaymentService} from "../../service/payment.service";
 import Swal from "sweetalert2";
 import {ChatService} from "../../service/chat.service";
+import {SidenavService} from "../../service/sidenav.service";
+import {CarouselComponent} from "angular-responsive-carousel";
 declare let Razorpay: any;
 
 @Component({
@@ -19,6 +21,7 @@ export class LenderDashboardComponent implements OnInit {
   borrower: RecommendedBorrower[] = [];
   loans: any = [{}];
   displayedColumns = ["Borrowers","Amount","Rating", "Payment", "Chat", "Profile"]
+  @ViewChild("carouselComponent") carouselComponent !: CarouselComponent;
 
   istrue = true
 
@@ -29,9 +32,7 @@ export class LenderDashboardComponent implements OnInit {
     }
   }
 
-  constructor(private service : PaymentService,private chat : ChatService, private recommendationService: RecommendationService,private paymentService : PaymentService, private lenderservice: LenderService, private route: Router,private  loanService : LoanService) {
-
-
+  constructor(private sidenav: SidenavService,private service : PaymentService,private chat : ChatService, private recommendationService: RecommendationService,private paymentService : PaymentService, private lenderservice: LenderService, private route: Router,private  loanService : LoanService) {
   }
 
   ngOnInit(): void {
@@ -184,6 +185,20 @@ export class LenderDashboardComponent implements OnInit {
     this.chat.createChat(borrowerId).subscribe({
       next :(data:any)=>this.route.navigateByUrl("/dashboard/chat/"+data.id)
     })
+  }
+
+  get isMobile(){
+    return this.sidenav.isMobile;
+  }
+
+  get isIpad(){
+    return this.sidenav.isIpad
+  }
+  navigateNext(){
+    this.carouselComponent.next();
+  }
+  navigatePrevious(){
+    this.carouselComponent.prev();
   }
 
 }
