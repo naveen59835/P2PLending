@@ -53,17 +53,13 @@ services:
       - springcloud-lendingLane-net
 
 
-
-
-
   eureka-server:
     build: eureka-server/
     container_name: eureka-server-service
-    networks:
-      - springcloud-lendingLane-net
+#    network_mode: "host"
     restart: always
     ports:
-      - "8761:8761"
+      - 8761:8761
 
   api-gateway:
     build: api-gateway/
