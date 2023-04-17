@@ -107,3 +107,8 @@ tr{
   }
 
 }
+@media (max-width: 350px) {
+  .carousel-cell{
+    max-width: 150px;
+  }
+}

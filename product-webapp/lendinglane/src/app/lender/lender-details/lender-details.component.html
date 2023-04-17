@@ -35,7 +35,7 @@
           <p class="label">Phone Number</p>
           <mat-form-field appearance="outline">
             <mat-label>Registered Mobile Number</mat-label>
-            <input [(ngModel)]="lenderDetails.phoneNo" name="phoneNo" matInput required [disabled]="!editMode"
+            <input [(ngModel)]="lenderDetails.phoneNo" name="phoneNumber" matInput required [disabled]="!editMode"
                    [ngModelOptions]="{updateOn: 'blur'}" minlength="10" maxlength="10" pattern="^[6-9]\d{9}$"
                    #phoneNo="ngModel">
             <mat-error *ngIf="phoneNo.invalid && (phoneNo.dirty || phoneNo.touched)">
@@ -122,6 +122,21 @@
             <mat-error *ngIf="state.invalid && (state.dirty || state.touched)">
               State must be between 3 and 50 characters long.
             </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <h2 class="address-details__header">Recommendation Details</h2>
+      <div class="cibil-interestRate">
+        <div class="cibil-score">
+          <p class="label">CIBIL Score</p>
+          <mat-form-field appearance="outline">
+            <mat-label>CIBIL Score</mat-label>
+            <mat-select [(ngModel)]="lenderDetails.creditScore" [disabled]="!editMode" name="creditScore" >
+              <mat-option value="400-500">400 - 500</mat-option>
+              <mat-option value="500-600">500 - 600</mat-option>
+              <mat-option value="600-700">600 - 700</mat-option>
+              <mat-option value="700-800">700 - 800</mat-option>
+            </mat-select>
           </mat-form-field>
         </div>
       </div>

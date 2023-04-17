@@ -13,6 +13,7 @@ import {LenderService} from 'src/app/service/lender.service';
 export class LenderDetailsComponent implements OnInit {
 
   lenderDetails: any = {
+    creditScore:"600-700",
     address: {
       address: undefined,
       city: undefined,

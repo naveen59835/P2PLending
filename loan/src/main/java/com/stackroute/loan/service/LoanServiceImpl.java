@@ -91,7 +91,13 @@ public class LoanServiceImpl implements LoanService {
     @Override
     public Loan getLoan(String loanId){
         if(loanRepository.findById(loanId).isPresent()){
-            return loanRepository.findById(loanId).get();
+            Loan loan =  loanRepository.findById(loanId).get();
+            List<EMI> emiList = loan.getEmi();
+            for (EMI emi : emiList) {
+                emi.setPrice(emi.getPrice()+emi.getLateFee());
+            }
+            loan.setEmi(emiList);
+            return loan;
         }
         throw new RuntimeException("Can't find the loan");
     }
@@ -129,6 +135,16 @@ public class LoanServiceImpl implements LoanService {
 //                loanRepository.save(loan);
             }
             //Add late fee to EMIS
+            List<EMI> emiList = loan.getEmi();
+            for (EMI emi : emiList) {
+                int termsSinceEmi = (int)ChronoUnit.DAYS.between(LocalDate.now(),emi.getStartDate())/28;
+                if(currentDate.isAfter(emi.getStartDate().plusDays(28)) && !emi.isLateFeeAdded() && !emi.isPaymentStatus()){
+                    emi.setLateFeeAdded(true);
+                }
+                if(emi.isLateFeeAdded() && termsSinceEmi>1 && !emi.isPaymentStatus()){
+                    emi.setLateFee(emi.getPrice()+(loan.getAmount()*((termsSinceEmi-1)*5*0.01)));
+                }
+            }
 
         }
     }
@@ -155,7 +171,6 @@ public class LoanServiceImpl implements LoanService {
         Map<Object,Object> borrowerData = borrowerProxy.getBorrowerData(id);
         for (Object dataKey : borrowerData.keySet()) {
             if(borrowerData.get(dataKey)==null || borrowerData.get(dataKey).equals("")){
-                System.out.println(dataKey.toString());
                 return false;
             }
         }
