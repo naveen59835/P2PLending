@@ -6,6 +6,8 @@ import { Injectable } from '@angular/core';
 })
 export class PaymentService {
 
+apiBaseUrl = environment.apiBaseUrl + '/payment-service';
+
   url="http://localhost:9002/api/v1/payment/createOrder"
   urldetail="http://localhost:9002/api/v1/payment/updateOrderDetails"
 

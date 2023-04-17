@@ -6,6 +6,10 @@ import { RecommendedBorrower } from '../model/RecommendedBorroer';
   providedIn: 'root'
 })
 export class RecommendationService {
+
+ //apiBaseUrl = environment.apiBaseUrl + "/recommendation-service";
+
+
   url:string="http://localhost:9002/api/v1/recommendation/get"
   constructor(private httpClient:HttpClient) { }
 

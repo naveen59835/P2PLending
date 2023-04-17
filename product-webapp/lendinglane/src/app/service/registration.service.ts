@@ -7,6 +7,8 @@ import {HttpClient} from "@angular/common/http";
 export class RegistrationService {
   private URL !: string
 
+ //apiBaseUrl = environment.apiBaseUrl + "/registration-service";
+
   constructor(private httpClient:HttpClient) { }
 
   registerUser(data:any){

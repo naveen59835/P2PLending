@@ -11,7 +11,7 @@ export class LenderService {
   constructor(private httpClient:HttpClient) {
 
   }
-
+apiBaseUrl = environment.apiBaseUrl + "/lender-service";
 
   url:string="http://localhost:9002/api/v1/lender/lenderMail"
   urlupdate:string="http://localhost:9002/api/v1/lender/updateLender"
