@@ -10,7 +10,7 @@ export class RecommendationService {
   constructor(private httpClient:HttpClient) { }
 
 
-score = "600-700"
+score = "600-700";
   getbBorrower(creditScore:any)
   {
     return this.httpClient.get<Array<RecommendedBorrower>>(`${this.url}/${this.score}`)

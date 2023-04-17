@@ -1,7 +1,7 @@
 package com.stackroute.authentication.model;
 import javax.persistence.*;
 
-
+@Entity
 public class Login {
     @Id
     @GeneratedValue
