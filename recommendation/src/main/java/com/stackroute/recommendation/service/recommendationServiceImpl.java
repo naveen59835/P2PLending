@@ -41,7 +41,7 @@ public class recommendationServiceImpl implements recommendationService{
         borrower.setId(loan.getLoanId());
         borrower.setBorrowerId(loan.getBorrowerId());
         borrower.setAmount(loan.getAmount());
-       recommendationRepository.save(borrower);
+        recommendationRepository.save(borrower);
     }
 
     @Override

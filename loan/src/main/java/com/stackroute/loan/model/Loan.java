@@ -1,5 +1,6 @@
 package com.stackroute.loan.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
@@ -13,6 +14,7 @@ import java.util.Map;
 
 @Document
 @Data
+@AllArgsConstructor
 public class Loan {
     @Id
     private String id;

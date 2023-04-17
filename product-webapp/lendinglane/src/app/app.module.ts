@@ -92,7 +92,7 @@ import {IvyCarouselModule} from "angular-responsive-carousel";
         MatChipsModule,
         MatProgressBarModule,
         MatMenuModule,
-      IvyCarouselModule
+        IvyCarouselModule
     ],
   providers: [],
   bootstrap: [AppComponent],
