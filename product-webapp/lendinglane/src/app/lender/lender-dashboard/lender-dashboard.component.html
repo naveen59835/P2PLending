@@ -38,31 +38,31 @@
     <mat-icon (click)="navigatePrevious()">navigate_before</mat-icon>
     <mat-icon (click)="navigateNext()">navigate_next</mat-icon>
   </div>
-  <div *ngIf="loans.length>0" class="loans">
-    <carousel [cellsToShow]="isMobile?1:isIpad?2:4" [arrows]="false" #carouselComponent>
-      <div *ngFor="let loan of loans let number=index" class="loan carousel-cell">
-        <p class="loan-id">#INVESTMENT {{number + 1}}</p>
-        <div class="loan-data-container">
-          <div class="paid-amount-container">
-            <div class="total-Logo"><img
-              src="https://img.icons8.com/external-kiranshastry-solid-kiranshastry/64/6C7BEC/external-money-bag-banking-and-finance-kiranshastry-solid-kiranshastry.png"/>
+  <div class="loans-container-wrapper">
+    <div class="loans" *ngIf="loans.length>0">
+      <carousel [cellsToShow]="isMobile?1:isIpad?2:4" [arrows]="false" #carouselComponent>
+        <div class="loan carousel-cell" *ngFor="let loan of loans let number=index" [routerLink]="'/dashboard/loan/'+loan.id">
+          <p class="loan-id">#INVESTMENT {{number+1}}</p>
+          <div class="loan-data-container">
+            <div class="paid-amount-container">
+              <div class="total-Logo"><img src="https://img.icons8.com/external-kiranshastry-solid-kiranshastry/64/6C7BEC/external-money-bag-banking-and-finance-kiranshastry-solid-kiranshastry.png"/></div>
+              <div class="total-amount">
+                <p class="total-amount-label">AMOUNT</p>
+                <p class="total-amount-value">{{loan.amount}}</p>
+              </div>
             </div>
-            <div class="total-amount">
-              <p class="total-amount-label">AMOUNT</p>
-              <p class="total-amount-value">{{loan.amount}}</p>
+            <div class="total-amount-container">
+              <div class="total-Logo"><img src="https://img.icons8.com/sf-regular/48/6C7BEC/paid.png"/></div>
+              <div class="total-amount">
+                <p class="total-amount-label">RECOVERED</p>
+                <p class="total-amount-value">{{recovered(loan.emi)}}</p>
+              </div>
             </div>
           </div>
-          <div class="total-amount-container">
-            <div class="total-Logo"><img src="https://img.icons8.com/sf-regular/48/6C7BEC/paid.png"/></div>
-            <div class="total-amount">
-              <p class="total-amount-label">COLLECTED</p>
-              <p class="total-amount-value">{{recovered(loan.emi)}}</p>
-            </div>
-          </div>
+          <mat-progress-bar mode="determinate" [value]="progress(loan)"></mat-progress-bar>
         </div>
-        <mat-progress-bar [value]="progress(loan)" mode="determinate"></mat-progress-bar>
-      </div>
-    </carousel>
+      </carousel>
+    </div>
   </div>
   <p *ngIf="loans.length==0">No investments found</p>
 

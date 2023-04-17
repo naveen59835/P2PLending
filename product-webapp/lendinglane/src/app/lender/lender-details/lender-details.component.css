@@ -31,6 +31,7 @@ app-profile-widget{
 form>div{
   display: flex;
   gap: 10%;
+  flex-wrap: wrap;
 }
 .address-details__header{
   margin-bottom: 20px;
@@ -76,4 +77,15 @@ mat-button-toggle-group{
   background-color: #1458ea;
   color: white;
   padding: 10px 20px;
+}
+@media(max-width: 800px){
+  :host{
+    flex-direction: column;
+  }
+  app-profile-widget{
+    max-width: calc(100% - 60px) !important;
+  }
+  .profile-content{
+    width: calc(100% - 60px);
+  }
 }

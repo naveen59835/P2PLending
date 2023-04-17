@@ -112,7 +112,7 @@ export class LenderDashboardComponent implements OnInit {
             paystatus = "success"
 
 
-            that.updatedetail(recommendedLoan,paystatus);
+            that.updatedetail(recommendedLoan,paystatus,id);
 
             Swal.fire("payment succesfful", "Well done, you  entered amount", "success")
 
@@ -152,7 +152,7 @@ export class LenderDashboardComponent implements OnInit {
           console.log(response.error.metadata.order_id);
           console.log(response.error.metadata.payment_id);
           paystatus = "fail"
-          that.updatedetail(recommendedLoan,paystatus);
+          that.updatedetail(recommendedLoan,paystatus,id);
 
           //this.error = response.error.reason;
         });
@@ -172,10 +172,10 @@ export class LenderDashboardComponent implements OnInit {
   }
 
 
-  updatedetail (recommendedLoan: any, paystatus : any)  {
+  updatedetail (recommendedLoan: any, paystatus : any,paymentId :any)  {
 //   console.log(this.recommendedLoan)
 //
-  this.service.updatedetail(recommendedLoan.amount, recommendedLoan.borrowerId, localStorage.getItem("email"), recommendedLoan.borrowerId, paystatus, recommendedLoan.id).subscribe(data => {
+  this.service.updatedetail(recommendedLoan.amount, recommendedLoan.borrowerId, localStorage.getItem("email"), paymentId, paystatus, recommendedLoan.id).subscribe(data => {
 
   });
 //

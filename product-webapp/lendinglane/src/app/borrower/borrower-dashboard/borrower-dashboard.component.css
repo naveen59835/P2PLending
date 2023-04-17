@@ -19,6 +19,10 @@
   width: 30px;
   object-fit: contain;
 }
+.loan-container-header{
+  display: flex;
+  gap: 10px;
+}
 .loan-data-container{
   display: flex;
   gap: 30px;
@@ -49,10 +53,6 @@
   border-radius: 5px;
   margin-bottom: 30px;
 }
-.loan-container-header{
-  display: flex;
-  gap: 10px;
-}
 .loan-container>h1{
   font-weight: 500;
 }
@@ -63,7 +63,13 @@
   background-color: transparent !important;
   box-shadow: none !important;
 }
-
+.loan{
+  border: 1px solid;
+  border-radius: 6px;
+  padding:30px;
+  max-width: 280px;
+  height: max-content !important;
+}
 .loan-id{
   font-size: 15px;
   font-weight: 500;
