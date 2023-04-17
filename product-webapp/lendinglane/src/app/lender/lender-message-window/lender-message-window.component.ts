@@ -42,6 +42,9 @@ export class LenderMessageWindowComponent implements OnInit,AfterViewChecked{
     })
 
   }
+  createChat(id:any){
+
+  }
   initConnection(){
     let ws = new SockJS("http://localhost:8085/chat")
     this.stompClient = Stomp.over(ws)

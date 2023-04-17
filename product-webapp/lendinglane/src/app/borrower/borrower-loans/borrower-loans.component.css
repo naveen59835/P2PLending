@@ -30,7 +30,7 @@
   left: calc(30% + 15px);
 }
 .applied{
-  left: calc(60% + 15px);
+  left: calc(60% + 13px);
 }
 .loan-container{
   margin-top: 20px;
@@ -45,6 +45,30 @@ table{
   position: fixed;
   bottom: 100px;
   right: 30px;
+}
+th.isSmall{
+  display: none;
+}
+@media(max-width: 800px) {
+  td{
+    border: none;
+    padding: 0 !important;
+  }
+  .mat-row{
+    display: flex !important;
+    flex-direction: column;
+    height: max-content;
+    padding: 30px 30px;
+    background-color: #bdbdbd;
+    margin-bottom: 30px;
+    border-bottom-color: transparent !important;
+  }
+  th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
+    padding: 0;
+    border-bottom-width: 0 !important;
+    border-bottom-style: solid;
+    margin-bottom: 10px;
+  }
 }
 
 

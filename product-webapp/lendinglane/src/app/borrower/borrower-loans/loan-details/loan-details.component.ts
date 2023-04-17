@@ -69,5 +69,10 @@ export class LoanDetailsComponent implements OnInit {
       next:data=>console.log(data)
     })
   }
+  totalPaid(emi : Array<any>){
+    if(emi.length>0)
+      return Math.round(emi.reduce((acc,current)=>current.paymentStatus?acc+current.price:acc+0,0) * 10) / 10
+    else return  0
+  }
 
 }

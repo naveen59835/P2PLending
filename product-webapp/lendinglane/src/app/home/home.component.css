@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400&display=swap');
 .contain {
   border: 1px solid #d7cef2;
   height: 600px;
@@ -21,7 +20,6 @@
   padding-top: 25px;
   text-decoration: underline;
   font-weight: bold;
-
 }
 
 
@@ -48,7 +46,7 @@
   height: 36px;
   font-size: 23px;
   padding: 30px 0;
-  width: max-content;
+  text-align: center;
 }
 
 .apply-loan-container-scrollable {
@@ -86,7 +84,7 @@
   margin: 50px 0;
   padding:50px 0;
   background-color: #F1F1F1;
-
+  flex-wrap: wrap;
 }
 .active>div{
   display: flex;
@@ -107,12 +105,11 @@
 }
 .core {
   letter-spacing: 1px;
-  left: 500px;
   font-size: 40px;
   font-weight: lighter;
-  width: max-content;
   margin: 0 auto;
   padding-bottom: 50px;
+  text-align: center;
 }
 
 .samplebox1 {
@@ -148,6 +145,7 @@
   justify-content: center;
   gap: 50px;
   margin-bottom: 50px;
+  flex-wrap: wrap;
 }
 
 .pehead {
@@ -159,7 +157,7 @@
 
 .applytoloan {
   background-color: #2B2929;
-  padding: -100px;
+  padding-bottom: 100px;
 }
 
 .steps {
@@ -167,13 +165,13 @@
   color: #D9D9D9;
   font-weight: lighter;
   margin-bottom: 50px;
-  position: relative;
-  left: 130px;
+  margin-left: 10%;
   padding-top: 50PX;
 }
 .apply-loan{
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
 }
 .apply-loan >div{
   display: flex;
@@ -427,4 +425,87 @@ mat-label{
   border: 1px solid white;
   padding: 30px;
   border-radius: 20px;
+}
+
+carousel{
+  background-color: #F7F7F3;
+}
+.carousel-cell{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10%;
+}
+.carousel-cell>img{
+  max-width: 350px !important;
+  width: 100% !important;
+  height: 400px !important;
+  object-fit: cover !important;
+}
+.testimony{
+  font-family: 'Lato',sans-serif;
+  font-style: italic;
+  font-size: 22px;
+  color: #333;
+  position: relative;
+}
+.testimony>img{
+  width: 150px !important;
+  height: 100px !important;
+  position: absolute !important;
+  top: -100px;
+  left: -100px;
+}
+.home-faq{
+  padding: 80px 0;
+  margin: 0 auto;
+  max-width: 1230px;
+  width: 100%;
+}
+.faq-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  margin-bottom: 50px;
+  flex-wrap: wrap;
+}
+.faq-container>div{
+  max-width: 600px;
+  width: 100%;
+}
+mat-expansion-panel{
+  margin-bottom: 10px;
+}
+
+@media(max-width: 800px) {
+  .contain{
+    justify-content: flex-start;
+    padding-left: 30px;
+  }
+  .image{
+    display: none;
+  }
+  .contents>h1{
+    font-size: 40px !important;
+  }
+  .take{
+    font-size: 20px !important;
+  }
+  .earn{
+    display: none;
+  }
+  .textbox{
+    flex-direction: column;
+    padding: 30px;
+  }
+  .carousel-cell{
+    flex-direction: column;
+  }
+  .testimony>img{
+    display: none;
+  }
+  .apply-loan{
+    /*flex-direction: column;*/
+  }
 }

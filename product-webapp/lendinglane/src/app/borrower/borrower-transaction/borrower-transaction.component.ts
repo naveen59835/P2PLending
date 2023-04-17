@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {MatTableDataSource} from "@angular/material/table";
 import {PaymentService} from "../../service/payment.service";
+import {SidenavService} from "../../service/sidenav.service";
 
 @Component({
   selector: 'app-borrower-transaction',
@@ -9,7 +10,7 @@ import {PaymentService} from "../../service/payment.service";
 })
 export class BorrowerTransactionComponent implements OnInit {
 
-  constructor(private paymentService : PaymentService) { }
+  constructor(private paymentService : PaymentService, private sideNav : SidenavService) { }
   displayedColumns: string[] = ['#', 'amount', 'type', 'remarks', 'date'];
   transactionData:any
 
@@ -45,6 +46,9 @@ export class BorrowerTransactionComponent implements OnInit {
       let filteredTransactions = this.transactionData.filter((transaction:any)=>transaction.type.includes(event))
       this.dataSource = new MatTableDataSource(this.addType(this.paymentService.sortPayment(filteredTransactions)));
     }
+  }
+  get isSmall(){
+    return this.sideNav.isSmallScreen;
   }
 
 }

@@ -1,5 +1,5 @@
 <mat-sidenav-container>
-  <mat-sidenav mode="side" opened >
+  <mat-sidenav [mode]="isSmallScreen?'over':'side'" [opened]="!isSidenavOpened" [ngClass]="{'small-screen':isSmallScreen}" >
     <app-sidenav></app-sidenav>
   </mat-sidenav>
   <mat-sidenav-content>

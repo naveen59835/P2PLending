@@ -3,6 +3,7 @@ import com.stackroute.chat.model.Text;
 import com.stackroute.chat.service.ChatServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
@@ -36,11 +37,10 @@ public class ChatController {
             throw new RuntimeException(exception);
         }
     }
-    @PostMapping("/newChat")
+    @PostMapping(value = "/newChat",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> addNewChat(@RequestBody Map<String,String> chatData){
         try{
-            chatService.addChat(chatData.get("borrowerId"),chatData.get("lenderId"));
-            return new ResponseEntity<>(HttpStatus.CREATED);
+            return new ResponseEntity<>(Map.of("id",chatService.addChat(chatData.get("borrowerId"),chatData.get("lenderId"))),HttpStatus.CREATED);
         }catch (Exception exception){
             throw new RuntimeException(exception);
         }

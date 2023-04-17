@@ -4,6 +4,7 @@ import {LoanDialogComponent} from "./loan-dialog/loan-dialog.component";
 import {LoanService} from "../../service/loan.service";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatTableDataSource} from "@angular/material/table";
+import {SidenavService} from "../../service/sidenav.service";
 
 @Component({
   selector: 'app-borrower-loans',
@@ -12,7 +13,7 @@ import {MatTableDataSource} from "@angular/material/table";
 })
 export class BorrowerLoansComponent implements OnInit{
 
-  constructor(private dialog: MatDialog, private  loanService : LoanService) {
+  constructor(private dialog: MatDialog, private  loanService : LoanService,private sidenav : SidenavService) {
   }
 
   data : any = []
@@ -49,5 +50,8 @@ export class BorrowerLoansComponent implements OnInit{
     }
     this.loanData.paginator = this.paginator;
 
+  }
+  get isSmallScreen(){
+    return this.sidenav.isSmallScreen;
   }
 }

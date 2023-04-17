@@ -53,6 +53,10 @@ public class recommendationServiceImpl implements recommendationService{
     public List<RecommendedBorrower> getAllBorrower(String score) {
         return recommendationRepository.getAllBorrowers(score);
     }
+    @RabbitListener(queues = "loan-approval-recommendation")
+    public void deleteLoan(Map<Object,Object> loanData){
+        recommendationRepository.deleteById(loanData.get("id").toString());
+    }
 }
 
 

@@ -1,0 +1,123 @@
+
+
+.content {
+  width: 100%;
+
+  margin-top: 37px;
+  margin-bottom: 37px;
+
+
+  align-items: center;
+}
+
+li{
+  word-spacing: 7px;
+}
+
+
+.card {
+  width: 80%;
+
+  background-color: rgb(255, 252, 247);
+  box-shadow: 1px 7px 15px 1px rgba(16, 15, 15, 0.35);
+
+  margin: auto;
+  align-items: center;
+
+ 
+
+}
+
+.header-image {
+
+  background-color: #f9f3ff;
+  position: relative;
+  top: -7px;
+  left: 13px;
+
+}
+
+#header mat-card-title {
+  font-size: 25px;
+  
+}
+
+
+dl dt {
+  font-weight: 900;
+ width: 50%;
+  margin-bottom: 12px;
+  margin-top: 12px;
+  font-size: 15px;
+  border: 2px solid rgb(232, 174, 64);
+  border-radius: 25px;
+  padding: 5px 13px;
+  background-color: rgb(21, 255, 91);
+
+}
+
+ul li {
+  list-style-type: none;
+}
+
+ul li:before {
+  content: counter(item, disc) " ";
+  color: rgb(180, 30, 52);
+
+}
+   
+li{
+  font-size: 15px;
+  font-weight: 770;
+}
+
+
+ul {
+  margin-left: 13px;
+}
+
+
+
+
+#header {
+
+  margin-bottom: 13px;
+  margin-left: -13px;
+
+}
+
+.header-image .logo {
+  position: absolute;
+  left: 2px;
+  top: 2px;
+  width: 35px;
+
+}
+
+
+.accept-button {
+  background-color: #f58024;
+  color: white;
+
+  font-size: 14px;
+  border-radius: 13px;
+}
+
+.decline-button {
+  background-color: #67605b;
+  color: white;
+
+  font-size: 11px;
+  border-radius: 13px;
+}
+
+
+
+
+
+.ScrollStyle
+{
+    max-height: 750px;
+    overflow-y: scroll;
+}
+

@@ -6,6 +6,7 @@ import {RecommendationService} from 'src/app/service/recommendation.service';
 import {LoanService} from "../../service/loan.service";
 import {PaymentService} from "../../service/payment.service";
 import Swal from "sweetalert2";
+import {ChatService} from "../../service/chat.service";
 declare let Razorpay: any;
 
 @Component({
@@ -28,7 +29,7 @@ export class LenderDashboardComponent implements OnInit {
     }
   }
 
-  constructor(private service : PaymentService, private recommendationService: RecommendationService,private paymentService : PaymentService, private lenderservice: LenderService, private route: Router,private  loanService : LoanService) {
+  constructor(private service : PaymentService,private chat : ChatService, private recommendationService: RecommendationService,private paymentService : PaymentService, private lenderservice: LenderService, private route: Router,private  loanService : LoanService) {
 
 
   }
@@ -78,8 +79,8 @@ export class LenderDashboardComponent implements OnInit {
 
   }
   recovered(emi : Array<any>){
-    if(emi)
-    return Math.round(emi.reduce((acc:any,emiVal:any)=>acc+emiVal.price,0)*10)/10;
+    if(emi && emi.length>0)
+    return Math.round(emi.reduce((acc:any,emiVal:any)=>emiVal.paymentStatus?acc+emiVal.price:acc+0,0)*10)/10;
     else return 0
   }
   progress(loan : any){
@@ -178,6 +179,11 @@ export class LenderDashboardComponent implements OnInit {
   });
 //
 // }
+  }
+  startChat(borrowerId:any){
+    this.chat.createChat(borrowerId).subscribe({
+      next :(data:any)=>this.route.navigateByUrl("/dashboard/chat/"+data.id)
+    })
   }
 
 }

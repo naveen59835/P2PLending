@@ -6,7 +6,7 @@ import {coerceStringArray} from "@angular/cdk/coercion";
   providedIn: 'root'
 })
 export class LoanService {
-
+  valid:boolean=false;
   constructor(private http : HttpClient) { }
 
   getAllLoans(id:string,role:string){

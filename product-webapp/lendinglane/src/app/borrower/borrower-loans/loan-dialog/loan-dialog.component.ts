@@ -1,10 +1,10 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import * as http from "http";
 import {LoanService} from "../../../service/loan.service";
 import {FormBuilder, Validators} from "@angular/forms";
 import {MatDialogRef} from "@angular/material/dialog";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-loan-dialog',
@@ -12,12 +12,28 @@ import {MatSnackBar} from "@angular/material/snack-bar";
   styleUrls: ['./loan-dialog.component.css']
 })
 export class LoanDialogComponent {
+  disable:boolean=true;
+
   @Output()dialogClose!:EventEmitter<any>;
-  constructor(private  loanService : LoanService, private fb : FormBuilder, private dialog : MatDialogRef<LoanDialogComponent>, private snackBar : MatSnackBar) { }
+  constructor(private  loanService : LoanService, private fb : FormBuilder, private dialog : MatDialogRef<LoanDialogComponent>, private snackBar : MatSnackBar,private route:Router) {
+
+
+    if(loanService.valid==true){
+
+      this.disable=false
+    }
+    else{
+
+      this.disable=true
+    }
+  }
+
+
+
   loanForm = this.fb.group({
-    amount : this.fb.control("",[Validators.required,Validators.minLength(4),Validators.pattern(/^[0-9]+$/)]),
-    terms : this.fb.control("",[Validators.required]),
-    termsAndConditions: this.fb.control(false,[Validators.requiredTrue])
+    amount : this.fb.control('',[Validators.required,Validators.minLength(4),Validators.pattern(/^[0-9]+$/)]),
+    terms : this.fb.control('',[Validators.required]),
+    termsAndConditions: this.fb.control(this.loanService.valid,[Validators.requiredTrue])
     }
   )
   applyLoan(){
@@ -38,4 +54,11 @@ export class LoanDialogComponent {
     }
   }
 
+
+  click()
+  {
+    this.route.navigate(['/dashboard/term'])
+    this.dialog.close();
+
+  }
 }

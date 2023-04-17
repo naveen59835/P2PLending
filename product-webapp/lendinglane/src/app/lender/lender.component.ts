@@ -17,11 +17,8 @@ export class LenderComponent implements OnInit {
 
   @Input() borrowerRecommended: RecommendedBorrower = {};
 
-  showFiller = false;
-  amount: string = "111";
-  toname: any = "borrower";
-  tonamemail: any = "borrowe@borwer.co"
-  tonum: any = "9991231231"
+  amount:string=" "
+ 
   paymentstatusfail: any
   id: any
   fromname = localStorage.getItem('email')
@@ -34,8 +31,8 @@ export class LenderComponent implements OnInit {
 
 
   pay(borrowerRecommended: RecommendedBorrower) {
-    if (this.amount != '') {
-      this.service.payment(borrowerRecommended.amount, this.toname, this.fromname).subscribe(data => {
+    if (borrowerRecommended.amount!= '') {
+      this.service.payment(borrowerRecommended.amount,borrowerRecommended.borrowerId, this.fromname).subscribe(data => {
         console.log(data);
         this.amount = borrowerRecommended.amount;
         let paystatus: any = ""
@@ -45,7 +42,7 @@ export class LenderComponent implements OnInit {
             key: data.key,
             amount: data.amount,
             currency: data.currency,
-            name: this.borrowerRecommended.name,
+            name: this.borrowerRecommended.borrowerId,
             description: "transfer",
             order_id: data.id,
 
@@ -98,7 +95,6 @@ export class LenderComponent implements OnInit {
             paystatus = "fail"
             updatedetail(paystatus);
 
-            //this.error = response.error.reason;
           });
 
           rzp.open();
@@ -107,14 +103,14 @@ export class LenderComponent implements OnInit {
         }
 
 
-        //  updatedetail(paystatus="pending")
+       
 
 
       });
 
 
     } else {
-      // Swal.fire("Success Message Title", "Well done, you pressed a button", "failure")
+
 
 
       Swal.fire("amount required", " you have not entered amount", "error")
@@ -124,9 +120,9 @@ export class LenderComponent implements OnInit {
 
 
     const updatedetail = (paystatus: any) => {
-      console.log(this.borrowerRecommended)
+    
 
-      this.service.updatedetail(this.amount, this.borrowerRecommended.borrowerId, this.fromname, this.id, paystatus, this.borrowerRecommended.id).subscribe(data => {
+      this.service.updatedetail(this.borrowerRecommended.amount, this.borrowerRecommended.borrowerId, this.fromname, this.id, paystatus, this.borrowerRecommended.id).subscribe(data => {
 
       });
 

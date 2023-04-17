@@ -5,10 +5,13 @@ mat-sidenav{
   padding-top: 10px;
 }
 mat-sidenav-content{
-  height: 100vh;
+  height: 100%;
 }
 .container{
   background-color: #F1F1F1;
   min-height: calc(100vh - 60px);
   padding: 20px;
+}
+.small-screen{
+  width: 70% !important;
 }

@@ -17,6 +17,10 @@
       <p>Disbursed On </p>
       <h3 class="loan-amount">{{loanData.dateOfLoan}}</h3>
     </div>
+    <div class="remaining">
+      <p>Remainig Amount </p>
+      <h3 class="remaining-amount">{{loanData.amount - totalPaid(loanData.emi)}}</h3>
+    </div>
   </div>
   <div *ngIf="loanData.emi.length > 0" class="emi-details">
     <h1>EMI</h1>

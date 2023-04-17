@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from "@angular/router";
+import {ActivatedRoute, ActivatedRouteSnapshot, Router} from "@angular/router";
+import {SidenavService} from "../service/sidenav.service";
 
 @Component({
   selector: 'app-sidenav',
@@ -8,12 +9,21 @@ import {Router} from "@angular/router";
 })
 export class SidenavComponent implements OnInit {
   selected = "home";
-  constructor(private router : Router) { }
+  constructor(private router : Router, private sidenavService : SidenavService) { }
 
   ngOnInit(): void {
+    let snap = this.router.url.split("/dashboard/");
+    if(snap.length>1){
+      this.selected = snap[1]
+    }
   }
   changeSelcted(selectValue:any,route:any){
+    console.log(this.sidenavService.isSmallScreen)
+    if(this.sidenavService.isSmallScreen){
+      this.sidenavService.isSidenavOpened=true
+    }
     this.selected = selectValue;
     this.router.navigateByUrl(route)
   }
+  role = localStorage.getItem("role") || ""
 }
