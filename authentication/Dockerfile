@@ -1,4 +1,4 @@
-FROM openjdk:11-jdk
-WORKDIR /usr/src
-COPY target/*.jar app.jar
-CMD ["java","-jar","app.jar"]
+FROM openjdk:11
+ADD ./target/authentication-0.0.1-SNAPSHOT.jar /usr/src/authentication-0.0.1-SNAPSHOT.jar
+WORKDIR usr/src
+ENTRYPOINT ["java","-jar", "authentication-0.0.1-SNAPSHOT.jar"]

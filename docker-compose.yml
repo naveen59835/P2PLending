@@ -249,7 +249,7 @@ services:
 #    ports:
 #      - "8099:8099"
   angular:
-    build: product-webapp/lendinglane
+    build: product-webapp
     container_name: angular
     ports:
       - "4200:4200"
