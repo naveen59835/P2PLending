@@ -6,10 +6,10 @@ import { Injectable } from '@angular/core';
 })
 export class PaymentService {
 
-apiBaseUrl = environment.apiBaseUrl + '/payment-service';
+//apiBaseUrl = environment.apiBaseUrl + '/payment-service';
 
-  url="http://localhost:9002/api/v1/payment/createOrder"
-  urldetail="http://localhost:9002/api/v1/payment/updateOrderDetails"
+  url="http://localhost:8080/api/v1/payment/createOrder"
+  urldetail="http://localhost:8080/api/v1/payment/updateOrderDetails"
 
 
     constructor(private httpclient:HttpClient) { }
@@ -27,10 +27,10 @@ apiBaseUrl = environment.apiBaseUrl + '/payment-service';
       return this.httpclient.put<any>(`${this.urldetail}`,{"amount":amount,"to":toname,"from":fromname,"id":id,"status":status,"loanId":loanId})
     }
     payEMI (amount :any, lenderId : any, borrowerId : any, loanId :any, emiId :any, paymentId :any){
-      return this.httpclient.put("http://localhost:9002/api/v1/payment/payEMI",{"amount" :amount, "lenderId" : lenderId, "borrowerId" : borrowerId, "loanId" :loanId, "emiId" :emiId,"paymentId":paymentId})
+      return this.httpclient.put("http://localhost:8080/api/v1/payment/payEMI",{"amount" :amount, "lenderId" : lenderId, "borrowerId" : borrowerId, "loanId" :loanId, "emiId" :emiId,"paymentId":paymentId})
     }
     getALlPayment(){
-      return this.httpclient.get("http://localhost:9002/api/v1/payment/getPayment/"+localStorage.getItem("email"));
+      return this.httpclient.get("http://localhost:8080/api/v1/payment/getPayment/"+localStorage.getItem("email"));
     }
     sortPayment(payments : Array<any>){
       return payments.sort((payment1:any,payment2:any)=>new Date(payment2.paymentDate).valueOf() - new Date(payment1.paymentDate).valueOf())

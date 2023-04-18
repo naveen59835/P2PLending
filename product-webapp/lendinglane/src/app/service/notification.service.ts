@@ -8,9 +8,9 @@ export class NotificationService {
 
   constructor(private  http : HttpClient) { }
 
-apiBaseUrl = environment.apiBaseUrl + '/notification-service';
+//apiBaseUrl = environment.apiBaseUrl + '/notification-service';
   getAllNotifications(){
-  return this.http.get( this.apiBaseUrl + "/api/v1/notification/getAll/"+localStorage.getItem("email"))
-   // return this.http.get("http://localhost:9002/api/v1/notification/getAll/"+localStorage.getItem("email"))
+  //return this.http.get( this.apiBaseUrl + "/api/v1/notification/getAll/"+localStorage.getItem("email"))
+   return this.http.get("http://localhost:8080/api/v1/notification/getAll/"+localStorage.getItem("email"))
   }
 }

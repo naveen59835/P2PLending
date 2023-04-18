@@ -11,12 +11,12 @@ export class LenderService {
   constructor(private httpClient:HttpClient) {
 
   }
-apiBaseUrl = environment.apiBaseUrl + "/lender-service";
+//apiBaseUrl = environment.apiBaseUrl + "/lender-service";
 
-  url:string="http://localhost:9002/api/v1/lender/lenderMail"
-  urlupdate:string="http://localhost:9002/api/v1/lender/updateLender"
-  urlaadharImage:string="http://localhost:9002/api/v1/lender/lenderImage"
-  urlpanImage:string="http://localhost:9002/api/v1/lender/lenderPanImage"
+  url:string="http://localhost:8080/api/v1/lender/lenderMail"
+  urlupdate:string="http://localhost:8080/api/v1/lender/updateLender"
+  urlaadharImage:string="http://localhost:8080/api/v1/lender/lenderImage"
+  urlpanImage:string="http://localhost:8080/api/v1/lender/lenderPanImage"
 
 
   getLenderById(id:any)

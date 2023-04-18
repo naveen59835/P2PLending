@@ -4,9 +4,9 @@
 
 export const environment = {
   production: false,
- local: 'local',
- apiBaseUrl: 'https://lendinglane.stackroute.io',
- localUrl: 'http://localhost:8080'
+ //local: 'local',
+ //apiBaseUrl: 'https://lendinglane.stackroute.io',
+ //localUrl: 'http://localhost:8080'
 };
 
 /*

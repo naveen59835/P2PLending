@@ -7,12 +7,13 @@ import {HttpClient} from "@angular/common/http";
 })
 export class LoginService {
 
- apiBaseUrl = environment.apiBaseUrl + '/login-service';
+// apiBaseUrl = environment.apiBaseUrl + '/login-service';
+  baseurl = 'http://localhost:8080/api/v1'
 
   constructor(private http : HttpClient,private router:Router) { }
   public login(loginData:any){
-     return this.http.post(this.apiBaseUrl+ "/api/v1/authentication/login",loginData)
-    //return this.http.post("http://localhost:9002/api/v1/authentication/login",loginData)
+   //  return this.http.post(this.apiBaseUrl+ "/api/v1/authentication/login",loginData)
+    return this.http.post(this.baseurl + "/login",loginData)
   }
 
   public isAuthenticated(): boolean {
