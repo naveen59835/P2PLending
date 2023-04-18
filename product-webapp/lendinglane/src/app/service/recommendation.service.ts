@@ -10,14 +10,11 @@ export class RecommendationService {
  //apiBaseUrl = environment.apiBaseUrl + "/recommendation-service";
 
 
-  url:string="http://localhost:8080/api/v1/recommendation/get"
+  url:string="https://lendinglane.stackroute.io/api/v1/recommendation/get"
   constructor(private httpClient:HttpClient) { }
-
-
-score = "600-700"
   getbBorrower(creditScore:any)
   {
-    return this.httpClient.get<Array<RecommendedBorrower>>(`${this.url}/${this.score}`)
+    return this.httpClient.get<Array<RecommendedBorrower>>(`${this.url}/${creditScore}`)
   }
 
 

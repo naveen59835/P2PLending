@@ -3,6 +3,8 @@ com/stackroute/notifications/model/Email.class
 com/stackroute/notifications/services/NotificationServiceImpl.class
 com/stackroute/notifications/model/NotificationMessage.class
 com/stackroute/notifications/NotificationsApplication.class
+com/stackroute/notifications/repository/ContactUsRepo.class
 com/stackroute/notifications/controller/NotificationController.class
+com/stackroute/notifications/model/ContactUs.class
 com/stackroute/notifications/repository/NotificationRepository.class
 com/stackroute/notifications/model/Notification.class

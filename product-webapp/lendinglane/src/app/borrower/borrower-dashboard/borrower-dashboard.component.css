@@ -1,6 +1,3 @@
-*{
-  font-family: 'Mulish', sans-serif !important;
-}
 .greeting{
   margin-bottom: 50px;
   padding-left: 30px;
@@ -21,6 +18,10 @@
 .borrower-name-container>img{
   width: 30px;
   object-fit: contain;
+}
+.loan-container-header{
+  display: flex;
+  gap: 10px;
 }
 .loan-data-container{
   display: flex;
@@ -103,5 +104,11 @@ tr{
   }
   carousel{
     height: 250px !important;
+  }
+
+}
+@media (max-width: 350px) {
+  .carousel-cell{
+    max-width: 150px;
   }
 }

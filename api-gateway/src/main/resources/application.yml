@@ -24,7 +24,7 @@ spring:
         - id: authentication
           uri: lb://authentication
           predicates:
-            - Path=/authentication/**
+            - Path=/api/v1/authentication/**
           filters:
             - RewritePath=/authentication(?<segment>/?.*), $\{segment}
 
@@ -32,7 +32,7 @@ spring:
         - id: borrower
           uri: lb://borrower
           predicates:
-            - Path=/borrower/**
+            - Path=/api/v1/borrower/**
           filters:
             - RewritePath=/borrower(?<segment>/?.*), $\{segment}
 
@@ -40,7 +40,7 @@ spring:
         - id: chat
           uri: lb://chat
           predicates:
-            - Path=/chat/**
+            - Path=/api/v1/chat/**
           filters:
             - RewritePath=/chat(?<segment>/?.*), $\{segment}
 
@@ -48,14 +48,14 @@ spring:
         - id: contactus
           uri: lb://contactus
           predicates:
-            - Path=/contactus/**
+            - Path=/api/v1/contactus/**
           filters:
             - RewritePath=/contactus(?<segment>/?.*), $\{segment}
 
         - id: lender
           uri: lb://lender
           predicates:
-            - Path=/lender/**
+            - Path=/api/v1/lender/**
           filters:
             - RewritePath=/lender(?<segment>/?.*), $\{segment}
 
@@ -70,35 +70,35 @@ spring:
         - id: loan
           uri: lb://loan
           predicates:
-            - Path=/loan/**
+            - Path=/api/v1/loan/**
           filters:
             - RewritePath=/loan(?<segment>/?.*), $\{segment}
 
         - id: notification
           uri: lb://notification
           predicates:
-            - Path=/notification/**
+            - Path=/api/v1/notification/**
           filters:
             - RewritePath=/notification(?<segment>/?.*), $\{segment}
 
         - id: payment
           uri: lb://payment
           predicates:
-            - Path=/payment/**
+            - Path=/api/v1/payment/**
           filters:
             - RewritePath=/payment(?<segment>/?.*), $\{segment}
 
         - id: recommendation
           uri: lb://recommendation
           predicates:
-            - Path=/recommendation/**
+            - Path=/api/v1/recommendation/**
           filters:
             - RewritePath=/recommendation(?<segment>/?.*), $\{segment}
 
         - id: review
           uri: lb://review
           predicates:
-            - Path=/review/**
+            - Path=/api/v1/review/**
           filters:
             - RewritePath=/review(?<segment>/?.*), $\{segment}
 

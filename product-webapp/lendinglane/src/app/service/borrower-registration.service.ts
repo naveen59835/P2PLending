@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class BorrowerRegistrationService {
-   private URL = "http://localhost:8080/api/v1/borrower/register";
+   private URL = "https://lendinglane.stackroute.io/api/v1/borrower/register";
     //apiBaseUrl = environment.apiBaseUrl + "/borrower-registration-service";
 
   constructor(private httpClient:HttpClient) { }

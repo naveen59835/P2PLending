@@ -8,7 +8,7 @@ public class BorrowerDTO {
     public BorrowerDTO() {
 
     }
-    //
+
 
     public JSONObject getJsonObject() {
         return jsonObject;

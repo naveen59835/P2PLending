@@ -9,18 +9,21 @@ import {DashboardTransactionComponent} from "./dashboard/dashboard-transaction/d
 import {DashboardLoansComponent} from "./dashboard/dashboard-loans/dashboard-loans.component";
 import { AuthGuardGuard } from './guards/auth-guard.guard';
 import {LoanDetailsComponent} from "./borrower/borrower-loans/loan-details/loan-details.component";
+import { TermconditionComponent } from './termcondition/termcondition.component';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { DashboardAuthGuardGuard } from './guards/dashboard-auth-guard.guard';
 import { RecommendedborrowerComponent } from './lender/recommendedborrower/recommendedborrower.component';
 import {DashboardMessagesComponent} from "./dashboard/dashboard-messages/dashboard-messages.component";
 import {DashboardMessageWindowComponent} from "./dashboard/dashboard-message-window/dashboard-message-window.component";
 import { HomeComponent } from './home/home.component';
-import {TermconditionComponent} from "./termcondition/termcondition.component";
+
 
 const routes: Routes = [
   {path:'', pathMatch:"full",redirectTo:'home'},
   {path:'signup',component:SignupComponent,canActivate: [AuthGuardGuard]},
   {path:'login',component:LoginComponent,canActivate: [AuthGuardGuard]},
   {path:'home',component:HomeComponent},
+  {path:'**',component:PagenotfoundComponent},
   {
     path:'dashboard',
     component : DashboardComponent,
@@ -42,7 +45,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { useHash: true })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

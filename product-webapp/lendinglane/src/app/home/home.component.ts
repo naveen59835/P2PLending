@@ -19,6 +19,8 @@ export class HomeComponent  {
   constructor(private formBuilder: FormBuilder, private router: Router, private http: HttpClient,private _snackBar: MatSnackBar,private sidenav : SidenavService) {
     this.contactForm = this.formBuilder.group({
       email: ['', [Validators.required]],
+      name: ['', [Validators.required]],
+      phone: ['', [Validators.required]],
       message: ['', [Validators.required]]
     });
   }
@@ -28,6 +30,12 @@ export class HomeComponent  {
   }
   get message(){
     return this.contactForm.get("message");
+  }
+  get phone(){
+    return this.contactForm.get("phone");
+  }
+  get name(){
+    return this.contactForm.get("name");
   }
 
 
@@ -41,13 +49,19 @@ export class HomeComponent  {
     console.log(formData);
     console.log(this.contactForm.value);
 
-    this.http.post('http://localhost:9002/api/v1/contactus', formData).subscribe(
+    this.http.post('https://lendinglane.stackroute.io/api/v1/notification/reachus', formData).subscribe(
+      (response) => console.log(response),
+      (error) => console.log(error)
+    );
+
+    this.http.post('https://lendinglane.stackroute.io/api/v1/notification/contactus', formData).subscribe(
       (response) => console.log(response),
       (error) => console.log(error)
     );
 
     this.contactForm.reset();
   }
+
 
 
   goto() {

@@ -24,7 +24,7 @@ export class LoanDetailsComponent implements OnInit {
       next : (data:any)=> {
         this.loanData = data
       },
-      error : (err)=> this.router.navigateByUrl("not-found")
+      error : (err)=> this.router.navigateByUrl("/#/not-found")
     })
   }
   payEMI(emiId:any){

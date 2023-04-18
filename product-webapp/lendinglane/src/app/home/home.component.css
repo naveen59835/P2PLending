@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400&display=swap');
 .contain {
-  border: 1px solid #CDC4E8;
+  border: 1px solid #d7cef2;
   height: 600px;
   /*background-color: #CDC4E8;*/
-  background-color: #f3efff;
+  background-color: #d7cef2;
   display: flex;
   justify-content: center;
   gap: 10%;
@@ -22,8 +22,7 @@
   font-weight: bold;
 }
 
-.contents {
-}
+
 
 .my-button {
   background-color: #6D5BDD;
@@ -207,7 +206,7 @@ footer {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  max-width: 1000px;
+  width: 1000px;
   margin: 0 auto;
 }
 
@@ -241,30 +240,6 @@ footer {
   border-radius: 50%;
 }
 
-.contact-form .text-input {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 20px;
-  border-radius: 5px;
-  border: none;
-}
-
-.contact-form textarea {
-  height: 100px;
-  resize: none;
-}
-
-.contact-form .btn {
-  display: inline-block;
-  background-color: #fff;
-  color: #333;
-  padding: 10px 30px;
-  margin-top: 10px;
-  border-radius: 5px;
-  border: none;
-  cursor: pointer;
-  font-size: 1.2rem;
-}
 
 .btn-big {
   padding: 16px 40px;
@@ -340,21 +315,7 @@ li {
 }
 
 
-.contact-form {
-  position: relative;
-  bottom: 20px;
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-  margin: 50px auto;
-  max-width: 500px;
-  padding: 20px;
-  text-align: center;
-}
 
-.contact-form h2 {
-  margin-bottom: 20px;
-}
 
 .form-group {
   margin-bottom: 20px;
@@ -416,8 +377,54 @@ li {
   cursor: not-allowed;
 }
 
-.contact {
-  color: black;
+
+
+
+body {
+  background-color: #000;
+}
+
+.contact-form-container {
+  max-width: 600px;
+  margin: 30px auto;
+  padding: 20px;
+  background-color: #222;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px 0px rgba(255, 255, 255, 0.1);
+}
+
+h1 {
+  margin-bottom: 30px;
+  text-align: center;
+  color: #fff;
+}
+
+
+
+
+
+button[type="submit"] {
+  width: 100%;
+}
+
+
+mat-label{
+  position: relative;
+  bottom: 10px;
+
+}
+
+.contact{
+  position: relative;
+  text-transform: uppercase;
+  left: 50px;
+  bottom: 10px;
+  font-size: 30px;
+}
+.contact-form{
+  border: 1px solid white;
+  padding: 30px;
+  border-radius: 20px;
 }
 
 carousel{

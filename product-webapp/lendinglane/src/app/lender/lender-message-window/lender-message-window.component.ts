@@ -46,7 +46,7 @@ export class LenderMessageWindowComponent implements OnInit,AfterViewChecked{
 
   }
   initConnection(){
-    let ws = new SockJS("http://localhost:8085/chat")
+    let ws = new SockJS("https://lendinglane.stackroute.io/api/v1/chat")
     this.stompClient = Stomp.over(ws)
     let that = this;
     this.stompClient.connect({},()=>{

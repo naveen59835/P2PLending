@@ -15,4 +15,7 @@ export class ProfileWidgetComponent implements OnInit {
   get name(){
     return localStorage.getItem("userName") || ""
   }
+  get role(){
+    return localStorage.getItem("role");
+  }
 }

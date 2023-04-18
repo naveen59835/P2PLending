@@ -20,6 +20,11 @@ import java.util.Map;
 public class AuthServiceImpl implements AuthService {
     @Autowired
     LoginRepository repository;
+
+    public AuthServiceImpl(LoginRepository repository) {
+        this.repository = repository;
+    }
+
     public Map <String,Object> loginUser(Map <String,String> loginDetails) throws UsernamePasswordMismatchException, UserNotFoundException {
         Login userDetails = repository.findByEmailAndRole(loginDetails.get("email"),loginDetails.get("role"));
         if(userDetails!=null){

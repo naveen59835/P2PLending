@@ -6,7 +6,6 @@ services:
     ports:
       - "3306:3306"
     container_name: mysqlservice-container
-
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_USERNAME: root
@@ -19,7 +18,6 @@ services:
   mongodb:
     image: mongo:latest
     container_name: mongodb-container
-
     ports:
       - "27017:27017"
     networks:
@@ -30,25 +28,19 @@ services:
     container_name: neo4j-container
     environment:
       NEO4J_AUTH: neo4j/neo4j123
-
-
     ports:
       - "7474:7474"
       - "7687:7687"
     networks:
       - springcloud-lendingLane-net
 
-
   rabbitmq:
     image: rabbitmq:management
     container_name: rabbitmq-container
-
     ports:
       - "5672:5672"
       - "15672:15672"
-
     restart: always
-
     networks:
       - springcloud-lendingLane-net
 
@@ -70,12 +62,8 @@ services:
       - eureka-server
     networks:
       - springcloud-lendingLane-net
-
     ports:
-      - "9002:9002"
-
-
-
+      - "8080:8080"
 
   authentication:
     build: authentication/
@@ -88,16 +76,11 @@ services:
       - eureka-server
       - api-gateway
       - rabbitmq
-
     restart: always
-
     networks:
       - springcloud-lendingLane-net
-
     ports:
-      - "8080:8080"
-
-
+      - "8088:8088"
 
   borrower:
     build: borrower/
@@ -110,11 +93,9 @@ services:
       - eureka-server
       - api-gateway
       - rabbitmq
-
     restart: always
     networks:
       - springcloud-lendingLane-net
-
     ports:
       - "8083:8083"
 
@@ -124,17 +105,14 @@ services:
     environment:
       - eureka.client.serviceUrl.defaultZone=http://eureka-server:8761/eureka/
       - SPRING_RABBITMQ_HOST=rabbitmq
-
     depends_on:
       - mongodb
       - eureka-server
       - api-gateway
       - rabbitmq
-
     restart: always
     networks:
       - springcloud-lendingLane-net
-
     ports:
       - "8082:8082"
 
@@ -149,15 +127,11 @@ services:
       - eureka-server
       - api-gateway
       - rabbitmq
-
     restart: always
     networks:
       - springcloud-lendingLane-net
-
     ports:
       - "8085:8085"
-
-
 
   recommendation:
     build: recommendation/
@@ -165,24 +139,17 @@ services:
     environment:
       - eureka.client.serviceUrl.defaultZone=http://eureka-server:8761/eureka/
       - SPRING_RABBITMQ_HOST=rabbitmq
-
-
-
-
     depends_on:
       - mongodb
       - eureka-server
       - api-gateway
       - rabbitmq
       - neo4j
-
     restart: always
     networks:
       - springcloud-lendingLane-net
-
     ports:
       - "8087:8087"
-
 
   review:
     build: review/
@@ -196,7 +163,6 @@ services:
     restart: always
     networks:
       - springcloud-lendingLane-net
-
     ports:
       - "8086:8086"
 
@@ -206,18 +172,14 @@ services:
     environment:
       - eureka.client.serviceUrl.defaultZone=http://eureka-server:8761/eureka/
       - SPRING_RABBITMQ_HOST=rabbitmq
-
-
     depends_on:
       - mongodb
       - eureka-server
       - api-gateway
       - rabbitmq
-
     restart: always
     networks:
       - springcloud-lendingLane-net
-
     ports:
       - "8084:8084"
 
@@ -227,17 +189,14 @@ services:
     environment:
       - eureka.client.serviceUrl.defaultZone=http://eureka-server:8761/eureka/
       - SPRING_RABBITMQ_HOST=rabbitmq
-
     depends_on:
       - mongodb
       - eureka-server
       - api-gateway
       - rabbitmq
-
     restart: always
     networks:
       - springcloud-lendingLane-net
-
     ports:
       - "8081:8081"
 
@@ -257,26 +216,20 @@ services:
 #
 #    ports:
 #      - "8089:8089"
-
-
-
   notifications:
     build: notifications/
     container_name: notifications-service
     environment:
       - eureka.client.serviceUrl.defaultZone=http://eureka-server:8761/eureka/
       - SPRING_RABBITMQ_HOST=rabbitmq
-
     depends_on:
       - mongodb
       - eureka-server
       - api-gateway
       - rabbitmq
-
     restart: always
     networks:
       - springcloud-lendingLane-net
-
     ports:
       - "8092:8092"
 
@@ -295,22 +248,13 @@ services:
 #
 #    ports:
 #      - "8099:8099"
-
-
-
   angular:
     build: product-webapp/lendinglane
     container_name: angular
-
-
     ports:
-      - "4200:80"
-
+      - "4200:4200"
     networks:
       - springcloud-lendingLane-net
-
-
-
 
 networks:
   springcloud-lendingLane-net:

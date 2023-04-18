@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewChild } from '@angular/core';
 import {MatTableDataSource} from "@angular/material/table";
 import {LoanService} from "../../service/loan.service";
 import {SidenavService} from "../../service/sidenav.service";
+import {CarouselComponent} from "angular-responsive-carousel";
 
 @Component({
   selector: 'app-borrower-dashboard',
@@ -10,6 +11,7 @@ import {SidenavService} from "../../service/sidenav.service";
 })
 export class BorrowerDashboardComponent implements OnInit {
   loans:Array<any>=[];
+  @ViewChild("carouselComponent") carouselComponent !: CarouselComponent;
   constructor(private loanService : LoanService, private sideNav : SidenavService) { }
 
   ngOnInit(): void {
@@ -47,6 +49,12 @@ export class BorrowerDashboardComponent implements OnInit {
 
   get isIpad(){
     return this.sideNav.isIpad
+  }
+  navigateNext(){
+    this.carouselComponent.next();
+  }
+  navigatePrevious(){
+    this.carouselComponent.prev();
   }
 
 }

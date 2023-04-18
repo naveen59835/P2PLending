@@ -9,7 +9,7 @@ export class BorrowerDetailsService {
   //private baseUrl = 'http://localhost:9002/api/v1/borrower';
   //apiBaseUrl = environment.apiBaseUrl + "/borrower-details";
 
-  baseurl = 'http://localhost:8080/api/v1'
+  baseurl = 'https://lendinglane.stackroute.io/api/v1'
 
   constructor(private http: HttpClient) { }
 
@@ -17,6 +17,6 @@ export class BorrowerDetailsService {
     //return this.http.get(this.baseUrl + "/api/v1/borrower/{emailId}")
     //return this.http.get(`${this.apiBaseUrl}/borrower/${emailId}`);
 
-      return this.http.get(`${this.baseUrl}/borrower/${emailId}`);
+      return this.http.get(`${this.baseurl}/borrower/borrower/${emailId}`);
   }
 }

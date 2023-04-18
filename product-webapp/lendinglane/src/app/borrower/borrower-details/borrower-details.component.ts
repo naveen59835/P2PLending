@@ -49,6 +49,7 @@ export class BorrowerDetailsComponent implements OnInit {
       aadhaarNo: ['', [Validators.minLength(12)]],
       panNo: ['', [Validators.minLength(10)]],
       phoneNo: ['', [Validators.minLength(10)]],
+      cibilScore: ['', [Validators.maxLength(3)]],
       address: this.fb.group({
         address: ['', [Validators.minLength(3)]],
         city: ['', [Validators.minLength(3)]],
@@ -61,12 +62,12 @@ export class BorrowerDetailsComponent implements OnInit {
   ngOnInit(): void {
     const emailId = localStorage.getItem('email') ?? '';
     this.getBorrowerDetails(emailId);
-    this.http.get<any>('http://localhost:3000/AadhaarNumbers').subscribe(data => {
-      this.aadhaarNumbers = data;
-    });
-    this.http.get<any>('http://localhost:3001/panNumbers').subscribe(data => {
-      this.panNumbers = data;
-    });
+    // this.http.get<any>('http://localhost:3000/AadhaarNumbers').subscribe(data => {
+    //   this.aadhaarNumbers = data;
+    // });
+    // this.http.get<any>('http://localhost:3001/panNumbers').subscribe(data => {
+    //   this.panNumbers = data;
+    // });
 
   }
 
@@ -149,7 +150,7 @@ export class BorrowerDetailsComponent implements OnInit {
     );
     this.http
       .put<Borrower>(
-        `http://localhost:9002/api/v1/borrower/borrowers/${emailId}`,
+        `https://lendinglane.stackroute.io/api/v1/borrower/borrowers/${emailId}`,
         formData
       )
       .subscribe(
@@ -201,7 +202,7 @@ extractFileAndUpload(file: File, name: string) {
   const formData = new FormData();
   formData.append(name, file);
 
-  this.http.put("http://localhost:9002/api/v1/borrower/borrowers/image/" + localStorage.getItem("email"), formData)
+  this.http.put("https://lendinglane.stackroute.io/api/v1/borrower/borrowers/image/" + localStorage.getItem("email"), formData)
     .subscribe({
       next: (data) => {
         console.log(data);

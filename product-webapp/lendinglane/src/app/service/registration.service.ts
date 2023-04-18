@@ -12,7 +12,7 @@ export class RegistrationService {
   constructor(private httpClient:HttpClient) { }
 
   registerUser(data:any){
-    this.URL = `http://localhost:8080/api/v1`; //change this with api gateway asap,
+    this.URL = `https://lendinglane.stackroute.io/api/v1`; //change this with api gateway asap,
     return this.httpClient.post(this.URL+`/${data.role}/register`,data);
   }
 

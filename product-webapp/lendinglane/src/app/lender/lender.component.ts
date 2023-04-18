@@ -132,7 +132,7 @@ export class LenderComponent implements OnInit {
 
   startChat(borrowerId: any) {
     this.chatService.createChat(borrowerId).subscribe({
-      next: () => this.route.navigateByUrl("/dashboard/chat")
+      next: () => this.route.navigateByUrl("/#/dashboard/chat")
     })
   }
 

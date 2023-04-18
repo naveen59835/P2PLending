@@ -81,6 +81,16 @@
             </mat-form-field>
           </div>
         </div>
+        <div class="cibil">
+          <mat-form-field appearance="outline" class="my-form-field">
+            <mat-label>Credit Score :</mat-label>
+            <input [(ngModel)]="borrowerDetails.cibilScore" name="cibilScore" matInput [disabled]="!editMode"
+                   [ngModelOptions]="{updateOn: 'blur'}" minlength="10" #cibilScore="ngModel">
+            <mat-error *ngIf="cibilScore.invalid && (cibilScore.dirty || cibilScore.touched)">
+              CIBIL Score must be of 3 digits .
+            </mat-error>
+          </mat-form-field>
+        </div>
         <h2 class="address-details__header">Address Details</h2>
         <div class="home-city">
           <div class="home-address">

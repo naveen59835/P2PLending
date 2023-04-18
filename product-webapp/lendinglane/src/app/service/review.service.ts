@@ -8,8 +8,8 @@ export class ReviewService {
 
  //apiBaseUrl = environment.apiBaseUrl + "/review-service";
 
-url="http://localhost:8080/api/v1/review/add"
-urlrating="http://localhost:8080/api/v1/review/getAverage"
+url="https://lendinglane.stackroute.io/api/v1/review/add"
+urlrating="https://lendinglane.stackroute.io/api/v1/review/getAverage"
   constructor(private httpclient:HttpClient) { }
 
 
