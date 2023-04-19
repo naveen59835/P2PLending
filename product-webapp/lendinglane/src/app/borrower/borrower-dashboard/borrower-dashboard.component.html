@@ -3,33 +3,38 @@
     <span class="borrower-name">Welcome back, <span>{{borrowerName | uppercase}}</span></span>
     <img src="https://img.icons8.com/emoji/48/null/hand-with-fingers-splayed-emoji.png"/>
   </div>
-  <span class="greeting-message">We hope you have a great day.</span>
+  <span class="greeting-message">We hope you have a great day.</span> <br><br>
+  <span class="role">You are logged in as a Borrower !</span>
 </div>
 <div class="loan-container">
-  <h1>ONGOING LOANS</h1>
+  <div class="loan-container-header">
+    <h1>ONGOING LOANS</h1>
+    <mat-icon (click)="navigatePrevious()">navigate_before</mat-icon>
+    <mat-icon (click)="navigateNext()">navigate_next</mat-icon>
+  </div>
   <div class="loans-container-wrapper">
     <div class="loans" *ngIf="ongoingLoans.length>0">
-      <carousel [cellsToShow]="isMobile?1:isIpad?2:4">
-      <div class="loan carousel-cell" *ngFor="let loan of ongoingLoans let number=index" [routerLink]="'/dashboard/loan/'+loan.id">
-        <p class="loan-id">#LOAN {{number+1}}</p>
-        <div class="loan-data-container">
-          <div class="paid-amount-container">
-            <div class="total-Logo"><img src="https://img.icons8.com/external-kiranshastry-solid-kiranshastry/64/6C7BEC/external-money-bag-banking-and-finance-kiranshastry-solid-kiranshastry.png"/></div>
-            <div class="total-amount">
-              <p class="total-amount-label">AMOUNT</p>
-              <p class="total-amount-value">{{loan.amount}}</p>
+      <carousel [cellsToShow]="isMobile?1:isIpad?2:4" [arrows]="false" #carouselComponent>
+        <div class="loan carousel-cell" *ngFor="let loan of ongoingLoans let number=index" [routerLink]="'/dashboard/loan/'+loan.id">
+          <p class="loan-id">#LOAN {{number+1}}</p>
+          <div class="loan-data-container">
+            <div class="paid-amount-container">
+              <div class="total-Logo"><img src="https://img.icons8.com/external-kiranshastry-solid-kiranshastry/64/6C7BEC/external-money-bag-banking-and-finance-kiranshastry-solid-kiranshastry.png"/></div>
+              <div class="total-amount">
+                <p class="total-amount-label">AMOUNT</p>
+                <p class="total-amount-value">{{loan.amount}}</p>
+              </div>
+            </div>
+            <div class="total-amount-container">
+              <div class="total-Logo"><img src="https://img.icons8.com/sf-regular/48/6C7BEC/paid.png"/></div>
+              <div class="total-amount">
+                <p class="total-amount-label">PAID</p>
+                <p class="total-amount-value">{{totalPaid(loan.emi)}}</p>
+              </div>
             </div>
           </div>
-          <div class="total-amount-container">
-            <div class="total-Logo"><img src="https://img.icons8.com/sf-regular/48/6C7BEC/paid.png"/></div>
-            <div class="total-amount">
-              <p class="total-amount-label">PAID</p>
-              <p class="total-amount-value">{{totalPaid(loan.emi)}}</p>
-            </div>
-          </div>
+          <mat-progress-bar mode="determinate" [value]="progress(loan)"></mat-progress-bar>
         </div>
-        <mat-progress-bar mode="determinate" [value]="progress(loan)"></mat-progress-bar>
-      </div>
       </carousel>
     </div>
   </div>

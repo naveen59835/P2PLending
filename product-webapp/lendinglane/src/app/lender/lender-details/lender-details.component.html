@@ -14,7 +14,7 @@
           <p class="label">First Name (as on PAN)</p>
           <mat-form-field appearance="outline">
             <mat-label>First Name</mat-label>
-            <input [(ngModel)]="lenderDetails.firstName" name="firstName" matInput [disabled]="!editMode"
+            <input [(ngModel)]="lenderDetails.firstName" required name="firstName" matInput [disabled]="!editMode"
                    minlength="3" #firstName="ngModel">
             <mat-error *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)">
               First Name must be at least 3 characters long.
@@ -25,7 +25,7 @@
           <p class="label">Last Name (as on PAN)</p>
           <mat-form-field appearance="outline">
             <mat-label>Last Name</mat-label>
-            <input [(ngModel)]="lenderDetails.lastName" name="lastName" matInput [disabled]="!editMode" minlength="3" #lastName="ngModel">
+            <input [(ngModel)]="lenderDetails.lastName" name="lastName" matInput [disabled]="!editMode" minlength="3" required #lastName="ngModel">
             <mat-error *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)">Last Name must be at least 3 characters long.</mat-error>
           </mat-form-field>
         </div>
@@ -35,7 +35,7 @@
           <p class="label">Phone Number</p>
           <mat-form-field appearance="outline">
             <mat-label>Registered Mobile Number</mat-label>
-            <input [(ngModel)]="lenderDetails.phoneNo" name="phoneNo" matInput [disabled]="!editMode"
+            <input [(ngModel)]="lenderDetails.phoneNo" name="phoneNumber" matInput required [disabled]="!editMode"
                    [ngModelOptions]="{updateOn: 'blur'}" minlength="10" maxlength="10" pattern="^[6-9]\d{9}$"
                    #phoneNo="ngModel">
             <mat-error *ngIf="phoneNo.invalid && (phoneNo.dirty || phoneNo.touched)">
@@ -58,7 +58,7 @@
           <mat-form-field appearance="outline" class="my-form-field">
             <mat-label>Aadhaar No:</mat-label>
             <input [(ngModel)]="lenderDetails.aadhaar" name="aadhaar" matInput [disabled]="!editMode"
-                   [ngModelOptions]="{updateOn: 'blur'}" minlength="12" #aadhaarNoInput="ngModel">
+                   [ngModelOptions]="{updateOn: 'blur'}" minlength="12" required #aadhaarNoInput="ngModel">
             <mat-error *ngIf="aadhaarNoInput.invalid && (aadhaarNoInput.dirty || aadhaarNoInput.touched)">
               Aadhaar number must be at least 12 characters long.
             </mat-error>
@@ -70,7 +70,7 @@
           <p class="label">PAN Number</p>
           <mat-form-field appearance="outline" class="my-form-field">
             <mat-label>PAN No:</mat-label>
-            <input [(ngModel)]="lenderDetails.pan" name="pan" matInput [disabled]="!editMode"
+            <input required [(ngModel)]="lenderDetails.pan" name="pan" matInput [disabled]="!editMode"
                    [ngModelOptions]="{updateOn: 'blur'}" minlength="10" #panNo="ngModel">
             <mat-error *ngIf="panNo.invalid && (panNo.dirty || panNo.touched)">
               PAN number must be at least 10 characters long.
@@ -86,7 +86,7 @@
           <p class="label">Home Address</p>
           <mat-form-field appearance="outline">
             <mat-label>Home Address</mat-label>
-            <input [(ngModel)]="lenderDetails.address.address" name="address" matInput [disabled]="!editMode" minlength="5" maxlength="100" #address="ngModel">
+            <input required [(ngModel)]="lenderDetails.address.address" name="address" matInput [disabled]="!editMode" minlength="5" maxlength="100" #address="ngModel">
             <mat-error *ngIf="address.invalid && (address.dirty || address.touched)">
               Address must be between 5 and 100 characters long.
             </mat-error>
@@ -96,7 +96,7 @@
           <p class="label">City</p>
           <mat-form-field appearance="outline">
             <mat-label>City</mat-label>
-            <input [(ngModel)]="lenderDetails.address.city" name="city" matInput [disabled]="!editMode" minlength="3" maxlength="50" #city="ngModel">
+            <input required [(ngModel)]="lenderDetails.address.city" name="city" matInput [disabled]="!editMode" minlength="3" maxlength="50" #city="ngModel">
             <mat-error *ngIf="city.invalid && (city.dirty || city.touched)">
               City must be between 3 and 50 characters long.
             </mat-error>
@@ -108,7 +108,7 @@
           <p class="label">PIN Code</p>
           <mat-form-field appearance="outline">
             <mat-label>PIN Code</mat-label>
-            <input [(ngModel)]="lenderDetails.address.pin" name="pin" matInput [disabled]="!editMode" pattern="[0-9]{6}" minlength="6" maxlength="6" #pin="ngModel">
+            <input required [(ngModel)]="lenderDetails.address.pin" name="pin" matInput [disabled]="!editMode" pattern="[0-9]{6}" minlength="6" maxlength="6" #pin="ngModel">
             <mat-error *ngIf="pin.invalid && (pin.dirty || pin.touched)">
               PIN must be a 6-digit number.
             </mat-error>
@@ -118,10 +118,25 @@
           <p class="label">State</p>
           <mat-form-field appearance="outline">
             <mat-label>State</mat-label>
-            <input [(ngModel)]="lenderDetails.address.state" name="state" matInput [disabled]="!editMode" minlength="3" maxlength="50" #state="ngModel">
+            <input required [(ngModel)]="lenderDetails.address.state" name="state" matInput [disabled]="!editMode" minlength="3" maxlength="50" #state="ngModel">
             <mat-error *ngIf="state.invalid && (state.dirty || state.touched)">
               State must be between 3 and 50 characters long.
             </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <h2 class="address-details__header">Recommendation Details</h2>
+      <div class="cibil-interestRate">
+        <div class="cibil-score">
+          <p class="label">CIBIL Score</p>
+          <mat-form-field appearance="outline">
+            <mat-label>CIBIL Score</mat-label>
+            <mat-select [(ngModel)]="lenderDetails.creditScore" [disabled]="!editMode" name="creditScore" >
+              <mat-option value="400-500">400 - 500</mat-option>
+              <mat-option value="500-600">500 - 600</mat-option>
+              <mat-option value="600-700">600 - 700</mat-option>
+              <mat-option value="700-800">700 - 800</mat-option>
+            </mat-select>
           </mat-form-field>
         </div>
       </div>
@@ -182,300 +197,3 @@
     </button>
   </ng-template>
 </mat-menu>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--<div id="divv">-->
-<!--  <div>-->
-<!--    <a class="detail" href="dashboard/profile#detail">more Details</a>-->
-
-<!--    </div>-->
-
-<!--  <mat-card class="container">-->
-<!--    <mat-icon class="btn" (click)="toggleDisabled()" color="primary">-->
-<!--      edit-->
-<!--        </mat-icon>-->
-<!--        <h1 style="margin-left: -13px;">Lender Details </h1>-->
-<!--        <mat-card-content>-->
-<!--  <form #lenderForm="ngForm" (submit)="lenderupdate(lenderForm)" class="example-form" >-->
-
-
-
-
-
-<!--        <table class="example-full-width" cellspacing="11px"><tr>-->
-<!--          <td>-->
-<!--              <tr><strong>First Name</strong></tr>-->
-<!--             <mat-form-field appearance="outline" class="example-full-width">-->
-
-
-<!--                  <input  matInput type="text" [(ngModel)]="lender.firstName" name="firstname" #first="ngModel" minlength="5" placeholder="enter first name"  [disabled]="disabled" >-->
-<!--                  <mat-error *ngIf="first.invalid && (first.dirty || first.touched)">-->
-<!--                      <mat-error *ngIf="first?.errors?.['minlength']">-->
-<!--                       first name should 5 character-->
-<!--                      </mat-error>-->
-<!--                  </mat-error>-->
-<!--                </mat-form-field>-->
-<!--          </td>-->
-<!--          <td>-->
-<!--            <tr><strong>Last name</strong></tr>-->
-<!--              <mat-form-field appearance="outline" class="example-full-width" >-->
-
-<!--                  <input  matInput type="text" [(ngModel)]="lender.lastName" name="lastname" #last="ngModel" minlength="5" [disabled]="disabled"  placeholder="enter last name">-->
-<!--                  <mat-error *ngIf="last.invalid && (last.dirty || last.touched)">-->
-<!--                      <mat-error *ngIf="last?.errors?.['minlength']">-->
-<!--                     last name should 5 character-->
-<!--                      </mat-error>-->
-<!--                  </mat-error>-->
-<!--                </mat-form-field>-->
-<!--          </td>-->
-<!--        </tr></table>-->
-
-
-<!--        <table class="example-full-width" cellspacing="11px"><tr>-->
-<!--          <td>-->
-<!--          <tr><strong>phone Number</strong></tr>-->
-<!--        <mat-form-field appearance="outline" class="example-full-width">-->
-
-<!--          <input  matInput type="text" [(ngModel)]="lender.phoneNumber" name="phonenh" #phn="ngModel" [disabled]="disabled" pattern="^[789]\d{9}$"  placeholder="enter phone number">-->
-<!--          <mat-error *ngIf="phn.invalid && (phn.dirty || phn.touched)">-->
-<!--              <mat-error *ngIf="phn?.errors?.['pattern']">-->
-<!--           number should start with 789 and have ten digit-->
-<!--              </mat-error>-->
-<!--          </mat-error>-->
-
-<!--        </mat-form-field>-->
-<!--        </td></tr></table>-->
-<!--        <table class="example-full-width" cellspacing="11px">-->
-<!--          <tr>-->
-<!--            <td>-->
-<!--              <tr><strong>Aadhaar Number</strong></tr>-->
-<!--              <mat-form-field appearance="outline" class="example-full-width">-->
-<!--                <input matInput type="text" [(ngModel)]="lender.aadhaar" name="aadhaar" #aadhaar="ngModel" [disabled]="disabled"-->
-<!--                       [ngModelOptions]="{updateOn: 'blur'}" minlength="12" placeholder="Enter Aadhaar number">-->
-<!--                <mat-error *ngIf="aadhaar.invalid && (aadhaar.dirty || aadhaar.touched)">-->
-<!--                  <mat-error *ngIf="aadhaar?.errors?.['minlength']">-->
-<!--                    Aadhaar number must be at least 12 characters long.-->
-<!--                  </mat-error>-->
-<!--                </mat-error>-->
-<!--                <div class="button"  (click)="verifyAadhaar()" >Verify</div>-->
-<!--                <div class="verification-message" [ngClass]="{'valid': isAadhaarVerified(), 'invalid': !isAadhaarVerified()}">{{aadhaarVerificationMessage}}</div>-->
-<!--              </mat-form-field>-->
-<!--            </td>-->
-<!--          </tr>-->
-<!--        </table>-->
-
-<!--        <table class="example-full-width" cellspacing="11px">-->
-<!--          <tr>-->
-<!--            <td>-->
-<!--              <tr><strong>PAN Number</strong></tr>-->
-<!--              <mat-form-field appearance="outline" class="example-full-width">-->
-<!--                <input matInput type="text" [(ngModel)]="lender.pan" name="pan" [disabled]="disabled" #pan="ngModel"-->
-<!--                       [ngModelOptions]="{updateOn: 'blur'}" minlength="10" placeholder="Enter PAN card number">-->
-<!--                <mat-error *ngIf="pan.invalid && (pan.dirty || pan.touched)">-->
-<!--                  <mat-error *ngIf="pan?.errors?.['minlength']">-->
-<!--                    PAN number must be at least 10 characters long.-->
-<!--                  </mat-error>-->
-<!--                </mat-error>-->
-<!--                <div class="button"  (click)="verifyPan()" >Verify</div>-->
-
-
-<!--                <div class="verification-message" [ngClass]="{'valid': isPanVerified(), 'invalid': !isPanVerified()}">{{panVerificationMessage}}</div>-->
-<!--              </mat-form-field>-->
-<!--            </td>-->
-<!--          </tr>-->
-<!--        </table>-->
-
-
-
-
-
-
-<!--       <div>-->
-<!--         <strong>Aadhar Image</strong> &nbsp;   <input style="margin-left: -7px;" type="file" name="filename" [disabled]="disabled" (change)="aadharImageChange($event)"> <mat-icon *ngIf='valuee=="true"'>done</mat-icon>-->
-
-<!--        </div>-->
-<!--    <br>-->
-
-<!--      &lt;!&ndash; *ngIf='valuee=="true"' &ndash;&gt;-->
-
-
-
-
-<!--   &lt;!&ndash; <label for="pan" style="margin: 7px;"></label><strong>Pan Image</strong> &ndash;&gt;-->
-<!--      <div>-->
-<!--   <strong>Pan Image</strong> &nbsp; &nbsp; <input  class="pan"  type="file" name="pan" id="pan" [disabled]="disabled" (change)="panImageChange($event)" >-->
-<!--  <span *ngIf='value=="true"'>-->
-
-<!--    <mat-icon>done</mat-icon>-->
-<!--  </span>-->
-<!--  </div>-->
-
-
-<!--       <div> <button type="submit" class="example-full-width" style="margin-top: 37px;"  mat-raised-button color="primary"  [disabled]="lenderForm.invalid" [disabled]="disabled" >save</button></div>-->
-<!--      </form>-->
-<!--  </mat-card-content>-->
-<!--  </mat-card>-->
-
-
-
-
-
-<!--   <mat-card class="container1">-->
-<!--    <mat-icon class="btn" (click)="toggleDisabled1()" color="primary">-->
-<!--      edit-->
-<!--        </mat-icon>-->
-<!--    <h1 style="margin-left: -13px;">Lender Address Details</h1>-->
-<!--      <mat-card-content>-->
-<!--  <form #lenderaddressForm="ngForm" (submit)="lenderupdateaddress(lenderaddressForm)" class="example-form" >-->
-<!--    <table class="example-full-width1"><tr>-->
-<!--      <td>-->
-<!--          <tr><strong>Address</strong></tr>-->
-
-<!--    <mat-form-field appearance="outline" class="example-full-width" >-->
-
-<!--        <input  matInput type="text" [(ngModel)]="lender.address.address" name="adress"[disabled]="disablede" placeholder="enter address" #address1="ngModel" minlength="5" >-->
-<!--        <mat-error *ngIf="address1.invalid && (address1.dirty || address1.touched)">-->
-<!--          <mat-error *ngIf="address1?.errors?.['minlength']">-->
-<!--          address should have 5 character-->
-<!--          </mat-error>-->
-<!--        </mat-error>-->
-
-
-<!--      </mat-form-field>-->
-<!--      </td></tr></table>-->
-<!--      <table class="example-full-width1" ><tr>-->
-<!--        <td>-->
-<!--            <tr><strong>city</strong></tr>-->
-<!--      <mat-form-field appearance="outline" class="example-full-width">-->
-
-<!--        <input  matInput type="text" [(ngModel)]="lender.address.city" name="city" [disabled]="disablede" placeholder="enter city" #city1="ngModel" pattern="^[A-Za-z]+$" >-->
-<!--        <mat-error *ngIf="city1.invalid && (city1.dirty || city1.touched)">-->
-<!--          <mat-error *ngIf="city1?.errors?.['pattern']">-->
-<!--          city should have only character-->
-<!--            </mat-error>-->
-<!--          </mat-error>-->
-<!--      </mat-form-field></td></tr></table>-->
-<!--      <table class="example-full-width1" ><tr>-->
-<!--        <td>-->
-<!--            <tr><strong>pincode</strong></tr>-->
-<!--      <mat-form-field appearance="outline" class="example-full-width">-->
-
-<!--        <input  matInput type="text" [(ngModel)]="lender.address.pin" name="pin" [disabled]="disablede" placeholder="enter pin" #pinn="ngModel" pattern="^\d{5}$" >-->
-<!--        <mat-error *ngIf="pinn.invalid && (pinn.dirty || pinn.touched)">-->
-<!--          <mat-error *ngIf="pinn?.errors?.['pattern']">-->
-<!--      pincode should have 5 digit-->
-<!--            </mat-error>-->
-<!--          </mat-error>-->
-
-<!--      </mat-form-field>-->
-<!--      </td></tr></table>-->
-<!--      <table class="example-full-width1" ><tr>-->
-<!--        <td>-->
-<!--            <tr><strong>state</strong></tr>-->
-<!--      <mat-form-field  appearance="outline" class="example-full-width">-->
-
-<!--        <input  matInput type="text" [(ngModel)]="lender.address.state" name="state" [disabled]="disablede" placeholder="enter state" #statee="ngModel" pattern="^[A-Za-z]+$" >-->
-<!--        <mat-error *ngIf="statee.invalid && (statee.dirty || statee.touched)">-->
-<!--          <mat-error *ngIf="statee?.errors?.['pattern']">-->
-<!--          state should have only character-->
-<!--            </mat-error>-->
-<!--          </mat-error>-->
-<!--      </mat-form-field>-->
-<!--      </td></tr></table>-->
-
-<!--      <div> <button type="submit" class="example-full-width" style="margin-top: 37px;"  mat-raised-button color="primary"   [disabled]="disablede" >save</button></div>-->
-<!--    </form>-->
-<!--  </mat-card-content>-->
-<!--  </mat-card>-->
-
-
-
-<!--  <div  >-->
-<!--  <mat-card  class="container2"  id="detail">-->
-<!--    <mat-icon class="btn" (click)="toggleDisabledd()" color="primary">-->
-<!--      edit-->
-<!--        </mat-icon>-->
-<!--    <h1 style="margin-left: -13px;">Lender Amount Details</h1>-->
-<!--      <mat-card-content>-->
-<!--  <form #lenderamountForm="ngForm" (submit)="lenderupdateamountDetail(lenderamountForm)" class="example-form" >-->
-<!--    <table class="example-full-width1"><tr>-->
-<!--      <td>-->
-<!--          <tr><strong>Invest amount</strong></tr>-->
-
-<!--    <mat-form-field appearance="outline" class="example-full-width" >-->
-
-<!--        <input  matInput type="text" [(ngModel)]="lender.amountToInvest" name="amount"[disabled]="disablede1" placeholder="enter amount to invest" #amount1="ngModel" minlength="5"  >-->
-
-
-<!--      </mat-form-field>-->
-<!--      </td></tr></table>-->
-<!--      <table class="example-full-width1"><tr>-->
-<!--        <td>-->
-<!--            <tr><strong>Credit Score</strong></tr>-->
-
-<!--      <mat-form-field appearance="outline" class="example-full-width" >-->
-
-<!--          <mat-select  type="text" [(ngModel)]="lender.creditScore" name="lender"[disabled]="disablede1" placeholder="enter credit score" #amount="ngModel"  >-->
-<!--            <mat-option value="600-700">600-700</mat-option>-->
-<!--          </mat-select>-->
-
-<!--        </mat-form-field>-->
-<!--        </td></tr></table>-->
-<!--      <div> <button type="submit" class="example-full-width" style="margin-top: 37px;"  mat-raised-button color="primary"   [disabled]="disablede1" >save</button></div>-->
-<!--      </form>-->
-<!--      </mat-card-content>-->
-<!--      </mat-card>-->
-<!--  </div>-->
-
-
-
-
-<!--    </div>-->

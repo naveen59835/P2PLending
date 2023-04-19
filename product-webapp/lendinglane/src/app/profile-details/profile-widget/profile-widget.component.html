@@ -9,7 +9,7 @@
   </header>
   <main  class="widget-content" >   <!--    *ngIf="profileWidgetData!=undefined"-->
     <div  class="list-item">
-      <p  class="label">Borrower ID</p>
+      <p  class="label">{{role | titlecase}} ID</p>
       <p  class="value">{{profileWidgetData.emailId}}</p>
     </div>
     <mat-divider></mat-divider>

@@ -14,6 +14,8 @@ public class EMI {
     private LocalDate paymentDate;
     private boolean paymentStatus;
     private String paymentId;
+    private boolean isLateFeeAdded = false;
+    private double lateFee=0;
 
     public EMI(int id, double price, boolean paymentStatus) {
         this.id = id;

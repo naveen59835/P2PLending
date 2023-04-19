@@ -21,6 +21,7 @@ export class PaymentService {
 
     updatedetail(amount:any,toname:any,fromname:any,id:any,status:any,loanId:any)
     {
+      console.log(id)
       console.log("to :",toname)
       return this.httpclient.put<any>(`${this.urldetail}`,{"amount":amount,"to":toname,"from":fromname,"id":id,"status":status,"loanId":loanId})
     }
