@@ -1,6 +1,7 @@
 package com.stackroute.loan.controller;
 
 import com.stackroute.loan.model.Loan;
+import com.stackroute.loan.proxy.BorrowerProxy;
 import com.stackroute.loan.service.LoanServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,10 +15,12 @@ import java.util.Map;
 public class LoanController {
 
     LoanServiceImpl loanService;
+    BorrowerProxy borrowerProxy;
 
     @Autowired
-    public LoanController(LoanServiceImpl loanService) {
+    public LoanController(LoanServiceImpl loanService, BorrowerProxy borrowerProxy) {
         this.loanService = loanService;
+        this.borrowerProxy= borrowerProxy;
     }
 
     @GetMapping("/Loan")
@@ -50,5 +53,10 @@ public class LoanController {
     @GetMapping("/getLenderLoan/{id}")
     public ResponseEntity<?> getLenderLoan(@PathVariable String id){
         return new ResponseEntity<>(loanService.findLoansFromLender(id),HttpStatus.OK);
+    }
+
+    @GetMapping("/demo")
+    public ResponseEntity<?> Demo(){
+        return new ResponseEntity<>(borrowerProxy.getBorrowerData("prashanth99005@gmail.com"),HttpStatus.OK);
     }
 }
