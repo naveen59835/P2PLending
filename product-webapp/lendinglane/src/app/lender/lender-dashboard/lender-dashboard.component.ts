@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {AfterViewChecked, AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {Router} from '@angular/router';
 import {RecommendedBorrower} from 'src/app/model/RecommendedBorroer';
 import {LenderService} from 'src/app/service/lender.service';
@@ -16,7 +16,7 @@ declare let Razorpay: any;
   templateUrl: './lender-dashboard.component.html',
   styleUrls: ['./lender-dashboard.component.css']
 })
-export class LenderDashboardComponent implements OnInit {
+export class LenderDashboardComponent implements OnInit{
 
   borrower: RecommendedBorrower[] = [];
   loans: any = [{}];
@@ -194,11 +194,13 @@ export class LenderDashboardComponent implements OnInit {
   get isIpad(){
     return this.sidenav.isIpad
   }
+  get isSmallScreen(){
+    return this.sidenav.isSmallScreen
+  }
   navigateNext(){
     this.carouselComponent.next();
   }
   navigatePrevious(){
     this.carouselComponent.prev();
   }
-
 }

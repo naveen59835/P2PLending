@@ -14,12 +14,7 @@ export class BorrowerTransactionComponent implements OnInit {
   displayedColumns: string[] = ['#', 'amount', 'type', 'remarks', 'date'];
   transactionData:any
 
-  dataSource = new MatTableDataSource([
-    {id: 1, amount: 1000, type: 'debit', remarks: 'Payment received', date: new Date('2022-03-15')},
-    {id: 2, amount: 500, type: 'credit', remarks: 'Refund issued', date: new Date('2022-03-10')},
-    {id: 3, amount: 750, type: 'debit', remarks: 'Payment received', date: new Date('2022-03-05')},
-    {id: 4, amount: 250, type: 'credit', remarks: 'Refund issued', date: new Date('2022-03-01')}
-  ]);
+  dataSource = new MatTableDataSource();
 
   ngOnInit(): void {
     //Gather data from payment microservice and populate dataSource

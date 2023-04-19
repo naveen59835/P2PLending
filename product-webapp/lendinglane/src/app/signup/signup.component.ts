@@ -4,6 +4,7 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 import {Borrower} from '../model/Borrower';
 import {BorrowerRegistrationService} from '../service/borrower-registration.service';
 import {RegistrationService} from "../service/registration.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-signup',
@@ -19,7 +20,7 @@ export class SignupComponent implements OnInit {
   employee = {} as Borrower;
   formGroup: any;
 
-  constructor(private fb: FormBuilder, private _snackBar: MatSnackBar, private borrowerService: RegistrationService) {
+  constructor(private router : Router, private fb: FormBuilder, private _snackBar: MatSnackBar, private borrowerService: RegistrationService) {
     this.profileForm = this.fb.group({
 
       firstName: new FormControl('', [Validators.required, Validators.minLength(3)]),
@@ -89,6 +90,7 @@ export class SignupComponent implements OnInit {
         if (this.profileForm.valid) {
           this.openSnack("Form Submitted Successfully", "Success");
           this.profileForm.reset();
+          this.router.navigateByUrl("/login");
         } else {
           this.openSnack("Couldn't Submit the form", "Failure");
         }

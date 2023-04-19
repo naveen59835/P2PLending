@@ -43,4 +43,8 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
+  <div class="transaction-not-found" *ngIf="dataSource.data.length==0">
+    <img src="https://app.lendbox.in/_nuxt/img/empty_list.cc3e0be.svg">
+    <p style="font-weight: 500">No ongoing loans found</p>
+  </div>
 </div>

@@ -27,8 +27,30 @@ public class LoanRepoTest {
     @Test
     public void testFindLoansByBorrowerId_success() {
         // Create sample loans and save to repository
-        Loan loan1 = new Loan("1", 5000, "lender1", "borrower1", 5, false, null, false, false, 12, LocalDate.now());
-        Loan loan2 = new Loan("2", 10000, "lender2", "borrower2", 7, true, null, false, false, 24, LocalDate.now());
+        Loan loan1 = new Loan();
+        Loan loan2 = new Loan();
+        loan1.setId("1");
+        loan1.setAmount(5000);
+        loan1.setBorrowerId("borrower1");
+        loan1.setLenderId("lender1");
+        loan1.setEmi(null);
+        loan1.setDateOfLoan(LocalDate.now());
+        loan1.setTerms(12);
+        loan1.setApproved(false);
+        loan1.setExpired(false);
+        loan1.setRejected(false);
+
+        loan2.setId("2");
+        loan2.setAmount(10000);
+        loan2.setBorrowerId("borrower2");
+        loan2.setLenderId("lender2");
+        loan2.setEmi(null);
+        loan2.setDateOfLoan(LocalDate.now());
+        loan2.setTerms(24);
+        loan2.setApproved(false);
+        loan2.setExpired(false);
+        loan2.setRejected(false);
+
         loanRepository.save(loan1);
         loanRepository.save(loan2);
 
@@ -51,8 +73,29 @@ public class LoanRepoTest {
     @Test
     public void testFindLoansByLenderId_success() {
         // Create sample loans and save to repository
-        Loan loan1 = new Loan("1", 5000, "lender1", "borrower1", 5, false, null, false, false, 12, LocalDate.now());
-        Loan loan2 = new Loan("2", 10000, "lender2", "borrower2", 7, true, null, false, false, 24, LocalDate.now());
+        Loan loan1 = new Loan();
+        Loan loan2 = new Loan();
+        loan1.setId("1");
+        loan1.setAmount(5000);
+        loan1.setBorrowerId("borrower1");
+        loan1.setLenderId("lender1");
+        loan1.setEmi(null);
+        loan1.setDateOfLoan(LocalDate.now());
+        loan1.setTerms(12);
+        loan1.setApproved(false);
+        loan1.setExpired(false);
+        loan1.setRejected(false);
+
+        loan2.setId("2");
+        loan2.setAmount(10000);
+        loan2.setBorrowerId("borrower2");
+        loan2.setLenderId("lender2");
+        loan2.setEmi(null);
+        loan2.setDateOfLoan(LocalDate.now());
+        loan2.setTerms(24);
+        loan2.setApproved(false);
+        loan2.setExpired(false);
+        loan2.setRejected(false);
         loanRepository.save(loan1);
         loanRepository.save(loan2);
 

@@ -44,11 +44,13 @@ public class LoanServiceImpl implements LoanService {
     }
     @Override
     public Loan applyLoan(Loan loan){
+        System.out.println(loan);
         loan.setInterestRate(loanRate.get(loan.getTerms()));
         loan.setDateOfLoan(LocalDate.now());
         if(hasDocuments(loan.getBorrowerId())) {
             LoanDTO loanData = new LoanDTO();
             loan = loanRepository.save(loan);
+            System.out.println(loan);
             loanData.setSelectiveJsonObject(loan);
             template.convertAndSend("loan-notification-exchange","route-key",loan.getBorrowerId());
             template.convertAndSend("recommendation-exchange","route-key",loanData.getJsonObject());

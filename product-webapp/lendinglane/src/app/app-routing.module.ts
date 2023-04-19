@@ -23,7 +23,6 @@ const routes: Routes = [
   {path:'signup',component:SignupComponent,canActivate: [AuthGuardGuard]},
   {path:'login',component:LoginComponent,canActivate: [AuthGuardGuard]},
   {path:'home',component:HomeComponent},
-  {path:'**',component:PagenotfoundComponent},
   {
     path:'dashboard',
     component : DashboardComponent,
@@ -38,9 +37,11 @@ const routes: Routes = [
       {path:'term',component:TermconditionComponent},
       {path:'recommendedborrowerdetail/:id',component:RecommendedborrowerComponent},
       {path:"chat",component:DashboardMessagesComponent},
-      {path:"chat/:id",component:DashboardMessageWindowComponent}
+      {path:"chat/:id",component:DashboardMessageWindowComponent},
     ]
-  }
+  },
+  {path:'**',pathMatch:'full',redirectTo:'page-not-found'},
+  {path:"page-not-found",component:PagenotfoundComponent}
 
 ];
 

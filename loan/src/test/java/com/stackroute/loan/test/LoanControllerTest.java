@@ -42,7 +42,17 @@ public class LoanControllerTest {
     private LoanServiceImpl loanService;
 
     private Loan createSampleLoan() {
-        Loan loan = new Loan("1", 5000, "lender1", "borrower1", 5, false, null, false, false, 12, LocalDate.now());
+        Loan loan = new Loan();
+        loan.setId("1");
+        loan.setAmount(5000);
+        loan.setBorrowerId("borrower1");
+        loan.setLenderId("lender1");
+        loan.setEmi(null);
+        loan.setDateOfLoan(LocalDate.now());
+        loan.setTerms(12);
+        loan.setApproved(false);
+        loan.setExpired(false);
+        loan.setRejected(false);
         return loan;
     }
 

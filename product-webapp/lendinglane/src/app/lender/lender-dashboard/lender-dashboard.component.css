@@ -1,13 +1,15 @@
 .greeting {
   margin-bottom: 50px;
   padding-left: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .lender-name-container {
   display: flex;
   align-items: center;
   gap: 30px;
-  margin-bottom: 10px;
 }
 
 .lender-name {
@@ -58,18 +60,12 @@
   font-weight: 500;
 }
 .carousel-cell{
-  margin-right: 20px;
-}
-::ng-deep .carousel-arrow{
-  background-color: transparent !important;
-  box-shadow: none !important;
-}
-.loan{
   border: 1px solid;
   border-radius: 6px;
   padding:30px;
-  max-width: 280px;
+  max-width: 250px;
   height: max-content !important;
+  margin-right: 20px;
 }
 .loan-id{
   font-size: 15px;
@@ -88,6 +84,13 @@
 .recommended-borrower-container{
   background-color: white;
   padding: 30px;
+}
+.loans-not-found{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
 }
 table {
   width: 100%;
@@ -139,6 +142,20 @@ table {
   align-items: center;
   justify-content: center;
 }
+th.isSmall{
+  display: none;
+}
+@media (max-width: 1000px) {
+  .carousel-cell{
+    max-width: 200px;
+  }
+  .loan-data-container{
+    flex-wrap: wrap;
+  }
+  carousel{
+    height: 250px !important;
+  }
+}
 @media (max-width: 800px) {
   .loan-data-container{
     flex-wrap: wrap;
@@ -148,6 +165,25 @@ table {
   }
   carousel{
     height: 250px !important;
+  }
+  td{
+    border: none;
+    padding: 0 !important;
+  }
+  .mat-row{
+    display: flex !important;
+    flex-direction: column;
+    height: max-content;
+    padding: 30px 30px;
+    background-color: #bdbdbd;
+    margin-bottom: 30px;
+    border-bottom-color: transparent !important;
+  }
+  th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
+    padding: 0;
+    border-bottom-width: 0 !important;
+    border-bottom-style: solid;
+    margin-bottom: 10px;
   }
 
 }

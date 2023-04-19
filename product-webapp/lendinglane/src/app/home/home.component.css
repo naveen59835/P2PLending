@@ -1,19 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400&display=swap');
 .contain {
-  border: 1px solid #d7cef2;
+  border: 1px solid #CDC4E8;
   height: 600px;
   /*background-color: #CDC4E8;*/
-  background-color: #d7cef2;
+  background-color: #f3efff;
   display: flex;
   justify-content: center;
   gap: 10%;
   align-items: center;
 }
-
+.contents>h1{
+  color: black;
+  text-align: left;
+}
 .take {
   font-weight: 300;
   font-size: 24px;
-
 }
 
 .earn {
@@ -21,9 +23,6 @@
   text-decoration: underline;
   font-weight: bold;
 }
-
-
-
 .my-button {
   background-color: #6D5BDD;
   color: white;
@@ -37,8 +36,6 @@
   top: 10px;
   left: -5px;
   width: 215px;
-
-
 }
 
 .weoffer {
@@ -204,15 +201,15 @@ footer {
 
 .footer-content {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  width: 1000px;
-  margin: 0 auto;
+  justify-content: space-around;
 }
 
 .footer-section {
-  flex-basis: 25%;
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
 }
 
 .links ul {
@@ -232,9 +229,6 @@ footer {
 }
 
 .socials a {
-
-  position: relative;
-  top: 50px;
   padding: 10px;
   margin-right: 10px;
   border-radius: 50%;
@@ -302,9 +296,6 @@ li {
 .logo {
   width: 50px;
   height: 50px;
-  position: relative;
-  left: 100px;
-
 }
 
 .weare {
@@ -425,6 +416,7 @@ mat-label{
   border: 1px solid white;
   padding: 30px;
   border-radius: 20px;
+  margin-bottom: 15px;
 }
 
 carousel{
@@ -507,5 +499,13 @@ mat-expansion-panel{
   }
   .apply-loan{
     /*flex-direction: column;*/
+  }
+  .footer-content{
+    flex-direction: column;
+  }
+  .contact-form {
+    border-radius: 5px;
+    width: calc(90% - 60px);
+    margin: 0 auto 15px auto;
   }
 }

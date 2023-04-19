@@ -49,6 +49,12 @@ th.mat-header-cell, td.mat-cell, td.mat-footer-cell{
 th.isSmall{
   display: none;
 }
+.transaction-not-found{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
 @media(max-width: 800px) {
   .mat-row {
     display: flex !important;
