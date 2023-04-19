@@ -18,7 +18,7 @@ export class LenderComponent implements OnInit {
   @Input() borrowerRecommended: RecommendedBorrower = {};
 
   amount:string=" "
- 
+
   paymentstatusfail: any
   id: any
   fromname = localStorage.getItem('email')
@@ -43,6 +43,7 @@ export class LenderComponent implements OnInit {
             amount: data.amount,
             currency: data.currency,
             name: this.borrowerRecommended.borrowerId,
+
             description: "transfer",
             order_id: data.id,
 
@@ -55,13 +56,13 @@ export class LenderComponent implements OnInit {
 
               updatedetail(paystatus);
 
-              Swal.fire("payment succesfful", "Well done, you  entered amount", "success")
+              Swal.fire("payment Successful", "Well done", "success")
 
             },
 
 
             "prefill": {
-              "name": " ",
+              "name": "Lending Lane",
               "email": " ",
               "contact": " "
 
@@ -103,7 +104,7 @@ export class LenderComponent implements OnInit {
         }
 
 
-       
+
 
 
       });
@@ -120,7 +121,7 @@ export class LenderComponent implements OnInit {
 
 
     const updatedetail = (paystatus: any) => {
-    
+
 
       this.service.updatedetail(this.borrowerRecommended.amount, this.borrowerRecommended.borrowerId, this.fromname, this.id, paystatus, this.borrowerRecommended.id).subscribe(data => {
 

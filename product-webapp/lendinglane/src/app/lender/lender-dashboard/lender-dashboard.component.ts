@@ -101,7 +101,7 @@ export class LenderDashboardComponent implements OnInit{
           key: data.key,
           amount: data.amount,
           currency: data.currency,
-          name: recommendedLoan.name,
+          name: "Lending Lane",
           description: "transfer",
           order_id: data.id,
 
@@ -114,13 +114,13 @@ export class LenderDashboardComponent implements OnInit{
 
             that.updatedetail(recommendedLoan,paystatus,id);
 
-            Swal.fire("payment succesfful", "Well done, you  entered amount", "success")
+            Swal.fire("payment successful", "Well done", "success")
 
           },
 
 
           "prefill": {
-            "name": " ",
+            "name": "Lending Lane",
             "email": " ",
             "contact": " "
 
