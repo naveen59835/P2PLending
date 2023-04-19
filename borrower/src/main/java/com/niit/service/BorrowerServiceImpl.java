@@ -83,6 +83,9 @@ public class BorrowerServiceImpl implements BorrowerService {
             if (borrower.getPanNo() != null) {
                 borrowerData.setPanNo(borrower.getPanNo());
             }
+            if(borrower.getCibilScore()>0){
+                borrowerData.setCibilScore(borrower.getCibilScore());
+            }
             if (borrower.getAddress() != null) {
                 Address userAddress = borrowerData.getAddress();
                 Address updatedAddress = borrower.getAddress();
