@@ -73,7 +73,6 @@ services:
     container_name: authentication-service
     environment:
       - eureka.client.serviceUrl.defaultZone=http://eureka-server:8761/eureka/
-      - SPRING_RABBITMQ_HOST=rabbitmq
     depends_on:
       - mysql
       - eureka-server
@@ -90,7 +89,6 @@ services:
     container_name: borrower-service
     environment:
       - eureka.client.serviceUrl.defaultZone=http://eureka-server:8761/eureka/
-      - SPRING_RABBITMQ_HOST=rabbitmq
     depends_on:
       - mongodb
       - eureka-server
@@ -107,7 +105,6 @@ services:
     container_name: lender-service
     environment:
       - eureka.client.serviceUrl.defaultZone=http://eureka-server:8761/eureka/
-      - SPRING_RABBITMQ_HOST=rabbitmq
     depends_on:
       - mongodb
       - eureka-server
@@ -124,7 +121,6 @@ services:
     container_name: chat-service
     environment:
       - eureka.client.serviceUrl.defaultZone=http://eureka-server:8761/eureka/
-      - SPRING_RABBITMQ_HOST=rabbitmq
     depends_on:
       - mongodb
       - eureka-server
@@ -141,7 +137,6 @@ services:
     container_name: recommendation-service
     environment:
       - eureka.client.serviceUrl.defaultZone=http://eureka-server:8761/eureka/
-      - SPRING_RABBITMQ_HOST=rabbitmq
     depends_on:
       - mongodb
       - eureka-server
@@ -174,7 +169,6 @@ services:
     container_name: loan-service
     environment:
       - eureka.client.serviceUrl.defaultZone=http://eureka-server:8761/eureka/
-      - SPRING_RABBITMQ_HOST=rabbitmq
     depends_on:
       - mongodb
       - eureka-server
@@ -191,7 +185,6 @@ services:
     container_name: payment-service
     environment:
       - eureka.client.serviceUrl.defaultZone=http://eureka-server:8761/eureka/
-      - SPRING_RABBITMQ_HOST=rabbitmq
     depends_on:
       - mongodb
       - eureka-server
@@ -208,7 +201,6 @@ services:
     container_name: notifications-service
     environment:
       - eureka.client.serviceUrl.defaultZone=http://eureka-server:8761/eureka/
-      - SPRING_RABBITMQ_HOST=rabbitmq
     depends_on:
       - mongodb
       - eureka-server

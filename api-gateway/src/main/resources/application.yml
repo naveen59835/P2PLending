@@ -25,77 +25,55 @@ spring:
           uri: http://localhost:8088/
           predicates:
             - Path=/api/v1/authentication/**
-          filters:
-            - RewritePath=/authentication(?<segment>/?.*), $\{segment}
 
         - id: borrower
           uri: http://localhost:8083/
           predicates:
             - Path=/api/v1/borrower/**
-          filters:
-            - RewritePath=/borrower(?<segment>/?.*), $\{segment}
 
 
         - id: chat
           uri: http://localhost:8085/
           predicates:
             - Path=/api/v1/chat/**
-          filters:
-            - RewritePath=/chat(?<segment>/?.*), $\{segment}
 
 
         - id: contactus
           uri: http://localhost:8089/
           predicates:
             - Path=/api/v1/contactus/**
-          filters:
-            - RewritePath=/contactus(?<segment>/?.*), $\{segment}
 
         - id: lender
           uri: http://localhost:8082/
           predicates:
             - Path=/api/v1/lender/**
-          filters:
-            - RewritePath=/lender(?<segment>/?.*), $\{segment}
 
         - id: product-webapp
           uri: http://localhost:4200/
           predicates:
             - Path=/**
-          filters:
-            - RewritePath=(?<segment>/?.*), $\{segment}
 
         - id: loan
           uri: http://localhost:8084/
           predicates:
             - Path=/api/v1/loan/**
-          filters:
-            - RewritePath=/loan(?<segment>/?.*), $\{segment}
 
         - id: notification
           uri: http://localhost:8092/
           predicates:
             - Path=/api/v1/notification/**
-          filters:
-            - RewritePath=/notification(?<segment>/?.*), $\{segment}
 
         - id: payment
           uri: http://localhost:8081/
           predicates:
             - Path=/api/v1/payment/**
-          filters:
-            - RewritePath=/payment(?<segment>/?.*), $\{segment}
 
         - id: recommendation
           uri: http://localhost:8087/
           predicates:
             - Path=/api/v1/recommendation/**
-          filters:
-            - RewritePath=/recommendation(?<segment>/?.*), $\{segment}
 
         - id: review
           uri: http://localhost:8086/
           predicates:
             - Path=/api/v1/review/**
-          filters:
-            - RewritePath=/review(?<segment>/?.*), $\{segment}
