@@ -49,7 +49,7 @@ export class BorrowerDetailsComponent implements OnInit {
       aadhaarNo: ['', [Validators.minLength(12)]],
       panNo: ['', [Validators.minLength(10)]],
       phoneNo: ['', [Validators.minLength(10)]],
-      cibilScore: ['', [Validators.maxLength(3)]],
+      cibilScore: ['', [Validators.minLength(3),Validators.maxLength(3)]],
       address: this.fb.group({
         address: ['', [Validators.minLength(3)]],
         city: ['', [Validators.minLength(3)]],
