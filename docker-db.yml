@@ -1,0 +1,47 @@
+version: "2"
+services:
+  mysql:
+    image: mysql:latest
+    container_name: mysqlservice-container
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USERNAME: root
+      MYSQL_PASSWORD: root
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      MYSQL_DATABASE : userdb
+    hostname: localhost
+    network_mode: "host"
+    restart: always
+    ports:
+      - "3306:3306"
+
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb-container
+    hostname: localhost
+    network_mode: "host"
+    restart: always
+    ports:
+      - "27017:27017"
+
+  neo4j:
+    image: neo4j:latest
+    container_name: neo4j-container
+    environment:
+      NEO4J_AUTH: neo4j/neo4j123
+    hostname: localhost
+    network_mode: "host"
+    restart: always
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+
+  rabbitmq:
+    image: rabbitmq:management
+    container_name: rabbitmq-container
+    restart: always
+    hostname: localhost
+    network_mode: "host"
+    ports:
+      - "5672:5672"
+      - "15672:15672"
