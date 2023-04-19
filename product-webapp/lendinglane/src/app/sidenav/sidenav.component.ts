@@ -23,7 +23,8 @@ export class SidenavComponent implements OnInit {
       this.sidenavService.isSidenavOpened=true
     }
     this.selected = selectValue;
-    this.router.navigateByUrl('/#/'+route)
+    console.log("route", route )
+    this.router.navigate([route]);
   }
   role = localStorage.getItem("role") || ""
 }

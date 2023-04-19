@@ -183,7 +183,7 @@ export class LenderDashboardComponent implements OnInit {
   }
   startChat(borrowerId:any){
     this.chat.createChat(borrowerId).subscribe({
-      next :(data:any)=>this.route.navigateByUrl("/#/dashboard/chat/"+data.id)
+      next :(data:any)=>this.route.navigate(["dashboard/chat/"+data.id])
     })
   }
 
