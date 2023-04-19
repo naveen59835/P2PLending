@@ -16,3 +16,12 @@ p{
   align-items: center;
   gap: 20px;
 }
+.chats-not-found{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+}

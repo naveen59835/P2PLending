@@ -1,12 +1,14 @@
 .greeting{
   margin-bottom: 50px;
   padding-left: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 .borrower-name-container{
   display: flex;
   align-items: center;
   gap: 30px;
-  margin-bottom: 10px;
 }
 .borrower-name{
   font-size: 20px;
@@ -83,6 +85,13 @@
 }
 .loan>h3{
   letter-spacing: 0.75px;
+}
+.loans-not-found{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
 }
 table {
   width: 100%;

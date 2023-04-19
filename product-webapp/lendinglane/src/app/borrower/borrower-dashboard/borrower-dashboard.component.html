@@ -3,7 +3,7 @@
     <span class="borrower-name">Welcome back, <span>{{borrowerName | uppercase}}</span></span>
     <img src="https://img.icons8.com/emoji/48/null/hand-with-fingers-splayed-emoji.png"/>
   </div>
-  <span class="greeting-message">We hope you have a great day.</span> <br><br>
+  <span class="greeting-message">We hope you have a great day.</span>
   <span class="role">You are logged in as a Borrower !</span>
 </div>
 <div class="loan-container">
@@ -14,7 +14,7 @@
   </div>
   <div class="loans-container-wrapper">
     <div class="loans" *ngIf="ongoingLoans.length>0">
-      <carousel [cellsToShow]="isMobile?1:isIpad?2:4" [arrows]="false" #carouselComponent>
+      <carousel [cellsToShow]="isMobile?1:isIpad?2:3" [arrows]="false" #carouselComponent>
         <div class="loan carousel-cell" *ngFor="let loan of ongoingLoans let number=index" [routerLink]="'/dashboard/loan/'+loan.id">
           <p class="loan-id">#LOAN {{number+1}}</p>
           <div class="loan-data-container">
@@ -38,7 +38,10 @@
       </carousel>
     </div>
   </div>
-  <p *ngIf="ongoingLoans.length==0">No ongoing loans found</p>
+  <div class="loans-not-found" *ngIf="ongoingLoans.length==0">
+    <img src="https://app.lendbox.in/_nuxt/img/empty_list.cc3e0be.svg">
+    <p style="font-weight: 500">No ongoing loans found</p>
+  </div>
 
 </div>
 <div class="loan-container">
@@ -72,5 +75,8 @@
     <tr mat-header-row *matHeaderRowDef="['id', 'lender', 'amount', 'disbursedOn', 'repaidOn']"></tr>
     <tr mat-row *matRowDef="let row; columns: ['id', 'lender', 'amount', 'disbursedOn', 'repaidOn']"></tr>
   </table>
-  <p *ngIf="finishedLoans.length==0">No closed loans found</p>
+  <div class="loans-not-found" *ngIf="finishedLoans.length==0">
+    <img src="https://app.lendbox.in/_nuxt/img/empty_list.cc3e0be.svg">
+    <p style="font-weight: 500">No closed loans found</p>
+  </div>
 </div>

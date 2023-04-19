@@ -39,3 +39,8 @@ mat-radio-group{
   gap: 15px;
   margin-bottom: 20px;
 }
+@media (max-width: 500px) {
+  .name{
+    flex-direction: column;
+  }
+}

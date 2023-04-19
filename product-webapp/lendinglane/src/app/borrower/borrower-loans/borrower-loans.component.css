@@ -59,7 +59,7 @@ th.isSmall{
     flex-direction: column;
     height: max-content;
     padding: 30px 30px;
-    background-color: #bdbdbd;
+    background-color: #dedede;
     margin-bottom: 30px;
     border-bottom-color: transparent !important;
   }
@@ -68,6 +68,11 @@ th.isSmall{
     border-bottom-width: 0 !important;
     border-bottom-style: solid;
     margin-bottom: 10px;
+  }
+  .button{
+    display: flex;
+    gap: 20px;
+    align-items: center;
   }
 }
 

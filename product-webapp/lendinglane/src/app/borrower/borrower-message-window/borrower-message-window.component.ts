@@ -1,5 +1,5 @@
 import {AfterViewChecked, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {ChatService} from "../../service/chat.service";
 import {Stomp} from "@stomp/stompjs";
 import {FormBuilder, Validators} from "@angular/forms";
@@ -14,15 +14,14 @@ export class BorrowerMessageWindowComponent implements OnInit,AfterViewChecked {
   messages :Array<Message> =[]
   text = '';
   stompClient : any;
-  constructor(private activatedRoute : ActivatedRoute, private chatService : ChatService,private fb: FormBuilder) { }
+  constructor(private activatedRoute : ActivatedRoute, private chatService : ChatService,private fb: FormBuilder, private route : Router) { }
   @ViewChild("chatContainer") chatContainer !: ElementRef<any>;
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe({
-      next :(data:any) => this.getMessages(data.id)
-    })
-    this.initConnection();
-  }
+      next :(data:any) => {
+        this.getMessages(data.id)}
+    })}
   ngAfterViewChecked() {
     this.chatContainer.nativeElement.scrollTop =this.chatContainer.nativeElement.scrollHeight+(this.messages.length*20);
   }
@@ -37,7 +36,9 @@ export class BorrowerMessageWindowComponent implements OnInit,AfterViewChecked {
       next : (data: any) =>{
         this.messages = this.chatService.getSortedChat(data.messages);
         this.textForm.get("recipientId")?.setValue(data.lenderId)
-      }
+        this.initConnection();
+      },
+      error : ()=> this.route.navigateByUrl("/not-found")
     })
   }
   initConnection(){
