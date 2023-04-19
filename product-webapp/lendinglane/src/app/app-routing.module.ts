@@ -23,7 +23,6 @@ const routes: Routes = [
   {path:'signup',component:SignupComponent,canActivate: [AuthGuardGuard]},
   {path:'login',component:LoginComponent,canActivate: [AuthGuardGuard]},
   {path:'home',component:HomeComponent},
-  {path:'**',component:PagenotfoundComponent},
   {
     path:'dashboard',
     component : DashboardComponent,
@@ -40,8 +39,8 @@ const routes: Routes = [
       {path:"chat",component:DashboardMessagesComponent},
       {path:"chat/:id",component:DashboardMessageWindowComponent}
     ]
-  }
-
+  },
+  {path:'**',component:PagenotfoundComponent},
 ];
 
 @NgModule({
