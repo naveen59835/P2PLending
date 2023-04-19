@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.Map;
 
-@FeignClient(name = "borrower-service")
+@FeignClient(name = "localhost:8080")
 public interface BorrowerProxy {
     @GetMapping("/api/v1/borrower/borrower/{id}")
     Map<Object,Object> getBorrowerData(@PathVariable String id);
