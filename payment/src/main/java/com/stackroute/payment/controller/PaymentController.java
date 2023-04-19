@@ -72,6 +72,7 @@ public class PaymentController {
     }
     @GetMapping("/getPayment/{id}")
     ResponseEntity<?> getAllPayment(@PathVariable String id ){
+        System.out.println("id:"+id);
         return new ResponseEntity<>(paymentService.getAllPayments(id),HttpStatus.OK);
     }
 }

@@ -23,6 +23,7 @@ public class LoanController {
     @GetMapping("/Loan")
     public ResponseEntity<?> getAllLoans(@RequestParam("id") String id, @RequestParam("role") String role){
         try{
+            System.out.println(id + " " + role);
             return new ResponseEntity<>(loanService.getLoans(id,role),HttpStatus.OK);
         }catch (Exception exception){
             throw new RuntimeException(exception.getMessage());

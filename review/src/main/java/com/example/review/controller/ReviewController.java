@@ -32,6 +32,7 @@ public class ReviewController {
     @GetMapping("/get/{borrowerId}")
     public ResponseEntity<?>getReviewAndRating(@PathVariable String borrowerId)
     {
+        System.out.println(borrowerId);
         return new ResponseEntity<>(reviewService.getAllRatingAndReview(borrowerId),HttpStatus.OK);
     }
 
