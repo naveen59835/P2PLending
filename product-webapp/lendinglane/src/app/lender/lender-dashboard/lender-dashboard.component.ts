@@ -104,7 +104,7 @@ export class LenderDashboardComponent implements OnInit{
           name: "Lending Lane",
           description: "transfer",
           order_id: data.id,
-          image: '../../../assets/android.png',
+          image: '../../../assets/images/androidd.png',
 
           handler: (data: any) => {
             console.log(data.razorpay_payment_id)
