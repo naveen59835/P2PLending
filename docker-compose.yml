@@ -46,185 +46,185 @@ services:
       - "5672:5672"
       - "15672:15672"
 
-  eureka-server:
-    build: eureka-server/
-    container_name: eureka-server-service
-    restart: always
-    hostname: localhost
-    network_mode: "host"
-    ports:
-      - 8761:8761
-
-  api-gateway:
-    build: api-gateway/
-    container_name: api-gateway-service
-    environment:
-      - eureka.client.serviceUrl.defaultZone=http://eureka-server:8761/eureka/
-    depends_on:
-      - eureka-server
-    restart: always
-    hostname: localhost
-    network_mode: "host"
-    ports:
-      - "8080:8080"
-
-  authentication:
-    build: authentication/
-    container_name: authentication-service
-    environment:
-      - eureka.client.serviceUrl.defaultZone=http://eureka-server:8761/eureka/
-      - SPRING_RABBITMQ_HOST=rabbitmq
-    depends_on:
-      - mysql
-      - eureka-server
-      - api-gateway
-      - rabbitmq
-    restart: always
-    hostname: localhost
-    network_mode: "host"
-    ports:
-      - "8088:8088"
-
-  borrower:
-    build: borrower/
-    container_name: borrower-service
-    environment:
-      - eureka.client.serviceUrl.defaultZone=http://eureka-server:8761/eureka/
-      - SPRING_RABBITMQ_HOST=rabbitmq
-    depends_on:
-      - mongodb
-      - eureka-server
-      - api-gateway
-      - rabbitmq
-    restart: always
-    hostname: localhost
-    network_mode: "host"
-    ports:
-      - "8083:8083"
-
-  lender:
-    build: lender/
-    container_name: lender-service
-    environment:
-      - eureka.client.serviceUrl.defaultZone=http://eureka-server:8761/eureka/
-      - SPRING_RABBITMQ_HOST=rabbitmq
-    depends_on:
-      - mongodb
-      - eureka-server
-      - api-gateway
-      - rabbitmq
-    restart: always
-    hostname: localhost
-    network_mode: "host"
-    ports:
-      - "8082:8082"
-
-  chat:
-    build: chat/
-    container_name: chat-service
-    environment:
-      - eureka.client.serviceUrl.defaultZone=http://eureka-server:8761/eureka/
-      - SPRING_RABBITMQ_HOST=rabbitmq
-    depends_on:
-      - mongodb
-      - eureka-server
-      - api-gateway
-      - rabbitmq
-    restart: always
-    hostname: localhost
-    network_mode: "host"
-    ports:
-      - "8085:8085"
-
-  recommendation:
-    build: recommendation/
-    container_name: recommendation-service
-    environment:
-      - eureka.client.serviceUrl.defaultZone=http://eureka-server:8761/eureka/
-      - SPRING_RABBITMQ_HOST=rabbitmq
-    depends_on:
-      - mongodb
-      - eureka-server
-      - api-gateway
-      - rabbitmq
-      - neo4j
-    restart: always
-    hostname: localhost
-    network_mode: "host"
-    ports:
-      - "8087:8087"
-
-  review:
-    build: review/
-    container_name: review-service
-    environment:
-      - eureka.client.serviceUrl.defaultZone=http://eureka-server:8761/eureka/
-    depends_on:
-      - mongodb
-      - eureka-server
-      - api-gateway
-    restart: always
-    hostname: localhost
-    network_mode: "host"
-    ports:
-      - "8086:8086"
-
-  loan:
-    build: loan/
-    container_name: loan-service
-    environment:
-      - eureka.client.serviceUrl.defaultZone=http://eureka-server:8761/eureka/
-      - SPRING_RABBITMQ_HOST=rabbitmq
-    depends_on:
-      - mongodb
-      - eureka-server
-      - api-gateway
-      - rabbitmq
-    restart: always
-    hostname: localhost
-    network_mode: "host"
-    ports:
-      - "8084:8084"
-
-  payment:
-    build: payment/
-    container_name: payment-service
-    environment:
-      - eureka.client.serviceUrl.defaultZone=http://eureka-server:8761/eureka/
-      - SPRING_RABBITMQ_HOST=rabbitmq
-    depends_on:
-      - mongodb
-      - eureka-server
-      - api-gateway
-      - rabbitmq
-    restart: always
-    hostname: localhost
-    network_mode: "host"
-    ports:
-      - "8081:8081"
-
-  notifications:
-    build: notifications/
-    container_name: notifications-service
-    environment:
-      - eureka.client.serviceUrl.defaultZone=http://eureka-server:8761/eureka/
-      - SPRING_RABBITMQ_HOST=rabbitmq
-    depends_on:
-      - mongodb
-      - eureka-server
-      - api-gateway
-      - rabbitmq
-    restart: always
-    hostname: localhost
-    network_mode: "host"
-    ports:
-      - "8092:8092"
-
-  angular:
-    build: product-webapp
-    container_name: angular
-    restart: always
-    hostname: localhost
-    network_mode: "host"
-    ports:
-      - "4200:4200"
+#  eureka-server:
+#    build: eureka-server/
+#    container_name: eureka-server-service
+#    restart: always
+#    hostname: localhost
+#    network_mode: "host"
+#    ports:
+#      - 8761:8761
+#
+#  api-gateway:
+#    build: api-gateway/
+#    container_name: api-gateway-service
+#    environment:
+#      - eureka.client.serviceUrl.defaultZone=http://eureka-server:8761/eureka/
+#    depends_on:
+#      - eureka-server
+#    restart: always
+#    hostname: localhost
+#    network_mode: "host"
+#    ports:
+#      - "8080:8080"
+#
+#  authentication:
+#    build: authentication/
+#    container_name: authentication-service
+#    environment:
+#      - eureka.client.serviceUrl.defaultZone=http://eureka-server:8761/eureka/
+#      - SPRING_RABBITMQ_HOST=rabbitmq
+#    depends_on:
+#      - mysql
+#      - eureka-server
+#      - api-gateway
+#      - rabbitmq
+#    restart: always
+#    hostname: localhost
+#    network_mode: "host"
+#    ports:
+#      - "8088:8088"
+#
+#  borrower:
+#    build: borrower/
+#    container_name: borrower-service
+#    environment:
+#      - eureka.client.serviceUrl.defaultZone=http://eureka-server:8761/eureka/
+#      - SPRING_RABBITMQ_HOST=rabbitmq
+#    depends_on:
+#      - mongodb
+#      - eureka-server
+#      - api-gateway
+#      - rabbitmq
+#    restart: always
+#    hostname: localhost
+#    network_mode: "host"
+#    ports:
+#      - "8083:8083"
+#
+#  lender:
+#    build: lender/
+#    container_name: lender-service
+#    environment:
+#      - eureka.client.serviceUrl.defaultZone=http://eureka-server:8761/eureka/
+#      - SPRING_RABBITMQ_HOST=rabbitmq
+#    depends_on:
+#      - mongodb
+#      - eureka-server
+#      - api-gateway
+#      - rabbitmq
+#    restart: always
+#    hostname: localhost
+#    network_mode: "host"
+#    ports:
+#      - "8082:8082"
+#
+#  chat:
+#    build: chat/
+#    container_name: chat-service
+#    environment:
+#      - eureka.client.serviceUrl.defaultZone=http://eureka-server:8761/eureka/
+#      - SPRING_RABBITMQ_HOST=rabbitmq
+#    depends_on:
+#      - mongodb
+#      - eureka-server
+#      - api-gateway
+#      - rabbitmq
+#    restart: always
+#    hostname: localhost
+#    network_mode: "host"
+#    ports:
+#      - "8085:8085"
+#
+#  recommendation:
+#    build: recommendation/
+#    container_name: recommendation-service
+#    environment:
+#      - eureka.client.serviceUrl.defaultZone=http://eureka-server:8761/eureka/
+#      - SPRING_RABBITMQ_HOST=rabbitmq
+#    depends_on:
+#      - mongodb
+#      - eureka-server
+#      - api-gateway
+#      - rabbitmq
+#      - neo4j
+#    restart: always
+#    hostname: localhost
+#    network_mode: "host"
+#    ports:
+#      - "8087:8087"
+#
+#  review:
+#    build: review/
+#    container_name: review-service
+#    environment:
+#      - eureka.client.serviceUrl.defaultZone=http://eureka-server:8761/eureka/
+#    depends_on:
+#      - mongodb
+#      - eureka-server
+#      - api-gateway
+#    restart: always
+#    hostname: localhost
+#    network_mode: "host"
+#    ports:
+#      - "8086:8086"
+#
+#  loan:
+#    build: loan/
+#    container_name: loan-service
+#    environment:
+#      - eureka.client.serviceUrl.defaultZone=http://eureka-server:8761/eureka/
+#      - SPRING_RABBITMQ_HOST=rabbitmq
+#    depends_on:
+#      - mongodb
+#      - eureka-server
+#      - api-gateway
+#      - rabbitmq
+#    restart: always
+#    hostname: localhost
+#    network_mode: "host"
+#    ports:
+#      - "8084:8084"
+#
+#  payment:
+#    build: payment/
+#    container_name: payment-service
+#    environment:
+#      - eureka.client.serviceUrl.defaultZone=http://eureka-server:8761/eureka/
+#      - SPRING_RABBITMQ_HOST=rabbitmq
+#    depends_on:
+#      - mongodb
+#      - eureka-server
+#      - api-gateway
+#      - rabbitmq
+#    restart: always
+#    hostname: localhost
+#    network_mode: "host"
+#    ports:
+#      - "8081:8081"
+#
+#  notifications:
+#    build: notifications/
+#    container_name: notifications-service
+#    environment:
+#      - eureka.client.serviceUrl.defaultZone=http://eureka-server:8761/eureka/
+#      - SPRING_RABBITMQ_HOST=rabbitmq
+#    depends_on:
+#      - mongodb
+#      - eureka-server
+#      - api-gateway
+#      - rabbitmq
+#    restart: always
+#    hostname: localhost
+#    network_mode: "host"
+#    ports:
+#      - "8092:8092"
+#
+#  angular:
+#    build: product-webapp
+#    container_name: angular
+#    restart: always
+#    hostname: localhost
+#    network_mode: "host"
+#    ports:
+#      - "4200:4200"

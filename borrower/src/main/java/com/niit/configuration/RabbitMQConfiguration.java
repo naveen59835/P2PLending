@@ -25,16 +25,6 @@ public class RabbitMQConfiguration {
         return new DirectExchange("register-notification-exchange");
     }
     @Bean
-    public Jackson2JsonMessageConverter converter(){
-        return new Jackson2JsonMessageConverter();
-    }
-    @Bean
-    public RabbitTemplate template(ConnectionFactory connectionFactory,Jackson2JsonMessageConverter converter){
-        RabbitTemplate rabbitTemplate = new RabbitTemplate(connectionFactory);
-        rabbitTemplate.setMessageConverter(converter);
-        return rabbitTemplate;
-    }
-    @Bean
     public Binding bindingExchangeAndQueue(Queue queue, Exchange exchange)
     {
         return BindingBuilder.bind(queue).to(exchange).with("route-key").noargs();
@@ -43,5 +33,16 @@ public class RabbitMQConfiguration {
     public Binding notificationBindingExchangeAndQueue(Queue notificationQueue, Exchange notificationExchange)
     {
         return BindingBuilder.bind(notificationQueue).to(notificationExchange).with("notification-route-key").noargs();
+    }
+
+    @Bean
+    public Jackson2JsonMessageConverter converter(){
+        return new Jackson2JsonMessageConverter();
+    }
+    @Bean
+    public RabbitTemplate template(ConnectionFactory connectionFactory,Jackson2JsonMessageConverter converter){
+        RabbitTemplate rabbitTemplate = new RabbitTemplate(connectionFactory);
+        rabbitTemplate.setMessageConverter(converter);
+        return rabbitTemplate;
     }
 }
