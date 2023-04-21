@@ -28,4 +28,14 @@ public class AuthController {
             return new ResponseEntity<>(exception.getMessage(), HttpStatus.BAD_REQUEST); //will be changed with custom exception
         }
     }
+    @GetMapping("/totalUsers")
+    public ResponseEntity<?> getTotalUsers(){
+        try{
+            return new ResponseEntity<>(authService.getTotalUsers(), HttpStatus.OK);
+        }
+        catch (Exception exception){
+            return new ResponseEntity<>(exception.getMessage(), HttpStatus.BAD_REQUEST); //will be changed with custom exception
+        }
+    }
+
 }

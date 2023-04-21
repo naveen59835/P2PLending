@@ -46,4 +46,7 @@ public class AuthServiceImpl implements AuthService {
         AuthDTO dto = new AuthDTO(data);
         repository.save(dto.getLogin());
     }
+    public Map<String,Integer> getTotalUsers(){
+        return Map.of("totalUsers",repository.findAll().size());
+    }
 }

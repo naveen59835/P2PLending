@@ -8,8 +8,7 @@ export class PaymentService {
 
   url="http://localhost:9002/api/v1/payment/createOrder"
   urldetail="http://localhost:9002/api/v1/payment/updateOrderDetails"
-
-
+  baseUrl = "http://localhost:9002/api/v1/payment";
     constructor(private httpclient:HttpClient) { }
 
     value:any="amount"
@@ -33,5 +32,8 @@ export class PaymentService {
     }
     sortPayment(payments : Array<any>){
       return payments.sort((payment1:any,payment2:any)=>new Date(payment2.paymentDate).valueOf() - new Date(payment1.paymentDate).valueOf())
+    }
+    totalPayments(){
+      return this.httpclient.get(this.baseUrl+"/getAllPayments");
     }
 }

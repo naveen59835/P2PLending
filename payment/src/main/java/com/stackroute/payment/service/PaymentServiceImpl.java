@@ -4,15 +4,11 @@ import com.stackroute.payment.Repository.PaymentRepository;
 import com.stackroute.payment.controller.config.EmiDTO;
 import com.stackroute.payment.controller.config.PaymentDTO;
 import com.stackroute.payment.domain.Payment;
-import lombok.Setter;
-import org.json.simple.JSONObject;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 @Service
@@ -90,10 +86,18 @@ public class PaymentServiceImpl implements PaymentService{
     }
 
     @Override
-    public List<Payment> getAllPayments(String id) {
+    public List<Payment> getAllPayment(String id) {
         List<Payment> allPayments = paymentRepository.getPaymentsByFromAccountOrToAccount(id,id);
         return  allPayments;
     }
-
+    @Override
+    public Map<String, Double> getAllPayments() {
+        List<Payment> allPayments = paymentRepository.findAll();
+        double totalMoney = 0;
+        for (Payment payment : allPayments) {
+            totalMoney+=payment.getAmount();
+        }
+        return Map.of("total",totalMoney);
+    }
 
 }

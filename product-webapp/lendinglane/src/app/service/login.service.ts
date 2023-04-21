@@ -6,7 +6,7 @@ import {HttpClient} from "@angular/common/http";
   providedIn: 'root'
 })
 export class LoginService {
-
+  baseUrl = "http://localhost:9002/api/v1/authentication";
   constructor(private http : HttpClient,private router:Router) { }
   public login(loginData:any){
     return this.http.post("http://localhost:9002/api/v1/authentication/login",loginData)
@@ -26,5 +26,8 @@ export class LoginService {
 
     // Navigate to login page
     this.router.navigate(['/login']);
+  }
+  getTotalUsers(){
+    return this.http.get(`${this.baseUrl}/totalUsers`);
   }
 }

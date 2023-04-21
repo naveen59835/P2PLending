@@ -1,0 +1,46 @@
+.loan-details{
+  display: flex;
+  gap: 50px;
+}
+h3{
+  font-family: 'Poppins',sans-serif !important;
+}
+.emi-data{
+  display: flex;
+  gap: 50px;
+  align-items: center;
+}
+.separator{
+  flex: auto;
+}
+.emi-data-container {
+  margin-bottom: 20px;
+}
+mat-divider{
+  margin-top: 10px;
+}
+.emi-details{
+  padding: 20px;
+  background-color: white;
+}
+.emi-status>p{
+  width: max-content;
+  padding: 7px 20px;
+  margin-bottom: 0;
+}
+.not-paid{
+  color: #d20707;
+  background-color:rgba(249, 71, 71, 0.39);
+}
+.paid{
+  background-color: rgba(205, 255, 192, 1);
+  color: #30B435;
+}
+@media (max-width: 800px) {
+  .loan-details{
+    flex-direction: column;
+    background-color: white;
+    padding: 20px;
+  }
+
+}

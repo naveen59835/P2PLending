@@ -20,14 +20,10 @@ import com.razorpay.*;
 @RequestMapping("/api/v1/payment")
 
 public class PaymentController {
-
-
     PaymentService paymentService;
-
     @Autowired
     public PaymentController(PaymentService paymentService) {
         this.paymentService = paymentService;
-
     }
 
     @PostMapping("/createOrder")
@@ -72,6 +68,10 @@ public class PaymentController {
     }
     @GetMapping("/getPayment/{id}")
     ResponseEntity<?> getAllPayment(@PathVariable String id ){
-        return new ResponseEntity<>(paymentService.getAllPayments(id),HttpStatus.OK);
+        return new ResponseEntity<>(paymentService.getAllPayment(id),HttpStatus.OK);
+    }
+    @GetMapping("/getAllPayments")
+    ResponseEntity<?> getAllPayments(){
+        return new ResponseEntity<>(paymentService.getAllPayments(),HttpStatus.OK);
     }
 }

@@ -56,7 +56,7 @@ export class LoginComponent {
             this.router.navigate(['/dashboard'])
 
         },
-        error : (err)=> this.openSnack(err.data,"Failure")
+        error : (err)=> this.openSnack("Wrong email or password","Failure")
       })
     }
     else{

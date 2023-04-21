@@ -14,7 +14,7 @@
   <div *ngIf="role==='borrower'" class="loan" [ngClass]="{checked:selected==='loan'}" (click)="changeSelcted('loan','/dashboard/loan')">
     <mat-icon>savings</mat-icon> LOANS
   </div>
-<!--  <div *ngIf="role==='lender'" class="loan" [ngClass]="{checked:selected==='loan'}" (click)="changeSelcted('loan','/dashboard/loan')">-->
-<!--    <mat-icon>savings</mat-icon> INVESTMENTS-->
-<!--  </div>-->
+  <div *ngIf="role==='lender'" class="loan" [ngClass]="{checked:selected==='loan'}" (click)="changeSelcted('loan','/dashboard/loan')">
+    <mat-icon>savings</mat-icon> INVESTMENTS
+  </div>
 </div>

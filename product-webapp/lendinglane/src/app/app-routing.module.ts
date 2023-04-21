@@ -16,6 +16,7 @@ import { RecommendedborrowerComponent } from './lender/recommendedborrower/recom
 import {DashboardMessagesComponent} from "./dashboard/dashboard-messages/dashboard-messages.component";
 import {DashboardMessageWindowComponent} from "./dashboard/dashboard-message-window/dashboard-message-window.component";
 import { HomeComponent } from './home/home.component';
+import {DashboardLoanDetailsComponent} from "./dashboard/dashboard-loan-details/dashboard-loan-details.component";
 
 
 const routes: Routes = [
@@ -33,7 +34,7 @@ const routes: Routes = [
       {path:'profile',component:DashboardProfileComponent},
       {path:'transactions',component:DashboardTransactionComponent},
       {path:'loan',component:DashboardLoansComponent},
-      {path:'loan/:id',component:LoanDetailsComponent},
+      {path:'loan/:id',component:DashboardLoanDetailsComponent},
       {path:'term',component:TermconditionComponent},
       {path:'recommendedborrowerdetail/:id',component:RecommendedborrowerComponent},
       {path:"chat",component:DashboardMessagesComponent},

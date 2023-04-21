@@ -141,7 +141,7 @@
         </div>
       </div>
     </form>
-    <button mat-flat-button color="primary" type="submit" (click)="onSave(myForm)" [disabled]="!(editMode && !myForm.invalid)">Save Details</button>
+    <button mat-flat-button color="primary" type="submit" (click)="onSave(myForm)" [disabled]="!editMode">Save Details</button>
   </div>
   <div *ngIf="toggleForm==='documents'">
     <div class="document__form-header">

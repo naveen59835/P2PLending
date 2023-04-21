@@ -1,0 +1,56 @@
+<div *ngIf="loanData!=undefined" class="loan-container">
+  <h1 class="loan-id">Loan ID : <span style="color: orange">{{loanData.id}}</span></h1>
+  <div class="loan-details">
+    <div class="amount">
+      <p>Amount </p>
+      <h3 class="loan-amount">₹{{loanData.amount}}</h3>
+    </div>
+    <div class="lender">
+      <p>Borrower </p>
+      <h3 class="loan-amount">{{loanData.borrowerId}}</h3>
+    </div>
+    <div class="terms">
+      <p>Terms </p>
+      <h3 class="loan-amount">{{loanData.terms}}</h3>
+    </div>
+    <div class="date">
+      <p>Disbursed On </p>
+      <h3 class="loan-amount">{{loanData.dateOfLoan}}</h3>
+    </div>
+    <div class="remaining">
+      <p>Remainig Amount </p>
+      <h3 class="remaining-amount">{{loanData.amount - totalPaid(loanData.emi)}}</h3>
+    </div>
+  </div>
+  <div *ngIf="loanData.emi.length > 0" class="emi-details">
+    <h1>EMI</h1>
+    <div *ngFor="let emi of loanData.emi" class="emi-data-container">
+      <h3>#EMI {{emi.id}}</h3>
+      <div class="emi-data">
+        <div class="emi-start-date">
+          <p>Date of Generation</p>
+          <h3>{{emi.startDate}}</h3>
+        </div>
+        <div class="emi-start-amount">
+          <p>Amount of EMI</p>
+          <h3>{{emi.price}}</h3>
+        </div>
+        <div *ngIf="emi.paymentStatus" class="emi-paid">
+          <p>Paid on</p>
+          <h3>{{emi.paymentDate}}</h3>
+        </div>
+        <div *ngIf="emi.paymentStatus" class="emi-payment-id">
+          <p>Payment ID</p>
+          <h3>{{emi.paymentId}}</h3>
+        </div>
+
+        <p class="separator"></p>
+        <div class="emi-status">
+          <p class="paid" *ngIf="emi.paymentStatus">PAID</p>
+          <p class="not-paid" *ngIf="!emi.paymentStatus">NOT PAID</p>
+        </div>
+      </div>
+      <mat-divider></mat-divider>
+    </div>
+  </div>
+</div>

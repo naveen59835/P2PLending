@@ -68,7 +68,7 @@ public class PaymentControllerTest {
     }
     @Test
     public void testGetAllPayment_Success() throws Exception {
-        Mockito.when(paymentService.getAllPayments(Mockito.anyString())).thenReturn(paymentList);
+        Mockito.when(paymentService.getAllPayment(Mockito.anyString())).thenReturn(paymentList);
 
         mockMvc.perform(MockMvcRequestBuilders
                         .get("/api/v1/payment/getPayment/1234")

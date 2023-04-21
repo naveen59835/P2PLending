@@ -113,8 +113,8 @@ public class LoanServiceImpl implements LoanService {
         }
     }
     @Override
-    @Scheduled(cron = "0 0 0 * * *",zone = "Asia/Kolkata")
-//    @Scheduled(cron = "0 * * * * *",zone = "Asia/Kolkata")
+//    @Scheduled(cron = "0 0 0 * * *",zone = "Asia/Kolkata")
+    @Scheduled(cron = "0 * * * * *",zone = "Asia/Kolkata")
     public void addEMI(){
         List<Loan> loanList = loanRepository.findAll();
         LocalDate currentDate = LocalDate.now();

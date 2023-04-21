@@ -12,7 +12,8 @@ public interface PaymentService {
 
     public Object payEMI(double amount, String lenderId, String borrowerId, String orderId, int emiId, String loanId);
 
-    List<Payment> getAllPayments(String id);
+    List<Payment> getAllPayment(String id);
+    Map<String, Double> getAllPayments();
 }
 
 

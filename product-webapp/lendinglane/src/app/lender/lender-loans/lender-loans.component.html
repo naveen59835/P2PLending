@@ -1,11 +1,10 @@
 <div class="loan-selector-container">
   <p class="ongoing-selector" (click)="changeLoanStatus('ongoing')">On going</p>
   <p class="finished-selector" (click)="changeLoanStatus('finished')">Closed</p>
-  <p class="applied-selector" (click)="changeLoanStatus('applied')">Applied</p>
   <div class="slider" [ngClass]="loanStatus"></div>
 </div>
 <div class="loan-container">
-  <h1>{{loanStatus | titlecase}} Loans</h1>
+  <h1>{{loanStatus | titlecase}} Investments</h1>
   <div class="loan-wrapper" [hidden]="!(loanData.data.length > 0)" >
     <table mat-table [dataSource]="loanData">
       <ng-container matColumnDef="#">
@@ -32,7 +31,7 @@
       </ng-container>
 
       <!-- Date Column -->
-      <ng-container matColumnDef="expired">
+      <ng-container matColumnDef="closed">
         <th mat-header-cell *matHeaderCellDef [ngClass]="{'isSmall':isSmallScreen}"> Expired </th>
         <td mat-cell *matCellDef="let element"><span *ngIf="isSmallScreen">Expired : </span> {{element.expired}} </td>
       </ng-container>
@@ -51,10 +50,5 @@
   </div>
   <div class="no-loan-found" *ngIf="loanData.data.length==0">
     No {{loanStatus}} loans
-  </div>
-  <div class="add-loan-button">
-    <button mat-fab color="primary" (click)="openLoanDialog()">
-      <mat-icon>add</mat-icon>
-    </button>
   </div>
 </div>

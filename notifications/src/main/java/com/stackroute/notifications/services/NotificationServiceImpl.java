@@ -30,11 +30,11 @@ public class NotificationServiceImpl {
     public void sendMail(Email email) throws MessagingException {
         MimeMessage message = mailSender.createMimeMessage();
         MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(message,false);
-        mimeMessageHelper.setFrom("ashu57das@gmail.com");
+        mimeMessageHelper.setFrom("abc@gmail.com");
         mimeMessageHelper.setTo(email.getReceiver());
         mimeMessageHelper.setSubject(email.getSubject());
         mimeMessageHelper.setText(email.getMessage());
-        mailSender.send(message);
+//        mailSender.send(message);
     }
 
     @RabbitListener(queues = "register-notification")
