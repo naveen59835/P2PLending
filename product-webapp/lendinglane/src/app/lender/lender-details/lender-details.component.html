@@ -17,7 +17,7 @@
             <input [(ngModel)]="lenderDetails.firstName" required name="firstName" matInput [disabled]="!editMode"
                    minlength="3" #firstName="ngModel">
             <mat-error *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)">
-              First Name must be at least 3 characters long.
+              First Name is required and must be at least 3 characters long.
             </mat-error>
           </mat-form-field>
         </div>
@@ -26,7 +26,7 @@
           <mat-form-field appearance="outline">
             <mat-label>Last Name</mat-label>
             <input [(ngModel)]="lenderDetails.lastName" name="lastName" matInput [disabled]="!editMode" minlength="3" required #lastName="ngModel">
-            <mat-error *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)">Last Name must be at least 3 characters long.</mat-error>
+            <mat-error *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)">Last Name is required and must be at least 3 characters long.</mat-error>
           </mat-form-field>
         </div>
       </div>
@@ -39,7 +39,7 @@
                    [ngModelOptions]="{updateOn: 'blur'}" minlength="10" maxlength="10" pattern="^[6-9]\d{9}$"
                    #phoneNo="ngModel">
             <mat-error *ngIf="phoneNo.invalid && (phoneNo.dirty || phoneNo.touched)">
-              Phone number must be a 10-digit number starting with 6, 7, 8 or 9.
+              Phone number is required must be a 10-digit number starting with 6, 7, 8 or 9.
             </mat-error>
           </mat-form-field>
         </div>
@@ -60,7 +60,7 @@
             <input [(ngModel)]="lenderDetails.aadhaar" name="aadhaar" matInput [disabled]="!editMode"
                    [ngModelOptions]="{updateOn: 'blur'}" minlength="12" required #aadhaarNoInput="ngModel">
             <mat-error *ngIf="aadhaarNoInput.invalid && (aadhaarNoInput.dirty || aadhaarNoInput.touched)">
-              Aadhaar number must be at least 12 characters long.
+              Aadhaar number is required must be at least 12 characters long.
             </mat-error>
             <div class="error-message" [ngClass]="{'valid': isAadhaarVerified(), 'invalid': !isAadhaarVerified()}">{{aadhaarVerificationMessage}}</div>
             <button mat-raised-button color="primary" *ngIf="editMode" (click)="verifyAadhaar()">Verify</button>
@@ -73,7 +73,7 @@
             <input required [(ngModel)]="lenderDetails.pan" name="pan" matInput [disabled]="!editMode"
                    [ngModelOptions]="{updateOn: 'blur'}" minlength="10" #panNo="ngModel">
             <mat-error *ngIf="panNo.invalid && (panNo.dirty || panNo.touched)">
-              PAN number must be at least 10 characters long.
+              PAN number is required must be at least 10 characters long.
             </mat-error>
             <div class="error-message" [ngClass]="{'valid': isPanVerified(), 'invalid': !isPanVerified()}">{{panVerificationMessage}}</div>
             <button mat-raised-button color="primary" *ngIf="editMode" (click)="verifyPan()">Verify</button>
@@ -88,7 +88,7 @@
             <mat-label>Home Address</mat-label>
             <input required [(ngModel)]="lenderDetails.address.address" name="address" matInput [disabled]="!editMode" minlength="5" maxlength="100" #address="ngModel">
             <mat-error *ngIf="address.invalid && (address.dirty || address.touched)">
-              Address must be between 5 and 100 characters long.
+              Address is required and must be between 5 and 100 characters long.
             </mat-error>
           </mat-form-field>
         </div>
@@ -96,9 +96,9 @@
           <p class="label">City</p>
           <mat-form-field appearance="outline">
             <mat-label>City</mat-label>
-            <input required [(ngModel)]="lenderDetails.address.city" name="city" matInput [disabled]="!editMode" minlength="3" maxlength="50" #city="ngModel">
+            <input required [(ngModel)]="lenderDetails.address.city" name="city" matInput [disabled]="!editMode" minlength="3" required maxlength="50" #city="ngModel">
             <mat-error *ngIf="city.invalid && (city.dirty || city.touched)">
-              City must be between 3 and 50 characters long.
+              City is required and must be between 3 and 50 characters long.
             </mat-error>
           </mat-form-field>
         </div>
@@ -110,7 +110,7 @@
             <mat-label>PIN Code</mat-label>
             <input required [(ngModel)]="lenderDetails.address.pin" name="pin" matInput [disabled]="!editMode" pattern="[0-9]{6}" minlength="6" maxlength="6" #pin="ngModel">
             <mat-error *ngIf="pin.invalid && (pin.dirty || pin.touched)">
-              PIN must be a 6-digit number.
+              PIN is required and must be a 6-digit number.
             </mat-error>
           </mat-form-field>
         </div>
@@ -118,9 +118,9 @@
           <p class="label">State</p>
           <mat-form-field appearance="outline">
             <mat-label>State</mat-label>
-            <input required [(ngModel)]="lenderDetails.address.state" name="state" matInput [disabled]="!editMode" minlength="3" maxlength="50" #state="ngModel">
+            <input required [(ngModel)]="lenderDetails.address.state" name="state" matInput [disabled]="!editMode" required minlength="3" maxlength="50" #state="ngModel">
             <mat-error *ngIf="state.invalid && (state.dirty || state.touched)">
-              State must be between 3 and 50 characters long.
+              State must be required must be between 3 and 50 characters long.
             </mat-error>
           </mat-form-field>
         </div>
@@ -193,7 +193,7 @@
   <ng-template matMenuContent let-name='name'>
     <button mat-menu-item>
       <mat-icon (click)="editImage=name">cloud_upload</mat-icon>
-      <span>Upload again</span>
+      <span>Upload</span>
     </button>
   </ng-template>
 </mat-menu>
