@@ -1,0 +1,123 @@
+.greeting{
+  margin-bottom: 50px;
+  padding-left: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.borrower-name-container{
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+.borrower-name{
+  font-size: 20px;
+  font-weight: 500;
+}
+.borrower-name>span{
+  color:#f58024 ;
+}
+.borrower-name-container>img{
+  width: 30px;
+  object-fit: contain;
+}
+.loan-container-header{
+  display: flex;
+  gap: 10px;
+}
+.loan-data-container{
+  display: flex;
+  gap: 30px;
+  margin-bottom: 20px;
+}
+.loan-data-container>div{
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.total-Logo{
+  padding: 10px;
+  background-color: #6c7bec30;
+  border-radius: 50%;
+}
+.total-Logo>img{
+  width: 25px !important;
+  object-fit: contain !important;
+  height: 25px !important;
+}
+.total-amount>p{
+  margin: 0;
+}
+.loan-container{
+  height: max-content;
+  background-color: white;
+  padding: 30px;
+  border-radius: 5px;
+  margin-bottom: 30px;
+}
+.loan-container>h1{
+  font-weight: 500;
+}
+.carousel-cell{
+  margin-right: 20px;
+}
+::ng-deep .carousel-arrow{
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+.loan{
+  border: 1px solid;
+  border-radius: 6px;
+  padding:30px;
+  max-width: 280px;
+  height: max-content !important;
+}
+.loan-id{
+  font-size: 15px;
+  font-weight: 500;
+}
+.total-amount-label{
+  color: #818181;
+}
+.total-amount-value{
+  font-size: 16px;
+  margin-top: 10px;
+}
+.loan>h3{
+  letter-spacing: 0.75px;
+}
+.loans-not-found{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+table {
+  width: 100%;
+  border: 1px solid #686868;
+  border-radius: 5px;
+  background: none;
+  overflow: hidden;
+}
+tr{
+  height: 40px !important;
+}
+@media (max-width: 800px) {
+  .loan-data-container{
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .carousel-cell{
+    max-width: 180px;
+  }
+  carousel{
+    height: 250px !important;
+  }
+
+}
+@media (max-width: 350px) {
+  .carousel-cell{
+    max-width: 150px;
+  }
+}

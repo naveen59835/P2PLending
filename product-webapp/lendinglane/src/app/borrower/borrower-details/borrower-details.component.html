@@ -1,0 +1,348 @@
+<div class="profile-container" [ngClass]="{'small-screen':isSmallScreen}">
+  <app-profile-widget [profileWidgetData]="borrowerDetails"></app-profile-widget>
+  <div class="profile-content">
+    <mat-button-toggle-group name="fontStyle" aria-label="Font Style" (change)="toggleForm=$event.value">
+      <mat-button-toggle checked="true" value="personal">Personal Details</mat-button-toggle>
+      <mat-button-toggle value="documents">Documents</mat-button-toggle>
+    </mat-button-toggle-group>
+    <div class="personal-details" *ngIf="toggleForm=='personal'">
+      <div class="personal-details__form-header">
+        <h1 class="personal-details__form-title">User Details</h1><mat-icon (click)="editMode=!editMode">edit</mat-icon>
+      </div>
+      <form class="personal-details__form" #myForm="ngForm" (ngSubmit)="onSave(myForm)">
+        <div class="name">
+          <div class="first-name">
+            <p class="label">First Name (as on PAN)</p>
+            <mat-form-field appearance="outline">
+              <mat-label>First Name</mat-label>
+              <input [(ngModel)]="borrowerDetails.firstName" name="firstName" matInput [disabled]="!editMode"
+                     minlength="3" required #firstName="ngModel">
+              <mat-error *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)">
+                First Name is required and must be min 3 characters long
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="last-name">
+            <p class="label">Last Name (as on PAN)</p>
+            <mat-form-field appearance="outline">
+              <mat-label>Last Name</mat-label>
+              <input [(ngModel)]="borrowerDetails.lastName" name="lastName" matInput [disabled]="!editMode" minlength="3" required #lastName="ngModel">
+              <mat-error *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)">Last Name is required and must be at least 3 characters long.</mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="phone-email">
+          <div class="phone-number">
+            <p class="label">Phone Number</p>
+            <mat-form-field appearance="outline">
+              <mat-label>Registered Mobile Number</mat-label>
+              <input [(ngModel)]="borrowerDetails.phoneNo" name="phoneNo" matInput [disabled]="!editMode"
+                     [ngModelOptions]="{updateOn: 'blur'}" minlength="10" maxlength="10" required pattern="^[6-9]\d{9}$"
+                     #phoneNo="ngModel">
+              <mat-error *ngIf="phoneNo.invalid && (phoneNo.dirty || phoneNo.touched)">
+                Phone number is required and must be a 10-digit number starting with 6, 7, 8 or 9.
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="email">
+            <p class="label">Email Id</p>
+            <mat-form-field appearance="outline">
+              <mat-label>Email</mat-label>
+              <input [(ngModel)]="borrowerDetails.emailId" name="emailId" matInput [disabled]="true" required minlength="3">
+              <mat-error *ngIf="isFieldInvalid('emailId')">Please enter a valid email address with at least 3 characters.</mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="aadhar-pan">
+          <div class="aadhar-number">
+            <p class="label">Aadhar Number</p>
+            <mat-form-field appearance="outline" class="my-form-field">
+              <mat-label>Aadhaar No:</mat-label>
+              <input [(ngModel)]="borrowerDetails.aadhaarNo" name="aadhaarNo" required matInput [disabled]="!editMode"
+                     [ngModelOptions]="{updateOn: 'blur'}" minlength="12" #aadhaarNoInput="ngModel">
+              <mat-error *ngIf="aadhaarNoInput.invalid && (aadhaarNoInput.dirty || aadhaarNoInput.touched)">
+                Aadhaar number is required and must be at least 12 characters long.
+              </mat-error>
+              <div class="error-message" [ngClass]="{'valid': isAadhaarVerified(), 'invalid': !isAadhaarVerified()}">{{aadhaarVerificationMessage}}</div>
+              <button mat-raised-button color="primary" *ngIf="editMode" (click)="verifyAadhaar()">Verify</button>
+            </mat-form-field>
+          </div>
+          <div class="email">
+            <p class="label">PAN Number</p>
+            <mat-form-field appearance="outline" class="my-form-field">
+              <mat-label>PAN No:</mat-label>
+              <input [(ngModel)]="borrowerDetails.panNo" name="panNo" matInput [disabled]="!editMode"
+                     [ngModelOptions]="{updateOn: 'blur'}" minlength="10" required #panNo="ngModel">
+              <mat-error *ngIf="panNo.invalid && (panNo.dirty || panNo.touched)">
+                PAN number is required and must be at least 10 characters long.
+              </mat-error>
+              <div class="error-message" [ngClass]="{'valid': isPanVerified(), 'invalid': !isPanVerified()}">{{panVerificationMessage}}</div>
+              <button mat-raised-button color="primary" *ngIf="editMode" (click)="verifyPan()">Verify</button>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="cibil">
+          <mat-form-field appearance="outline" class="my-form-field">
+            <mat-label>Credit Score :</mat-label>
+            <input [(ngModel)]="borrowerDetails.cibilScore" name="cibilScore" matInput [disabled]="!editMode"
+                   [ngModelOptions]="{updateOn: 'blur'}" maxlength="3" required #cibilScore="ngModel">
+            <mat-error *ngIf="cibilScore.invalid && (cibilScore.dirty || cibilScore.touched)">
+              CIBIL Score is required and must be of 3 digits .
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <h2 class="address-details__header">Address Details</h2>
+        <div class="home-city">
+          <div class="home-address">
+            <p class="label">Home Address</p>
+            <mat-form-field appearance="outline">
+              <mat-label>Home Address</mat-label>
+              <input [(ngModel)]="borrowerDetails.address.address" required name="address" matInput [disabled]="!editMode" minlength="5" maxlength="100" #address="ngModel">
+              <mat-error *ngIf="address.invalid && (address.dirty || address.touched)">
+                Address is required and must be between 5 and 100 characters long.
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="city-address">
+            <p class="label">City</p>
+            <mat-form-field appearance="outline">
+              <mat-label>City</mat-label>
+              <input [(ngModel)]="borrowerDetails.address.city" name="city" required matInput [disabled]="!editMode" minlength="3" maxlength="50" #city="ngModel">
+              <mat-error *ngIf="city.invalid && (city.dirty || city.touched)">
+                City is required must be between 3 and 50 characters long.
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="pin-state">
+          <div class="pin-code">
+            <p class="label">PIN Code</p>
+            <mat-form-field appearance="outline">
+              <mat-label>PIN Code</mat-label>
+              <input [(ngModel)]="borrowerDetails.address.pin" name="pin" matInput [disabled]="!editMode" pattern="[0-9]{6}" minlength="6" required maxlength="6" #pin="ngModel">
+              <mat-error *ngIf="pin.invalid && (pin.dirty || pin.touched)">
+                PIN is required and must be a 6-digit number.
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="state">
+            <p class="label">State</p>
+            <mat-form-field appearance="outline">
+              <mat-label>State</mat-label>
+              <input [(ngModel)]="borrowerDetails.address.state" required name="state" matInput [disabled]="!editMode" minlength="3" maxlength="50" #state="ngModel">
+              <mat-error *ngIf="state.invalid && (state.dirty || state.touched)">
+                State is required and must be between 3 and 50 characters long.
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+      </form>
+      <button mat-flat-button color="primary" type="submit" (click)="onSave(myForm)" [disabled]="!(editMode && !myForm.invalid)">Save Details</button>
+    </div>
+    <div *ngIf="toggleForm==='documents'">
+      <div class="document__form-header">
+        <h1 class="document__form-title">Upload Documents</h1>
+      </div>
+      <div class="image__pan-aadhar image-container">
+        <div class="pan-image">
+          <p class="image-header__label">PAN :</p>
+          <div class="document-title__label-container">
+            <p id="panImageLabel" class="document-title__label">{{borrowerDetails.panImageName?borrowerDetails.panImageName:"Upload pan image"}}</p>
+            <mat-icon [matMenuTriggerFor]="menu" [matMenuTriggerData]="{name : 'pan'}"  class="document-title__action" *ngIf="editImage!='pan'">more_vert</mat-icon>
+            <label for="pan" *ngIf="editImage=='pan' && uploadButton!='pan'" class="upload-lable upload-button">Upload</label>
+            <label for="pan" *ngIf="editImage=='pan' && uploadButton=='pan'" class="upload-lable upload-button" (click)="onUploadButtonClick($event,'pan')">
+              <mat-icon>upload</mat-icon>
+            </label>
+            <input id="pan" type="file" style="display: none"  (input)="uploadButton='pan'">
+          </div>
+        </div>
+        <div class="aadhar-image">
+          <p class="image-header__label">AADHAR :</p>
+          <div class="document-title__label-container">
+            <p id="aadharImageLabel" class="document-title__label">{{borrowerDetails.aadharImageName?borrowerDetails.aadharImageName:"Upload aadhar image"}}</p>
+            <mat-icon [matMenuTriggerFor]="menu" [matMenuTriggerData]="{name : 'aadhar'}"  class="document-title__action" *ngIf="editImage!='aadhar'">more_vert</mat-icon>
+            <label for="aadhar" *ngIf="editImage=='aadhar' && uploadButton!='aadhar'" class="upload-lable upload-button">Upload</label>
+            <label for="aadhar" *ngIf="editImage=='aadhar' && uploadButton=='aadhar'" class="upload-lable upload-button" (click)="onUploadButtonClick($event,'aadhar')">
+              <mat-icon>upload</mat-icon>
+            </label>
+            <input id="aadhar" type="file" style="display: none" (input)="uploadButton='aadhar'">
+          </div>
+        </div>
+      </div>
+      <div class="image__cibil image-container">
+        <div class="cibil-image">
+          <p class="image-header__label">CIBIL:</p>
+          <div class="document-title__label-container">
+            <p id="cibilImageLabel" class="document-title__label">{{borrowerDetails.cibilImageName?borrowerDetails.cibilImageName:"Upload cibil image"}}</p>
+            <mat-icon [matMenuTriggerFor]="menu" [matMenuTriggerData]="{name : 'cibil'}"  class="document-title__action" *ngIf="editImage!='cibil'">more_vert</mat-icon>
+            <label for="cibil" *ngIf="editImage=='cibil' && uploadButton!='cibil'" class="upload-lable upload-button">Upload</label>
+            <label for="cibil" *ngIf="editImage=='cibil' && uploadButton=='cibil'" class="upload-lable upload-button" (click)="onUploadButtonClick($event,'cibil')">
+              <mat-icon>upload</mat-icon>
+            </label>
+            <input id="cibil" type="file"  style="display: none" (input)="uploadButton='cibil'">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <mat-menu #menu="matMenu">
+    <ng-template matMenuContent let-name='name'>
+      <button mat-menu-item>
+        <mat-icon (click)="editImage=name">cloud_upload</mat-icon>
+        <span>Upload</span>
+      </button>
+    </ng-template>
+  </mat-menu>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<!--<div class="fixed-container" style="height: 500px; overflow: auto;">-->
+<!--  <div class="register-logo">-->
+<!--    <mat-icon>lock</mat-icon>-->
+<!--  </div>-->
+<!--  <h1>Borrower Details</h1>-->
+<!--  <h2>Edit Profile</h2>-->
+<!--  <div id="button-container">-->
+<!--    <div *ngIf="!editMode && borrowerDetails">-->
+<!--      <button class="edit-button" mat-icon-button color="primary" (click)="onEdit()">-->
+<!--        <mat-icon>edit</mat-icon> Edit-->
+<!--      </button>-->
+<!--    </div>-->
+
+<!--    <div *ngIf="editMode && borrowerDetails">-->
+<!--      <button class="save-button" mat-icon-button color="primary" [disabled]="myForm.invalid" (click)="onSave(borrowerDetails)" >-->
+<!--        <mat-icon>save</mat-icon> Save-->
+<!--      </button>-->
+
+<!--      <button class="cancel-button" mat-icon-button color="warn" (click)="editMode=false">-->
+<!--        <mat-icon>cancel</mat-icon> Cancel-->
+<!--      </button>-->
+<!--    </div>-->
+<!--  </div>-->
+
+<!--  <form #myForm="ngForm" (ngSubmit)="onSave(myForm)">-->
+
+<!--  <div class="name">-->
+<!--    <mat-form-field appearance="outline">-->
+<!--      <mat-label>First Name</mat-label>-->
+<!--      <input [(ngModel)]="borrowerDetails.firstName" name="firstName" matInput [disabled]="!editMode"-->
+<!--        minlength="3" #firstName="ngModel">-->
+<!--      <mat-error *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)">-->
+<!--        First Name must be at least 3 characters long.-->
+<!--      </mat-error>-->
+<!--    </mat-form-field>-->
+
+
+<!--    <mat-form-field appearance="outline">-->
+<!--      <mat-label>Last Name</mat-label>-->
+<!--      <input [(ngModel)]="borrowerDetails.lastName" name="lastName" matInput [disabled]="!editMode"-->
+<!--        minlength="3" #lastName="ngModel">-->
+<!--      <mat-error *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)">-->
+<!--        Last Name must be at least 3 characters long.-->
+<!--      </mat-error>-->
+<!--    </mat-form-field>-->
+
+<!--  </div>-->
+
+<!--  <mat-form-field appearance="fill">-->
+<!--    <mat-label>Email</mat-label>-->
+<!--    <input [(ngModel)]="borrowerDetails.emailId" name="emailId" matInput [disabled]="true" required minlength="3">-->
+<!--    <mat-error *ngIf="isFieldInvalid('emailId')">Please enter a valid email address with at least 3 characters.</mat-error>-->
+<!--  </mat-form-field>-->
+
+<!--  <mat-form-field appearance="fill" class="my-form-field">-->
+<!--    <mat-label>Aadhaar No:</mat-label>-->
+<!--    <input [(ngModel)]="borrowerDetails.aadhaarNo" name="aadhaarNo" matInput [disabled]="!editMode"-->
+<!--      [ngModelOptions]="{updateOn: 'blur'}" minlength="12" #aadhaarNoInput="ngModel">-->
+<!--    <mat-error *ngIf="aadhaarNoInput.invalid && (aadhaarNoInput.dirty || aadhaarNoInput.touched)">-->
+<!--      Aadhaar number must be at least 12 characters long.-->
+<!--    </mat-error>-->
+<!--    <div class="error-message" [ngClass]="{'valid': isAadhaarVerified(), 'invalid': !isAadhaarVerified()}">{{aadhaarVerificationMessage}}</div>-->
+<!--    <button mat-raised-button color="primary" *ngIf="editMode" (click)="verifyAadhaar()">Verify</button>-->
+<!--  </mat-form-field>-->
+<!--  <mat-form-field appearance="fill">-->
+<!--    <mat-label>Registered Mobile Number</mat-label>-->
+<!--    <input [(ngModel)]="borrowerDetails.phoneNo" name="phoneNo" matInput [disabled]="!editMode"-->
+<!--      [ngModelOptions]="{updateOn: 'blur'}" minlength="10" maxlength="10" pattern="^[6-9]\d{9}$"-->
+<!--      #phoneNo="ngModel">-->
+<!--    <mat-error *ngIf="phoneNo.invalid && (phoneNo.dirty || phoneNo.touched)">-->
+<!--      Phone number must be a 10-digit number starting with 6, 7, 8 or 9.-->
+<!--    </mat-error>-->
+<!--  </mat-form-field>-->
+
+<!--  <mat-form-field appearance="fill" class="my-form-field">-->
+<!--    <mat-label>PAN No:</mat-label>-->
+<!--    <input [(ngModel)]="borrowerDetails.panNo" name="panNo" matInput [disabled]="!editMode"-->
+<!--      [ngModelOptions]="{updateOn: 'blur'}" minlength="10" #panNo="ngModel">-->
+<!--    <mat-error *ngIf="panNo.invalid && (panNo.dirty || panNo.touched)">-->
+<!--      PAN number must be at least 10 characters long.-->
+<!--    </mat-error>-->
+<!--    <div class="error-message" [ngClass]="{'valid': isPanVerified(), 'invalid': !isPanVerified()}">{{panVerificationMessage}}</div>-->
+<!--    <button mat-raised-button color="primary" *ngIf="editMode" (click)="verifyPan()">Verify</button>-->
+<!--  </mat-form-field>-->
+<!--  <div class="file-upload-container" [ngClass]="{'disabled': !editMode}">-->
+<!--    <div class="file-upload">-->
+<!--      <label for="aadharImageInput" class="file-upload-label"><i class="fa fa-cloud-upload"></i>Upload Aadhar Photo</label>-->
+<!--      <button (click)="onUploadButtonClick($event, 'aadhar')" class="file-upload-btn" [disabled]="!editMode">Upload</button>-->
+<!--      <input type="file" id="aadharImageInput" name="aadharImage" accept=".jpg,.jpeg,.png" [disabled]="!editMode" class="file-upload-input" style="display:none;">-->
+<!--      <p id="aadharFileName" class="file-upload-file-name"></p>-->
+<!--      <p id="aadharUploadMessage"></p>-->
+<!--    </div>-->
+
+<!--    <div class="file-upload">-->
+<!--      <label for="panImageInput" class="file-upload-label"><i class="fa fa-cloud-upload"></i>Upload PAN Photo</label>-->
+<!--      <button (click)="onUploadButtonClick($event, 'pan')" class="file-upload-btn" [disabled]="!editMode">Upload</button>-->
+<!--      <input type="file" id="panImageInput" name="panImage" accept=".jpg,.jpeg,.png" [disabled]="!editMode" class="file-upload-input" style="display:none;">-->
+<!--      <p id="panFileName" class="file-upload-file-name"></p>-->
+<!--      <p id="panUploadMessage"></p>-->
+<!--    </div>-->
+
+<!--    <div class="file-upload">-->
+<!--      <label for="cibilImageInput" class="file-upload-label"><i class="fa fa-cloud-upload"></i>Upload Cibil Photo</label>-->
+<!--      <button (click)="onUploadButtonClick($event, 'cibil')" class="file-upload-btn" [disabled]="!editMode">Upload</button>-->
+<!--      <input type="file" id="cibilImageInput" name="cibilImage" accept=".jpg,.jpeg,.png" [disabled]="!editMode" class="file-upload-input" style="display:none;">-->
+<!--      <p id="cibilFileName" class="file-upload-file-name"></p>-->
+<!--      <p id="cibilUploadMessage"></p>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--<h3 style="text-align: left;">Address</h3>-->
+<!--    <mat-form-field appearance="fill">-->
+<!--      <mat-label>Home Address</mat-label>-->
+<!--      <input [(ngModel)]="borrowerDetails.address.address" name="address" matInput [disabled]="!editMode" minlength="5" maxlength="100" #address="ngModel">-->
+<!--      <mat-error *ngIf="address.invalid && (address.dirty || address.touched)">-->
+<!--        Address must be between 5 and 100 characters long.-->
+<!--      </mat-error>-->
+<!--    </mat-form-field>-->
+
+<!--    <mat-form-field appearance="fill">-->
+<!--      <mat-label>City</mat-label>-->
+<!--      <input [(ngModel)]="borrowerDetails.address.city" name="city" matInput [disabled]="!editMode" minlength="3" maxlength="50" #city="ngModel">-->
+<!--      <mat-error *ngIf="city.invalid && (city.dirty || city.touched)">-->
+<!--        City must be between 3 and 50 characters long.-->
+<!--      </mat-error>-->
+<!--    </mat-form-field>-->
+<!--    <mat-form-field appearance="fill">-->
+<!--      <mat-label>PIN Code</mat-label>-->
+<!--      <input [(ngModel)]="borrowerDetails.address.pin" name="pin" matInput [disabled]="!editMode" pattern="[0-9]{6}" minlength="6" maxlength="6" #pin="ngModel">-->
+<!--      <mat-error *ngIf="pin.invalid && (pin.dirty || pin.touched)">-->
+<!--        PIN must be a 6-digit number.-->
+<!--      </mat-error>-->
+<!--    </mat-form-field>-->
+<!--    <mat-form-field appearance="fill">-->
+<!--      <mat-label>State</mat-label>-->
+<!--      <input [(ngModel)]="borrowerDetails.address.state" name="state" matInput [disabled]="!editMode" minlength="3" maxlength="50" #state="ngModel">-->
+<!--      <mat-error *ngIf="state.invalid && (state.dirty || state.touched)">-->
+<!--        State must be between 3 and 50 characters long.-->
+<!--      </mat-error>-->
+<!--    </mat-form-field>-->
+<!--</form>-->
+<!--</div>-->

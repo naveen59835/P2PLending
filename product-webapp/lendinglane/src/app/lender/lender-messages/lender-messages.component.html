@@ -1,0 +1,14 @@
+<div class="active-message">
+  <h1>Active Message</h1>
+  <div class="active-message-container">
+    <div *ngFor="let message of messages">
+      <p class="receiver-email">{{message.borrowerId}}</p>
+      <p class ="chat-subject">Subject : Loan Approval Request</p>
+      <p class="chat-resume" [routerLink]="message.id"><mat-icon>play_arrow</mat-icon> Resume chat</p>    <!--      replace jon with recipient email-->
+    </div>
+  </div>
+  <div class="chats-not-found" *ngIf="messages.length==0">
+    <img  width="100px" src="https://i.ibb.co/Nm84CcR/send.png">
+    <p style="font-weight: 500">No chats found</p>
+  </div>
+</div>

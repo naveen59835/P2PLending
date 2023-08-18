@@ -1,0 +1,82 @@
+<div class="greeting">
+  <div class="borrower-name-container">
+    <span class="borrower-name">Welcome back, <span>{{borrowerName | uppercase}}</span></span>
+    <img src="https://img.icons8.com/emoji/48/null/hand-with-fingers-splayed-emoji.png"/>
+  </div>
+  <span class="greeting-message">We hope you have a great day.</span>
+  <span class="role">You are logged in as a Borrower !</span>
+</div>
+<div class="loan-container">
+  <div class="loan-container-header">
+    <h1>ONGOING LOANS</h1>
+    <mat-icon (click)="navigatePrevious()">navigate_before</mat-icon>
+    <mat-icon (click)="navigateNext()">navigate_next</mat-icon>
+  </div>
+  <div class="loans-container-wrapper">
+    <div class="loans" *ngIf="ongoingLoans.length>0">
+      <carousel [cellsToShow]="isMobile?1:isIpad?2:3" [arrows]="false" #carouselComponent>
+        <div class="loan carousel-cell" *ngFor="let loan of ongoingLoans let number=index" [routerLink]="'/dashboard/loan/'+loan.id">
+          <p class="loan-id">#LOAN {{number+1}}</p>
+          <div class="loan-data-container">
+            <div class="paid-amount-container">
+              <div class="total-Logo"><img src="https://img.icons8.com/external-kiranshastry-solid-kiranshastry/64/6C7BEC/external-money-bag-banking-and-finance-kiranshastry-solid-kiranshastry.png"/></div>
+              <div class="total-amount">
+                <p class="total-amount-label">AMOUNT</p>
+                <p class="total-amount-value">{{loan.amount}}</p>
+              </div>
+            </div>
+            <div class="total-amount-container">
+              <div class="total-Logo"><img src="https://img.icons8.com/sf-regular/48/6C7BEC/paid.png"/></div>
+              <div class="total-amount">
+                <p class="total-amount-label">PAID</p>
+                <p class="total-amount-value">{{totalPaid(loan.emi)}}</p>
+              </div>
+            </div>
+          </div>
+          <mat-progress-bar mode="determinate" [value]="progress(loan)"></mat-progress-bar>
+        </div>
+      </carousel>
+    </div>
+  </div>
+  <div class="loans-not-found" *ngIf="ongoingLoans.length==0">
+    <img src="https://app.lendbox.in/_nuxt/img/empty_list.cc3e0be.svg">
+    <p style="font-weight: 500">No ongoing loans found</p>
+  </div>
+
+</div>
+<div class="loan-container">
+  <h1>CLOSED LOANS</h1>
+  <table mat-table [dataSource]="finishedLoans" [hidden]="finishedLoans.length==0">
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> # </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="lender">
+      <th mat-header-cell *matHeaderCellDef> Lender </th>
+      <td mat-cell *matCellDef="let element"> {{element.lenderId}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="amount">
+      <th mat-header-cell *matHeaderCellDef> Amount </th>
+      <td mat-cell *matCellDef="let element"> {{element.amount}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="disbursedOn">
+      <th mat-header-cell *matHeaderCellDef> Disbursed On </th>
+      <td mat-cell *matCellDef="let element"> {{element.dateOfLoan | date: 'dd/MM/yyyy'}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="repaidOn">
+      <th mat-header-cell *matHeaderCellDef> Repaid On </th>
+      <td mat-cell *matCellDef="let element"> {{element.repaidOn | date: 'dd/MM/yyyy'}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="['id', 'lender', 'amount', 'disbursedOn', 'repaidOn']"></tr>
+    <tr mat-row *matRowDef="let row; columns: ['id', 'lender', 'amount', 'disbursedOn', 'repaidOn']"></tr>
+  </table>
+  <div class="loans-not-found" *ngIf="finishedLoans.length==0">
+    <img src="https://app.lendbox.in/_nuxt/img/empty_list.cc3e0be.svg">
+    <p style="font-weight: 500">No closed loans found</p>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+<div class="notification-box" [ngClass]="{'open': isOpen}">
+  <div class="header">
+    <div class="notification-icon">
+      <mat-icon>notifications_active</mat-icon>
+    </div>
+    <div class="notification-title">{{ title }}</div>
+    <button class="clear-all-button" mat-icon-button (click)="clearAllNotifications()">
+      <mat-icon>clear_all</mat-icon>
+    </button>
+    <button class="close-button" mat-icon-button (click)="closeNotification()">
+      <mat-icon>close</mat-icon>
+    </button>
+
+  </div>
+  <div *ngIf="notifications.length === 0" class="content">
+    No new notifications
+  </div>
+  <div *ngFor="let notification of notifications" id="class1">
+    <div class="notification-title">{{ notification.lender }}</div>
+    <div class="content">{{ notification.message }}</div>
+    <button class="clear-button" mat-icon-button (click)="clearNotification(notification)">
+      <span class="material-symbols-outlined">
+        delete
+        </span>
+    </button>
+    
+  </div>
+
+</div>

@@ -1,0 +1,27 @@
+.active-message-container>div{
+  background-color: white;
+  display: flex;
+  padding: 20px;
+  align-items: center;
+  justify-content: space-between;
+  height: 30px;
+  margin-bottom: 20px;
+}
+p{
+  margin: 0 !important;
+  font-weight: 600;
+}
+.chat-resume{
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.chats-not-found{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+}

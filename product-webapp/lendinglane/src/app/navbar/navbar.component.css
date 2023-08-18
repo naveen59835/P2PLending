@@ -1,0 +1,35 @@
+*{
+  color: #2B2929;
+}
+.spacer{
+  flex:auto ;
+}
+.title{
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.logo{
+  width: 50px;
+}
+mat-toolbar{
+  background-color: white !important;
+  border-bottom: 2px solid #e3e3e3;
+}
+.signup-button{
+  background-color: #f58024;
+  color: white;
+  padding: 5px 20px;
+  font-size: 14px;
+  border-radius: 25px;
+}
+.links{
+  display: flex;
+  gap: 20px;
+  margin-right: 20px;
+}
+.links>span{
+  font-size: 15px;
+  letter-spacing: 1px;
+}

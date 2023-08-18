@@ -1,0 +1,33 @@
+.loan-details{
+  display: flex;
+  gap: 50px;
+}
+h3{
+  font-family: 'Poppins',sans-serif !important;
+}
+.emi-data{
+  display: flex;
+  gap: 50px;
+  align-items: center;
+}
+.separator{
+  flex: auto;
+}
+.emi-data-container {
+  margin-bottom: 20px;
+}
+mat-divider{
+  margin-top: 10px;
+}
+.emi-details{
+  padding: 20px;
+  background-color: white;
+}
+@media (max-width: 800px) {
+  .loan-details{
+    flex-direction: column;
+    background-color: white;
+    padding: 20px;
+  }
+
+}

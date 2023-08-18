@@ -1,0 +1,54 @@
+<div class="loan-selector-container">
+  <p class="ongoing-selector" (click)="changeLoanStatus('ongoing')">On going</p>
+  <p class="finished-selector" (click)="changeLoanStatus('finished')">Closed</p>
+  <div class="slider" [ngClass]="loanStatus"></div>
+</div>
+<div class="loan-container">
+  <h1>{{loanStatus | titlecase}} Investments</h1>
+  <div class="loan-wrapper" [hidden]="!(loanData.data.length > 0)" >
+    <table mat-table [dataSource]="loanData">
+      <ng-container matColumnDef="#">
+        <th mat-header-cell *matHeaderCellDef [ngClass]="{'isSmall':isSmallScreen}"> # </th>
+        <td mat-cell *matCellDef="let element"><span *ngIf="isSmallScreen"># : </span>{{element.id}} </td>
+      </ng-container>
+
+      <!-- Amount Column -->
+      <ng-container matColumnDef="amount">
+        <th mat-header-cell *matHeaderCellDef [ngClass]="{'isSmall':isSmallScreen}"> Amount </th>
+        <td mat-cell *matCellDef="let element"><span *ngIf="isSmallScreen">Currency : </span> ₹ {{element.amount}} </td>
+      </ng-container>
+
+      <!-- Type Column -->
+      <ng-container matColumnDef="type">
+        <th mat-header-cell *matHeaderCellDef [ngClass]="{'isSmall':isSmallScreen}"> Type </th>
+        <td  mat-cell *matCellDef="let element" [ngClass]="{'debit':element.type==='debit','credit':element.type==='credit'}"><span *ngIf="isSmallScreen">Type : </span> {{element.type}} </td>
+      </ng-container>
+
+      <!-- Remarks Column -->
+      <ng-container matColumnDef="terms">
+        <th mat-header-cell *matHeaderCellDef [ngClass]="{'isSmall':isSmallScreen}"> Terms </th>
+        <td mat-cell *matCellDef="let element"> <span *ngIf="isSmallScreen">Terms : </span> {{element.terms}} </td>
+      </ng-container>
+
+      <!-- Date Column -->
+      <ng-container matColumnDef="closed">
+        <th mat-header-cell *matHeaderCellDef [ngClass]="{'isSmall':isSmallScreen}"> Expired </th>
+        <td mat-cell *matCellDef="let element"><span *ngIf="isSmallScreen">Expired : </span> {{element.expired}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="expand">
+        <th mat-header-cell *matHeaderCellDef [ngClass]="{'isSmall':isSmallScreen}"> Expand </th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-flat-button color="primary" [routerLink]="element.id">View Loan</button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <mat-paginator [hidden]="!(loanData.data.length>0)" #paginator pageSize="4" ></mat-paginator>
+  </div>
+  <div class="no-loan-found" *ngIf="loanData.data.length==0">
+    No {{loanStatus}} loans
+  </div>
+</div>

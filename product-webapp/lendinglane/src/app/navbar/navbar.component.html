@@ -1,0 +1,16 @@
+<mat-toolbar color="primary">
+  <button mat-icon-button *ngIf="isSmall" (click)="toggleSidenav()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <div class="title" routerLink="">
+    <img class="logo" src="https://img.icons8.com/fluency/96/null/gg.png">
+    <ng-container *ngIf="!isSmall">LendingLane</ng-container>
+  </div>
+  <span class="spacer"></span>
+  <div class="links" *ngIf="!isSmall">
+    <span class="home">HOME</span>
+    <span class="notification" (click)="openNotification()">NOTIFICATIONS</span>
+  </div>
+  <div class="signup-button" *ngIf="authservice.isAuthenticated()" (click)="logout()">LOG OUT</div>
+  <div class="signup-button" *ngIf="!authservice.isAuthenticated()" routerLink="/signup">SIGN UP</div>
+</mat-toolbar>

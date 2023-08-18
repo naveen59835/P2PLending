@@ -27,6 +27,17 @@
         <module>api-gateway</module>
         <module>product-webapp</module>
         <module>aggregator</module>
+        <module>authentication</module>
+        <module>borrower</module>
+        <module>lender</module>
+        <module>loan</module>
+        <module>contactus</module>
+        <module>review</module>
+        <module>payment</module>
+        <module>recommendation</module>
+        <module>notifications</module>
+        <module>chat</module>
+
     </modules>
 
     <dependencies>
@@ -64,6 +75,7 @@
             <artifactId>activation</artifactId>
             <version>1.1.1</version>
         </dependency>
+
 
     </dependencies>
 

@@ -1,0 +1,20 @@
+<div class="sidenav-container">
+  <div class="home" [ngClass]="{checked:selected==='home'}" (click)="changeSelcted('home','/dashboard')">
+    <img src="https://img.icons8.com/material-outlined/24/null/dashboard-layout.png"/> HOME
+  </div>
+  <div class="messages" [ngClass]="{checked:selected==='chat'}" (click)="changeSelcted('chat','/dashboard/chat')">
+    <mat-icon>chat</mat-icon> MESSAGES
+  </div>
+  <div class="transactions" [ngClass]="{checked:selected==='transaction'}" (click)="changeSelcted('transaction','/dashboard/transactions')">
+    <mat-icon>monitoring</mat-icon> TRANSACTIONS
+  </div>
+  <div class="profile" [ngClass]="{checked:selected==='profile'}" (click)="changeSelcted('profile','/dashboard/profile')">
+    <mat-icon>person</mat-icon> PROFILE
+  </div>
+  <div *ngIf="role==='borrower'" class="loan" [ngClass]="{checked:selected==='loan'}" (click)="changeSelcted('loan','/dashboard/loan')">
+    <mat-icon>savings</mat-icon> LOANS
+  </div>
+  <div *ngIf="role==='lender'" class="loan" [ngClass]="{checked:selected==='loan'}" (click)="changeSelcted('loan','/dashboard/loan')">
+    <mat-icon>savings</mat-icon> INVESTMENTS
+  </div>
+</div>

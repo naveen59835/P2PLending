@@ -1,0 +1,57 @@
+<div class="register-container">
+  <div class="register-logo">
+    <mat-icon>lock</mat-icon>
+  </div>
+  <h1>Registration</h1>
+  <form (ngSubmit)="onSubmit()" [formGroup]="profileForm" class="example-form">
+    <div class="name">
+      <mat-form-field appearance="outline">
+        <mat-label>First Name</mat-label>
+        <input formControlName="firstName" matInput placeholder="FirstName">
+        <mat-error *ngIf="firstName?.errors?.['required']">First Name is required</mat-error>
+        <mat-error *ngIf="firstName?.errors?.['minlength']">First Name must be at least 3 characters long</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <input formControlName="lastName" matInput placeholder="LastName">
+        <mat-error *ngIf="lastName?.errors?.['required']">Last Name is required</mat-error>
+        <mat-error *ngIf="lastName?.errors?.['minlength']">Last Name must be at least 3 characters long</mat-error>
+      </mat-form-field>
+    </div>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input formControlName="emailId" matInput placeholder="emailId">
+      <mat-error *ngIf="emailId?.errors?.['required']">Email is required</mat-error>
+      <mat-error *ngIf="emailId?.errors?.['pattern']">Email should have '@' and should be ending with '.com'</mat-error>
+    </mat-form-field>
+
+    <div class="password">
+      <mat-form-field appearance="outline">
+        <input formControlName="password" matInput placeholder="Password" [type]="passwordHide ? 'password' : 'text'" required>
+        <mat-icon matSuffix (click)="passwordHide = !passwordHide">{{passwordHide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        <mat-error *ngIf="password?.errors?.['required']">Password is required</mat-error>
+        <mat-error *ngIf="password?.errors?.['minlength']">Password must be at least 8 characters long</mat-error>
+        <mat-error *ngIf="password?.errors?.['pattern']">Must-use(a-z),(0-9)&symbol</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <input formControlName="confirmPassword" matInput placeholder="Confirm Password" [type]="confirmPasswordHide ? 'password' : 'text'" required>
+        <mat-icon matSuffix (click)="confirmPasswordHide = !confirmPasswordHide">{{confirmPasswordHide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        <mat-error *ngIf="profileForm?.errors?.['passwordShouldMatch']===false">Passwords does not match</mat-error>
+        <mat-error *ngIf="confirmPassword?.errors?.['required']">Confirm Password is required</mat-error>
+        <mat-error *ngIf="confirmPassword?.errors?.['minlength']">Confirm Password must be at least 8 characters long</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="radio-container">
+      <label>Sign up as</label>
+      <mat-radio-group color="primary" formControlName="role">
+        <mat-radio-button value="borrower" [checked]="true">Borrower</mat-radio-button>
+        <mat-radio-button value="lender">Lender</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <button color="primary" [disabled]="!profileForm.valid" mat-raised-button type="submit">Register</button>
+  </form>
+  <p style="margin-top: 20px;font-weight: bold">Already a user ? <span style="color: #3f51b5;cursor: pointer;" routerLink="/login">Sign In</span></p>
+</div>
+

@@ -1,0 +1,16 @@
+.sidenav-container>div{
+  display: flex;
+  padding: 15px 20px;
+  justify-content: flex-start;
+  gap: 20px;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 25px;
+  margin-bottom: 5px;
+}
+.checked{
+  background-color:#e1d0ff;
+}
+mat-icon{
+  font-size: 25px;
+}

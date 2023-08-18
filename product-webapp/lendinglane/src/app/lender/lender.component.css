@@ -1,0 +1,101 @@
+.card{
+  width:100%;display: flex;text-align: center;
+
+    
+  }
+  
+  input {
+  width: 99px;
+    border: none;
+    background-color: rgb(255, 255, 255);
+   
+  
+  
+    }
+  
+  
+  
+  
+  .div{
+
+    
+    width: 30%;border: 1px solid rgb(113, 113, 113);
+    padding: 7px;
+  }
+  
+  .div span{
+   
+    float: left;
+
+   
+  }
+  
+  
+  
+  
+  .containdiv{
+ 
+    width: 10%;border: 1px solid rgb(113, 113, 113);padding: 7px;
+  }
+  .containdiv span{
+   
+    float: left;
+  
+  }
+  
+  .container{
+    width: 10%;border: 1px solid rgb(113, 113, 113);padding: 7px;
+  }
+  
+  
+  .contain
+  {
+    width: 10%;border: 1px solid rgb(113, 113, 113);padding: 7px;
+  }
+  
+  
+  .logochat{
+    padding: 7px 7px;
+    background-color: #dce9c4;
+  
+    color: rgb(114, 112, 119);
+    
+    border-radius: 50%;
+  
+  }
+  
+    
+   .btn{
+   width: 10%;
+   
+  
+   }
+  
+  
+   .logo{
+    padding: 9px 9px;
+    background-color: #f0edff;
+   
+    color: rgb(55, 53, 57);
+    
+    border-radius: 50%;
+   
+  }
+  
+  
+  
+
+ 
+
+  .inp{
+    width: 50%;
+    border: none;
+    background-color: rgb(255, 255, 255);
+  }
+
+
+
+ 
+ 
+
+ 

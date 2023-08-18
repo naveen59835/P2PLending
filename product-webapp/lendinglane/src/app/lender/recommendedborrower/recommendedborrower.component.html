@@ -1,0 +1,78 @@
+
+
+
+
+<div *ngIf="iscard"  class="card">
+    <div class="cover-photo">
+           <div class="profile">
+               <mat-icon>person</mat-icon>
+               </div>
+          
+       </div>
+       <h3 class="profile-name"><strong>Name:</strong>&nbsp;{{borrower.firstName}}&nbsp;&nbsp;{{borrower.lastName}}</h3>
+       <h3 ><strong>Contact:</strong>&nbsp;{{borrower.phoneNo}}</h3>
+       <h3><strong>Email:</strong>&nbsp;{{borrower.emailId}}</h3>
+
+       <h3><strong>rating:</strong>&nbsp;{{borrowerrating}}</h3>
+       <p class="about"><strong>Borrower  Details</strong></p>
+
+       <button class="btnimg"  (click)="onclick()">Aadhar Pan Iamge</button>
+      <div *ngIf="istrue" style="width: 100%;align-items: center;margin-top: 13px;">
+       <figure>
+    
+       <img [src]="aadharImage" width="50%" height="37%">
+       <figcaption><strong>AadharImage</strong></figcaption>
+   </figure>
+ 
+       <figure style="margin-top: 13px;" >
+      
+       <img [src]="panImage" width="50%" height="37%" >
+       <figcaption><strong>PanImage</strong></figcaption>
+   </figure>
+   </div>
+       <button  (click)="btn()" class="btn">Review</button>
+      
+    </div> 
+
+
+
+
+
+<mat-card  *ngIf="rating">
+
+   <div>
+   <button mat-mini-fab color="primary" (click)="card()"><mat-icon>arrow_back</mat-icon></button>
+</div>
+
+   <form [formGroup]="form">
+   <div class="cont">
+    
+       <div class="stars">
+          
+           <div class="container">
+              <span> <mat-icon>person</mat-icon></span>
+              <div class="contain">{{Lenderid}}</div></div>
+         <ngx-star-rating  formControlName="stars"   id="'rating'" ></ngx-star-rating >
+       </div>
+     </div> 
+
+     <mat-form-field class="example-full-width">
+       <mat-label>write a Review</mat-label>
+       <textarea  formControlName="review"     matInput placeholder="Enter the Review..."></textarea>
+  
+     </mat-form-field>
+     <button  (click)="review()" mat-raised-button color="primary">submit</button>
+       
+   </form>
+</mat-card>
+
+
+
+
+
+
+
+
+
+
+

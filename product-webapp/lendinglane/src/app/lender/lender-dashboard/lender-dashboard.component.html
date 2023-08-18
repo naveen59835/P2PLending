@@ -1,0 +1,124 @@
+<div class="greeting">
+  <div class="lender-name-container">
+    <span class="lender-name">Welcome back, <span>{{lender.firstName + " " + lender.lastName | uppercase}}</span></span>
+    <img src="https://img.icons8.com/emoji/48/null/hand-with-fingers-splayed-emoji.png"/>
+  </div>
+  <span class="greeting-message">We hope you have a great day.</span>
+  <span class="role">You are logged in as a Lender !</span>
+</div>
+
+<div *ngIf="borrower.length==0">
+  <div (click)="add()">
+    <mat-icon>add</mat-icon>
+  </div>
+</div>
+
+
+<div *ngIf="borrower.length==0">
+
+  <button (click)="creditScore()" [disabled]="istrue" mat-raised-button>Enter creditScore</button>
+
+
+</div>
+
+
+<!--<div class="loan-container">-->
+<!--    <h1>Your Investments</h1>-->
+<!--    <div class="loans">-->
+<!--      <div class="loan" *ngFor="let loan of loans let number=index">-->
+<!--        <h2>#Investment {{number+1}}</h2>-->
+<!--        <h3>Amount : {{loan.amount}} </h3>-->
+<!--        <h3>Recovered : {{recovered(loan.emi)}}</h3>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+
+<div class="loan-container">
+  <div class="loan-container-header" style="display: flex; gap: 10px">
+    <h1>Investments</h1>
+    <mat-icon (click)="navigatePrevious()">navigate_before</mat-icon>
+    <mat-icon (click)="navigateNext()">navigate_next</mat-icon>
+  </div>
+  <div class="loans-container-wrapper">
+    <div class="loans" *ngIf="loans.length>0">
+      <carousel [cellsToShow]="isMobile?1:isIpad?2:3" [arrows]="false" #carouselComponent>
+        <div class="carousel-cell" *ngFor="let loan of loans let number=index" [routerLink]="'/dashboard/loan/'+loan.id">
+          <p class="loan-id">#INVESTMENT {{number+1}}</p>
+          <div class="loan-data-container">
+            <div class="paid-amount-container">
+              <div class="total-Logo"><img src="https://img.icons8.com/external-kiranshastry-solid-kiranshastry/64/6C7BEC/external-money-bag-banking-and-finance-kiranshastry-solid-kiranshastry.png"/></div>
+              <div class="total-amount">
+                <p class="total-amount-label">AMOUNT</p>
+                <p class="total-amount-value">{{loan.amount}}</p>
+              </div>
+            </div>
+            <div class="total-amount-container">
+              <div class="total-Logo"><img src="https://img.icons8.com/sf-regular/48/6C7BEC/paid.png"/></div>
+              <div class="total-amount">
+                <p class="total-amount-label">RECOVERED</p>
+                <p class="total-amount-value">{{recovered(loan.emi)}}</p>
+              </div>
+            </div>
+          </div>
+          <mat-progress-bar mode="determinate" [value]="progress(loan)"></mat-progress-bar>
+        </div>
+      </carousel>
+    </div>
+  </div>
+  <div class="loans-not-found" *ngIf="loans.length==0">
+    <img src="https://app.lendbox.in/_nuxt/img/empty_list.cc3e0be.svg">
+    <p style="font-weight: 500">No investments found</p>
+  </div>
+
+</div>
+<div class="recommended-borrower-container">
+  <div class="recommended-borrower-header">
+    <h1>Recommended Borrowers</h1>
+  </div>
+  <table [dataSource]="borrower" mat-table>
+    <ng-container matColumnDef="Borrowers">
+      <th *matHeaderCellDef mat-header-cell [ngClass]="{'isSmall':isSmallScreen}"> #</th>
+      <td *matCellDef="let element" mat-cell> <span *ngIf="isSmallScreen">Borrower ID : </span> {{element.borrowerId}} </td>
+    </ng-container>
+    <ng-container matColumnDef="Amount">
+      <th *matHeaderCellDef mat-header-cell [ngClass]="{'isSmall':isSmallScreen}"> Amount</th>
+      <td *matCellDef="let element" mat-cell> <span *ngIf="isSmallScreen">Amount : </span> {{element.amount}} </td>
+    </ng-container>
+    <ng-container matColumnDef="Rating">
+      <th *matHeaderCellDef mat-header-cell [ngClass]="{'isSmall':isSmallScreen}"> CIBIL</th>
+      <td *matCellDef="let element" mat-cell> <span *ngIf="isSmallScreen">Credit Score : </span>{{element.creditScore}}</td>
+    </ng-container>
+    <ng-container matColumnDef="Payment">
+      <th *matHeaderCellDef mat-header-cell [ngClass]="{'isSmall':isSmallScreen}"> Payment</th>
+      <td *matCellDef="let element" mat-cell class="button"> <span *ngIf="isSmallScreen">Pay : </span>
+        <div (click)="pay(element)" class="payment-button" >
+          <img src="https://img.icons8.com/ios-filled/50/000000/plus-math.png" width="25px"/>
+        </div>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="Chat">
+      <th *matHeaderCellDef mat-header-cell [ngClass]="{'isSmall':isSmallScreen}"> Chat</th>
+      <td *matCellDef="let element" mat-cell class="button"> <span *ngIf="isSmallScreen">Chat : </span>
+        <div (click)="startChat(element.borrowerId)" class="chat-button">
+          <img src="https://img.icons8.com/ios/50/000000/speech-bubble--v1.png" width="20px"/>
+        </div>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="Profile">
+      <th *matHeaderCellDef mat-header-cell [ngClass]="{'isSmall':isSmallScreen}"> Profile</th>
+      <td *matCellDef="let element" mat-cell class="button"> <span *ngIf="isSmallScreen">Profile : </span>
+        <div [routerLink]="'/dashboard/recommendedborrowerdetail/'+element.borrowerId" class="payment-button"
+             style="background-color: #b8ebdc;">
+          <img src="https://img.icons8.com/material/24/null/gender-neutral-user--v1.png" width="25px"/>
+        </div>
+      </td>
+    </ng-container>
+
+    <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+    <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
+  </table>
+  <div class="loans-not-found" *ngIf="borrower.length==0">
+    <img src="https://app.lendbox.in/_nuxt/img/empty_list.cc3e0be.svg">
+    <p style="font-weight: 500">No recommended loans found</p>
+  </div>
+</div>

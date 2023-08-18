@@ -1,0 +1,3 @@
+<app-borrower-dashboard *ngIf="window.localStorage.getItem('role')==='borrower'"></app-borrower-dashboard>
+<!--add a similar line for lender-->
+<app-lender-dashboard *ngIf="window.localStorage.getItem('role')==='lender'"></app-lender-dashboard>

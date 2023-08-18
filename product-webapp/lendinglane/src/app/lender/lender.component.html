@@ -1,0 +1,54 @@
+
+
+
+
+<div  class="card"  >
+
+    <div class="div" >
+
+            {{borrowerRecommended.borrowerId}}
+    </div>
+         <div class="div">
+          <span>
+            <mat-icon>currency_rupee</mat-icon>
+
+          </span>
+
+           <span>{{borrowerRecommended.amount}}</span>
+         </div>
+
+
+          <div class="containdiv" >
+      <span> <mat-icon>star</mat-icon>
+
+        </span>
+        &nbsp;
+        {{borrowerRecommended.creditScore}}
+          </div>
+
+        <div class="container" (click)="pay(borrowerRecommended)">
+
+            <mat-icon class="logo" >add</mat-icon>
+        </div>
+
+        <div class="contain">
+
+          <mat-icon class="logochat" (click)="startChat(borrowerRecommended.borrowerId)">chat</mat-icon>
+      </div>
+      <div class="contain" [routerLink]="'/dashboard/recommendedborrowerdetail/'+borrowerRecommended.borrowerId">
+
+        <mat-icon class="logochat">person</mat-icon>
+    </div>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+

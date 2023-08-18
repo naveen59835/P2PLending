@@ -1,0 +1,91 @@
+:host{
+  display: flex;
+  gap: 30px;
+}
+h1,h2{
+  margin: 0;
+  font-family: 'Mulish', sans-serif;
+  font-weight: 500;
+}
+app-profile-widget{
+  max-width: 350px;
+  width: 100%;
+  background-color:white;
+  display: block;
+  padding: 30px;
+  height: 50%;
+}
+.profile-content{
+  background-color:white;
+  display: block;
+  padding: 30px;
+  width: 100%;
+}
+.personal-details__form-header{
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+form>div{
+  display: flex;
+  gap: 10%;
+  flex-wrap: wrap;
+}
+.address-details__header{
+  margin-bottom: 20px;
+}
+mat-button-toggle-group{
+  margin-bottom: 20px;
+}
+.mat-button-toggle-checked{
+  color: white;
+}
+.mat-button-toggle-checked{
+  background-color: #1458ea;
+}
+.document__form-header{
+  margin-bottom: 30px;
+}
+.image-container{
+  display: flex;
+  gap:10%;
+  width: 100%;
+  margin-bottom: 30px;
+}
+.image-header__label{
+  margin: 0;
+  font-size: 18px;
+}
+.document-title__label-container{
+  display: flex;
+  align-items: center;
+  margin-top: 30px;
+  gap: 20px;
+  text-align: center;
+  padding: 15px 30px;
+  border: 1px solid #e7e7e7;
+  width: 100%;
+  border-radius: 5px;
+  justify-content: space-between;
+}
+.document-title__label{
+  margin: 0;
+}
+.upload-button{
+  background-color: #1458ea;
+  color: white;
+  padding: 10px 20px;
+}
+@media(max-width: 800px){
+  :host{
+    flex-direction: column;
+  }
+  app-profile-widget{
+    max-width: calc(100% - 60px) !important;
+  }
+  .profile-content{
+    width: calc(100% - 60px);
+  }
+}

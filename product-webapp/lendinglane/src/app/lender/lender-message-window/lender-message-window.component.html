@@ -1,0 +1,20 @@
+<div class="message-header">
+  <div class="back-button" routerLink="../">
+    <mat-icon>arrow_back_ios</mat-icon>
+    Go back
+  </div>
+  <h3>
+    {{textForm.get("recipientId")?.value}}
+  </h3>
+</div>
+<div class="chat-container" #chatContainer>
+  <div *ngFor="let message of messages" [ngClass]="{'sender':isSender(message),'receiver':!isSender(message)}">
+    <p class="message-text">{{message.message}}</p>
+    <p class="message-time">{{message.timeStamp | date:'shortTime'}}</p>
+  </div>
+</div>
+<mat-form-field [formGroup]="textForm" appearance="fill">
+  <input matInput type="text" formArrayName="message" placeholder="Enter your message" formControlName="message">
+  <button mat-flat-button matSuffix color="primary" (click)="sendMessage()">Send</button>
+</mat-form-field>
+

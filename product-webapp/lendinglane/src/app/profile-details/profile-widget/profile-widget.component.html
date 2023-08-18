@@ -1,0 +1,27 @@
+<div  class="widget profile-widget">
+  <header  class="widget-header">
+    <div  class="avatar-placeholder"><span >{{name.split(" ")[0].charAt(0)}} {{name.split(" ")[1].charAt(0)}}</span></div>
+    <div  class="header-content">
+      <p  class="name">
+        {{name}}
+      </p>
+    </div>
+  </header>
+  <main  class="widget-content" >   <!--    *ngIf="profileWidgetData!=undefined"-->
+    <div  class="list-item">
+      <p  class="label">{{role | titlecase}} ID</p>
+      <p  class="value">{{profileWidgetData.emailId}}</p>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="list-item">
+      <p  class="label">PAN</p>
+      <p  class="value">{{profileWidgetData.panNo?profileWidgetData.panNo:"Please update the pan"}}</p>
+    </div>
+    <mat-divider></mat-divider>
+
+    <div class="list-item">
+      <p  class="label">Phone number</p>
+      <p  class="value">{{profileWidgetData.phoneNo?profileWidgetData.phoneNo:"Please update the pan"}}</p>
+    </div>
+  </main>
+</div>

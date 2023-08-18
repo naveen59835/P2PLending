@@ -1,0 +1,221 @@
+
+
+
+  
+  
+  .card {
+    margin: auto;
+      padding: 15px;
+     width: 100%;
+      background: #f1f0f6;
+      border-radius: 5px;
+      text-align: center;
+      box-shadow: 0 10px 15px rgba(59, 53, 53, 0.7);
+      user-select: none;
+      color: rgb(31, 35, 38);
+      margin-bottom: 47px;
+  }
+  
+  .cover-photo {
+      position: relative;
+      background: url(https://i.imgur.com/jxyuizJ.jpeg);
+      background-size: cover;
+      height: 237px;
+      border-radius: 5px 5px 0 0;
+  }
+  
+  .profile {
+      position: absolute;
+      width: 120px;
+      bottom: -60px;
+      left: 15px;
+      border-radius: 50%;
+      height: 50%;
+      border: 2px solid #222;
+      background: #222;
+      background-color: #c3b2b2;
+      
+   
+      padding: 5px;
+  }
+
+
+
+
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+
+.profile mat-icon{
+position: absolute;
+left: 9px;
+    font-size: 97px;
+
+}
+
+  
+  .profile-name {
+      font-size: 20px;
+      margin-top: 97px;
+      color: #423c3c;
+  }
+  
+  .about {
+      margin-top: 30px;
+  text-decoration: underline;
+font-size: 20px;
+
+      line-height: 1.6;
+  }
+  
+  .btn {
+      margin: 30px 15px;
+      background: #7ce3ff;
+      padding: 10px 25px;
+      border-radius: 3px;
+      border: 1px solid #7ce3ff;
+      font-weight: bold;
+      font-family: Montserrat;
+      cursor: pointer;
+      color: #222;
+      transition: 0.2s;
+  }
+  
+.btnimg{
+    margin: 30px 15px;
+    background: #222729;
+    padding: 10px 25px;
+    border-radius: 3px;
+    border: 1px solid #7ce3ff;
+    font-weight: bold;
+    font-family: Montserrat;
+    cursor: pointer;
+    color: #f3d1d1;
+    transition: 0.2s;
+}
+
+.btnimg:hover{
+  
+   background-image: linear-gradient(to right,  black, red);
+
+
+
+   animation:slidebg 2s linear infinite;
+}
+
+@keyframes slidebg {
+    to {
+      background-position:50vw;
+    }
+  }
+
+
+.btun{
+  margin-left: 2px;
+  margin-top: 2px;
+}
+  
+  .btn:hover {
+      background: #7ce3ff;
+      color: #222;
+  }
+  
+  .icons {
+      width: 180px;
+      margin: 0 auto 10px;
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+  }
+  
+  .icons i {
+      cursor: pointer;
+      padding: 5px;
+      font-size: 18px;
+      transition: 0.2s;
+  }
+  
+  .icons i:hover {
+      color: #7ce3ff;
+  }
+  
+
+
+
+  img {
+    border: 5px solid #555;
+  }
+  .example-full-width {
+    width: 50%;
+    margin-left: 23px;
+    margin-right: 13px;
+  }
+
+.contain{
+  border: none;
+  width: 100%;
+  margin-left:-7px ;
+  font-weight: bold;
+
+
+ 
+
+
+
+
+}
+
+
+  .cont {
+    width: 97%;
+    /* max-width: 350px; */
+    text-align: center;
+    margin: 4% auto;
+    padding: 30px 0;
+   
+ 
+   
+    overflow: hidden;
+  }
+  
+
+
+
+  div.stars {
+    width: 270px;
+
+ 
+  }
+  
+.container{
+    margin-bottom: 37px;
+    position: relative;
+}
+
+
+.container span{
+   position: absolute;
+   left: 5px;
+   top: -9px;
+
+   padding: 9px 9px;
+   background-color: #d4d3dc;
+  
+   color: rgb(55, 53, 57);
+   
+   border-radius: 50%;
+}
+
+
+  .heading {
+    font-size: 25px;
+    margin-right: 25px;
+  }
+
+
+
+

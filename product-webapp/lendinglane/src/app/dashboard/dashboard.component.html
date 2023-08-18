@@ -1,0 +1,10 @@
+<mat-sidenav-container>
+  <mat-sidenav [mode]="isSmallScreen?'over':'side'" [opened]="!isSidenavOpened" [ngClass]="{'small-screen':isSmallScreen}" >
+    <app-sidenav></app-sidenav>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="container">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

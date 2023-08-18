@@ -1,0 +1,35 @@
+<div class="login-container">
+  <div class="login-logo">
+    <mat-icon>lock</mat-icon>
+  </div>
+  <h1>Login</h1>
+  <form [formGroup]="loginForm" class="login-form">
+    <div class="login-toggle">
+      <mat-button-toggle-group formControlName="role">
+        <mat-button-toggle value="borrower">Borrower</mat-button-toggle>
+        <mat-button-toggle value="lender">Lender</mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input formControlName="email" matInput placeholder="Email">
+      <mat-error *ngIf="email?.errors?.['required']">Email is required</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Password</mat-label>
+      <input formControlName="password" matInput placeholder="Password" type="{{hide ? 'password' : 'text'}}">
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+      <mat-error *ngIf="password?.errors?.['required']">Password is required</mat-error>
+      <mat-error *ngIf="password?.errors?.['minlength']">Password must be at least 8 characters long</mat-error>
+      <mat-error *ngIf="password?.errors?.['pattern']">Password must contain at least 1 uppercase letter, 1 lowercase letter, and 1 number and special characters</mat-error>
+    </mat-form-field>
+    <div class="extra-fields">
+      <mat-checkbox>Remember me</mat-checkbox>
+      <p>Forgot password ?</p> <!-- add a routerlink to forgot password page-->
+    </div>
+  </form>
+  <button (click)="onSubmit()" color="primary" [disabled]="!loginForm.valid" mat-raised-button type="submit">Login</button>
+  <p  style="color:black ; font-weight: bold;" class="move-to-signup" routerLink="/signup">Not a logged in user ?<a style="color: blueviolet;"> Sign up</a></p>
+</div>

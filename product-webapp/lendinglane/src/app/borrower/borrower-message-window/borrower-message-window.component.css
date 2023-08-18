@@ -1,0 +1,64 @@
+:host{
+  display: block;
+  overflow: hidden;
+}
+.message-header{
+  padding: 10px 20px;
+  display: flex;
+  justify-content: flex-start;
+  gap: 100px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+h3{
+  margin: 0;
+}
+.message-header>div{
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.chat-container{
+  display: flex;
+  flex-direction: column;
+  height:calc(100vh - 210px);
+  overflow: auto;
+}
+.chat-container >div{
+  max-width: 350px;
+  margin-bottom: 10px;
+  height: max-content;
+  display: flex;
+  flex-direction: column;
+}
+p{
+  font-weight: 500;
+  width: max-content;
+  border-radius: 25px;
+  margin: 0;
+  padding: 10px 15px;
+  max-width: 350px;
+  word-break: break-word;
+}
+.sender{
+  align-self: flex-end;
+  align-items: flex-end;
+}
+.receiver{
+  align-items: flex-start;
+}
+.sender>.message-text{
+  background-color: #6D5BDD;
+  color : white;
+
+}
+.receiver>.message-text{
+  background-color: #DDDDDD;
+}
+mat-form-field{
+  width: 100%;
+}
+input{
+  height: 100%;
+  width: 100%;
+}

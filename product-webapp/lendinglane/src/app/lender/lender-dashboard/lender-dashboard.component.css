@@ -1,0 +1,194 @@
+.greeting {
+  margin-bottom: 50px;
+  padding-left: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.lender-name-container {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.lender-name {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.lender-name > span {
+  color: #f58024;
+}
+
+.lender-name-container > img {
+  width: 30px;
+  object-fit: contain;
+}
+
+.loan-data-container{
+  display: flex;
+  gap: 30px;
+  margin-bottom: 20px;
+}
+.loan-data-container>div{
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.total-Logo{
+  padding: 10px;
+  background-color: #6c7bec30;
+  border-radius: 50%;
+}
+.total-Logo>img{
+  width: 25px !important;
+  object-fit: contain !important;
+  height: 25px !important;
+}
+.total-amount>p{
+  margin: 0;
+}
+.loan-container{
+  height: max-content;
+  background-color: white;
+  padding: 30px;
+  border-radius: 5px;
+  margin-bottom: 30px;
+}
+.loan-container>h1{
+  font-weight: 500;
+}
+.carousel-cell{
+  border: 1px solid;
+  border-radius: 6px;
+  padding:30px;
+  max-width: 300px;
+  height: max-content !important;
+  margin-right: 20px;
+}
+.loan-id{
+  font-size: 15px;
+  font-weight: 500;
+}
+.total-amount-label{
+  color: #818181;
+}
+.total-amount-value{
+  font-size: 16px;
+  margin-top: 10px;
+}
+.loan>h3{
+  letter-spacing: 0.75px;
+}
+.recommended-borrower-container{
+  background-color: white;
+  padding: 30px;
+}
+.loans-not-found{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+table {
+  width: 100%;
+}
+.total-Logo {
+  padding: 10px;
+  background-color: #6c7bec30;
+  border-radius: 50%;
+}
+
+.total-Logo > img {
+  width: 25px !important;
+  height: 25px !important;
+  object-fit: contain;
+}
+
+.total-amount > p {
+  margin: 0;
+}
+.carousel-cell{
+  margin-right: 20px;
+}
+.total-amount-label {
+  color: #818181;
+}
+
+.total-amount-value {
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.payment-button {
+  background-color: #E7CCBC;
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chat-button {
+  background-color: #DCBCE7;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+th.isSmall{
+  display: none;
+}
+@media (max-width: 1000px) {
+  .carousel-cell{
+    max-width: 200px;
+  }
+  .loan-data-container{
+    flex-wrap: wrap;
+  }
+  carousel{
+    height: 250px !important;
+  }
+}
+@media (max-width: 800px) {
+  .loan-data-container{
+    flex-wrap: wrap;
+  }
+  .carousel-cell{
+    max-width: 180px;
+  }
+  carousel{
+    height: 250px !important;
+  }
+  td{
+    border: none;
+    padding: 0 !important;
+  }
+  .mat-row{
+    display: flex !important;
+    flex-direction: column;
+    height: max-content;
+    padding: 30px 30px;
+    background-color: #bdbdbd;
+    margin-bottom: 30px;
+    border-bottom-color: transparent !important;
+  }
+  th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
+    padding: 0;
+    border-bottom-width: 0 !important;
+    border-bottom-style: solid;
+    margin-bottom: 10px;
+  }
+
+}
+@media (max-width: 350px) {
+  .carousel-cell{
+    max-width: 150px;
+  }
+}

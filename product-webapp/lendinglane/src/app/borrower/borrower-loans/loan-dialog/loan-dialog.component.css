@@ -1,0 +1,35 @@
+form{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+button{
+  margin-top: 20px;
+}
+
+.btn span{
+  font-weight: 900;
+  color: black;
+
+}
+.summary-container{
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: flex-start;
+}
+.summary-header{
+  font-size: 16px;
+  margin-bottom: 0;
+  font-weight: 500;
+}
+.summary-container > div{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%;
+}
+mat-divider{
+  height: 3px;
+  width: 100%;
+}
